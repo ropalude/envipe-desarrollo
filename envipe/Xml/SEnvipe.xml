@@ -1,0 +1,700 @@
+<iktan>
+  <dml>
+        <unit id="Generico">
+            <select id="countCargaInicial">
+            select
+                  count(*) total
+                from
+                  tc_muestras
+            </select>
+            <update id="updateGenerico">
+              update
+                {tabla}
+              set
+                {campos}
+              where
+                {condicion}
+            </update>
+        </unit>
+        <unit id="TrEnvipeMuestras">
+            <update id="semaforo">
+              update
+                tr_envipe2023_muestras
+              set
+                {campos}
+              where
+                id_muestra={id_muestra} and id_envipe2023_muestra= {id_envipe2023_muestra}
+            </update>
+            <update id="visita">
+              update
+                tr_envipe2023_muestras
+              set
+                id_movil_visita={id_movil_visita}
+              where
+                id_muestra ={id_muestra} and id_envipe2023_muestra={id_envipe2023_muestra}
+            </update>
+            <insert id="duplicarEnvipe">
+              insert into
+                tr_envipe2023_muestras (id_muestra,id_envipe2023_muestra,hogar,numero_hogares,c_vic,c_pri,c_sel,c_sdg,c_vis_hog,c_viv,c_ver,c_vis_viv,c_hog,ruta_pdf,existe_ruta_pdf,croquis_pdf,existe_croquis_pdf,mapa_pdf,existe_mapa_pdf,nivel,aleatorio,tipo_sel,fecha_captura,instrucciones, anio)
+              values ({id_muestra},{id_key},'{hogar}',{numero_hogares},{c_vic},{c_pri},{c_sel},{c_sdg},{c_vis_hog},{c_viv},{c_ver},{c_vis_viv},{c_hog},'{ruta_pdf}',{existe_ruta_pdf},'{croquis_pdf}',{existe_croquis_pdf},'{mapa_pdf}',{existe_mapa_pdf},'{nivel}',{aleatorio},'{tipo_sel}','{fecha_captura}','{instrucciones}', '{anio}') 
+            </insert>
+            <select id="row">
+                select
+                 *
+                from
+                    tr_envipe2023_muestras
+                where
+                    id_muestra={id_muestra}
+            </select>
+            <select id="identically">
+                select
+                    *
+                from
+                    tr_envipe2023_muestras
+                where
+                    id_envipe2023_muestra= {id_key}
+            </select>
+            <delete id="eliminar">
+                delete from
+                    tr_envipe2023_muestras
+                where
+                    id_muestra= {id_muestra}
+            </delete>
+            <select id = "idByFolio">
+              select
+                    tr_envipe2023_muestras.id_envipe2023_muestra, tr_envipe2023_muestras.id_muestra
+              from
+                    tr_envipe2023_muestras
+              inner join
+                    tc_muestras on tc_muestras.id_muestra=tr_envipe2023_muestras.id_muestra
+              where
+                    tc_muestras.upm||'-'||substr('0'||tc_muestras.viv_sel , length('0'||tc_muestras.viv_sel )-1 ,2)||'-'||substr('00'||tc_muestras.prog, length('00'||tc_muestras.prog)-2 ,3) = '{folio}'
+            </select>
+            <select id = "confirmaEstatus">
+                select
+                    {semaforo}
+                from
+                    tr_envipe2023_muestras
+                where
+                    id_muestra = {id_muestra}
+            </select>
+            <update id = "registroEnvio">
+                update
+                    tr_envipe2023_muestras
+                set
+                    {campo} = {registro}
+                where
+                    id_muestra = {id_muestra}
+            </update>
+            <update id ="procesoVerMuestra">
+                update
+                    tr_envipe2023_muestras
+                set
+                    p_ver = '{p_ver}'
+                where
+                    id_muestra = '{id_muestra}'
+            </update>
+            <select id = "verificacionSinMarca">
+                select
+                  id_envipe2023_muestra,
+                  id_muestra,
+                  p_ver
+                from
+                  tr_envipe2023_muestras
+                where
+                  c_ver = 11 and
+                  (p_ver is null or p_ver = '' or p_ver = '0')
+            </select>
+            <select id = "verificacionDisponible">
+                select
+                  id_envipe2023_muestra,
+                  id_muestra,
+                  p_ver
+                from
+                  tr_envipe2023_muestras
+                where
+                  c_ver = 1 and
+                  p_ver = 1
+            </select>
+            <select id= "viviendaRegistroEnvio">
+              select 
+                cod_res_viv, cod_neg_viv
+              from 
+                tr_envipe2023_muestras
+              where
+                id_muestra ={id_muestra} and id_envipe2023_muestra={id_envipe2023_muestra} and cod_res_viv='13' and cod_neg_viv='1'            
+            </select>
+            <select id= "sociodemRegistroEnvio">
+              select 
+                cod_res_viv 
+              from 
+                tr_envipe2023_muestras
+              where
+                id_muestra ={id_muestra} and id_envipe2023_muestra={id_envipe2023_muestra} and cod_res_viv='06'            
+            </select>
+            <select id="obtenerIdEstatus">
+                select
+                    id_estatus
+                from
+                    tr_envipe2023_muestras
+                where
+                    id_muestra= {id_muestra}
+            </select>
+        </unit>
+        <unit id="TcMuestras">
+            <insert id="duplicarEnvipe">
+                insert into
+                    tc_muestras (id_muestra, folio, id_encuesta, id_movimiento, nombre, ent, entidad, cve_mun, municipio,
+                    cve_loc, localidad, ageb, mza, calle, no_ext, no_int, colonia, viv_sel, prog, dominio,
+                    control, upm, id_entidad_oficina, viv_tot, desc_tipov, descr, id_tr_periodo_lev, id_tr_periodo_seg)
+                values
+                    ({id_key}, '{folio}', {id_encuesta}, {id_movimiento}, '{nombre}', '{ent}', '{entidad}', '{cve_mun}', '{municipio}',
+                    '{cve_loc}', '{localidad}', '{ageb}', '{mza}', '{calle}', '{no_ext}', '{no_int}', '{colonia}', '{viv_sel}', '{prog}', '{dominio}',
+                    '{control}', '{upm}', {id_entidad_oficina}, {viv_tot}, '{desc_tipov}', '{descr}', {id_tr_periodo_lev}, {id_tr_periodo_seg})
+            </insert>
+        </unit>
+        <unit id="TrEnvipeVisitas">
+            <insert id="insertar">
+                insert into
+                    tr_envipe2023_visitas (id_envipe2023_visita,id_movil_visita_detalle,id_muestra,id_envipe2023_muestra,num_ren_sel,cod_res_viv,cod_neg_viv,cod_res_hog,cod_neg_hog,principal_especifique,num_emp_en,num_emp_je,num_emp_le,visito_supervisor,nombre_supervisor,id_envipe_mes)
+                values
+                    ({id_key}, {id_movil_visita_detalle}, {id_muestra}, {id_envipe2023_muestra}, '{num_ren_sel}', '{cod_res_viv}', '{cod_neg_viv}','{cod_res_hog}', '{cod_neg_hog}', '{principal_especifique}', '{num_emp_en}', '{num_emp_je}', '{num_emp_le}', {visito_supervisor}, '{nombre_supervisor}', '{id_envipe_mes}')
+            </insert>
+            <select id="identically">
+                select
+                    *
+                from
+                    tr_envipe2023_visitas
+                where
+                    id_envipe2023_visita= {id_key}
+            </select>
+            <update id="actualizarCampos">
+                update
+                    tr_envipe2023_visitas
+                set
+                    {campos}
+                where 
+                    id_envipe2023_visita= {id_envipe2023_visita}
+            </update>
+            <select id="ultimaVisita">
+                select 
+                    max(id_envipe2023_visita) id_envipe2023_visita
+                from 
+                    tr_envipe2023_visitas
+                where 
+                    id_muestra= {id_muestra}
+            </select>
+        </unit>
+        <unit id="TrEnvipeVvda">
+            <select id="statusByMuestra">
+                select
+                    status__, cast(ap2_3 as integer) numero_hogares,c_res
+                from
+                    tr_envipe2023_vvda
+                where
+                    id_muestra= {id_muestra}
+            </select>
+            <select id="obtenerId">
+                select
+                    id_muestra id_key
+                from
+                    tr_envipe2023_vvda
+                where
+                    id_muestra= {id_muestra}
+            </select>            
+        </unit>
+        <unit id="TrEnvipeSdg">
+            <select id="statusByMuestra">
+                select
+                    n_info,status__,c_res
+                from
+                    tr_envipe2023_sdg
+                where
+                    id_muestra= {id_muestra}
+            </select>
+            <select id="obtenerId">
+                select
+                    id_muestra id_key
+                from
+                    tr_envipe2023_sdg
+                where
+                    id_muestra= {id_muestra}
+            </select>
+            <select id="totalInformanteInadecuado">
+                select
+                    count(*) totalCod06
+                from
+                    tr_envipe2023_sdg
+                where
+                    c_res = '06' and upm = '{upm}' and prog = '{prog}' and viv_sel = '{viv_sel}' 
+                group by
+                    upm, prog, viv_sel
+            </select>
+        </unit>
+        <unit id="TrEnvipeSdgInt">
+            <select id="elegido">
+                select
+                    n_ren
+                from
+                    tr_envipe2023_sdg_int
+                where
+                    id_muestra= {id_muestra} and codigo=1 and (deleted__ is null or deleted__='')
+            </select>
+        </unit>        
+        <unit id="TrCuestionariosEnvios">
+            <select id="tablaSinIds">
+            select
+                {campos}
+            from
+                {tabla}
+            where
+                {id_key} is null or {id_key}= ''
+            </select>
+            <update id="actualizaId">
+            update
+                {tabla}
+            set
+                {id_key} = {valor}
+            where
+                {condicion}
+            </update>
+        </unit>
+        <unit id="TrResultadosSup">
+            <select id="getUpm">
+                select
+                    upm
+                from
+                    tc_muestras  
+                where    
+                    ent like '{oficina}%'
+                group by
+                    upm
+            </select>  
+            <select id="identically">
+                select
+                    *
+                from
+                    tr_resultados_sup
+                where
+                    id_muestra= {id_muestra}
+            </select>
+            <select id="byMuestra">
+            select
+                *
+            from
+                tr_resultados_sup
+            where
+                id_muestra = '{id_muestra}'
+            </select>
+            <insert id="row">
+                insert into
+                    tr_resultados_sup (id_resultado_sup, id_muestra, id_ambito, registro, cod_res, num_emp, hora_inicio, hora_fin, fecha_captura, id_clave_operativa_e, id_clave_operativa_je, nombre_en, nombre_je, c_cap, nombre_sup, b23_pregunta, cod_res_captura , a1, a2, a3, a4, a5, a6, a7_fecha, a7,a8, b5, b6, b7, b8, b9,b15_informante, b12, b10, b11, b14, d24_informante, b15, b12_especifique, b16,b13_especifique, b17, b14_especifique, b18, b15_especifique, b19, b20, b21, b17_especifique, b22, b18_especifique, b23, b13, b24, b25, b26, b23_especifique, c17, e43_especifique, c18, c19, c20, c21, c22, c23, c24, c26, c27, c28, observaciones)
+                values
+                    ('{id_key}', '{id_muestra}', '{id_ambito}', '{registro}', '{cod_res}', '{num_emp}', '{hora_inicio}', '{hora_fin}', '{fecha_captura}', '{id_clave_operativa_e}', '{id_clave_operativa_je}', '{nombre_en}', '{nombre_je}', '{c_cap}', '{nombre_sup}', '{b23_pregunta}', '{cod_res_captura}', '{a1}', '{a2}', '{a3}', '{a4}', '{a5}', '{a6}','{a7_fecha}','{a7}','{a8}', '{b5}', '{b6}', '{b7}', '{b8}', '{b9}', '{b15_informante}', '{b12}', '{b10}', '{b11}', '{b14}', '{d24_informante}', '{b15}', '{b12_especifique}', '{b16}','{b13_especifique}', '{b17}', '{b14_especifique}', '{b18}', '{b15_especifique}', '{b19}', '{b20}', '{b21}', '{b17_especifique}', '{b22}', '{b18_especifique}', '{b23}', '{b13}', '{b24}', '{b25}', '{b26}', '{b23_especifique}', '{c17}', '{e43_especifique}', '{c18}', '{c19}', '{c20}', '{c21}', '{c22}', '{c23}', '{c24}', '{c26}', '{c27}', '{c28}', '{observaciones}')
+            </insert>
+            <update id="reporte">
+                update
+                    tr_resultados_sup
+                set
+                    fecha_captura = '{fecha_captura}', a1 = '{a1}', a2 = '{a2}', a3 = '{a3}', a4 = '{a4}', a5 = '{a5}', a6 = '{a6}', a7_fecha = '{a7_fecha}', a7 = '{a7}', a8 = '{a8}', b5 = '{b5}', b6 = '{b6}',  b7 = '{b7}', b8 = '{b8}', b9 = '{b9}', b15_informante = '{b15_informante}', b12 = '{b12}', b10 = '{b10}', b11 = '{b11}', b14 = '{b14}', d24_informante = '{d24_informante}', b15 = '{b15}', b12_especifique = '{b12_especifique}', b16 = '{b16}', b13_especifique = '{b13_especifique}', b17 = '{b17}', b14_especifique = '{b14_especifique}', b18 = '{b18}', b15_especifique = '{b15_especifique}', b19 = '{b19}', b20 = '{b20}', b21 = '{b21}', b17_especifique = '{b17_especifique}', b22 = '{b22}', b18_especifique = '{b18_especifique}', b23 = '{b23}', b13 = '{b13}', b24 = '{b24}', b25 = '{b25}', b26 = '{b26}', b23_especifique = '{b23_especifique}', c17 = '{c17}', e43_especifique = '{e43_especifique}', c18 = '{c18}', c19 = '{c19}', c20 = '{c20}', c21 = '{c21}', c22 = '{c22}', c23 = '{c23}', c24 = '{c24}', c26 = '{c26}', c27 = '{c27}', c28 = '{c28}', observaciones =  '{observaciones}',
+                                    nombre_sup='{nombre_sup}', b23_pregunta='{b23_pregunta}', cod_res_captura='{cod_res_captura}', hora_inicio='{hora_inicio}', hora_fin='{hora_fin}' , id_ambito='{id_ambito}'
+                where
+                    id_muestra = '{id_muestra}'
+            </update>
+        </unit>
+        <unit id="TrEnvipe2019Verificacion">
+            <select id="row">
+                select
+                    *
+                from
+                    tr_envipe2019_verificacion
+                where
+                    id_envipe2019_verificacion ={id_envipe2019_verificacion}
+            </select>
+            <select id="identically">
+                select
+                    *
+                from
+                    tr_envipe2019_verificacion
+                where
+                    id_muestra= {id_muestra}
+            </select>
+            <insert id="row">
+                insert into
+                    tr_envipe2019_verificacion (id_envipe2019_verificacion,id_muestra,id_estatus,id_usuario,registro,registro_captura,confirmacion_coincide,confirmacion_informante,re_entrevista_omision,re_entrevista_ficticia,re_entrevista_ubicacion,nula_no_verificada,nula_otro,residentes_hogar,informante,seleccionado,observacion,id_usuario_reinicio,num_empleado,total_reinicio,personas_hogar,confirmacion_recidentes,confirmacion_personas,confirmacion_informantes)
+                values
+                    ({id_key},{id_muestra},{id_estatus},{id_usuario},'{registro}','{registro_captura}',{confirmacion_coincide},{confirmacion_informante},{re_entrevista_omision},{re_entrevista_ficticia},{re_entrevista_ubicacion},{nula_no_verificada},{nula_otro},{residentes_hogar},'{informante}','{seleccionado}','{observacion}',{id_usuario_reinicio},{num_empleado},{total_reinicio},{personas_hogar},{confirmacion_recidentes},{confirmacion_personas},{confirmacion_informantes})
+            </insert>
+            <update id="actualizar">
+                update
+                    tr_envipe2019_verificacion
+                set
+                    confirmacion_coincide={confirmacion_coincide},
+                    confirmacion_informante={confirmacion_informante},
+                    re_entrevista_omision={re_entrevista_omision},
+                    re_entrevista_ficticia={re_entrevista_ficticia},
+                    re_entrevista_ubicacion={re_entrevista_ubicacion},
+                    nula_no_verificada={nula_no_verificada},
+                    nula_otro={nula_otro},
+                    observacion='{observacion}',
+                    registro_captura= '{registro_captura}',
+                    confirmacion_recidentes={confirmacion_recidentes},
+                    confirmacion_personas={confirmacion_personas},
+                    confirmacion_informantes={confirmacion_informantes}
+                where
+                    id_muestra= {id_muestra}
+            </update>
+            <delete id="eliminar">
+                delete from
+                    tr_envipe2019_verificacion
+                where
+                    id_muestra= {id_muestra}
+            </delete>
+        </unit>
+        <unit id="TrEnvipeEleg">
+            <select id="statusByMuestra">
+                select
+                    status__
+                from
+                    tr_envipe2023_eleg
+                where
+                    id_muestra= {id_muestra}
+            </select>
+            <select id="obtenerId">
+                select
+                    id_muestra id_key
+                from
+                    tr_envipe2023_eleg
+                where
+                    id_muestra= {id_muestra}
+            </select>
+            <select id="delitosEspecifique">
+                select 
+                    '1: '||AP7_3_{delito}_01e descripcion
+                from 
+                    tr_envipe2023_eleg
+                where 
+                    id_muestra={id_muestra} and AP7_3_{delito}_01=1
+                union
+                select 
+                    '2: '||AP7_3_{delito}_02e descripcion
+                from 
+                    tr_envipe2023_eleg
+                where 
+                    id_muestra={id_muestra} and AP7_3_{delito}_02=1
+                union
+                select 
+                    '3: '||AP7_3_{delito}_03e descripcion
+                from 
+                    tr_envipe2023_eleg
+                where 
+                    id_muestra={id_muestra} and AP7_3_{delito}_03=1
+                union
+                select 
+                    '4: '||AP7_3_{delito}_04e descripcion
+                from 
+                    tr_envipe2023_eleg
+                where 
+                    id_muestra={id_muestra} and AP7_3_{delito}_04=1
+                union
+                select 
+                    '5: '||AP7_3_{delito}_05e descripcion
+                from 
+                    tr_envipe2023_eleg
+                where 
+                    id_muestra={id_muestra} and AP7_3_{delito}_05=1
+            </select>
+        </unit>
+        <unit id="TrEnvipeVictimizaciones">
+            <select id="identically">
+                select
+                    *
+                from
+                    tr_envipe2023_victimizaciones
+                where
+                    id_envipe2023_victimizacion = {id_envipe_victimizacion}
+            </select>
+            <select id="duplicado">
+                select
+                    count(*) total
+                from
+                    tr_envipe2023_victimizaciones
+                where
+                    total = {total} and id_envipe2023_muestra = {id_envipe2023_muestra} and id_envipe_delito = {id_envipe_delito}
+            </select>
+            <insert id="row">
+                insert into tr_envipe2023_victimizaciones
+                    (id_envipe2023_victimizacion, total, registro, id_envipe2023_eleg, id_envipe2023_muestra, id_envipe_delito, c_vic_1, c_vic_2, c_vic_3, c_vic_4, c_vic_5)
+                values
+                    ({id_envipe_victimizacion}, {total}, {registro}, {id_envipe2023_eleg}, {id_envipe2023_muestra}, {id_envipe_delito}, {c_vic_1}, {c_vic_2}, {c_vic_3}, {c_vic_4}, {c_vic_5})
+            </insert>
+            <insert id="insertarVictimizacion">
+                insert into tr_envipe2023_victimizaciones
+                    (id_envipe2023_victimizacion, total, registro, id_envipe2023_eleg, id_envipe2023_muestra, id_envipe_delito, c_vic_1, c_vic_2, c_vic_3, c_vic_4, c_vic_5)
+                values
+                    ({id_key}, {total}, '{registro}', {id_envipe2023_eleg}, {id_envipe2023_muestra}, {id_envipe_delito} {semaforos})
+            </insert>
+            <update id="row">
+                update
+                    tr_envipe2023_victimizaciones
+                set
+                    total = {total}, c_vic_1 = {c_vic_1}, c_vic_2 = {c_vic_2}, c_vic_3 = {c_vic_3}, c_vic_4 = {c_vic_4}, c_vic_5 = {c_vic_5}
+                where
+                    id_envipe2023_victimizacion = {id_envipe_victimizacion}
+            </update>
+            <update id="actualizarSemaforo">
+                update
+                    tr_envipe2023_victimizaciones
+                set
+                    {campo}= {valor}
+                where
+                    id_envipe2023_muestra = {id_envipe2023_muestra} and id_envipe2023_victimizacion = {id_envipe_victimizacion}
+            </update>
+            <select id="ultimaCaptura">
+                select
+                    sum(total) total
+                from (
+                select
+                    count(*) total
+                from
+                    tr_envipe2023_victimizaciones
+                where
+                    c_vic_1 in (1,2) and id_envipe2023_muestra={id_envipe2023_muestra}
+                union all
+                select
+                    count(*) total
+                from
+                    tr_envipe2023_victimizaciones
+                where
+                    c_vic_2 in (1,2) and id_envipe2023_muestra={id_envipe2023_muestra}
+                union all
+                select
+                    count(*) total
+                from
+                    tr_envipe2023_victimizaciones
+                where
+                    c_vic_3 in (1,2) and id_envipe2023_muestra={id_envipe2023_muestra}
+                union all
+                select
+                    count(*) total
+                from
+                    tr_envipe2023_victimizaciones
+                where
+                    c_vic_4 in (1,2) and id_envipe2023_muestra={id_envipe2023_muestra}
+                union all
+                select
+                    count(*) total
+                from
+                    tr_envipe2023_victimizaciones
+                where
+                    c_vic_5 in (1,2) and id_envipe2023_muestra={id_envipe2023_muestra})
+            </select>
+            <select id="totalMuestra">
+                select
+                    id_envipe2023_muestra, sum(total) total
+                from
+                    tr_envipe2023_victimizaciones
+                where
+                    id_envipe2023_muestra = '{id_envipe2023_muestra}'
+                group by
+                    id_envipe2023_muestra
+            </select>
+            <select id="ultimoSemaforoVictimiza">
+                select
+                    id_envipe2023_victimizacion,
+                    case when c_vic_5 = 3 then 'c_vic_5' else case when c_vic_4 = 3 then 'c_vic_4' else case when c_vic_3 = 3 then 'c_vic_3' else case when c_vic_2 = 3 then 'c_vic_2' else case when c_vic_1 = 3 then 'c_vic_1' else 'NA'  end end end end end semaforo     
+                from
+                    tr_envipe2023_victimizaciones
+                where
+                    id_envipe2023_muestra = {id_envipe2023_muestra} and (c_vic_1 = 3 or c_vic_2 =3 or c_vic_3 =3 or c_vic_4 =3 or c_vic_5 =3)
+            </select>
+            <update id="victimizacionEliminado">
+                update 
+                    tr_envipe2023_modulo
+                set
+                    upm = '{upm}X', id_del = '{id_del}'
+                where
+                    id_muestra = '{id_muestra}' and
+                    nd_tipo = '{nd_tipo}' and bpcod_opc = {bpcod_opcion} and
+                    bpcod = '{bpcod}' and upm != '{upm}X'
+            </update>
+            <update id="updateDependientes">
+                update 
+                    {tabla_dep}
+                set
+                    id_del = '{id_del}'
+                where
+                    id_muestra = '{id_muestra}' and id_del = '{id_del_ant}'
+            </update>
+            <select id="cuestBorradoLogicamente">
+                select count(*) total 
+                from
+                    tr_envipe2023_modulo
+                where
+                    id_muestra = '{id_muestra}' and
+                    nd_tipo = '{nd_tipo}' and bpcod_opc = {bpcod_opcion} and
+                    bpcod = '{bpcod}' and upm = '{upm}X'
+            </select>
+        </unit>
+        <unit id="TcCDelitos">
+            <select id="row">
+                select
+                    id_delito||' - '||delito as descripcion
+                from
+                    tc_c_delitos
+            </select>
+        </unit>
+        <unit id="TrEnvipeVicJustifica">
+            <insert id="row">
+                insert into tr_envipe2023_vic_justifica
+                    (id_envipe2023_vic_justifica, justificacion, id_envipe_delito, id_movil_tipo_accion, id_envipe2023_victimizacion, registro, num_emp)
+                values
+                    ({id_envipe_vic_justifica}, '{justificacion}', {id_envipe_delito}, {id_movil_tipo_accion}, '{id_envipe_victimizacion}', '{registro}', '{num_emp}') 
+            </insert>
+            <select id="identically">
+                select
+                    *
+                from
+                    tr_envipe2023_vic_justifica
+                where
+                    id_envipe2023_vic_justifica = {id_envipe_vic_justifica}
+            </select>
+            <update id="idVictimizacion">
+                update
+                    tr_envipe2023_vic_justifica
+                set
+                    id_envipe2023_victimizacion = '{id_envipe_victimizacion}'
+                where
+                    id_envipe2023_vic_justifica = {id_envipe_vic_justifica}
+            </update>
+        </unit>
+        <unit id="TrCuestionariosEnvipeEnvios">
+            <select id="tablaSinIds">
+                select
+                    {campos}
+                from
+                    {tabla}
+                where
+                    {id_key} is null or {id_key}= ''
+            </select>
+            <update id="actualizaId">
+                update
+                  {tabla}
+                set
+                  {id_key}= {valor}
+                where
+                  {condicion} and upm not like '%X%'
+            </update>
+            <update id="cambioTotalDelitos">
+                update
+                    {tabla}
+                set
+                    {campo} = {total}
+                where
+                    id_muestra = '{id_muestra}' and {condicion}
+            </update>
+        </unit>
+        <unit id="TrEnvipeModulo">
+            <select id="statusByMuestra">
+                select
+                    status__
+                from
+                    tr_envipe2023_modulo
+                where
+                    id_muestra= {id_muestra} and bpcod='{bpcod}' and nd_tipo='{nd_tipo}' and bpcod_opc = {bpcod_opcion} and upm not like '%X%'
+            </select>
+            <select id="obtenerId">
+                select
+                    id_muestra id_key
+                from
+                    tr_envipe2023_modulo
+                where
+                    id_muestra= {id_muestra} and bpcod='{bpcod}' and nd_tipo='{nd_tipo}' and bpcod_opc = {bpcod_opcion} and upm not like '%X%'
+            </select>
+            <select id="delitosEspecifiqueTerminados">
+                select
+                    bpcod_opc
+                from
+                    tr_envipe2023_modulo
+                where
+                    id_muestra= {id_muestra} and bpcod='{bpcod}' and upm not like '%X%'
+            </select>
+        </unit>
+        <unit id="TrEnvipeDesplazamiento">
+            <select id="statusByMuestra">
+                select
+                    status__
+                from
+                    tr_envipe2023_moddes
+                where
+                    id_muestra= {id_muestra}
+            </select>
+            <select id="obtenerId">
+                select
+                    id_muestra id_key
+                from
+                    tr_envipe2023_moddes
+                where
+                    id_muestra= {id_muestra}
+            </select>
+        </unit>
+        <unit id="TcEnvipeMeses">
+            <select id="row">
+                select
+                    id_envipe_mes,
+                    descripcion
+                from
+                    tc_envipe_meses
+            </select>
+            <select id="idByDescripcion">
+                    select
+                    id_envipe_mes,
+                    descripcion
+                from
+                    tc_envipe_meses
+                where
+                    descripcion='{descripcion}'
+            </select>
+        </unit>
+        <unit id="TrMovilSentencias">
+            <select id="existeNvoHogar">
+                select
+                    count(*) total
+                from
+                    tr_movil_sentencias
+                where
+                    (id_generico =  {id_muestra} or sql like '%{id_muestra}%') and sql like '%tc_muestras%' and id_movil_tipo_accion = 1 and id_movil_envio_web is null
+            </select>
+            <select id="nuevoHogar">
+                select 
+                    id_muestra, folio, id_encuesta, id_movimiento, nombre, ent, entidad, cve_mun, municipio, cve_loc, localidad, ageb, mza, calle, no_ext, no_int, colonia, viv_sel, prog, dominio, control, upm, id_entidad_oficina, viv_tot, desc_tipov, descr, id_tr_periodo_lev, id_tr_periodo_seg
+                from 
+                    tc_muestras
+                where 
+                    id_muestra = {id_muestra}
+            </select>
+        </unit>      
+        <unit id="TrUsuariosEnvipe">
+           <select id="getClavesEntrevistador">
+            select
+              clave
+            from
+              tr_usuarios_envipe
+            where    
+              nivel = 7
+              and cuenta_usuario like '{oficina}%'
+            order by
+              clave          
+           </select>
+        </unit>    
+
+        <unit id="TrMovilUsuarios">
+            <select id="getNumEmpENJE">
+                select 
+                (select num_emp as num_emp_en from tr_movil_usuarios where id_movil_menu_rol=4)num_emp_en,
+                (select num_emp as num_emp_je from tr_movil_usuarios where id_movil_menu_rol=3)num_emp_je
+            </select>
+        </unit>
+
+  </dml>
+</iktan>

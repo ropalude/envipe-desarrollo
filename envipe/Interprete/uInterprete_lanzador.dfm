@@ -1,0 +1,35 @@
+object F_Interprete: TF_Interprete
+  Left = 0
+  Top = 0
+  BorderIcons = []
+  BorderStyle = bsNone
+  Caption = 'Interprete'
+  ClientHeight = 780
+  ClientWidth = 1366
+  Color = clWhite
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  OnKeyUp = FormKeyUp
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object IGL_panel: TPanel
+    Left = 0
+    Top = 0
+    Width = 1366
+    Height = 780
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 0
+    ExplicitLeft = -8
+    ExplicitTop = 56
+  end
+end

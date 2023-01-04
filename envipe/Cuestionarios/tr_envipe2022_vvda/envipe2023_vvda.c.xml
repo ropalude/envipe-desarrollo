@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration SYSTEM "DTD_xmlConfiguracion.dtd">
+<configuration name="cfg_envipe2023_vvda" cml-version="2.2017.02.07">
+  <general>
+    <title>Configuración para cuestionario ENVIPE 2023 - VIVIENDA</title>
+    <version value="41"/>
+    <creator>Instituto Nacional de Estadística y Geografía</creator>
+    <creationdate year="2022" month="10" day="17"/>
+    <lastupdate year="2022" month="11" day="1"/>
+  </general>
+  <connections>
+    <connection name="conn_qml" type="sqlite">
+      <driverclass value="org.sqlite.JDBC"/>
+      <url value="\envipe\Modelo\envipe.sys"/>
+      <username value="Cronos2K15"/>
+      <password value="Cronos2K15"/>
+      <createtables value="yes"/>
+    </connection>
+  </connections>
+  <iktan-project>
+    <project-id>2802</project-id>
+    <project-title>Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública</project-title>
+    <acronym>envipe</acronym>
+    <suffix>envipe</suffix>
+    <seed-parameter>iktan_seed</seed-parameter>
+    <entity-name>tr_envipe2023_vvda</entity-name>
+    <entity-id> </entity-id>
+    <parameters>
+      <parameter name="id_muestra" type="number" default="1"/>
+      <parameter name="upm" type="alphanumeric" default="A"/>
+      <parameter name="prog" type="alphanumeric" default="A"/>
+      <parameter name="viv_sel" type="alphanumeric" default="A"/>
+      <parameter name="iktan_seed" type="number" default="1"/>
+    </parameters>
+    <main>2</main>
+    <database-config>
+      <database type="capture" path="/iktantrabajo/modelo/envipe.sys"/>
+      <database type="catalog" path="/iktantrabajo/modelo/catalogos.sys"/>
+    </database-config>
+  </iktan-project>
+  <resources>
+    <qmlfile file="envipe2023_vvda.q.xml"/>
+    <viewfile file="envipe2023_vvda.v.xml"/>
+    <accessfile file="envipe2023_vvda.a.xml"/>
+  </resources>
+  <properties>
+    <property name="data-uppercase" value="yes"/>
+    <property name="style.controls.images.size" value="medium"/>
+    <property name="datamodel.subentity.logicalDelete" value="yes"/>
+    <property name="datamodel.subentity.usesParentKeyInPrimaryKey" value="yes"/>
+    <property name="menu.main.captura" value="yes"/>
+    <property name="menu.main.datareportbutton" value="yes"/>
+    <property name="menu.main.exitbutton" value="no"/>
+    <property name="menu.main.exitbutton.exiturl" value="yes"/>
+    <property name="menu.main.header" value="no"/>
+    <property name="menu.main.observation" value="yes"/>
+    <property name="menu.main.startbutton" value="no"/>
+    <property name="menu.pages" value="hidden"/>
+    <property name="page.first" value="no"/>
+    <property name="question.input.focus.selecttext" value="yes"/>
+    <property name="questionnaire.dialog" value="yes"/>
+    <property name="questionnaire.init" value="questionnaire"/>
+    <property name="questionnaire.init.access" value="no"/>
+    <property name="questionnaire.init.filter" value="no"/>
+    <property name="questionnaire.observation" value="yes"/>
+    <property name="questionnaire.observation.cyclic" value="c_gpobs152408363"/>
+    <property name="questionnaire.observation.dialog" value="no"/>
+    <property name="questionnaire.observation.minlength" value="10"/>
+    <property name="questionnaire.observation.msj" value="q_lantillas2017_obs_mensa"/>
+    <property name="questionnaire.observation.obs" value="q_illas2017_obs_observaci"/>
+    <property name="questionnaire.observation.ref" value="q_tillas2017_obs_referenc"/>
+    <property name="question.textarea.focus.selecttext" value="yes"/>
+    <property name="zoom" value="100"/>
+  </properties>
+</configuration>

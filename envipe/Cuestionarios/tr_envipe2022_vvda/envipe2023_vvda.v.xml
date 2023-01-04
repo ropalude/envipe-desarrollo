@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE view SYSTEM "DTD_xmlVista.dtd">
+<view name="view_101805" vml-version="2.2017.02.07">
+  <general>
+    <title>Vista para cuestionario ENVIPE 2023 - VIVIENDA</title>
+    <version value="41"/>
+    <creator>Instituto Nacional de Estadística y Geografía</creator>
+    <creationdate year="2022" month="10" day="17"/>
+    <lastupdate year="2022" month="11" day="1"/>
+  </general>
+  <css><![CDATA[
+ 			 /*Inicio_GenCuest*/
+ 			 .qmlPage{position:relative;}
+ 			 .q, .qGpr, .qMtx, .qCyg{position:absolute; border-width:1px;}
+ 			 .qMtx .q {position:relative;}
+ 			 .ui-dialog{position:fixed; z-index:5000;}
+ 			 .qMtx{border-collapse:collapse;}
+ 			 .qMtx .el{padding: 1px;}
+ 			 .qMtx .hd{padding: 1px; font-size: 8pt;}
+ 			 .qtxt {font-weight:normal;}
+ 			 .qMtx table.w_hlp_txt {width: 100%;}
+ 			 .qMtx table.w_hlp_txt td:last-child {width: 100%;}
+ 			 #_DefPage{position:relative; display:block;width: 1280px;height: 720px;}
+ 			 #defPage_err_m__{overflow:auto;top: 23px;left: 23px;width: 1238px;height: 411px;position:absolute;}
+ 			 #btn162956092{top: 570px;left: 512px;width: 232px;height: 77px;position:absolute;}
+ 			 #btn162956092__err{top: 555px;left: 512px;position:absolute;}
+ 			 #pag145839073{width: 1280px;height: 720px;}
+ 			 #gr134451562{top: 0px;left: 0px;width: 1278px;height: 719px;}
+ 			 #lbl134736357{top: 182px;left: 148px;width: 158px;height: 28px;position:absolute;}
+ 			 #lbl140607257{top: 184px;left: 433px;width: 365px;height: 33px;position:absolute;}
+ 			 #lbl140343584{top: 273px;left: 149px;width: 160px;height: 29px;position:absolute;}
+ 			 #lbl140613985{top: 273px;left: 433px;width: 379px;height: 33px;position:absolute;}
+ 			 #lbl140348801{top: 361px;left: 148px;width: 161px;height: 29px;position:absolute;}
+ 			 #lbl140619335{top: 362px;left: 433px;width: 360px;height: 33px;position:absolute;}
+ 			 #lbl140356684{top: 451px;left: 148px;width: 161px;height: 29px;position:absolute;}
+ 			 #lbl140624880{top: 451px;left: 433px;width: 825px;height: 60px;position:absolute;}
+ 			 #slt_varctrl_ini{top: 676px;left: 1149px;width: 108px;height: 29px;position:absolute;}
+ 			 #pag150020589{width: 1280px;height: 720px;}
+ 			 #q_cve_mun{top: 81px;left: 75px;width: 60px;height: 39px;}
+ 			 #q_cve_loc{top: 131px;left: 75px;width: 60px;height: 40px;}
+ 			 #q_cve_ent{top: 182px;left: 75px;width: 59px;height: 39px;}
+ 			 #q_cve_ageb_a{top: 232px;left: 75px;width: 59px;height: 40px;}
+ 			 #q_cve_ageb_na{top: 283px;left: 75px;width: 60px;height: 40px;}
+ 			 #pag145908230{width: 1280px;height: 720px;}
+ 			 #gr150212421{top: 0px;left: 0px;width: 1278px;height: 719px;}
+ 			 #slt_varctrl_fin{top: 45px;left: 15px;width: 107px;height: 29px;position:absolute;}
+ 			 #lbl150212427{top: 218px;left: 74px;width: 318px;height: 30px;position:absolute;}
+ 			 #lbl150212442{top: 267px;left: 75px;width: 1112px;height: 268px;position:absolute;}
+ 			 #pag145958341{width: 1280px;height: 720px;}
+ 			 #gr151128375{top: 0px;left: 0px;width: 1278px;height: 719px;}
+ 			 #lbl151128381{top: 194px;left: 76px;width: 318px;height: 30px;position:absolute;}
+ 			 #lbl151128396{top: 194px;left: 674px;width: 352px;height: 29px;position:absolute;}
+ 			 #lbl151128406{top: 268px;left: 76px;width: 533px;height: 278px;position:absolute;}
+ 			 #lbl151128416{top: 265px;left: 673px;width: 537px;height: 268px;position:absolute;}
+ 			 #pag151306094{width: 1280px;height: 720px;}
+ 			 #gr153202261{top: 1px;left: 1px;width: 1278px;height: 719px;}
+ 			 #lbl153202269{top: 45px;left: 12px;width: 1239px;height: 29px;position:absolute;}
+ 			 #lbl153202284{top: 87px;left: 13px;width: 26px;height: 25px;position:absolute;}
+ 			 #lbl153202300{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl153202314{top: 85px;left: 161px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl153202324{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_ap1_1{top: 307px;left: 377px;width: 578px;height: 196px;}
+ 			 #lbl153202439{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pag153212315{width: 1280px;height: 720px;}
+ 			 #gr153214443{top: 0px;left: 1px;width: 1278px;height: 719px;}
+ 			 #lbl153214449{top: 45px;left: 12px;width: 1239px;height: 29px;position:absolute;}
+ 			 #lbl153214459{top: 87px;left: 13px;width: 26px;height: 25px;position:absolute;}
+ 			 #lbl153214467{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl153214475{top: 85px;left: 161px;width: 1049px;height: 114px;position:absolute;}
+ 			 #lbl153214482{top: 200px;left: 323px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_ap1_2{top: 354px;left: 458px;width: 341px;height: 124px;}
+ 			 #lbl153214566{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pag153655900{width: 1280px;height: 720px;}
+ 			 #gr153811826{top: 0px;left: 0px;width: 1278px;height: 719px;}
+ 			 #lbl153811832{top: 46px;left: 13px;width: 1239px;height: 29px;position:absolute;}
+ 			 #lbl153811844{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl153811852{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl153811861{top: 85px;left: 161px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl153811870{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_ap2_1{top: 321px;left: 451px;width: 479px;height: 65px;}
+ 			 #lbl153811965{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pag154115658{width: 1280px;height: 720px;}
+ 			 #gr154137379{top: 0px;left: 1px;width: 1278px;height: 719px;}
+ 			 #lbl154137387{top: 47px;left: 20px;width: 1239px;height: 29px;position:absolute;}
+ 			 #slt_ap2_2_ini{top: 87px;left: 13px;width: 26px;height: 25px;position:absolute;}
+ 			 #lbl154137407{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl154137419{top: 85px;left: 161px;width: 1049px;height: 60px;position:absolute;}
+ 			 #lbl152403513{top: 167px;left: 217px;width: 848px;height: 58px;position:absolute;}
+ 			 #lbl154137428{top: 250px;left: 322px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_ap2_2{top: 356px;left: 462px;width: 341px;height: 124px;}
+ 			 #slt_ap2_2_fin{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pag154749730{width: 1280px;height: 720px;}
+ 			 #gr154751757{top: 0px;left: 0px;width: 1278px;height: 719px;}
+ 			 #lbl154751765{top: 46px;left: 13px;width: 1239px;height: 29px;position:absolute;}
+ 			 #slt_ap2_3_ini{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl154751786{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl154751796{top: 85px;left: 161px;width: 1049px;height: 60px;position:absolute;}
+ 			 #lbl154751803{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_ap2_3{top: 322px;left: 451px;width: 479px;height: 65px;}
+ 			 #slt_ap2_3_fin{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pag152408353{width: 1280px;height: 720px;}
+ 			 #lbl_ini{top: 33px;left: 18px;width: 46px;height: 19px;position:absolute;}
+ 			 #c_gpobs152408363{top: 61px;left: 19px;}
+ 			 #c_gpobs152408363 .qCygDt{overflow: auto;width: 700px;height: 200px;}
+ 			 #c_gpobs152408363 .qCygF > table .qEls{top: 61px;left: 19px;width: 1217px;height: 419px;}
+ 			 #q_tillas2017_obs_referenc{top: 30px;left: 16px;width: 210px;height: 74px;}
+ 			 #q_lantillas2017_obs_mensa{top: 119px;left: 17px;width: 765px;height: 71px;}
+ 			 #q_illas2017_obs_observaci{top: 203px;left: 16px;width: 765px;height: 144px;}
+ 			 #lbl_fin{top: 641px;left: 1196px;width: 40px;height: 23px;position:absolute;}
+ 			 /*estilos*/
+ 			 #lbl150212427.qtxt {color: #336699;}
+ 			 #lbl150212427.qtxt {background-color: #dddddd;}
+ 			 #lbl150212442.qtxt {font-weight: bold;color: #336699;}
+ 			 #lbl150212442.qtxt {background-color: #dddddd;}
+ 			 #lbl151128381.qtxt {color: #336699;}
+ 			 #lbl151128381.qtxt {background-color: #dddddd;}
+ 			 #lbl151128396.qtxt {color: #336699;}
+ 			 #lbl151128396.qtxt {background-color: #dddddd;}
+ 			 #lbl151128406.qtxt {font-weight: normal;color: #336699;}
+ 			 #lbl151128406.qtxt {background-color: #dddddd;}
+ 			 #lbl151128416.qtxt {font-weight: normal;color: #336699;}
+ 			 #lbl151128416.qtxt {background-color: #dddddd;}
+ 			 #lbl153202300.qtxt {font-weight: bold;}
+ 			 #lbl153202324.qtxt {font-style: italic;}
+ 			 #lbl153214467.qtxt {font-weight: bold;}
+ 			 #lbl153214482.qtxt {font-style: italic;}
+ 			 #lbl153811852.qtxt {font-weight: bold;}
+ 			 #lbl153811870.qtxt {font-style: italic;}
+ 			 #lbl154137407.qtxt {font-weight: bold;}
+ 			 #lbl152403513.qtxt {font-style: italic;}
+ 			 #lbl154137428.qtxt {font-style: italic;}
+ 			 #lbl154751786.qtxt {font-weight: bold;}
+ 			 #lbl154751803.qtxt {font-style: italic;}
+ 			 /*Inicio Vistas Secundarias */
+ 			 /*Fin Vistas Secundarias*/
+ 			 /*Fin_GenCuest*/
+ 		
+ 		/* 
+ 		  NOMBRE DE LA PLANTILLA: estilo_tr_envipe2018_vvda35686 03122018_110926 08012020_095102 09112020_135250 151 17102022_112053_59971
+ 		  DESCRIPCION: Estilo del cuestionario tr_envipe2019_vvda
+ 		
+ 		*/ 
+/* 
+ 		  NOMBRE DE LA PLANTILLA: Estilo Clásico_03102017_152146
+ 		  DESCRIPCION: Estilo tipo clasica
+ 		
+ 		*/ 
+#menuTop__   {top: 2px;left: 682px;width: 200px;height: 30px; parent: pnlTop__;}      
+.stit{display:none;}
+#sideMenuLeft_ {top: 0px;  left: 0px;  width: 0px; height: 0px;}
+#pnlMenuMainHeader_ {top: 0px;  left: 0px;  width: 0px; height: 0px;}
+#pnlComboMenuHeader_ {top: 0px;  left: 0px;  width: 0px; height: 0px;}
+#pnlMenuMainFooter_ {top: 0px;  left: 0px;  width: 0px; height:60px;}
+#pnlComboMenuFooter_ {top: 0px;  left: 0px;  width: 0px; height: 0px;}
+#pnlButonesSalirHeader_{top: 0px;  left: 0px;  width: 0px; height: 0px;}
+#pnlButonesSalirFooter_{top: 0px;  left: 0px;  width: 0px; height: 0px;}
+/*para congurar los botones de navegacion*/
+#navPrev_footer_  {top: 2px;  left: 10px;   width: 200px; height: 50px; parent: pnlNavegacionFooter_; font-size:6px;font-family:Arial;caption:Anterior;}
+#obs_footer_      {top: 2px;  left: 220px;  width: 270px; height: 50px; parent: pnlNavegacionFooter_; font-size:5px;font-family:Arial;caption:Observaciones;}                                   
+#captura_footer_  {top: 2px;  left: 500px;  width: 185px; height: 50px; parent: pnlNavegacionFooter_; font-size:6px;font-family:Arial;caption:Captura;}                                   
+#revision_footer_ {top: 2px;  left: 695px;  width: 195px; height: 50px; parent: pnlNavegacionFooter_; font-size:6px;font-family:Arial;caption:Salir;}
+#navNext_footer_  {top: 2px;  left: 900px;  width: 200px; height: 50px; parent: pnlNavegacionFooter_; font-size:6px;font-family:Arial;caption:Siguiente;}
+#c_tr_envipe2019_sdg_int__irElement {display: none;}]]></css>
+  <access/>
+  <filter/>
+  <questionnaire>
+    <members>
+      <labelfield name="lbl134736357"/>
+      <labelfield name="lbl140607257"/>
+      <labelfield name="lbl140343584"/>
+      <labelfield name="lbl140613985"/>
+      <labelfield name="lbl140348801"/>
+      <labelfield name="lbl140619335"/>
+      <labelfield name="lbl140356684"/>
+      <labelfield name="lbl140624880"/>
+      <labelfield name="slt_varctrl_ini"/>
+      <question name="q_cve_mun">
+        <control type="hidden" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <question name="q_cve_loc">
+        <control type="hidden" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <question name="q_cve_ent">
+        <control type="hidden" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <question name="q_cve_ageb_a">
+        <control type="hidden" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <question name="q_cve_ageb_na">
+        <control type="hidden" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <labelfield name="slt_varctrl_fin"/>
+      <labelfield name="lbl150212427"/>
+      <labelfield name="lbl150212442"/>
+      <labelfield name="lbl151128381"/>
+      <labelfield name="lbl151128396"/>
+      <labelfield name="lbl151128406"/>
+      <labelfield name="lbl151128416"/>
+      <labelfield name="lbl153202269"/>
+      <labelfield name="lbl153202284"/>
+      <labelfield name="lbl153202300"/>
+      <labelfield name="lbl153202314"/>
+      <labelfield name="lbl153202324"/>
+      <question name="q_ap1_1">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl153202439"/>
+      <labelfield name="lbl153214449"/>
+      <labelfield name="lbl153214459"/>
+      <labelfield name="lbl153214467"/>
+      <labelfield name="lbl153214475"/>
+      <labelfield name="lbl153214482"/>
+      <question name="q_ap1_2">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl153214566"/>
+      <labelfield name="lbl153811832"/>
+      <labelfield name="lbl153811844"/>
+      <labelfield name="lbl153811852"/>
+      <labelfield name="lbl153811861"/>
+      <labelfield name="lbl153811870"/>
+      <question name="q_ap2_1">
+        <control type="combobox" layout="vertical"/>
+      </question>
+      <labelfield name="lbl153811965"/>
+      <labelfield name="lbl154137387"/>
+      <labelfield name="slt_ap2_2_ini"/>
+      <labelfield name="lbl154137407"/>
+      <labelfield name="lbl154137419"/>
+      <labelfield name="lbl152403513"/>
+      <labelfield name="lbl154137428"/>
+      <question name="q_ap2_2">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="slt_ap2_2_fin"/>
+      <labelfield name="lbl154751765"/>
+      <labelfield name="slt_ap2_3_ini"/>
+      <labelfield name="lbl154751786"/>
+      <labelfield name="lbl154751796"/>
+      <labelfield name="lbl154751803"/>
+      <question name="q_ap2_3">
+        <control type="combobox" layout="vertical"/>
+      </question>
+      <labelfield name="slt_ap2_3_fin"/>
+      <labelfield name="lbl_ini"/>
+      <question name="q_tillas2017_obs_referenc">
+        <control type="text" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <question name="q_lantillas2017_obs_mensa">
+        <control type="text" rows="1" cols="50" layout="vertical"/>
+      </question>
+      <question name="q_illas2017_obs_observaci">
+        <control type="text" rows="3" cols="50" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin"/>
+      <button name="btn162956092"/>
+    </members>
+    <page name="pag145839073" section="sec145839060">
+      <label>Datos de autenticación</label>
+      <group name="gr134451562">
+        <title>I. DATOS DE IDENTIFICACIÓN</title>
+        <elements>lbl134736357;lbl140607257;lbl140343584;lbl140613985;lbl140348801;lbl140619335;lbl140356684;lbl140624880;slt_varctrl_ini</elements>
+      </group>
+    </page>
+    <page name="pag150020589" section="sec145839060">
+      <label>Variables de control</label>
+      <elements>q_cve_mun;q_cve_loc;q_cve_ent;q_cve_ageb_a;q_cve_ageb_na</elements>
+    </page>
+    <page name="pag145908230" section="sec145839060">
+      <label>Introduccion</label>
+      <group name="gr150212421">
+        <title>.</title>
+        <elements>slt_varctrl_fin;lbl150212427;lbl150212442</elements>
+      </group>
+    </page>
+    <page name="pag145958341" section="sec145839060">
+      <label>Confidencialidad / Obligatoriedad</label>
+      <group name="gr151128375">
+        <title>.</title>
+        <elements>lbl151128381;lbl151128396;lbl151128406;lbl151128416</elements>
+      </group>
+    </page>
+    <page name="pag151306094" section="sec151306085">
+      <label>P1_1</label>
+      <group name="gr153202261">
+        <title>SECCIÓN I. TIPO DE VIVIENDA</title>
+        <elements>lbl153202269;lbl153202284;lbl153202300;lbl153202314;lbl153202324;q_ap1_1;lbl153202439</elements>
+      </group>
+    </page>
+    <page name="pag153212315" section="sec151306085">
+      <label>P1_2</label>
+      <group name="gr153214443">
+        <title>SECCIÓN I. TIPO DE VIVIENDA</title>
+        <elements>lbl153214449;lbl153214459;lbl153214467;lbl153214475;lbl153214482;q_ap1_2;lbl153214566</elements>
+      </group>
+    </page>
+    <page name="pag153655900" section="sec153655890">
+      <label>P2_1</label>
+      <group name="gr153811826">
+        <title>SECCIÓN II. HOGARES Y RESIDENTES EN LA VIVIENDA</title>
+        <elements>lbl153811832;lbl153811844;lbl153811852;lbl153811861;lbl153811870;q_ap2_1;lbl153811965</elements>
+      </group>
+    </page>
+    <page name="pag154115658" section="sec153655890">
+      <label>P2_2</label>
+      <group name="gr154137379">
+        <title>SECCIÓN II. HOGARES Y RESIDENTES EN LA VIVIENDA</title>
+        <elements>lbl154137387;slt_ap2_2_ini;lbl154137407;lbl154137419;lbl152403513,lbl154137428;q_ap2_2;slt_ap2_2_fin</elements>
+      </group>
+    </page>
+    <page name="pag154749730" section="sec153655890">
+      <label>P2_3</label>
+      <group name="gr154751757">
+        <title>SECCIÓN II. HOGARES Y RESIDENTES EN LA VIVIENDA</title>
+        <elements>lbl154751765;slt_ap2_3_ini;lbl154751786;lbl154751796;lbl154751803;q_ap2_3;slt_ap2_3_fin</elements>
+      </group>
+    </page>
+    <page name="pag152408353" section="sec152408343">
+      <label>Página Observaciones</label>
+      <elements>lbl_ini</elements>
+      <cyclicgroup name="c_gpobs152408363">
+        <newtext>Nueva Observación</newtext>
+        <edittext>Editar Observación</edittext>
+        <deletetext>Eliminar Observación</deletetext>
+        <columns>
+          <column label="Referencia" question="q_tillas2017_obs_referenc"/>
+          <column label="Mensaje de Error" question="q_lantillas2017_obs_mensa"/>
+          <column label="Observación que justifica la inconsistencia" question="q_illas2017_obs_observaci"/>
+        </columns>
+        <elements>q_tillas2017_obs_referenc;q_lantillas2017_obs_mensa;q_illas2017_obs_observaci</elements>
+      </cyclicgroup>
+      <elements>lbl_fin</elements>
+    </page>
+    <defaultpage>
+      <label>Página Default</label>
+      <elements>btn162956092</elements>
+    </defaultpage>
+  </questionnaire>
+</view>

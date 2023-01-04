@@ -1,0 +1,863 @@
+﻿<iktan>
+  <dml>
+    <unit id="VistaLevantamiento">
+      <select id="filtro">
+                select distinct
+                    id_muestra,folio,viv_sel,no_ext,no_int,ent,entidad,cve_mun,municipio,cve_loc,localidad,
+                    ageb,mza,substr(colonia,0,79) colonia,vialidad,upm,prog,id_envipe2023_muestra,cod_res_viv,c_vis_viv,c_viv,
+                    c_hog,c_ver,cod_res_hog,hogar,c_vis_hog,c_sdg,hogar,nivel,c_sel,c_pri,c_vic,num_ren_sel,numero_hogares,
+                    principal_especifique,id_estatus,id_movimiento,id_tr_periodo,aleatorio,tipo_sel,dia_captura,mes_captura,clave,c_cap,instrucciones,descripcion
+                from (
+                select
+                    tc_muestras.id_muestra,tc_muestras.folio,tc_muestras.viv_sel,tc_muestras.no_ext,
+                    tc_muestras.no_int,tc_muestras.ent,tc_muestras.entidad,tc_muestras.cve_mun,
+                    tc_muestras.municipio,tc_muestras.cve_loc,tc_muestras.localidad,tc_muestras.ageb,
+                    tc_muestras.mza,tc_muestras.colonia,tc_muestras.calle vialidad,tc_muestras.upm,
+                    tc_muestras.prog,
+                    tr_envipe_muestras.id_envipe2023_muestra,
+                    tr_envipe_muestras.cod_res_viv||case when ((tr_envipe_muestras.cod_neg_viv is null) or (tr_envipe_muestras.cod_neg_viv='')) then '' else '.'||tr_envipe_muestras.cod_neg_viv end cod_res_viv,
+                    tr_envipe_muestras.c_vis_viv,
+                    tr_envipe_muestras.c_viv,
+                    tr_envipe_muestras.c_hog,
+                    tr_envipe_muestras.c_ver,
+                    tr_envipe_muestras.cod_res_hog||case when ((tr_envipe_muestras.cod_neg_hog is null) or (tr_envipe_muestras.cod_neg_hog='')) then '' else '.'||tr_envipe_muestras.cod_neg_hog end cod_res_hog,
+                    tr_envipe_muestras.hogar,
+                    tr_envipe_muestras.c_vis_hog,
+                    tr_envipe_muestras.c_sdg,
+                    tr_envipe_muestras.c_sel,                    tr_envipe_muestras.hogar,
+                    tr_envipe_muestras.nivel,
+                    tr_envipe_muestras.numero_hogares,
+                    tr_envipe_muestras.principal_especifique,
+                    tr_envipe_muestras.c_pri,
+                    tr_envipe_muestras.c_vic,
+                    tr_envipe_muestras.c_cap,
+                    tr_envipe_muestras.num_ren_sel,
+                    tr_movimientos.id_estatus,
+                    tr_movimientos.id_movimiento,
+                    tr_movimientos.id_tr_periodo,
+                    tr_movimientos.id_clave_operativa,
+                    tr_envipe_muestras.aleatorio,
+                    tr_envipe_muestras.tipo_sel,
+                    tr_envipe_muestras.instrucciones,
+                    tr_movil_usuarios.clave,
+                    case when tr_envipe_muestras.tipo_sel='E' then '00' else substr(tr_envipe_muestras.fecha_captura,1,2) end dia_captura,
+                    case when tr_envipe_muestras.tipo_sel='E' then '00' else substr(tr_envipe_muestras.fecha_captura,3,2) end mes_captura,
+                    tc_movil_resultados_entre.descripcion
+                from
+                    tc_muestras
+                inner join tr_envipe2023_muestras tr_envipe_muestras   on tr_envipe_muestras.id_muestra = tc_muestras.id_muestra
+                inner join tr_movimientos on tr_movimientos.id_movimiento = tc_muestras.id_movimiento
+                inner join tr_movil_usuarios on tr_movil_usuarios.id_clave_operativa= tr_movimientos.id_clave_operativa
+                inner join tc_movil_resultados_entre on tc_movil_resultados_entre.codigo= tr_envipe_muestras.cod_res_viv)
+                where
+                    {condicion}
+                order by
+                    upm, viv_sel
+      </select>
+      <select id="filtroSupervision">
+                select distinct
+                    id_muestra,folio,viv_sel,no_ext,no_int,ent,entidad,cve_mun,municipio,cve_loc,localidad,
+                    ageb,mza,substr(colonia,0,79) colonia,vialidad,upm,prog,id_envipe2023_muestra,cod_res_viv,
+                    cod_res_hog,hogar,c_sup,hogar,nivel,num_ren_sel,numero_hogares,
+                    principal_especifique,id_estatus,id_movimiento,id_tr_periodo,aleatorio,tipo_sel,dia_captura,mes_captura,instrucciones,descripcion
+                from (
+                select
+                    tc_muestras.id_muestra,tc_muestras.folio,tc_muestras.viv_sel,tc_muestras.no_ext,
+                    tc_muestras.no_int,tc_muestras.ent,tc_muestras.entidad,tc_muestras.cve_mun,
+                    tc_muestras.municipio,tc_muestras.cve_loc,tc_muestras.localidad,tc_muestras.ageb,
+                    tc_muestras.mza,tc_muestras.colonia,tc_muestras.calle vialidad,tc_muestras.upm,
+                    tc_muestras.prog,
+                    tr_envipe_muestras.id_envipe2023_muestra,
+                    tr_envipe_muestras.cod_res_viv||case when ((tr_envipe_muestras.cod_neg_viv is null) or (tr_envipe_muestras.cod_neg_viv='')) then '' else '.'||tr_envipe_muestras.cod_neg_viv end cod_res_viv,
+                    tr_envipe_muestras.cod_res_hog||case when ((tr_envipe_muestras.cod_neg_hog is null) or (tr_envipe_muestras.cod_neg_hog='')) then '' else '.'||tr_envipe_muestras.cod_neg_hog end cod_res_hog,
+                    tr_envipe_muestras.hogar,
+                    tr_envipe_muestras.hogar,
+                    tr_envipe_muestras.nivel,
+                    tr_envipe_muestras.numero_hogares,
+                    tr_envipe_muestras.principal_especifique,
+                    tr_envipe_muestras.c_sup,                                        
+                        tr_envipe_muestras.num_ren_sel,
+                    tr_movimientos.id_estatus,
+                    tr_movimientos.id_movimiento,
+                    tr_movimientos.id_tr_periodo,
+                    tr_movimientos.id_clave_operativa,
+                    tr_envipe_muestras.aleatorio,
+                    tr_envipe_muestras.tipo_sel,
+                    tr_envipe_muestras.instrucciones,
+                                        tr_movil_usuarios.clave,
+                    case when tr_envipe_muestras.tipo_sel='E' then '00' else substr(tr_envipe_muestras.fecha_captura,1,2) end dia_captura,
+                    case when tr_envipe_muestras.tipo_sel='E' then '00' else substr(tr_envipe_muestras.fecha_captura,3,2) end mes_captura,
+                    tc_movil_resultados_entre.descripcion
+                from
+                    tc_muestras
+                inner join tr_envipe2023_muestras tr_envipe_muestras on tr_envipe_muestras.id_muestra = tc_muestras.id_muestra
+                inner join tr_movimientos on tr_movimientos.id_movimiento = tc_muestras.id_movimiento
+                inner join tc_movil_resultados_entre on tc_movil_resultados_entre.codigo= tr_envipe_muestras.cod_res_viv
+                inner join tr_movil_usuarios on tr_movil_usuarios.id_clave_operativa= tr_movimientos.id_clave_operativa)
+                where
+                    {condicion}
+                    and ent = '{entidad}'                 
+                order by
+                    upm, viv_sel
+      </select>
+      <select id="filtroSeguimiento">
+                 select
+                      tc_muestras.control, tc_muestras.folio, tc_muestras.viv_sel,
+                      tc_muestras.no_ext, tc_muestras.no_int, tc_muestras.id_muestra, tc_muestras.id_encuesta,
+                      tc_muestras.id_movimiento, tc_muestras.nombre, tc_muestras.ent, tc_muestras.entidad,
+                      tc_muestras.cve_mun, tc_muestras.municipio, tc_muestras.cve_loc, tc_muestras.localidad,
+                      tc_muestras.ageb, tc_muestras.mza, tc_muestras.colonia, tc_muestras.prog, tc_muestras.calle vialidad, tc_muestras.upm,
+                      tr_envipe2023_muestras.croquis_pdf,
+                      tr_envipe2023_muestras.ruta_pdf,
+                      tr_envipe2023_muestras.instrucciones,
+                      tr_envipe2023_muestras.c_sup,
+                      tr_envipe2023_muestras.cod_res_viv||case when ((tr_envipe2023_muestras.cod_neg_viv is null) or (tr_envipe2023_muestras.cod_neg_viv='')) then '' else '.'||tr_envipe2023_muestras.cod_neg_viv end cod_res_viv,
+                  tr_envipe2023_muestras.cod_res_hog||case when ((tr_envipe2023_muestras.cod_neg_hog is null) or (tr_envipe2023_muestras.cod_neg_hog='')) then '' else '.'||tr_envipe2023_muestras.cod_neg_hog end cod_res_hog,                    
+                      tr_envipe2023_muestras.nivel,
+                      tr_envipe2023_muestras.tipo_sel,
+                      case when ((id_ambito = 1 and {nivel} = 0) or (id_ambito = 2 and {nivel} = 3) or (id_ambito = 3 and {nivel} = 5)) then c_sel else '11' end c_sel,
+                      tr_envipe2023_muestras.num_ren_sel,
+                      tr_envipe2023_muestras.aleatorio,
+                      tr_envipe2023_muestras.id_envipe2023_muestra,
+                      tr_envipe2023_muestras.hogar,
+					  tr_envipe2023_muestras.numero_hogares,
+                      case when tr_envipe2023_muestras.tipo_sel='E' then '00' else substr(tr_envipe2023_muestras.fecha_captura,1,2) end dia_captura,
+                      case when tr_envipe2023_muestras.tipo_sel='E' then '00' else substr(tr_envipe2023_muestras.fecha_captura,3,2) end mes_captura,         
+                      --tc_estatus.descripcion estatus,
+                      tr_movimientos.id_estatus,
+                      tr_movil_visitas_detalle.id_movil_causa_negativa,
+                      tr_periodos.id_tr_periodo,
+					  tr_usuarios_envipe.clave,
+                      'Sin informacion del integrante seleccionado' informante
+                    from
+                      tc_muestras
+                    left join
+                      tr_envipe2023_muestras on tr_envipe2023_muestras.id_muestra= tc_muestras.id_muestra
+                    inner join
+                      tr_movimientos on tr_movimientos.id_movimiento= tc_muestras.id_movimiento        
+                    --inner join
+                      --tc_estatus on tr_movimientos.id_estatus= tc_estatus.id_estatus
+                    left join
+                      tr_movil_visitas on tr_movil_visitas.id_movil_visita=tr_envipe2023_muestras.id_movil_visita
+                    left join
+                      tr_movil_visitas_detalle on tr_movil_visitas_detalle.id_movil_visita_detalle= tr_movil_visitas.id_movil_visita_detalle
+                    left join
+                      (select id_tr_periodo, fecha_inicial, fecha_final, consecutivo from tr_periodos group by id_tr_periodo, fecha_inicial, fecha_final, consecutivo)tr_periodos on tr_periodos.id_tr_periodo=tr_movimientos.id_tr_periodo
+                    --inner join tr_usuarios_envipe on tr_usuarios_envipe.id_clave_operativa= tr_movimientos.id_clave_operativa
+					left join tr_usuarios_envipe on tr_usuarios_envipe.id_clave_operativa= tr_movimientos.id_clave_operativa
+                    where 
+                      {condicion} and folio not like '%X%'
+                      and ent like '{entidad}'
+                    order by
+                tc_muestras.upm, tc_muestras.viv_sel          
+      </select>   
+      <select id="filtroHogares">
+                select
+                    id_muestra,folio,viv_sel,no_ext,no_int,ent,entidad,cve_mun,municipio,cve_loc,localidad,
+                    ageb,mza,substr(colonia,0,79) colonia,vialidad,upm,prog,id_envipe2023_muestra,cod_res_viv,c_vis_viv,c_viv,
+                    c_hog,c_ver,cod_res_hog,hogar,c_vis_hog,c_sdg,c_sel,hogar,nivel,c_pri,c_vic,num_ren_sel,numero_hogares,
+                    principal_especifique,id_estatus,id_movimiento,id_tr_periodo,aleatorio,tipo_sel,dia_captura,mes_captura,clave,informante,c_cap,instrucciones
+                    , c_des
+                from (
+                select
+                    tc_muestras.id_muestra,tc_muestras.folio,tc_muestras.viv_sel,tc_muestras.no_ext,
+                    tc_muestras.no_int,tc_muestras.ent,tc_muestras.entidad,tc_muestras.cve_mun,
+                    tc_muestras.municipio,tc_muestras.cve_loc,tc_muestras.localidad,tc_muestras.ageb,
+                    tc_muestras.mza,tc_muestras.colonia,tc_muestras.calle vialidad,tc_muestras.upm,
+                    tc_muestras.prog,
+                    tr_envipe_muestras.id_envipe2023_muestra,
+                    tr_envipe_muestras.cod_res_viv||case when ((tr_envipe_muestras.cod_neg_viv is null) or (tr_envipe_muestras.cod_neg_viv='')) then '' else '.'||tr_envipe_muestras.cod_neg_viv end cod_res_viv,
+                    tr_envipe_muestras.c_vis_viv,
+                    tr_envipe_muestras.c_viv,
+                    tr_envipe_muestras.c_hog,
+                    tr_envipe_muestras.c_ver,
+                    tr_envipe_muestras.cod_res_hog||case when ((tr_envipe_muestras.cod_neg_hog is null) or (tr_envipe_muestras.cod_neg_hog='')) then '' else '.'||tr_envipe_muestras.cod_neg_hog end cod_res_hog,
+                    tr_envipe_muestras.hogar,
+                    tr_envipe_muestras.c_vis_hog,
+                    tr_envipe_muestras.c_sdg,
+                    tr_envipe_muestras.c_sel,
+                    tr_envipe_muestras.hogar,
+                    tr_envipe_muestras.nivel,
+                    tr_envipe_muestras.numero_hogares,
+                    tr_envipe_muestras.principal_especifique,
+                    tr_envipe_muestras.c_pri,
+                    tr_envipe_muestras.c_vic,
+                    tr_envipe_muestras.c_cap,
+                    tr_envipe_muestras.c_des,
+                    tr_envipe_muestras.num_ren_sel,
+                    tr_movimientos.id_estatus,
+                    tr_movimientos.id_movimiento,
+                    tr_movimientos.id_tr_periodo,
+                    tr_movimientos.id_clave_operativa,
+                    tr_envipe_muestras.aleatorio,
+                    tr_envipe_muestras.tipo_sel,
+                    tr_envipe_muestras.instrucciones,
+          tr_movil_usuarios.clave,
+                    case when tr_envipe_muestras.tipo_sel='E' then '00' else substr(tr_envipe_muestras.fecha_captura,1,2) end dia_captura,
+                    case when tr_envipe_muestras.tipo_sel='E' then '00' else substr(tr_envipe_muestras.fecha_captura,3,2) end mes_captura,
+                    case when tr_envipe2023_sdg_int.nombre is null then 'Sin informacion del integrante seleccionado' else tr_envipe2023_sdg_int.nombre end informante
+                from
+                    tc_muestras
+                inner join tr_envipe2023_muestras tr_envipe_muestras on tr_envipe_muestras.id_muestra = tc_muestras.id_muestra
+                inner join tr_movimientos on tr_movimientos.id_movimiento = tc_muestras.id_movimiento
+                inner join tr_movil_usuarios on tr_movil_usuarios.id_clave_operativa= tr_movimientos.id_clave_operativa
+                left join tr_envipe2023_sdg_int on tc_muestras.id_muestra=tr_envipe2023_sdg_int.id_muestra and tr_envipe2023_sdg_int.n_ren=tr_envipe_muestras.num_ren_sel and (tr_envipe2023_sdg_int.deleted__ is null or tr_envipe2023_sdg_int.deleted__=''))
+                where
+                    {condicion}
+                order by
+                    upm, viv_sel, hogar
+      </select>
+      <select id="totales">
+                select
+                  sum(case hogar when 1 then 1 else 0 end) total_viviendas,
+                  sum(case c_ver when 1 then 1 else 0 end) asignado_entrevistador,
+                  sum(case when c_vis_viv = 3 and c_viv = 3 and c_ver = 3 and c_hog = 3 and liberado_por = 'E' then 1 else 0 end) liberados_entrevistador,
+                  sum(case when liberado = 1 and liberado_por = 'AI' then 1 else 0 end) liberados_supervisor
+                from
+                    tc_muestras muestra
+                    inner join tr_envipe2023_muestras envipe on muestra.id_muestra = envipe.id_muestra
+                    inner join tr_movimientos mov on muestra.id_movimiento = mov.id_movimiento
+                where
+                    envipe.hogar=1 and mov.id_estatus not in ({id_estatus_eliminado})
+                group by
+                    hogar
+      </select>
+      <select id="visitasVivienda">
+                select
+                    tr_movil_visitas_detalle.fecha_inicio,
+                    tr_movil_visitas_detalle.fecha_termino,
+                    substr(tr_movil_visitas_detalle.fecha_inicio,7,2)||'/'||substr(tr_movil_visitas_detalle.fecha_inicio,5,2)||'/'||substr(tr_movil_visitas_detalle.fecha_inicio,1,4) fecha,
+                    substr(tr_movil_visitas_detalle.fecha_inicio,9,2)||':'||substr(tr_movil_visitas_detalle.fecha_inicio,11,2)||':'||substr(tr_movil_visitas_detalle.fecha_inicio,13,2) inicio,
+                    substr(tr_movil_visitas_detalle.fecha_termino,9,2)||':'||substr(tr_movil_visitas_detalle.fecha_termino,11,2)||':'||substr(tr_movil_visitas_detalle.fecha_termino,13,2) termino,
+                    tr_movil_visitas_detalle.id_movil_visita_detalle,
+                    substr(tr_movil_visitas_detalle.especifique,1,250) situacion,
+                    substr(tr_movil_visitas_detalle.especifique,251,250) situacion2,
+                    substr(tr_movil_visitas_detalle.especifique,501,250) situacion3,
+                    substr(tr_movil_visitas_detalle.especifique,751,250) situacion4,
+                    tr_movil_visitas.consecutivo,
+                    tr_movil_visitas_detalle.id_movil_visita,
+                    tr_movil_visitas_detalle.cod_res||case when tc_movil_causas_negativas.clave is null then '' else '.'||tc_movil_causas_negativas.clave end codigo_respuesta
+                from
+                    tr_movil_visitas
+                inner join
+                    tr_movil_visitas_detalle on tr_movil_visitas.id_movil_visita=tr_movil_visitas_detalle.id_movil_visita
+                left join
+                    tc_movil_causas_negativas on tc_movil_causas_negativas.id_movil_causa_negativa=tr_movil_visitas_detalle.id_movil_causa_negativa
+                inner join
+                    tr_movimientos on tr_movimientos.id_movimiento=tr_movil_visitas_detalle.id_movimiento  and tr_movimientos.id_estatus not in ({id_estatus_eliminado})
+                inner join
+                    tr_envipe2023_muestras tr_envipe_muestras on tr_envipe_muestras.id_muestra=tr_movil_visitas.id_muestra
+                where
+                    tr_movil_visitas.id_muestra in (select id_muestra from tc_muestras where folio='{folio}') and tr_movil_visitas_detalle.complemento= '{complemento}'
+                order by
+                 tr_movil_visitas_detalle.fecha_inicio,consecutivo desc
+      </select>
+      <select id="visitasHogar">
+                select
+                    tr_movil_visitas_detalle.fecha_inicio,
+                    tr_movil_visitas_detalle.fecha_termino,
+                    substr(tr_movil_visitas_detalle.fecha_inicio,7,2)||'/'||substr(tr_movil_visitas_detalle.fecha_inicio,5,2)||'/'||substr(tr_movil_visitas_detalle.fecha_inicio,1,4) fecha,
+                    substr(tr_movil_visitas_detalle.fecha_inicio,9,2)||':'||substr(tr_movil_visitas_detalle.fecha_inicio,11,2)||':'||substr(tr_movil_visitas_detalle.fecha_inicio,13,2) inicio,
+                    substr(tr_movil_visitas_detalle.fecha_termino,9,2)||':'||substr(tr_movil_visitas_detalle.fecha_termino,11,2)||':'||substr(tr_movil_visitas_detalle.fecha_termino,13,2) termino,
+                    tr_movil_visitas_detalle.id_movil_visita_detalle,
+                    substr(tr_movil_visitas_detalle.especifique,1,250) situacion,
+                    substr(tr_movil_visitas_detalle.especifique,251,250) situacion2,
+                    substr(tr_movil_visitas_detalle.especifique,501,250) situacion3,
+                    substr(tr_movil_visitas_detalle.especifique,751,250) situacion4,
+                    tr_movil_visitas.consecutivo,
+                    tr_movil_visitas_detalle.id_movil_visita,
+                    tr_movil_visitas_detalle.cod_res||case when tc_movil_causas_negativas.clave is null then '' else '.'||tc_movil_causas_negativas.clave end codigo_respuesta
+                from
+                    tr_movil_visitas
+                inner join
+                    tr_movil_visitas_detalle on tr_movil_visitas.id_movil_visita=tr_movil_visitas_detalle.id_movil_visita
+                left join
+                    tc_movil_causas_negativas on tc_movil_causas_negativas.id_movil_causa_negativa=tr_movil_visitas_detalle.id_movil_causa_negativa
+                inner join
+                    tr_movimientos on tr_movimientos.id_movimiento=tr_movil_visitas_detalle.id_movimiento and tr_movimientos.id_estatus not in ({id_estatus_eliminado})
+                inner join
+                    tr_envipe2023_muestras tr_envipe_muestras on tr_envipe_muestras.id_muestra=tr_movil_visitas.id_muestra
+                where
+                    tr_movil_visitas.id_muestra= {id_muestra} and tr_envipe_muestras.hogar= {hogar} and tr_movil_visitas_detalle.complemento= '{complemento}'
+                order by
+                 consecutivo desc,tr_movil_visitas_detalle.fecha_inicio desc
+      </select>
+      <select id="estatusMovimniento">
+                select
+                  tc_muestras.id_muestra,
+                  tr_movimientos.id_clave_operativa,
+                  tr_movimientos.id_estatus,
+                  tc_estatus.descripcion
+                from
+                    tc_muestras
+                inner join
+                  tr_movimientos on tc_muestras.id_movimiento = tr_movimientos.id_movimiento
+                inner join
+                  tc_estatus on tr_movimientos.id_estatus = tc_estatus.id_estatus
+                where
+                    tc_muestras.id_muestra = '{id_muestra}'
+      </select>
+      <select id="getDescripcion">
+                select
+                  tc_movil_resultados_entre.descripcion
+                from
+                    tc_muestras
+                    inner join tr_envipe2023_muestras tr_envipe_muestras on tr_envipe_muestras.id_muestra = tc_muestras.id_muestra
+                    inner join tr_movimientos on tr_movimientos.id_movimiento = tc_muestras.id_movimiento
+                    inner join tr_movil_usuarios on tr_movil_usuarios.id_clave_operativa= tr_movimientos.id_clave_operativa
+                    inner join tc_movil_resultados_entre on tc_movil_resultados_entre.codigo= tr_envipe_muestras.cod_res_viv
+                where
+                    upm = '{upm}' and prog = '{prog}' and viv_sel = '{viv_sel}' and hogar = '1'
+                    and tr_movimientos.id_estatus != 298 and tc_muestras.folio not like '%X'
+      </select>
+    </unit>
+    <unit id="VistaTrMuestrasEnvipe">
+      <select id="row">
+                select
+                    tc_muestras.upm,tr_envipe_muestras.hogar,tr_envipe_muestras.id_muestra,
+                    tr_envipe_muestras.id_envipe2023_muestra,tr_envipe_muestras.hogar,
+                    tr_envipe_muestras.c_vic,tr_envipe_muestras.c_pri,tr_envipe_muestras.c_sel,
+                    tr_envipe_muestras.c_sdg,tr_envipe_muestras.c_vis_hog,
+                    tr_envipe_muestras.c_viv,tr_envipe_muestras.c_ver,tr_envipe_muestras.c_vis_viv,
+                    tr_envipe_muestras.c_hog,tr_envipe_muestras.ruta_pdf,
+                    tr_envipe_muestras.existe_ruta_pdf,tr_envipe_muestras.croquis_pdf,
+                    tr_envipe_muestras.existe_croquis_pdf,tr_envipe_muestras.mapa_pdf,
+                    tr_envipe_muestras.existe_mapa_pdf,tr_movimientos.id_estatus,
+                    tc_muestras.id_movimiento
+                from
+                    tr_envipe2023_muestras tr_envipe_muestras
+                inner join
+                    tc_muestras
+                on
+                    tr_envipe_muestras.id_muestra= tc_muestras.id_muestra
+                inner join tr_movimientos on tc_muestras.id_movimiento=tr_movimientos.id_movimiento
+                where
+                    tr_envipe_muestras.id_muestra={id_muestra}
+      </select>
+      <select id="validaAdicional">
+                select
+                    tr_movimientos.id_movimiento, tr_movimientos.id_estatus, tr_envipe_muestras.numero_hogares, hogar, id_envipe2023_muestra,tr_envipe_muestras.id_muestra
+                from
+                    tr_envipe2023_muestras tr_envipe_muestras
+                inner join
+                    tc_muestras on tr_envipe_muestras.id_muestra= tc_muestras.id_muestra
+                inner join tr_movimientos on tr_movimientos.id_movimiento = tc_muestras.id_movimiento
+                where
+                    tc_muestras.folio in (select folio from tc_muestras where id_muestra= {id_muestra})
+      </select>
+      <select id="hogaresVivienda">
+                select
+                    tr_envipe_muestras.numero_hogares,id_envipe2023_muestra,tr_envipe_muestras.id_muestra
+                from
+                    tr_envipe2023_muestras tr_envipe_muestras
+                inner join
+                    tc_muestras on tr_envipe_muestras.id_muestra= tc_muestras.id_muestra
+                where
+                    tc_muestras.folio in ('{folio}')
+      </select>
+      <select id="ultimoHogar">
+                select
+                    tr_envipe_muestras.id_muestra
+                from
+                    tr_envipe2023_muestras tr_envipe_muestras
+                inner join
+                    tc_muestras on tr_envipe_muestras.id_muestra= tc_muestras.id_muestra
+                where
+                    tc_muestras.folio in ('{folio}') and tr_envipe_muestras.hogar=tr_envipe_muestras.numero_hogares
+      </select>
+    </unit>
+    <unit id="EstatusSemaforos">
+      <select id="ultimoMovimiento">
+        select
+          tc_muestras.id_muestra,tc_muestras.id_movimiento,id_estatus
+        from
+          tc_muestras
+        inner join tr_movimientos on tc_muestras.id_movimiento=tr_movimientos.id_movimiento
+        where
+          tc_muestras.id_muestra= {id_muestra}
+      </select>
+      <select id="getSemaforo">
+        select
+          {semaforo}
+        from 
+          tr_envipe2023_muestras
+        where
+          id_muestra= {id_muestra} and id_envipe2023_muestra={id_envipe2023_muestra}
+      </select>
+      <select id="hogaresVivienda">
+                select
+                    tc_muestras.id_muestra, tc_muestras.id_movimiento, tr_movimientos.id_estatus, id_envipe2023_muestra
+                from
+                    tc_muestras
+                inner join tr_movimientos on tc_muestras.id_movimiento=tr_movimientos.id_movimiento
+                inner join tr_envipe2023_muestras tr_envipe_muestras on tc_muestras.id_muestra=tr_envipe_muestras.id_muestra
+                where
+                    tc_muestras.folio in (
+                    select
+                    folio
+                    from
+                    tc_muestras
+                    where
+                        id_muestra= {id_muestra})
+      </select>
+      <select id="hogarAnterior">
+              select 
+                *
+              from
+                tc_muestras
+              inner join tr_envipe2023_muestras tr_envipe_muestras on tc_muestras.id_muestra= tr_envipe_muestras.id_muestra
+              inner join tr_movimientos    on tr_movimientos.id_movimiento = tc_muestras.id_movimiento and tr_movimientos.id_estatus not in ({id_estatus_eliminado})
+              where
+                upm=(select upm from tc_muestras where id_muestra={id_muestra}) and
+                viv_sel=(select viv_sel from tc_muestras where id_muestra={id_muestra}) and
+                hogar=(select hogar from tr_envipe2023_muestras where id_muestra={id_muestra})-1
+      </select>
+      <select id="eliminarHogar">
+                select
+                    tc_muestras.id_muestra, tr_envipe_muestras.id_envipe2023_muestra, hogar, cod_res_hog, c_vis_hog, folio, tr_movimientos.id_estatus, numero_hogares
+                from
+                    tc_muestras
+                inner join tr_envipe2023_muestras tr_envipe_muestras on tc_muestras.id_muestra=tr_envipe_muestras.id_muestra
+                inner join tr_movimientos on tc_muestras.id_movimiento=tr_movimientos.id_movimiento
+                where
+                    tc_muestras.folio in (select folio from tc_muestras where id_muestra={id_muestra})
+                order by
+                    hogar desc
+      </select>
+    </unit>
+    <unit id="VistaEntidadesPrincipal">
+      <select id="entidadPrincipal">
+        select
+            descripcion
+        from
+           tc_movil_configuraciones
+        inner join
+           tc_movil_entidades on tc_movil_entidades.entidad= tc_movil_configuraciones.entidad
+      </select>
+    </unit>
+    <unit id="VistaFiltradoGenerico">
+      <select id="upmVivProg">
+                select
+                  distinct tc_muestras.upm||'-'||tc_muestras.viv_sel||'-'||tc_muestras.prog titulo,
+                  tc_muestras.id_muestra llave
+                from
+                  tc_muestras
+                inner join
+                  tr_movimientos on tc_muestras.id_movimiento = tr_movimientos.id_movimiento
+                inner join
+                    tr_envipe2023_muestras tr_envipe_muestras on tc_muestras.id_muestra = tr_envipe_muestras.id_muestra
+                where
+                  tr_movimientos.id_estatus not in (298) and tr_envipe_muestras.hogar = 1
+                group by
+                    tc_muestras.upm||'-'||tc_muestras.viv_sel||'-'||tc_muestras.prog
+      </select>
+    </unit>
+    <unit id="VistaCuestionarios">
+      <select id="muestrasCuestionarios">
+                select
+                    tc_muestras.id_muestra,
+                    tr_envipe_muestras.id_envipe2023_muestra,
+                    case when (((c_viv=3 or tr_envipe2023_vvda.c_res='13.1' or (c_viv=11 and tr_envipe2023_sdg.c_res='06')) and (registro_envio_1 is null or registro_envio_1 = '')) or (c_viv=2 and ((c_ver=1 and p_ver=1) or (c_ver=11 and (p_ver = 0 or p_ver = '' or p_ver is null))))) then 'TRUE' else 'FALSE' end vivienda,
+                    case when (((c_sdg=3 or tr_envipe2023_sdg.c_res='06') and (registro_envio_2 is null or registro_envio_2 = '')) or (c_sdg=2 and ((c_ver=1 and p_ver=1) or (c_ver=11 and (p_ver = 0 or p_ver = '' or p_ver is null))))) then 'TRUE' else 'FALSE' end sociodemografico,
+                    case when ((c_pri=3 and (registro_envio_3 is null or registro_envio_3 = '')) or (c_pri=2 and ((c_ver=1 and p_ver=1) or (c_ver=11 and (p_ver = 0 or p_ver = '' or p_ver is null))))) then 'TRUE' else 'FALSE' end principal,
+                    case when ((c_vic=3 and (registro_envio_4 is null or registro_envio_4 = '')) or (c_vic=2 and ((c_ver=1 and p_ver=1) or (c_ver=11 and (p_ver = 0 or p_ver = '' or p_ver is null))))) then 'TRUE' else 'FALSE' end victimizacion
+                from
+                    tr_envipe2023_muestras tr_envipe_muestras
+                inner join tc_muestras on
+                    tr_envipe_muestras.id_muestra = tc_muestras.id_muestra
+                inner join tr_movimientos on
+                    tc_muestras.id_movimiento = tr_movimientos.id_movimiento
+                left join tr_envipe2023_vvda on
+                  tr_envipe_muestras.id_muestra= tr_envipe2023_vvda.id_muestra
+                left join tr_envipe2023_sdg on
+                  tr_envipe_muestras.id_muestra= tr_envipe2023_sdg.id_muestra                
+                where
+                (
+                    ((c_viv=3 or tr_envipe2023_vvda.c_res='13.1' or (c_viv=11 and tr_envipe2023_sdg.c_res='06')) and (registro_envio_1 is null or registro_envio_1 = '')) or
+                    ((c_sdg=3 or tr_envipe2023_sdg.c_res='06') and (registro_envio_2 is null or registro_envio_2 = '')) or
+                    (c_pri=3 and (registro_envio_3 is null or registro_envio_3 = '')) or
+                    (c_vic=3 and (registro_envio_4 is null or registro_envio_4 = ''))
+                ) or
+                (
+                    (c_ver=11 and (p_ver = 0 or p_ver = '' or p_ver is null)) or
+                    (c_ver=1 and (p_ver=1))
+                )			
+			</select>
+      <select id = "allCuestionario">
+                select
+                    *
+                from
+                    {cuestionario}
+                where
+                    id_muestra = '{id_muestra}'
+          </select>
+    </unit>
+    <unit id="VerificaCodigoVivienda">
+      <select id="row">
+                select
+                    c_viv, c_hog, c_sdg, c_sel, c_pri, c_vic, c_des, cod_res_viv, cod_res_hog, cod_neg_viv, cod_neg_hog, cod_res_des, id_envipe2023_muestra, tc_muestras.id_muestra, tc_muestras.id_movimiento
+                from
+                    tr_envipe2023_muestras tr_envipe_muestras
+                inner join tc_muestras on tr_envipe_muestras.id_muestra=tc_muestras.id_muestra
+                inner join tr_movimientos on tr_movimientos.id_movimiento = tc_muestras.id_movimiento and tr_movimientos.id_estatus not in ({id_estatus_eliminado})
+                where
+                tc_muestras.upm='{UPM}' and tc_muestras.viv_sel='{VIV_SEL}' and tc_muestras.prog='{PROG}'
+      </select>
+    </unit>
+    <unit id="VistaCierre">
+      <select id="faltantesCierre">
+        select
+          count(*) total
+        from
+          tc_muestras
+        inner join
+          tr_envipe2023_muestras tr_envipe_muestras on tr_envipe_muestras.id_muestra=tc_muestras.id_muestra
+        inner join
+          tr_movimientos on tr_movimientos.id_movimiento=tc_muestras.id_movimiento
+        inner join
+          tc_estatus on tc_estatus.id_estatus= tr_movimientos.id_estatus
+        left join
+          tr_movil_visitas on tr_movil_visitas.id_movil_visita=tr_envipe_muestras.id_movil_visita
+        left join
+          tr_movil_visitas_detalle on tr_movil_visitas_detalle.id_movil_visita_detalle=tr_movil_visitas.id_movil_visita_detalle
+        where
+          {condicion}
+      </select>
+    </unit>
+    <unit id="VistaSentencias">
+      <select id="archivoSentencia">
+            select
+                upm||substr('00'||ENT,3)||substr('00'||CVE_MUN,3)||substr('00'||CVE_LOC,3)||replace(substr('00'||AGEB,3),'-','')||substr('00'||MZA,3)||substr('00'||viv_sel,1) nombre
+            from
+                tc_muestras
+            where
+                id_muestra = '{id_generico}'
+      </select>
+    </unit>
+    <unit id="VistaVerificacion">
+    <select id="obtenerDatos">
+            select
+              tr_movil_usuarios.clave,
+              mza,
+              id_envipe2019_verificacion,tr_envipe2019_verificacion.id_muestra,tr_movimientos.id_estatus,
+              tr_envipe2019_verificacion.id_usuario,tr_envipe2019_verificacion.registro,
+              registro_captura,confirmacion_coincide,confirmacion_informante,re_entrevista_omision,
+              re_entrevista_ficticia,re_entrevista_ubicacion,nula_no_verificada,
+              nula_otro,residentes_hogar,informante,seleccionado,observacion,id_usuario_reinicio,
+              num_empleado,total_reinicio,personas_hogar,confirmacion_recidentes,confirmacion_personas,
+              confirmacion_informantes
+            from
+              tr_envipe2019_verificacion
+            inner join 
+                tc_muestras on tc_muestras.id_muestra=tr_envipe2019_verificacion.id_muestra
+            inner join
+                tr_movimientos on tc_muestras.id_movimiento = tr_movimientos.id_movimiento
+            left join 
+              tr_movil_usuarios on  tr_movimientos.id_clave_operativa= tr_movil_usuarios.id_clave_operativa
+            where
+              tc_muestras.id_muestra= {id_muestra}
+          </select>
+    </unit>
+    <unit id="VistaSeleccionadoVictimizacion">
+      <select id="filtro">
+                select
+                    tc_muestras.viv_sel,
+                    tc_muestras.no_ext, tc_muestras.no_int, 
+                    case when tc_muestras.id_muestra is null then '{id_muestra}' else tc_muestras.id_muestra end id_muestra,
+                    case when tr_envipe_muestras.id_envipe2023_muestra is null then '{id_envipe2023_muestra}' else tr_envipe_muestras.id_envipe2023_muestra end id_envipe2023_muestra,
+                    tc_muestras.id_encuesta,
+                    tc_muestras.id_movimiento, tc_muestras.nombre, tc_muestras.ent, tc_muestras.entidad,
+                    tc_muestras.cve_mun, tc_muestras.municipio, tc_muestras.cve_loc, tc_muestras.localidad,
+                    tc_muestras.ageb,
+                    tc_muestras.mza, substr(tc_muestras.colonia,0,80) colonia,
+                    tc_muestras.calle vialidad,
+                    tc_muestras.upm,
+                    tc_muestras.prog,
+                    tc_muestras.folio,
+                    tc_muestras.id_tr_periodo,
+                    tr_envipe_muestras.hogar,
+                    tr_envipe_muestras.c_pri,
+                    tr_envipe_muestras.c_vic,
+                    tr_envipe_muestras.cod_res_viv,
+                    tr_envipe_muestras.c_sel,
+                    tr_envipe_muestras.aleatorio,
+                    tr_movimientos.id_estatus,
+                    case when TR_ENVIPE_VICTIMIZACIONES.id_envipe_delito is null then TC_ENVIPE_DELITOS.id_envipe_delito else TR_ENVIPE_VICTIMIZACIONES.id_envipe_delito end id_envipe_delito,
+                    TR_ENVIPE_VICTIMIZACIONES.id_envipe2023_victimizacion,
+                    case when TR_ENVIPE_VICTIMIZACIONES.total is null then '0' else TR_ENVIPE_VICTIMIZACIONES.total end total,
+                    case when TR_ENVIPE_VICTIMIZACIONES.c_vic_1 is null then '11' else TR_ENVIPE_VICTIMIZACIONES.c_vic_1 end c_vic_1,
+                    case when TR_ENVIPE_VICTIMIZACIONES.c_vic_2 is null then '11' else TR_ENVIPE_VICTIMIZACIONES.c_vic_2 end c_vic_2,
+                    case when TR_ENVIPE_VICTIMIZACIONES.c_vic_3 is null then '11' else TR_ENVIPE_VICTIMIZACIONES.c_vic_3 end c_vic_3,
+                    case when TR_ENVIPE_VICTIMIZACIONES.c_vic_4 is null then '11' else TR_ENVIPE_VICTIMIZACIONES.c_vic_4 end c_vic_4,
+                    case when TR_ENVIPE_VICTIMIZACIONES.c_vic_5 is null then '11' else TR_ENVIPE_VICTIMIZACIONES.c_vic_5 end c_vic_5,
+                    TC_ENVIPE_DELITOS.delito as descripcion,
+                    TC_ENVIPE_DELITOS.id_envipe_delito as delito,
+					cast(v_delito as text) as v_delito,
+                    tr_envipe_muestras.tipo_sel,
+                    case when tr_envipe_muestras.tipo_sel='E' then '00' else substr(tr_envipe_muestras.fecha_captura,0,3) end dia_captura,
+                    case when tr_envipe_muestras.tipo_sel='E' then '00' else substr(tr_envipe_muestras.fecha_captura,4,2) end mes_captura,
+                    tr_envipe_muestras.num_ren_sel,
+                    case when tr_envipe_muestras.numero_hogares is null then 1 else tr_envipe_muestras.numero_hogares end NUMERO_HOGARES
+                from
+                    (select id_envipe_delito, delito, id_envipe_delito as v_delito, index_ from TC_ENVIPE_DELITOS where id_envipe_delito between 1 and 14 union
+                     select cast((case when inciso = '06' then inciso||cast(tab.index_-1 as numeric)
+                            else inciso||cast(tab.index_-14 as numeric) end) as numeric) id_envipe_delito,  
+                            case when ap7_3=1 then descripcion
+                            else cat.delito end delito,
+                            case when inciso = '06' then '6.'||(tab.index_-1)
+                            else '15.'||(tab.index_-14) end v_delito,
+                            cat.index_            
+                    from tc_envipe_delitos cat left join tr_envipe2023_eleg_ap7_3 tab on cat.index_=(tab.index_+4)
+                    where
+                       id_muestra= {id_muestra} and inciso in ('06', '15')) TC_ENVIPE_DELITOS                    
+                left join tr_envipe2023_victimizaciones TR_ENVIPE_VICTIMIZACIONES on
+                    TC_ENVIPE_DELITOS.id_envipe_delito = TR_ENVIPE_VICTIMIZACIONES.id_envipe_delito and TR_ENVIPE_VICTIMIZACIONES.id_envipe2023_muestra = {id_envipe2023_muestra}
+                left join tr_envipe2023_muestras tr_envipe_muestras     on
+                    tr_envipe_muestras.id_envipe2023_muestra = TR_ENVIPE_VICTIMIZACIONES.id_envipe2023_muestra
+                left join tc_muestras on                        
+                 tc_muestras.id_muestra = tr_envipe_muestras.id_muestra
+                left join tr_movimientos on
+                    tc_muestras.id_movimiento = tr_movimientos.id_movimiento                                
+                where
+                    {condicion}
+                order by
+                    cast(TC_ENVIPE_DELITOS.index_ as integer)            
+      </select>
+      <select id="idsEnvipeDelito">
+        select vic.id_envipe_delito, delitos.id_envipe2023_eleg, delito
+        from (select id_envipe2023_eleg_ap6_4 id_envipe2023_eleg, index_ delito
+              from tr_envipe2023_eleg_ap6_4 
+              where id_muestra = {id_muestra}
+              union all 
+              select id_envipe2023_eleg_ap7_3 id_envipe2023_eleg,
+                cast((case when inciso = '06' then '6'||cast(index_-1 as numeric) 
+                      else case when inciso = '15' then '15'||cast(index_-14 as numeric)
+                           else cast(inciso as numeric) end
+                      end) as numeric) delito
+              from tr_envipe2023_eleg_ap7_3
+              where id_muestra = {id_muestra}) delitos       
+        left join tr_envipe2023_victimizaciones vic on delitos.id_envipe2023_eleg = vic.id_envipe2023_eleg
+        where delito = {delito}
+      </select>
+    </unit>
+    <unit id="VistaGeneraDelitos">
+      <select id="delitos">
+        select * from
+            (select id_envipe2023_eleg_ap6_4 id_envipe2023_eleg,
+                cast(inciso as numeric) delito,
+                case when index_ in (1,2) and ap6_4 not in (9) then ap6_5 else ap6_4 end valor,
+                case when ap6_6_o is null or ap6_6_o ='' then 0 else cast(ap6_6_o as numeric) end total 
+             from
+                tr_envipe2023_eleg_ap6_4 
+             where
+                id_muestra= {id_muestra}
+             union all 
+             select id_envipe2023_eleg_ap7_3 id_envipe2023_eleg,
+                cast(inciso as numeric) delito,
+                ap7_3 valor,
+                case when ap7_4_o is null or ap7_4_o ='' then 0 else cast(ap7_4_o as numeric) end total 
+             from
+                tr_envipe2023_eleg_ap7_3
+             where
+                id_muestra= {id_muestra} and inciso not in ('06', '15')  
+             union all 
+             select id_envipe2023_eleg_ap7_3 id_envipe2023_eleg,
+                cast((case when inciso = '06' then '6'||cast(index_-1 as numeric) 
+                else '15'||cast(index_-14 as numeric) end) as numeric) delito,
+                ap7_3 valor,
+                case when ap7_4_o is null or ap7_4_o ='' then 0 else cast(ap7_4_o as numeric) end total 
+             from
+                tr_envipe2023_eleg_ap7_3
+             where
+                id_muestra= {id_muestra} and inciso in ('06', '15')
+            )
+        order by
+            delito
+      </select>
+      <select id="tcDelitos">
+        select descripcion
+        from (select id_envipe_delito||' - '||delito as descripcion, index_
+              from tc_envipe_delitos
+              where id_envipe_delito between 1 and 14                     
+              union all 
+              select case when ap7_3=1 then
+                       case when inciso = '06' then '6.'||(tab.index_-1)||' - '||descripcion
+                       else '15.'||(tab.index_-14)||' - '||descripcion end
+                     else case when cat.id_envipe_delito between 61 and 65 then                     
+                               '6.'||substr(cat.id_envipe_delito, 2, 2)||' - '||cat.delito
+                          else '15.'||substr(cat.id_envipe_delito, 3, 3)||' - '||cat.delito end
+                     end delito,
+                     cat.index_
+              from tc_envipe_delitos cat left join 
+                   tr_envipe2023_eleg_ap7_3 tab on cat.index_=(tab.index_+4) 
+              where
+                id_muestra = {id_muestra} and inciso in ('06', '15') 
+              ) temp_delitos  
+        order by index_
+      </select>
+    </unit>
+    <unit id="VistaCroquis">
+      <select id="SacarPDF">
+                select
+                    tc_muestras.folio,
+                    tc_muestras.nombre,
+                    tc_muestras.upm,
+                    tc_muestras.prog,
+                    tc_muestras.viv_sel,
+                    --tr_muestras_envipe2016.instrucciones,
+                    'N/D' instrucciones,
+                    tr_envipe_muestras.ruta_pdf,
+                    tr_envipe_muestras.croquis_pdf,
+                    tr_envipe_muestras.mapa_pdf
+                from
+                    tr_envipe2023_muestras tr_envipe_muestras
+                inner join tc_muestras on
+                    tr_envipe_muestras.id_muestra = tc_muestras.id_muestra
+                where
+                    tr_envipe_muestras.id_muestra='{id_muestra}'
+      </select>
+      <select id="FaltantesPDF">
+                select
+                    documento
+                from
+                    (
+                    select
+                    distinct(ruta_pdf)documento
+                    from
+                    tr_envipe2023_muestras
+                    union all
+                    select
+                        distinct(croquis_pdf)documento
+                    from
+                        tr_envipe2023_muestras
+                    union all
+                    select
+                        distinct(mapa_pdf)documento
+                    from
+                        tr_envipe2023_muestras
+                     )
+                where
+                    documento not null
+      </select>
+    </unit>
+    <unit id="VistaReporteSup">
+      <select id="filtro">
+        select
+          tc_muestras.control, tc_muestras.folio,
+          tc_muestras.id_muestra, tc_muestras.id_encuesta,
+          tc_muestras.id_movimiento, tc_muestras.nombre, tc_muestras.ent, tc_muestras.entidad,
+          tc_muestras.cve_mun, tc_muestras.municipio, tc_muestras.cve_loc, tc_muestras.localidad,
+          tc_muestras.ageb, tc_muestras.mza,
+          tr_envipe_muestras.cod_res_viv,
+          tr_envipe_muestras.croquis_pdf,
+          tr_envipe_muestras.ruta_pdf,
+          tr_envipe_muestras.instrucciones,
+          tr_envipe_muestras.cod_res_viv,
+          tr_envipe_muestras.aleatorio,
+          tr_envipe_muestras.tipo_sel, 
+          tr_envipe_muestras.id_envipe2023_muestra id_muestra_envipe2023,
+          tr_envipe_muestras.num_ren_sel,
+            tc_muestras.upm, tc_muestras.prog, tc_muestras.viv_sel,
+          case when tr_envipe_muestras.tipo_sel='E' then '00' else substr(tr_envipe_muestras.fecha_captura,1,2) end dia_captura,
+          case when tr_envipe_muestras.tipo_sel='E' then '00' else substr(tr_envipe_muestras.fecha_captura,3,2) end mes_captura,
+          tr_periodos.id_tr_periodo,tr_movimientos.id_estatus,          
+            tc_muestras.no_ext, tc_muestras.no_int,tc_muestras.calle as vialidad,
+          case when (tr_resultados_sup.fecha_captura is null)then '' else  substr(tr_resultados_sup.fecha_captura,9,2)||'/'||substr(tr_resultados_sup.fecha_captura,6,2)||'/'||substr(tr_resultados_sup.fecha_captura,1,4) end fecha_captura_reporte,
+          case when (tr_envipe_muestras.c_cap is null or tr_envipe_muestras.c_cap=1) then 'No capturado' else 'Capturado' end estatus_captura,
+          ifnull(tr_envipe_muestras.c_cap, 1) c_vis, 
+          tr_envipe_muestras.nivel,  
+          tr_envipe_muestras.c_sdg, 
+          tr_envipe_muestras.c_pri, 
+          tr_envipe_muestras.c_ver
+        from
+            tc_muestras
+        left join
+            tr_envipe2023_muestras tr_envipe_muestras on tr_envipe_muestras.id_muestra= tc_muestras.id_muestra
+        left join
+          tc_movil_resultados_entre on  tc_movil_resultados_entre.codigo=tr_envipe_muestras.cod_res_viv
+        left join
+          tr_movimientos on  tr_movimientos.id_movimiento=tc_muestras.id_movimiento
+          left join
+          (select id_tr_periodo, fecha_inicial, fecha_final, consecutivo from tr_periodos group by id_tr_periodo, fecha_inicial, fecha_final, consecutivo)tr_periodos on tr_periodos.id_tr_periodo=tr_movimientos.id_tr_periodo
+        left join
+          tc_estatus on  tc_estatus.id_estatus= tr_movimientos.id_estatus
+        left join
+          tr_movil_usuarios on  tr_movil_usuarios.id_clave_operativa= tr_movimientos.id_clave_operativa
+        left join
+          tr_usuarios_envipe on  tr_usuarios_envipe.id_clave_operativa= tr_movimientos.id_clave_operativa
+        left join
+          (select * from tr_resultados_sup where c_cap not in (9))tr_resultados_sup on  tr_resultados_sup.id_muestra= tc_muestras.id_muestra
+        where
+          tr_movimientos.id_estatus not in (298)
+        and
+          {condicion} and folio not like '%X%'
+        order by
+          tc_muestras.upm, viv_sel
+      </select>
+      <select id="countCargaInicial">
+        select
+          count(*) total
+        from
+          tc_muestras
+        left join                
+          tr_movimientos on  tr_movimientos.id_movimiento=tc_muestras.id_movimiento
+        where
+          tr_movimientos.id_estatus not in (298) and tc_muestras.dist='{ent}'
+      </select>
+      <select id="getIdClaveOperativaE">
+       select
+          tr_movimientos.id_clave_operativa
+        from
+          tc_muestras
+        inner join 
+          tr_movimientos on tr_movimientos.id_movimiento= tc_muestras.id_movimiento       
+        where          
+          tr_movimientos.id_estatus not in (298)      
+        and            
+          tc_muestras.id_muestra= {id_muestra}
+      </select>
+      <select id="DatosJE">
+       select 
+         tr_usuarios_envipe.id_clave_operativa as id_clave_operativa,(ifnull(nombres,'') ||' ' || ifnull(apellido_pat,'') ||' ' || ifnull(apellido_mat,'')) as nombre
+       from
+         tr_usuarios_envipe
+       inner join (select
+                      substr(tr_usuarios_envipe.clave,0,12)||'00' as clave_JE
+                   from
+                      tc_muestras
+                   inner join tr_movimientos on tr_movimientos.id_movimiento= tc_muestras.id_movimiento
+                   inner join tr_usuarios_envipe on tr_usuarios_envipe.id_clave_operativa= tr_movimientos.id_clave_operativa            
+                   where          
+                      tr_movimientos.id_estatus not in (298)
+                      and tc_muestras.id_muestra= {id_muestra} ) JE on jE.clave_JE=tr_usuarios_envipe.clave
+      </select>
+      <select id="DatosE">
+       select
+          tr_movimientos.id_clave_operativa,(ifnull(nombres,'') ||' ' || ifnull(apellido_pat,'') ||' ' || ifnull(apellido_mat,'')) as nombre
+        from
+          tc_muestras
+        inner join 
+          tr_movimientos on tr_movimientos.id_movimiento= tc_muestras.id_movimiento
+        inner join
+          tr_usuarios_envipe on tr_usuarios_envipe.id_clave_operativa= tr_movimientos.id_clave_operativa            
+        where          
+          tr_movimientos.id_estatus not in (298)
+          and tc_muestras.id_muestra= {id_muestra}
+      </select>
+    </unit>
+    <unit id="VisitaDetalle">
+      <select id="getCodHog">
+                select count(*) total
+                from tr_movil_visitas v inner join tr_movil_visitas_detalle d on v.id_movil_visita = d.id_movil_visita
+                where id_muestra = {id_muestra} and id_movimiento = {id_movimiento} and cod_res = '06'
+      </select>
+      <select id='getCodRes06'>
+            select count(cod_res) total
+            from tc_muestras m inner join tr_movimientos mov
+                 on m.id_movimiento = mov.id_movimiento inner join tr_movil_visitas_detalle det     
+                 on mov.id_movimiento = det.id_movimiento
+            where m.id_muestra = {id_muestra} and det.cod_res = '06'
+      </select>
+    </unit>
+  </dml>
+</iktan>

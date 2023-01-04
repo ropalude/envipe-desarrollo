@@ -1,0 +1,8 @@
+[submodule "movil"]
+	path = movil
+	url = https://git.inegi.org.mx/subDesarrolloSistemasEstadisticos/iktanMovil/movil.git
+	branch = master
+[submodule "recursos"]
+	path = recursos
+	url = https://git.inegi.org.mx/subDesarrolloSistemasEstadisticos/iktanMovil/recursos.git
+	branch = master

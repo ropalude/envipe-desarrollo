@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE access SYSTEM "DTD_xmlAcceso.dtd">
+<access name="acc_envipe_2023_mod_victim" aml-version="0.30012008alfa">
+  <general>
+    <title>Acceso y Filtro para cuestionario ENVIPE 2023 - MODULO DE VICTIMIZACION</title>
+    <version value="41"/>
+    <creator>Instituto Nacional de Estadística y Geografía</creator>
+    <creationdate year="2022" month="10" day="17"/>
+    <lastupdate year="2022" month="11" day="1"/>
+  </general>
+  <credential>
+    <variable name="id_muestra" type="number" isparam="yes" precision="15"/>
+    <variable name="id_del" type="alphanumeric" isparam="yes" length="21"/>
+    <variable name="resul_hogar" type="alphanumeric" isparam="yes" length="1"/>
+    <variable name="prog" type="alphanumeric" length="4"/>
+    <variable name="viv_sel" type="alphanumeric" length="2"/>
+    <variable name="upm" type="alphanumeric" length="7"/>
+    <variable name="hogar" type="alphanumeric" length="2"/>
+    <variable name="num_ren" type="alphanumeric" length="2"/>
+    <variable name="bpcod" type="alphanumeric" length="2"/>
+    <variable name="nd_tipo" type="alphanumeric" length="1"/>
+    <variable name="msg_check" type="alphanumeric" length="250"/>
+    <variable name="msg_radio" type="alphanumeric" length="250"/>
+    <variable name="msg_matriz" type="alphanumeric" length="250"/>
+    <variable name="msg_num" type="alphanumeric" length="250"/>
+    <variable name="msg_val_check" type="alphanumeric" length="250"/>
+    <variable name="msg_val_matriz" type="alphanumeric" length="250"/>
+    <variable name="msg_val_radio" type="alphanumeric" length="250"/>
+    <variable name="msg_val_num" type="alphanumeric" length="250"/>
+    <variable name="msg_val_esp" type="alphanumeric" length="250"/>
+    <variable name="td_tipo" type="alphanumeric" isparam="yes" length="1"/>
+    <variable name="bpcod_opc" type="alphanumeric" isparam="yes" length="1"/>
+    <variable name="ultimo_delito" type="alphanumeric" isparam="yes" length="1"/>
+    <variable name="ent" type="alphanumeric" isparam="yes" length="2"/>
+    <variable name="mun" type="alphanumeric" isparam="yes" length="3"/>
+    <variable name="loc" type="alphanumeric" isparam="yes" length="4"/>
+    <variable name="ageb_n" type="alphanumeric" isparam="yes" length="3"/>
+    <variable name="ageb_an" type="alphanumeric" isparam="yes" length="1"/>
+    <variable name="iktan_seed" type="number" isparam="yes" precision="5"/>
+  </credential>
+  <datamodel/>
+  <accessform name="acceso"/>
+  <filterform name="filtro"/>
+</access>

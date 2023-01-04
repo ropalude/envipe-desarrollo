@@ -1,0 +1,2157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE view SYSTEM "DTD_xmlVista.dtd">
+<view name="view_101804" vml-version="2.2017.02.07">
+  <general>
+    <title>Vista para cuestionario ENVIPE 2023 - MODULO DE VICTIMIZACION</title>
+    <version value="41"/>
+    <creator>Instituto Nacional de Estadística y Geografía</creator>
+    <creationdate year="2022" month="10" day="17"/>
+    <lastupdate year="2022" month="11" day="1"/>
+  </general>
+  <css><![CDATA[
+ 			 /*Inicio_GenCuest*/
+ 			 .qmlPage{position:relative;}
+ 			 .q, .qGpr, .qMtx, .qCyg{position:absolute; border-width:1px;}
+ 			 .qMtx .q {position:relative;}
+ 			 .ui-dialog{position:fixed; z-index:5000;}
+ 			 .qMtx{border-collapse:collapse;}
+ 			 .qMtx .el{padding: 1px;}
+ 			 .qMtx .hd{padding: 1px; font-size: 8pt;}
+ 			 .qtxt {font-weight:normal;}
+ 			 .qMtx table.w_hlp_txt {width: 100%;}
+ 			 .qMtx table.w_hlp_txt td:last-child {width: 100%;}
+ 			 #_DefPage{position:relative; display:block;width: 1280px;height: 720px;}
+ 			 #lbl092830968{top: 3px;left: 3px;width: 14px;height: 19px;position:absolute;}
+ 			 #defPage_err_m__{overflow:auto;top: 23px;left: 22px;width: 1238px;height: 411px;position:absolute;}
+ 			 #btn162956092{top: 570px;left: 511px;width: 232px;height: 77px;position:absolute;}
+ 			 #btn162956092__err{top: 555px;left: 511px;position:absolute;}
+ 			 #pagport1{width: 1280px;height: 720px;}
+ 			 #gp_portada{top: 0px;left: 0px;width: 1279px;height: 719px;}
+ 			 #q_id_del{top: 39px;left: 20px;width: 492px;height: 55px;}
+ 			 #q_resul_hogar{top: 40px;left: 524px;width: 81px;height: 50px;}
+ 			 #q_tr_envipe2017_modu_prog{top: 43px;left: 685px;width: 124px;height: 50px;}
+ 			 #gr_1{top: 103px;left: 19px;width: 1229px;height: 288px;}
+ 			 #mat_i{top: 42px;left: 3px;width: 587px;height: 246px;}
+ 			 #q_ageb_n{width: 140px;height: 40px;}
+ 			 #lbl113751470{width: 20px;height: 30px;display:block;}
+ 			 #gr_6{top: 412px;left: 19px;width: 1229px;height: 135px;}
+ 			 #q_nombre{top: 41px;left: 11px;width: 874px;height: 71px;}
+ 			 #q_num_ren{top: 41px;left: 917px;width: 270px;height: 67px;}
+ 			 #gr_7{top: 568px;left: 19px;width: 1229px;height: 104px;}
+ 			 #q_tr_envipe2017_mod_bpcod{top: 40px;left: 333px;width: 195px;height: 50px;}
+ 			 #q_bpcod_opc{top: 40px;left: 552px;width: 201px;height: 64px;}
+ 			 #pagport2{width: 1280px;height: 720px;}
+ 			 #gp_portada2{top: 0px;left: 0px;width: 1279px;height: 719px;}
+ 			 #gr_8{top: 99px;left: 20px;width: 1229px;height: 308px;}
+ 			 #q_nd_tipo{top: 52px;left: 562px;width: 101px;height: 86px;}
+ 			 #q_td_tipo{top: 53px;left: 687px;width: 114px;height: 86px;}
+ 			 #lbl122246543{top: 55px;left: 16px;width: 529px;height: 59px;position:absolute;}
+ 			 #lbl111415625{top: 55px;left: 647px;width: 44px;height: 33px;position:absolute;}
+ 			 #lbl122246609{top: 144px;left: 16px;width: 1170px;height: 144px;position:absolute;}
+ 			 #pagp1_1{width: 1280px;height: 720px;}
+ 			 #grp1_1{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl131131222{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl131131237{top: 87px;left: 155px;width: 1050px;height: 86px;position:absolute;}
+ 			 #lbl131131245{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_1{top: 321px;left: 451px;width: 479px;height: 65px;}
+ 			 #pagp1_2{width: 1280px;height: 720px;}
+ 			 #grp1_2{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl132649181{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl132649192{top: 87px;left: 157px;width: 1050px;height: 89px;position:absolute;}
+ 			 #lbl132649200{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_2c{top: 323px;left: 452px;width: 479px;height: 65px;}
+ 			 #pagp1_3{width: 1280px;height: 720px;}
+ 			 #grp1_3{top: -1px;left: -1px;width: 1280px;height: 720px;}
+ 			 #lbl132908570{top: 86px;left: 66px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl132908584{top: 86px;left: 160px;width: 1050px;height: 113px;position:absolute;}
+ 			 #lbl132908595{top: 204px;left: 323px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_3c{top: 323px;left: 452px;width: 479px;height: 65px;}
+ 			 #pagp1_4{width: 1280px;height: 720px;}
+ 			 #grp1_4{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl112145274{top: 86px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl112145764{top: 85px;left: 161px;width: 1050px;height: 90px;position:absolute;}
+ 			 #lbl112145772{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_4{top: 300px;left: 302px;width: 686px;height: 183px;}
+ 			 #pagp1_5{width: 1280px;height: 720px;}
+ 			 #grp1_5{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl112508718{top: 34px;left: 10px;width: 1239px;height: 60px;position:absolute;}
+ 			 #lbl_ini1_5{top: 101px;left: 12px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl112508746{top: 100px;left: 64px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl112508944{top: 101px;left: 162px;width: 1050px;height: 91px;position:absolute;}
+ 			 #lbl112509115{top: 195px;left: 319px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_5{top: 271px;left: 169px;width: 506px;height: 319px;}
+ 			 #lbp1_5in{top: 501px;left: 701px;width: 25px;height: 25px;position:absolute;}
+ 			 #q_bp1_5e{top: 531px;left: 701px;width: 483px;height: 71px;}
+ 			 #lbp1_5fin{top: 604px;left: 1143px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl_fin1_5{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_6{width: 1280px;height: 720px;}
+ 			 #grp1_6{top: 1px;left: -1px;width: 1280px;height: 720px;}
+ 			 #lbl140440390{top: 45px;left: 12px;width: 1239px;height: 33px;position:absolute;}
+ 			 #lbl_ini1_6{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl140440408{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl140440421{top: 85px;left: 161px;width: 1050px;height: 91px;position:absolute;}
+ 			 #lbl140440430{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #lbl1_6ini{top: 331px;left: 406px;width: 23px;height: 19px;position:absolute;}
+ 			 #q_bp1_6{top: 350px;left: 451px;width: 341px;height: 124px;}
+ 			 #lbl1_6fin{top: 476px;left: 810px;width: 23px;height: 19px;position:absolute;}
+ 			 #lbl_fin1_6{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_7{width: 1280px;height: 720px;}
+ 			 #grp1_7{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl140638642{top: 45px;left: 12px;width: 1239px;height: 33px;position:absolute;}
+ 			 #lbl_ini1_7{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl140638663{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl140638674{top: 86px;left: 162px;width: 1050px;height: 92px;position:absolute;}
+ 			 #lbl140638683{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_7{top: 351px;left: 453px;width: 341px;height: 124px;}
+ 			 #lbl_fin1_7{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_8{width: 1280px;height: 720px;}
+ 			 #grp1_8{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_8{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl141116481{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl141116497{top: 85px;left: 163px;width: 1050px;height: 94px;position:absolute;}
+ 			 #lbl141116505{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_8{top: 350px;left: 451px;width: 341px;height: 124px;}
+ 			 #lbl_fin1_8{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_9{width: 1280px;height: 720px;}
+ 			 #grp1_9{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_9{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl141334187{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl141334197{top: 86px;left: 163px;width: 1050px;height: 93px;position:absolute;}
+ 			 #lbl141334207{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_9{top: 300px;left: 300px;width: 683px;height: 367px;}
+ 			 #lbl_fin1_9{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_10{width: 1280px;height: 720px;}
+ 			 #grp1_10{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_10{top: 85px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl142258478{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl142258490{top: 86px;left: 157px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl142258499{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #matp1_10{top: 271px;left: 164px;width: 803px;height: 189px;}
+ 			 #lbl_fin1_10{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_11{width: 1280px;height: 720px;}
+ 			 #grp1_11{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_11{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl120940609{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl120940619{top: 85px;left: 161px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl120940627{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_11{top: 302px;left: 307px;width: 363px;height: 324px;}
+ 			 #lbl_fin1_11{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_12{width: 1280px;height: 720px;}
+ 			 #grp1_12{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_12{top: 85px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl143550619{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl143550629{top: 86px;left: 157px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl143550641{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #matp1_12{top: 249px;left: 163px;width: 894px;height: 379px;}
+ 			 #lbl_fin1_12{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_13{width: 1280px;height: 720px;}
+ 			 #grp1_13{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_13{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl144719297{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl144719311{top: 85px;left: 161px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl144719322{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_13{top: 351px;left: 452px;width: 341px;height: 124px;}
+ 			 #lbl_fin1_13{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_14{width: 1280px;height: 720px;}
+ 			 #grp1_14{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_14{top: 85px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl100720292{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl100720301{top: 87px;left: 158px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl100720310{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #matp1_14{top: 265px;left: 169px;width: 674px;height: 327px;}
+ 			 #lbp1_14in{top: 360px;left: 857px;width: 25px;height: 25px;position:absolute;}
+ 			 #q_bp1_14_3e{top: 393px;left: 704px;width: 483px;height: 71px;}
+ 			 #lbp1_14fin{top: 470px;left: 1160px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl_fin1_14{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_15{width: 1280px;height: 720px;}
+ 			 #grp1_15{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_15{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl145214327{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl145214345{top: 85px;left: 161px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl145214352{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_15{top: 348px;left: 451px;width: 341px;height: 124px;}
+ 			 #lbl_fin1_15{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_16{width: 1280px;height: 720px;}
+ 			 #grp1_16{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_16{top: 85px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl151032652{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl151032659{top: 86px;left: 157px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl151032667{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #matp1_16{top: 249px;left: 160px;width: 895px;height: 343px;}
+ 			 #lbl_fin1_16{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_17{width: 1280px;height: 720px;}
+ 			 #grp1_17{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_17{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl145810688{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl145810702{top: 85px;left: 161px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl145810709{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_17{top: 351px;left: 452px;width: 341px;height: 124px;}
+ 			 #lbl_fin1_17{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_18{width: 1280px;height: 720px;}
+ 			 #grp1_18{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl150302761{top: 45px;left: 12px;width: 1239px;height: 33px;position:absolute;}
+ 			 #lbl_ini1_18{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl150302786{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl150302795{top: 85px;left: 161px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl150302806{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_18{top: 350px;left: 450px;width: 341px;height: 124px;}
+ 			 #lbl_fin1_18{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_19{width: 1280px;height: 720px;}
+ 			 #grp1_19{top: 1px;left: -1px;width: 1280px;height: 720px;}
+ 			 #lbl151519065{top: 38px;left: 14px;width: 1239px;height: 60px;position:absolute;}
+ 			 #lbl_ini1_19{top: 104px;left: 15px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl151519090{top: 121px;left: 67px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl151519100{top: 122px;left: 159px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl151519108{top: 200px;left: 318px;width: 745px;height: 33px;position:absolute;}
+ 			 #matp1_19{top: 252px;left: 162px;width: 895px;height: 428px;}
+ 			 #lbl_fin1_19{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_20{width: 1280px;height: 720px;}
+ 			 #grp1_20{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_20{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl155400672{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl155400682{top: 85px;left: 162px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl155400690{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_20{top: 351px;left: 452px;width: 341px;height: 124px;}
+ 			 #lbl_fin1_20{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_21{width: 1280px;height: 720px;}
+ 			 #grp1_21{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_21{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl161347058{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl161347069{top: 85px;left: 162px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl161347078{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_21{top: 352px;left: 454px;width: 341px;height: 124px;}
+ 			 #lbl_fin1_21{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_22{width: 1280px;height: 720px;}
+ 			 #grp1_22{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_22{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl162307105{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl162307115{top: 85px;left: 161px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl162307124{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_22{top: 350px;left: 450px;width: 341px;height: 124px;}
+ 			 #lbl_fin1_22{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_23{width: 1280px;height: 720px;}
+ 			 #grp1_23{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_23{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl084040853{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl084040866{top: 85px;left: 161px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl084040872{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_23{top: 246px;left: 165px;width: 515px;height: 371px;}
+ 			 #lbl_fin1_23{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_24{width: 1280px;height: 720px;}
+ 			 #grp1_24{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_24{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl162107089{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl162107099{top: 85px;left: 161px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl162107109{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_24{top: 350px;left: 450px;width: 341px;height: 124px;}
+ 			 #lbl_fin1_24{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_25{width: 1280px;height: 720px;}
+ 			 #grp1_25{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_25{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl113307192{top: 86px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl113307841{top: 86px;left: 162px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl113308191{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_25{top: 272px;left: 66px;width: 677px;height: 324px;}
+ 			 #lbp1_25in{top: 473px;left: 701px;width: 25px;height: 25px;position:absolute;}
+ 			 #q_bp1_25e{top: 501px;left: 700px;width: 483px;height: 71px;}
+ 			 #lbp1_25fin{top: 576px;left: 1142px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl_fin1_25{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_26{width: 1280px;height: 720px;}
+ 			 #grp1_26{top: -1px;left: -1px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_26{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl113334572{top: 86px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl113334763{top: 86px;left: 162px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl113334777{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_26{top: 286px;left: 162px;width: 610px;height: 249px;}
+ 			 #lbp1_26in{top: 435px;left: 699px;width: 25px;height: 25px;position:absolute;}
+ 			 #q_bp1_26e{top: 465px;left: 700px;width: 483px;height: 71px;}
+ 			 #lbp1_26fin{top: 537px;left: 1141px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl_fin1_26{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_27{width: 1280px;height: 720px;}
+ 			 #grp1_27{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_27{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl085229878{top: 86px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl085229897{top: 85px;left: 161px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl085229907{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_27{top: 313px;left: 407px;width: 647px;height: 337px;}
+ 			 #lbl_fin1_27{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_28{width: 1280px;height: 720px;}
+ 			 #grp1_28{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_28{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl114836286{top: 86px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl114836297{top: 86px;left: 163px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl114836329{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_28{top: 287px;left: 164px;width: 667px;height: 249px;}
+ 			 #lbp1_28in{top: 442px;left: 699px;width: 25px;height: 25px;position:absolute;}
+ 			 #q_bp1_28e{top: 471px;left: 699px;width: 483px;height: 71px;}
+ 			 #lbp1_28fin{top: 545px;left: 1140px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl_fin1_28{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_29{width: 1280px;height: 720px;}
+ 			 #grp1_29{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_29{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl085715483{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl085715496{top: 85px;left: 161px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl085715508{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_29{top: 350px;left: 450px;width: 341px;height: 156px;}
+ 			 #lbl_fin1_29{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_30{width: 1280px;height: 720px;}
+ 			 #grp1_30{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_30{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl162331955{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl162331964{top: 85px;left: 161px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl162331971{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_30{top: 350px;left: 451px;width: 341px;height: 124px;}
+ 			 #lbl_fin1_30{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_31{width: 1280px;height: 720px;}
+ 			 #grp1_31{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_31{top: 85px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl100744261{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl100744270{top: 86px;left: 157px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl100744281{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #matp1_31{top: 219px;left: 163px;width: 895px;height: 447px;}
+ 			 #lbp1_31in{top: 522px;left: 749px;width: 25px;height: 25px;position:absolute;}
+ 			 #q_bp1_31_8e{top: 555px;left: 750px;width: 483px;height: 71px;}
+ 			 #lbp1_31fin{top: 630px;left: 1190px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl_fin1_31{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_32{width: 1280px;height: 720px;}
+ 			 #grp1_32{top: 1px;left: -1px;width: 1280px;height: 720px;}
+ 			 #lbl090100199{top: 46px;left: 13px;width: 1239px;height: 59px;position:absolute;}
+ 			 #lbl_ini1_32{top: 115px;left: 12px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl090100222{top: 115px;left: 64px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl090100233{top: 116px;left: 156px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl090100240{top: 199px;left: 315px;width: 745px;height: 33px;position:absolute;}
+ 			 #matp1_32{top: 255px;left: 162px;width: 895px;height: 386px;}
+ 			 #lbl_fin1_32{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pag155939398{width: 1280px;height: 720px;}
+ 			 #grp1_33{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_33{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl095557323{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl095557333{top: 85px;left: 161px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl095557341{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_33{top: 324px;left: 413px;width: 565px;height: 328px;}
+ 			 #lbl_fin1_33{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp1_34{width: 1280px;height: 720px;}
+ 			 #grp1_34{top: -1px;left: -1px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_34{top: 86px;left: 18px;width: 26px;height: 25px;position:absolute;}
+ 			 #lbl162414820{top: 85px;left: 92px;width: 61px;height: 33px;position:absolute;}
+ 			 #lbl162414828{top: 85px;left: 155px;width: 1046px;height: 78px;position:absolute;}
+ 			 #lbl162414837{top: 180px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_34{top: 200px;left: 102px;width: 58px;height: 44px;}
+ 			 #q_bp1_34_monto{top: 264px;left: 614px;width: 485px;height: 71px;}
+ 			 #grp1_34_calc{top: 275px;left: 222px;width: 243px;height: 207px;}
+ 			 #btn162414901{top: 17px;left: 13px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162414901__err{top: 2px;left: 13px;position:absolute;}
+ 			 #btn162415081{top: 16px;left: 87px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162415081__err{top: 1px;left: 87px;position:absolute;}
+ 			 #btn162415238{top: 16px;left: 162px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162415238__err{top: 1px;left: 162px;position:absolute;}
+ 			 #btn162415393{top: 62px;left: 12px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162415393__err{top: 47px;left: 12px;position:absolute;}
+ 			 #btn162415546{top: 62px;left: 87px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162415546__err{top: 47px;left: 87px;position:absolute;}
+ 			 #btn162415712{top: 62px;left: 162px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162415712__err{top: 47px;left: 162px;position:absolute;}
+ 			 #btn162415868{top: 108px;left: 12px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162415868__err{top: 93px;left: 12px;position:absolute;}
+ 			 #btn162416023{top: 108px;left: 87px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162416023__err{top: 93px;left: 87px;position:absolute;}
+ 			 #btn162416176{top: 108px;left: 162px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162416176__err{top: 93px;left: 162px;position:absolute;}
+ 			 #btn162416337{top: 154px;left: 12px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162416337__err{top: 139px;left: 12px;position:absolute;}
+ 			 #btn162416496{top: 154px;left: 87px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162416496__err{top: 139px;left: 87px;position:absolute;}
+ 			 #btn162416644{top: 154px;left: 162px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162416644__err{top: 139px;left: 162px;position:absolute;}
+ 			 #lblcal1{top: 354px;left: 578px;width: 29px;height: 30px;position:absolute;}
+ 			 #q_bp1_34e{top: 353px;left: 614px;width: 485px;height: 151px;}
+ 			 #lblcal2{top: 439px;left: 1119px;width: 32px;height: 27px;position:absolute;}
+ 			 #q_bp1_34_radio{top: 505px;left: 222px;width: 523px;height: 81px;}
+ 			 #lbl_fin1_34{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl105923633{top: 389px;left: 126px;width: 26px;height: 25px;position:absolute;}
+ 			 #pagp1_35{width: 1280px;height: 720px;}
+ 			 #grp1_35{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_35{top: 86px;left: 12px;width: 26px;height: 25px;position:absolute;}
+ 			 #lbl162421099{top: 85px;left: 92px;width: 61px;height: 33px;position:absolute;}
+ 			 #lbl162421110{top: 85px;left: 155px;width: 1046px;height: 78px;position:absolute;}
+ 			 #lbl162421117{top: 180px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp1_35{top: 200px;left: 102px;width: 58px;height: 44px;}
+ 			 #q_bp1_35_monto{top: 264px;left: 614px;width: 485px;height: 71px;}
+ 			 #grp1_35_calc{top: 275px;left: 222px;width: 243px;height: 207px;}
+ 			 #btn162421177{top: 16px;left: 13px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162421177__err{top: 1px;left: 13px;position:absolute;}
+ 			 #btn162421345{top: 16px;left: 87px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162421345__err{top: 1px;left: 87px;position:absolute;}
+ 			 #btn162421508{top: 16px;left: 162px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162421508__err{top: 1px;left: 162px;position:absolute;}
+ 			 #btn162421671{top: 63px;left: 13px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162421671__err{top: 48px;left: 13px;position:absolute;}
+ 			 #btn162421833{top: 62px;left: 87px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162421833__err{top: 47px;left: 87px;position:absolute;}
+ 			 #btn162421989{top: 62px;left: 162px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162421989__err{top: 47px;left: 162px;position:absolute;}
+ 			 #btn162422147{top: 108px;left: 12px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162422147__err{top: 93px;left: 12px;position:absolute;}
+ 			 #btn162422294{top: 108px;left: 87px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162422294__err{top: 93px;left: 87px;position:absolute;}
+ 			 #btn162422458{top: 108px;left: 162px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162422458__err{top: 93px;left: 162px;position:absolute;}
+ 			 #btn162422615{top: 154px;left: 12px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162422615__err{top: 139px;left: 12px;position:absolute;}
+ 			 #btn162422936{top: 154px;left: 162px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162422936__err{top: 139px;left: 162px;position:absolute;}
+ 			 #btn162422764{top: 155px;left: 90px;width: 69px;height: 40px;position:absolute;}
+ 			 #btn162422764__err{top: 140px;left: 90px;position:absolute;}
+ 			 #lblcal3{top: 354px;left: 577px;width: 31px;height: 26px;position:absolute;}
+ 			 #q_bp1_35e{top: 356px;left: 618px;width: 485px;height: 151px;}
+ 			 #lblcal4{top: 440px;left: 1115px;width: 34px;height: 26px;position:absolute;}
+ 			 #q_bp1_35_radio{top: 507px;left: 219px;width: 523px;height: 81px;}
+ 			 #lbl_fin1_35{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pag162044134{width: 1280px;height: 720px;}
+ 			 #grp1_36{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini1_36{top: 85px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl100759104{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl100759115{top: 86px;left: 157px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl100759123{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #matp1_36{top: 224px;left: 109px;width: 1135px;height: 428px;}
+ 			 #lbp1_36in{top: 511px;left: 749px;width: 25px;height: 25px;position:absolute;}
+ 			 #q_bp1_36_10e{top: 539px;left: 749px;width: 483px;height: 71px;}
+ 			 #lbp1_36fin{top: 615px;left: 1189px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl_fin1_36{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp2_1{width: 1280px;height: 720px;}
+ 			 #grp2_1{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini2_1{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl083902361{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl083902370{top: 85px;left: 161px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl083902377{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp2_1{top: 350px;left: 450px;width: 341px;height: 124px;}
+ 			 #lbl_fin2_1{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp3_1{width: 1280px;height: 720px;}
+ 			 #grp3_1{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini3_1{top: 85px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl084050432{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl084050442{top: 86px;left: 157px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl084050451{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #matp3_1{top: 221px;left: 161px;width: 895px;height: 428px;}
+ 			 #lbp3_1in{top: 511px;left: 700px;width: 25px;height: 25px;position:absolute;}
+ 			 #q_bp3_1_11e{top: 540px;left: 700px;width: 483px;height: 71px;}
+ 			 #lbp3_1fin{top: 615px;left: 1141px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl_fin3_1{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp3_2{width: 1280px;height: 720px;}
+ 			 #grp3_2{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini3_2{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl084248115{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl084248127{top: 85px;left: 161px;width: 1028px;height: 60px;position:absolute;}
+ 			 #lbl084248138{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp3_2{top: 350px;left: 452px;width: 341px;height: 124px;}
+ 			 #lbl_fin3_2{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp4_1{width: 1280px;height: 720px;}
+ 			 #grp4_1{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl094230269{top: 46px;left: 13px;width: 1239px;height: 39px;position:absolute;}
+ 			 #lbl_ini4_1{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl084522036{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl084522042{top: 86px;left: 162px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl084522049{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp4_1{top: 285px;left: 164px;width: 807px;height: 213px;}
+ 			 #lbp4_1in{top: 420px;left: 701px;width: 25px;height: 25px;position:absolute;}
+ 			 #q_bp4_1e{top: 452px;left: 702px;width: 483px;height: 71px;}
+ 			 #lbp4_1fin{top: 526px;left: 1141px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl_fin4_1{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp5_1{width: 1280px;height: 720px;}
+ 			 #grp5_1{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini5_1{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl084950046{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl084950054{top: 86px;left: 162px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl084950060{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp5_1{top: 286px;left: 163px;width: 753px;height: 253px;}
+ 			 #lbp5_1in{top: 458px;left: 701px;width: 25px;height: 25px;position:absolute;}
+ 			 #q_bp5_1e{top: 491px;left: 702px;width: 483px;height: 71px;}
+ 			 #lbp5_1fin{top: 562px;left: 1141px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl_fin5_1{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp5_2{width: 1280px;height: 720px;}
+ 			 #grp5_2{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini5_2{top: 85px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl085501770{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl085501782{top: 86px;left: 157px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl085501789{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #matp5_2{top: 255px;left: 163px;width: 860px;height: 257px;}
+ 			 #lbp5_2in{top: 380px;left: 701px;width: 25px;height: 25px;position:absolute;}
+ 			 #q_bp5_2_3e{top: 406px;left: 702px;width: 483px;height: 71px;}
+ 			 #lbp5_2fin{top: 484px;left: 1141px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl_fin5_2{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp5_3{width: 1280px;height: 720px;}
+ 			 #grp5_3{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini5_3{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl085802135{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl085802150{top: 85px;left: 161px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl085802159{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp5_3{top: 352px;left: 451px;width: 412px;height: 195px;}
+ 			 #lbl_fin5_3{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp6_1{width: 1280px;height: 720px;}
+ 			 #grp6_1{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini6_1{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl090011457{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl090011472{top: 86px;left: 162px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl090011487{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp6_1{top: 302px;left: 163px;width: 1102px;height: 195px;}
+ 			 #lbl_fin6_1{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp6_2{width: 1280px;height: 720px;}
+ 			 #grp6_2{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini6_2{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl090543139{top: 86px;left: 67px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl090543151{top: 85px;left: 161px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl090543158{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp6_2{top: 301px;left: 300px;width: 541px;height: 180px;}
+ 			 #lbl_fin6_2{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp6_3{width: 1280px;height: 720px;}
+ 			 #grp6_3{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini6_3{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl090915601{top: 87px;left: 67px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl090915611{top: 85px;left: 161px;width: 1046px;height: 76px;position:absolute;}
+ 			 #lbl090915620{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp6_3{top: 301px;left: 300px;width: 753px;height: 189px;}
+ 			 #lbl_fin6_3{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pagp7_1{width: 1280px;height: 720px;}
+ 			 #grp7_1{top: 0px;left: 0px;width: 1280px;height: 720px;}
+ 			 #lbl_ini7_1{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl091822893{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl091822917{top: 86px;left: 162px;width: 1050px;height: 60px;position:absolute;}
+ 			 #lbl091822928{top: 181px;left: 320px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_bp7_1{top: 288px;left: 168px;width: 753px;height: 228px;}
+ 			 #lbp7_1in{top: 385px;left: 700px;width: 25px;height: 25px;position:absolute;}
+ 			 #q_bp7_1e{top: 418px;left: 702px;width: 483px;height: 71px;}
+ 			 #lbp7_1fin{top: 489px;left: 1140px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl_fin7_1{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pag152408353{width: 1280px;height: 720px;}
+ 			 #lbl_ini{top: 33px;left: 18px;width: 46px;height: 19px;position:absolute;}
+ 			 #c_tr_envipe2020_modulo_ob{top: 61px;left: 19px;}
+ 			 #c_tr_envipe2020_modulo_ob .qCygDt{overflow: auto;width: 700px;height: 200px;}
+ 			 #c_tr_envipe2020_modulo_ob .qCygF > table .qEls{top: 61px;left: 19px;width: 1217px;height: 419px;}
+ 			 #q_referencia{top: 30px;left: 16px;width: 210px;height: 74px;}
+ 			 #q_mensaje{top: 119px;left: 16px;width: 765px;height: 71px;}
+ 			 #q_observacion{top: 203px;left: 16px;width: 765px;height: 144px;}
+ 			 #lbl_fin{top: 641px;left: 1196px;width: 40px;height: 23px;position:absolute;}
+ 			 /*estilos*/
+ 			 #q_id_del .qtip {font-size: 9px;}
+ 			 #q_resul_hogar .qtip {font-size: 9px;}
+ 			 #q_tr_envipe2017_modu_prog .qtip {font-size: 9px;}
+ 			 #q_ent .qtxt {font-style: normal;}
+ 			 #mat_i .rowl:eq(0){height:9.75%;}
+ 			 #mat_i .rowl:eq(1){height:22.35%;}
+ 			 #mat_i .rowl:eq(2){height:22.35%;}
+ 			 #mat_i .rowl:eq(3){height:22.35%;}
+ 			 #mat_i .rowl:eq(4){height:22.35%;}
+ 			 #mat_i .col:eq(0){width:53.58%;}
+ 			 #mat_i .col:eq(1){width:27.88%;}
+ 			 #mat_i .col:eq(2){width:3.98%;}
+ 			 #mat_i .col:eq(3){width:14.54%;}
+ 			 #gr_8 > span > .qgh .qgt {font-weight: bold;}
+ 			 #q_nd_tipo .qtip {font-size: 10px;}
+ 			 #q_td_tipo .qtip {font-size: 10px;}
+ 			 #lbl131131222.qtxt {font-weight: bold;}
+ 			 #lbl131131245.qtxt {font-style: italic;}
+ 			 #lbl132649181.qtxt {font-weight: bold;}
+ 			 #lbl132649200.qtxt {font-style: italic;}
+ 			 #lbl132908570.qtxt {font-weight: bold;}
+ 			 #lbl132908595.qtxt {font-style: italic;}
+ 			 #lbl112145274.qtxt {font-weight: bold;}
+ 			 #lbl112145772.qtxt {font-style: italic;}
+ 			 #lbl112508718.qtxt {background-color: #fce8f5;}
+ 			 #lbl112508746.qtxt {font-weight: bold;}
+ 			 #lbl112509115.qtxt {font-style: italic;}
+ 			 #lbl140440390.qtxt {background-color: #fce8f5;}
+ 			 #lbl140440408.qtxt {font-weight: bold;}
+ 			 #lbl140440430.qtxt {font-style: italic;}
+ 			 #lbl140638642.qtxt {background-color: #fce8f5;}
+ 			 #lbl140638663.qtxt {font-weight: bold;}
+ 			 #lbl140638683.qtxt {font-style: italic;}
+ 			 #lbl141116481.qtxt {font-weight: bold;}
+ 			 #lbl141116505.qtxt {font-style: italic;}
+ 			 #lbl141334187.qtxt {font-weight: bold;}
+ 			 #lbl141334207.qtxt {font-style: italic;}
+ 			 #lbl142258478.qtxt {font-weight: bold;}
+ 			 #lbl142258499.qtxt {font-style: italic;}
+ 			 #matp1_10 .rowl:eq(0){height:25.0%;}
+ 			 #matp1_10 .rowl:eq(1){height:25.0%;}
+ 			 #matp1_10 .rowl:eq(2){height:25.0%;}
+ 			 #matp1_10 .rowl:eq(3){height:25.0%;}
+ 			 #matp1_10 .col:eq(0){width:5.0%;}
+ 			 #matp1_10 .col:eq(1){width:8.0%;}
+ 			 #matp1_10 .col:eq(2){width:87.0%;}
+ 			 #lbl120940609.qtxt {font-weight: bold;}
+ 			 #lbl120940627.qtxt {font-style: italic;}
+ 			 #lbl143550619.qtxt {font-weight: bold;}
+ 			 #lbl143550641.qtxt {font-style: italic;}
+ 			 #matp1_12 .rowl:eq(0){height:13.15%;}
+ 			 #matp1_12 .rowl:eq(1){height:14.47%;}
+ 			 #matp1_12 .rowl:eq(2){height:14.47%;}
+ 			 #matp1_12 .rowl:eq(3){height:14.47%;}
+ 			 #matp1_12 .rowl:eq(4){height:14.47%;}
+ 			 #matp1_12 .rowl:eq(5){height:14.47%;}
+ 			 #matp1_12 .rowl:eq(6){height:14.5%;}
+ 			 #matp1_12 .col:eq(0){width:5.0%;}
+ 			 #matp1_12 .col:eq(1){width:8.0%;}
+ 			 #matp1_12 .col:eq(2){width:87.0%;}
+ 			 #lbl144719297.qtxt {font-weight: bold;}
+ 			 #lbl144719322.qtxt {font-style: italic;}
+ 			 #lbl100720292.qtxt {font-weight: bold;}
+ 			 #lbl100720310.qtxt {font-style: italic;}
+ 			 #matp1_14 .rowl:eq(0){height:5.0%;}
+ 			 #matp1_14 .rowl:eq(1){height:19.0%;}
+ 			 #matp1_14 .rowl:eq(2){height:19.0%;}
+ 			 #matp1_14 .rowl:eq(3){height:19.0%;}
+ 			 #matp1_14 .rowl:eq(4){height:19.0%;}
+ 			 #matp1_14 .rowl:eq(5){height:19.0%;}
+ 			 #matp1_14 .col:eq(0){width:5.0%;}
+ 			 #matp1_14 .col:eq(1){width:8.0%;}
+ 			 #matp1_14 .col:eq(2){width:87.0%;}
+ 			 #lbl145214327.qtxt {font-weight: bold;}
+ 			 #lbl145214352.qtxt {font-style: italic;}
+ 			 #lbl151032652.qtxt {font-weight: bold;}
+ 			 #lbl151032667.qtxt {font-style: italic;}
+ 			 #matp1_16 .rowl:eq(0){height:5.0%;}
+ 			 #matp1_16 .rowl:eq(1){height:19.0%;}
+ 			 #matp1_16 .rowl:eq(2){height:19.0%;}
+ 			 #matp1_16 .rowl:eq(3){height:19.0%;}
+ 			 #matp1_16 .rowl:eq(4){height:19.0%;}
+ 			 #matp1_16 .rowl:eq(5){height:19.0%;}
+ 			 #matp1_16 .col:eq(0){width:5.0%;}
+ 			 #matp1_16 .col:eq(1){width:8.0%;}
+ 			 #matp1_16 .col:eq(2){width:87.0%;}
+ 			 #lbl145810688.qtxt {font-weight: bold;}
+ 			 #lbl145810709.qtxt {font-style: italic;}
+ 			 #lbl150302761.qtxt {background-color: #fce8f5;}
+ 			 #lbl150302786.qtxt {font-weight: bold;}
+ 			 #lbl150302806.qtxt {font-style: italic;}
+ 			 #lbl151519065.qtxt {background-color: #fce8f5;}
+ 			 #lbl151519090.qtxt {font-weight: bold;}
+ 			 #lbl151519108.qtxt {font-style: italic;}
+ 			 #matp1_19 .rowl:eq(0){height:2.0%;}
+ 			 #matp1_19 .rowl:eq(1){height:12.25%;}
+ 			 #matp1_19 .rowl:eq(2){height:12.25%;}
+ 			 #matp1_19 .rowl:eq(3){height:12.25%;}
+ 			 #matp1_19 .rowl:eq(4){height:12.25%;}
+ 			 #matp1_19 .rowl:eq(5){height:12.25%;}
+ 			 #matp1_19 .rowl:eq(6){height:12.25%;}
+ 			 #matp1_19 .rowl:eq(7){height:12.25%;}
+ 			 #matp1_19 .rowl:eq(8){height:12.25%;}
+ 			 #matp1_19 .col:eq(0){width:5.0%;}
+ 			 #matp1_19 .col:eq(1){width:8.0%;}
+ 			 #matp1_19 .col:eq(2){width:87.0%;}
+ 			 #lbl155400672.qtxt {font-weight: bold;}
+ 			 #lbl155400690.qtxt {font-style: italic;}
+ 			 #lbl161347058.qtxt {font-weight: bold;}
+ 			 #lbl161347078.qtxt {font-style: italic;}
+ 			 #lbl162307105.qtxt {font-weight: bold;}
+ 			 #lbl162307124.qtxt {font-style: italic;}
+ 			 #lbl084040853.qtxt {font-weight: bold;}
+ 			 #lbl084040872.qtxt {font-style: italic;}
+ 			 #lbl162107089.qtxt {font-weight: bold;}
+ 			 #lbl162107109.qtxt {font-style: italic;}
+ 			 #lbl113307192.qtxt {font-weight: bold;}
+ 			 #lbl113308191.qtxt {font-style: italic;}
+ 			 #lbl113334572.qtxt {font-weight: bold;}
+ 			 #lbl113334777.qtxt {font-style: italic;}
+ 			 #lbl085229878.qtxt {font-weight: bold;}
+ 			 #lbl085229907.qtxt {font-style: italic;}
+ 			 #lbl114836286.qtxt {font-weight: bold;}
+ 			 #lbl114836329.qtxt {font-style: italic;}
+ 			 #lbl085715483.qtxt {font-weight: bold;}
+ 			 #lbl085715508.qtxt {font-style: italic;}
+ 			 #lbl162331955.qtxt {font-weight: bold;}
+ 			 #lbl162331971.qtxt {font-style: italic;}
+ 			 #lbl100744261.qtxt {font-weight: bold;}
+ 			 #lbl100744281.qtxt {font-style: italic;}
+ 			 #matp1_31 .rowl:eq(0){height:10.19%;}
+ 			 #matp1_31 .rowl:eq(1){height:10.19%;}
+ 			 #matp1_31 .rowl:eq(2){height:10.19%;}
+ 			 #matp1_31 .rowl:eq(3){height:10.19%;}
+ 			 #matp1_31 .rowl:eq(4){height:10.19%;}
+ 			 #matp1_31 .rowl:eq(5){height:10.19%;}
+ 			 #matp1_31 .rowl:eq(6){height:10.19%;}
+ 			 #matp1_31 .rowl:eq(7){height:10.19%;}
+ 			 #matp1_31 .rowl:eq(8){height:10.19%;}
+ 			 #matp1_31 .rowl:eq(9){height:8.32%;}
+ 			 #matp1_31 .col:eq(0){width:6.74%;}
+ 			 #matp1_31 .col:eq(1){width:6.97%;}
+ 			 #matp1_31 .col:eq(2){width:86.29%;}
+ 			 #lbl090100199.qtxt {background-color: #fce8f5;}
+ 			 #lbl090100222.qtxt {font-weight: bold;}
+ 			 #lbl090100240.qtxt {font-style: italic;}
+ 			 #matp1_32 .rowl:eq(0){height:14.26%;}
+ 			 #matp1_32 .rowl:eq(1){height:14.29%;}
+ 			 #matp1_32 .rowl:eq(2){height:14.29%;}
+ 			 #matp1_32 .rowl:eq(3){height:14.29%;}
+ 			 #matp1_32 .rowl:eq(4){height:14.29%;}
+ 			 #matp1_32 .rowl:eq(5){height:14.29%;}
+ 			 #matp1_32 .rowl:eq(6){height:14.29%;}
+ 			 #matp1_32 .col:eq(0){width:5.0%;}
+ 			 #matp1_32 .col:eq(1){width:8.0%;}
+ 			 #matp1_32 .col:eq(2){width:87.0%;}
+ 			 #lbl095557323.qtxt {font-weight: bold;}
+ 			 #lbl095557341.qtxt {font-style: italic;}
+ 			 #lbl162414820.qtxt {font-weight: bold;}
+ 			 #lbl162414837.qtxt {font-style: italic;}
+ 			 #lbl162421099.qtxt {font-weight: bold;}
+ 			 #lbl162421117.qtxt {font-style: italic;}
+ 			 #lbl100759104.qtxt {font-weight: bold;}
+ 			 #lbl100759123.qtxt {font-style: italic;}
+ 			 #matp1_36 .rowl:eq(0){height:8.46%;}
+ 			 #matp1_36 .rowl:eq(1){height:7.62%;}
+ 			 #matp1_36 .rowl:eq(2){height:7.62%;}
+ 			 #matp1_36 .rowl:eq(3){height:7.62%;}
+ 			 #matp1_36 .rowl:eq(4){height:7.62%;}
+ 			 #matp1_36 .rowl:eq(5){height:7.62%;}
+ 			 #matp1_36 .rowl:eq(6){height:7.62%;}
+ 			 #matp1_36 .rowl:eq(7){height:7.62%;}
+ 			 #matp1_36 .rowl:eq(8){height:7.62%;}
+ 			 #matp1_36 .rowl:eq(9){height:7.62%;}
+ 			 #matp1_36 .rowl:eq(10){height:7.62%;}
+ 			 #matp1_36 .rowl:eq(11){height:7.69%;}
+ 			 #matp1_36 .rowl:eq(12){height:7.65%;}
+ 			 #matp1_36 .col:eq(0){width:5.0%;}
+ 			 #matp1_36 .col:eq(1){width:8.0%;}
+ 			 #matp1_36 .col:eq(2){width:87.0%;}
+ 			 #lbl083902361.qtxt {font-weight: bold;}
+ 			 #lbl083902377.qtxt {font-style: italic;}
+ 			 #lbl084050432.qtxt {font-weight: bold;}
+ 			 #lbl084050451.qtxt {font-style: italic;}
+ 			 #matp3_1 .rowl:eq(0){height:7.13%;}
+ 			 #matp3_1 .rowl:eq(1){height:7.13%;}
+ 			 #matp3_1 .rowl:eq(2){height:7.13%;}
+ 			 #matp3_1 .rowl:eq(3){height:7.13%;}
+ 			 #matp3_1 .rowl:eq(4){height:7.13%;}
+ 			 #matp3_1 .rowl:eq(5){height:7.13%;}
+ 			 #matp3_1 .rowl:eq(6){height:7.13%;}
+ 			 #matp3_1 .rowl:eq(7){height:7.13%;}
+ 			 #matp3_1 .rowl:eq(8){height:7.13%;}
+ 			 #matp3_1 .rowl:eq(9){height:7.13%;}
+ 			 #matp3_1 .rowl:eq(10){height:7.21%;}
+ 			 #matp3_1 .rowl:eq(11){height:7.19%;}
+ 			 #matp3_1 .rowl:eq(12){height:7.15%;}
+ 			 #matp3_1 .rowl:eq(13){height:7.15%;}
+ 			 #matp3_1 .col:eq(0){width:5.0%;}
+ 			 #matp3_1 .col:eq(1){width:8.0%;}
+ 			 #matp3_1 .col:eq(2){width:87.0%;}
+ 			 #lbl084248115.qtxt {font-weight: bold;}
+ 			 #lbl084248138.qtxt {font-style: italic;}
+ 			 #lbl094230269.qtxt {background-color: #fce8f5;}
+ 			 #lbl084522036.qtxt {font-weight: bold;}
+ 			 #lbl084522049.qtxt {font-style: italic;}
+ 			 #lbl084950046.qtxt {font-weight: bold;}
+ 			 #lbl084950060.qtxt {font-style: italic;}
+ 			 #lbl085501770.qtxt {font-weight: bold;}
+ 			 #lbl085501789.qtxt {font-style: italic;}
+ 			 #matp5_2 .rowl:eq(0){height:20.0%;}
+ 			 #matp5_2 .rowl:eq(1){height:20.0%;}
+ 			 #matp5_2 .rowl:eq(2){height:20.0%;}
+ 			 #matp5_2 .rowl:eq(3){height:20.0%;}
+ 			 #matp5_2 .rowl:eq(4){height:20.0%;}
+ 			 #matp5_2 .col:eq(0){width:5.0%;}
+ 			 #matp5_2 .col:eq(1){width:8.0%;}
+ 			 #matp5_2 .col:eq(2){width:87.0%;}
+ 			 #lbl085802135.qtxt {font-weight: bold;}
+ 			 #lbl085802159.qtxt {font-style: italic;}
+ 			 #lbl090011457.qtxt {font-weight: bold;}
+ 			 #lbl090011487.qtxt {font-style: italic;}
+ 			 #lbl090543139.qtxt {font-weight: bold;}
+ 			 #lbl090543158.qtxt {font-style: italic;}
+ 			 #lbl090915601.qtxt {font-weight: bold;}
+ 			 #lbl090915620.qtxt {font-style: italic;}
+ 			 #lbl091822893.qtxt {font-weight: bold;}
+ 			 #lbl091822928.qtxt {font-style: italic;}
+ 			 /*Inicio Vistas Secundarias */
+ 			 /*Fin Vistas Secundarias*/
+ 			 /*Fin_GenCuest*/
+ 		
+ 		/* 
+ 		  NOMBRE DE LA PLANTILLA: Estilo Clásico_03102017_152146 03122018_105921 08012020_094552 09112020_133707 151 17102022_111550_59970
+ 		  DESCRIPCION: Estilo tipo clasica
+ 		
+ 		*/ 
+#menuTop__   {top: 2px;left: 682px;width: 200px;height: 30px; parent: pnlTop__;}      
+.stit{display:none;}
+#sideMenuLeft_ {top: 0px;  left: 0px;  width: 0px; height: 0px;}
+#pnlMenuMainHeader_ {top: 0px;  left: 0px;  width: 0px; height: 0px;}
+#pnlComboMenuHeader_ {top: 0px;  left: 0px;  width: 0px; height: 0px;}
+#pnlMenuMainFooter_ {top: 0px;  left: 0px;  width: 0px; height:60px;}
+#pnlComboMenuFooter_ {top: 0px;  left: 0px;  width: 0px; height: 0px;}
+#pnlButonesSalirHeader_{top: 0px;  left: 0px;  width: 0px; height: 0px;}
+#pnlButonesSalirFooter_{top: 0px;  left: 0px;  width: 0px; height: 0px;}
+/*para congurar los botones de navegacion*/
+#navPrev_footer_  {top: 2px;  left: 10px;   width: 200px; height: 50px; parent: pnlNavegacionFooter_; font-size:6px;font-family:Arial;caption:Anterior;}
+#obs_footer_      {top: 2px;  left: 220px;  width: 270px; height: 50px; parent: pnlNavegacionFooter_; font-size:5px;font-family:Arial;caption:Observaciones;}                                   
+#captura_footer_  {top: 2px;  left: 500px;  width: 185px; height: 50px; parent: pnlNavegacionFooter_; font-size:6px;font-family:Arial;caption:Captura;}                                   
+#revision_footer_ {top: 2px;  left: 695px;  width: 195px; height: 50px; parent: pnlNavegacionFooter_; font-size:6px;font-family:Arial;caption:Salir;}
+#navNext_footer_  {top: 2px;  left: 900px;  width: 200px; height: 50px; parent: pnlNavegacionFooter_; font-size:6px;font-family:Arial;caption:Siguiente;}
+#c_tr_envipe2020_moddes_nom__irElement {display: none;}]]></css>
+  <access/>
+  <filter/>
+  <questionnaire>
+    <members>
+      <question name="q_id_del">
+        <control type="text" rows="1" cols="30" layout="vertical"/>
+      </question>
+      <question name="q_resul_hogar">
+        <control type="text" rows="1" cols="1" layout="vertical"/>
+      </question>
+      <question name="q_tr_envipe2017_modu_prog">
+        <control type="text" rows="1" cols="4" layout="vertical"/>
+      </question>
+      <labelfield name="lbl113750921"/>
+      <question name="q_ent">
+        <control type="text" rows="1" cols="2" layout="vertical"/>
+      </question>
+      <labelfield name="lbl113751243"/>
+      <labelfield name="lbl113751279"/>
+      <labelfield name="lbl113751289"/>
+      <question name="q_mun">
+        <control type="text" rows="1" cols="4" layout="vertical"/>
+      </question>
+      <labelfield name="lbl113751321"/>
+      <labelfield name="lbl113751330"/>
+      <labelfield name="lbl113751346"/>
+      <question name="q_loc">
+        <control type="text" rows="1" cols="4" layout="vertical"/>
+      </question>
+      <labelfield name="lbl113751373"/>
+      <labelfield name="lbl113751404"/>
+      <labelfield name="lbl113751438"/>
+      <question name="q_ageb_n">
+        <control type="text" rows="1" cols="4" layout="vertical"/>
+      </question>
+      <labelfield name="lbl113751470"/>
+      <question name="q_ageb_an">
+        <control type="text" rows="1" cols="2" layout="vertical"/>
+      </question>
+      <question name="q_nombre">
+        <control type="text" rows="1" cols="55" layout="vertical"/>
+      </question>
+      <question name="q_num_ren">
+        <control type="text" rows="1" cols="2" layout="vertical"/>
+      </question>
+      <question name="q_tr_envipe2017_mod_bpcod">
+        <control type="text" rows="1" cols="2" layout="horizontal"/>
+      </question>
+      <question name="q_bpcod_opc">
+        <control type="text" rows="1" cols="2" layout="horizontal"/>
+      </question>
+      <question name="q_nd_tipo">
+        <control type="text" rows="1" cols="1" layout="horizontal"/>
+      </question>
+      <question name="q_td_tipo">
+        <control type="text" rows="1" cols="1" layout="horizontal"/>
+      </question>
+      <labelfield name="lbl122246543"/>
+      <labelfield name="lbl111415625"/>
+      <labelfield name="lbl122246609"/>
+      <labelfield name="lbl131131222"/>
+      <labelfield name="lbl131131237"/>
+      <labelfield name="lbl131131245"/>
+      <question name="q_bp1_1">
+        <control type="combobox" layout="vertical"/>
+      </question>
+      <labelfield name="lbl132649181"/>
+      <labelfield name="lbl132649192"/>
+      <labelfield name="lbl132649200"/>
+      <question name="q_bp1_2c">
+        <control type="combobox" layout="vertical"/>
+      </question>
+      <labelfield name="lbl132908570"/>
+      <labelfield name="lbl132908584"/>
+      <labelfield name="lbl132908595"/>
+      <question name="q_bp1_3c">
+        <control type="combobox" layout="vertical"/>
+      </question>
+      <labelfield name="lbl112145274"/>
+      <labelfield name="lbl112145764"/>
+      <labelfield name="lbl112145772"/>
+      <question name="q_bp1_4">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl112508718"/>
+      <labelfield name="lbl_ini1_5"/>
+      <labelfield name="lbl112508746"/>
+      <labelfield name="lbl112508944"/>
+      <labelfield name="lbl112509115"/>
+      <question name="q_bp1_5">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbp1_5in"/>
+      <question name="q_bp1_5e">
+        <control type="text" rows="1" cols="30" layout="vertical"/>
+      </question>
+      <labelfield name="lbp1_5fin"/>
+      <labelfield name="lbl_fin1_5"/>
+      <labelfield name="lbl140440390"/>
+      <labelfield name="lbl_ini1_6"/>
+      <labelfield name="lbl140440408"/>
+      <labelfield name="lbl140440421"/>
+      <labelfield name="lbl140440430"/>
+      <labelfield name="lbl1_6ini"/>
+      <question name="q_bp1_6">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl1_6fin"/>
+      <labelfield name="lbl_fin1_6"/>
+      <labelfield name="lbl140638642"/>
+      <labelfield name="lbl_ini1_7"/>
+      <labelfield name="lbl140638663"/>
+      <labelfield name="lbl140638674"/>
+      <labelfield name="lbl140638683"/>
+      <question name="q_bp1_7">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_7"/>
+      <labelfield name="lbl_ini1_8"/>
+      <labelfield name="lbl141116481"/>
+      <labelfield name="lbl141116497"/>
+      <labelfield name="lbl141116505"/>
+      <question name="q_bp1_8">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_8"/>
+      <labelfield name="lbl_ini1_9"/>
+      <labelfield name="lbl141334187"/>
+      <labelfield name="lbl141334197"/>
+      <labelfield name="lbl141334207"/>
+      <question name="q_bp1_9">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_9"/>
+      <labelfield name="lbl_ini1_10"/>
+      <labelfield name="lbl142258478"/>
+      <labelfield name="lbl142258490"/>
+      <labelfield name="lbl142258499"/>
+      <question name="q_bp1_10_1">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl142258566"/>
+      <labelfield name="lbl142258574"/>
+      <question name="q_bp1_10_2">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl142258620"/>
+      <labelfield name="lbl142258631"/>
+      <question name="q_bp1_10_9">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl142258671"/>
+      <labelfield name="lbl142258682"/>
+      <labelfield name="lbl_fin1_10"/>
+      <labelfield name="lbl_ini1_11"/>
+      <labelfield name="lbl120940609"/>
+      <labelfield name="lbl120940619"/>
+      <labelfield name="lbl120940627"/>
+      <question name="q_bp1_11">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_11"/>
+      <labelfield name="lbl_ini1_12"/>
+      <labelfield name="lbl143550619"/>
+      <labelfield name="lbl143550629"/>
+      <labelfield name="lbl143550641"/>
+      <question name="q_bp1_12_1">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl143550721"/>
+      <labelfield name="lbl143550729"/>
+      <question name="q_bp1_12_2">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl143550768"/>
+      <labelfield name="lbl143550775"/>
+      <question name="q_bp1_12_3">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl143550828"/>
+      <labelfield name="lbl143550840"/>
+      <question name="q_bp1_12_4">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl143550876"/>
+      <labelfield name="lbl143550887"/>
+      <question name="q_bp1_12_5">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl143550927"/>
+      <labelfield name="lbl143550953"/>
+      <question name="q_bp1_12_9">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl143550989"/>
+      <labelfield name="lbl143550996"/>
+      <labelfield name="lbl_fin1_12"/>
+      <labelfield name="lbl_ini1_13"/>
+      <labelfield name="lbl144719297"/>
+      <labelfield name="lbl144719311"/>
+      <labelfield name="lbl144719322"/>
+      <question name="q_bp1_13">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_13"/>
+      <labelfield name="lbl_ini1_14"/>
+      <labelfield name="lbl100720292"/>
+      <labelfield name="lbl100720301"/>
+      <labelfield name="lbl100720310"/>
+      <question name="q_bp1_14_1">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100720386"/>
+      <labelfield name="lbl100720395"/>
+      <question name="q_bp1_14_2">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100720442"/>
+      <labelfield name="lbl100720453"/>
+      <question name="q_bp1_14_3">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100720505"/>
+      <labelfield name="lbl100720527"/>
+      <question name="q_bp1_14_4">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100720586"/>
+      <labelfield name="lbl100720601"/>
+      <question name="q_bp1_14_9">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100720649"/>
+      <labelfield name="lbl100720657"/>
+      <labelfield name="lbp1_14in"/>
+      <question name="q_bp1_14_3e">
+        <control type="text" rows="1" cols="30" layout="vertical"/>
+      </question>
+      <labelfield name="lbp1_14fin"/>
+      <labelfield name="lbl_fin1_14"/>
+      <labelfield name="lbl_ini1_15"/>
+      <labelfield name="lbl145214327"/>
+      <labelfield name="lbl145214345"/>
+      <labelfield name="lbl145214352"/>
+      <question name="q_bp1_15">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_15"/>
+      <labelfield name="lbl_ini1_16"/>
+      <labelfield name="lbl151032652"/>
+      <labelfield name="lbl151032659"/>
+      <labelfield name="lbl151032667"/>
+      <question name="q_bp1_16_1">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl151032719"/>
+      <labelfield name="lbl151032728"/>
+      <question name="q_bp1_16_2">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl151032761"/>
+      <labelfield name="lbl151032768"/>
+      <question name="q_bp1_16_3">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl151032809"/>
+      <labelfield name="lbl151032818"/>
+      <question name="q_bp1_16_4">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl151032850"/>
+      <labelfield name="lbl151032857"/>
+      <question name="q_bp1_16_9">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl151032891"/>
+      <labelfield name="lbl151032899"/>
+      <labelfield name="lbl_fin1_16"/>
+      <labelfield name="lbl_ini1_17"/>
+      <labelfield name="lbl145810688"/>
+      <labelfield name="lbl145810702"/>
+      <labelfield name="lbl145810709"/>
+      <question name="q_bp1_17">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_17"/>
+      <labelfield name="lbl150302761"/>
+      <labelfield name="lbl_ini1_18"/>
+      <labelfield name="lbl150302786"/>
+      <labelfield name="lbl150302795"/>
+      <labelfield name="lbl150302806"/>
+      <question name="q_bp1_18">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_18"/>
+      <labelfield name="lbl151519065"/>
+      <labelfield name="lbl_ini1_19"/>
+      <labelfield name="lbl151519090"/>
+      <labelfield name="lbl151519100"/>
+      <labelfield name="lbl151519108"/>
+      <question name="q_bp1_19_1">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl151519165"/>
+      <labelfield name="lbl151519175"/>
+      <question name="q_bp1_19_2">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl151519225"/>
+      <labelfield name="lbl151519237"/>
+      <question name="q_bp1_19_3">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl151519275"/>
+      <labelfield name="lbl151519283"/>
+      <question name="q_bp1_19_4">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl151519315"/>
+      <labelfield name="lbl151519325"/>
+      <question name="q_bp1_19_5">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl151519362"/>
+      <labelfield name="lbl151519369"/>
+      <question name="q_bp1_19_6">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl151519404"/>
+      <labelfield name="lbl_1_19_7"/>
+      <question name="q_bp1_19_7">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl151519445"/>
+      <labelfield name="lbl1_19_7"/>
+      <question name="q_bp1_19_8">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl151519486"/>
+      <labelfield name="lbl151519492"/>
+      <labelfield name="lbl_fin1_19"/>
+      <labelfield name="lbl_ini1_20"/>
+      <labelfield name="lbl155400672"/>
+      <labelfield name="lbl155400682"/>
+      <labelfield name="lbl155400690"/>
+      <question name="q_bp1_20">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_20"/>
+      <labelfield name="lbl_ini1_21"/>
+      <labelfield name="lbl161347058"/>
+      <labelfield name="lbl161347069"/>
+      <labelfield name="lbl161347078"/>
+      <question name="q_bp1_21">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_21"/>
+      <labelfield name="lbl_ini1_22"/>
+      <labelfield name="lbl162307105"/>
+      <labelfield name="lbl162307115"/>
+      <labelfield name="lbl162307124"/>
+      <question name="q_bp1_22">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_22"/>
+      <labelfield name="lbl_ini1_23"/>
+      <labelfield name="lbl084040853"/>
+      <labelfield name="lbl084040866"/>
+      <labelfield name="lbl084040872"/>
+      <question name="q_bp1_23">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_23"/>
+      <labelfield name="lbl_ini1_24"/>
+      <labelfield name="lbl162107089"/>
+      <labelfield name="lbl162107099"/>
+      <labelfield name="lbl162107109"/>
+      <question name="q_bp1_24">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_24"/>
+      <labelfield name="lbl_ini1_25"/>
+      <labelfield name="lbl113307192"/>
+      <labelfield name="lbl113307841"/>
+      <labelfield name="lbl113308191"/>
+      <question name="q_bp1_25">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbp1_25in"/>
+      <question name="q_bp1_25e">
+        <control type="text" rows="1" cols="30" layout="vertical"/>
+      </question>
+      <labelfield name="lbp1_25fin"/>
+      <labelfield name="lbl_fin1_25"/>
+      <labelfield name="lbl_ini1_26"/>
+      <labelfield name="lbl113334572"/>
+      <labelfield name="lbl113334763"/>
+      <labelfield name="lbl113334777"/>
+      <question name="q_bp1_26">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbp1_26in"/>
+      <question name="q_bp1_26e">
+        <control type="text" rows="1" cols="30" layout="vertical"/>
+      </question>
+      <labelfield name="lbp1_26fin"/>
+      <labelfield name="lbl_fin1_26"/>
+      <labelfield name="lbl_ini1_27"/>
+      <labelfield name="lbl085229878"/>
+      <labelfield name="lbl085229897"/>
+      <labelfield name="lbl085229907"/>
+      <question name="q_bp1_27">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_27"/>
+      <labelfield name="lbl_ini1_28"/>
+      <labelfield name="lbl114836286"/>
+      <labelfield name="lbl114836297"/>
+      <labelfield name="lbl114836329"/>
+      <question name="q_bp1_28">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbp1_28in"/>
+      <question name="q_bp1_28e">
+        <control type="text" rows="1" cols="30" layout="vertical"/>
+      </question>
+      <labelfield name="lbp1_28fin"/>
+      <labelfield name="lbl_fin1_28"/>
+      <labelfield name="lbl_ini1_29"/>
+      <labelfield name="lbl085715483"/>
+      <labelfield name="lbl085715496"/>
+      <labelfield name="lbl085715508"/>
+      <question name="q_bp1_29">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_29"/>
+      <labelfield name="lbl_ini1_30"/>
+      <labelfield name="lbl162331955"/>
+      <labelfield name="lbl162331964"/>
+      <labelfield name="lbl162331971"/>
+      <question name="q_bp1_30">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_30"/>
+      <labelfield name="lbl_ini1_31"/>
+      <labelfield name="lbl100744261"/>
+      <labelfield name="lbl100744270"/>
+      <labelfield name="lbl100744281"/>
+      <question name="q_bp1_31_1">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100744372"/>
+      <labelfield name="lbl100744380"/>
+      <question name="q_bp1_31_2">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100744431"/>
+      <labelfield name="lbl100744444"/>
+      <question name="q_bp1_31_3">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100744491"/>
+      <labelfield name="lbl100745103"/>
+      <question name="q_bp1_31_4">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100745150"/>
+      <labelfield name="lbl100745157"/>
+      <question name="q_bp1_31_5">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100745241"/>
+      <labelfield name="lbl100745249"/>
+      <question name="q_bp1_31_6">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl113101910"/>
+      <labelfield name="lbl113101920"/>
+      <question name="q_bp1_31_7">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100745303"/>
+      <labelfield name="lbl100745311"/>
+      <question name="q_bp1_31_8">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100745362"/>
+      <labelfield name="lbl100745372"/>
+      <question name="q_bp1_31_99">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100745477"/>
+      <labelfield name="lbl100745489"/>
+      <labelfield name="lbp1_31in"/>
+      <question name="q_bp1_31_8e">
+        <control type="text" rows="1" cols="30" layout="vertical"/>
+      </question>
+      <labelfield name="lbp1_31fin"/>
+      <labelfield name="lbl_fin1_31"/>
+      <labelfield name="lbl090100199"/>
+      <labelfield name="lbl_ini1_32"/>
+      <labelfield name="lbl090100222"/>
+      <labelfield name="lbl090100233"/>
+      <labelfield name="lbl090100240"/>
+      <question name="q_bp1_32_1">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl090100333"/>
+      <labelfield name="lbl090100342"/>
+      <question name="q_bp1_32_2">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl090100381"/>
+      <labelfield name="lbl090100390"/>
+      <question name="q_bp1_32_3">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl090100445"/>
+      <labelfield name="lbl090100454"/>
+      <question name="q_bp1_32_4">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl090100508"/>
+      <labelfield name="lbl090100524"/>
+      <question name="q_bp1_32_5">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl090100576"/>
+      <labelfield name="lbl090100588"/>
+      <question name="q_bp1_32_9">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl090100636"/>
+      <labelfield name="lbl090100645"/>
+      <labelfield name="lbl_fin1_32"/>
+      <labelfield name="lbl_ini1_33"/>
+      <labelfield name="lbl095557323"/>
+      <labelfield name="lbl095557333"/>
+      <labelfield name="lbl095557341"/>
+      <question name="q_bp1_33">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_33"/>
+      <labelfield name="lbl_ini1_34"/>
+      <labelfield name="lbl162414820"/>
+      <labelfield name="lbl162414828"/>
+      <labelfield name="lbl162414837"/>
+      <question name="q_bp1_34">
+        <control type="hidden" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <question name="q_bp1_34_monto">
+        <control type="text" rows="1" cols="15" layout="vertical"/>
+      </question>
+      <button name="btn162414901"/>
+      <button name="btn162415081"/>
+      <button name="btn162415238"/>
+      <button name="btn162415393"/>
+      <button name="btn162415546"/>
+      <button name="btn162415712"/>
+      <button name="btn162415868"/>
+      <button name="btn162416023"/>
+      <button name="btn162416176"/>
+      <button name="btn162416337"/>
+      <button name="btn162416496"/>
+      <button name="btn162416644"/>
+      <labelfield name="lblcal1"/>
+      <question name="q_bp1_34e">
+        <control type="text" rows="3" cols="30" layout="vertical"/>
+      </question>
+      <labelfield name="lblcal2"/>
+      <question name="q_bp1_34_radio">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_34"/>
+      <labelfield name="lbl105923633"/>
+      <labelfield name="lbl_ini1_35"/>
+      <labelfield name="lbl162421099"/>
+      <labelfield name="lbl162421110"/>
+      <labelfield name="lbl162421117"/>
+      <question name="q_bp1_35">
+        <control type="hidden" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <question name="q_bp1_35_monto">
+        <control type="text" rows="1" cols="15" layout="vertical"/>
+      </question>
+      <button name="btn162421177"/>
+      <button name="btn162421345"/>
+      <button name="btn162421508"/>
+      <button name="btn162421671"/>
+      <button name="btn162421833"/>
+      <button name="btn162421989"/>
+      <button name="btn162422147"/>
+      <button name="btn162422294"/>
+      <button name="btn162422458"/>
+      <button name="btn162422615"/>
+      <button name="btn162422936"/>
+      <button name="btn162422764"/>
+      <labelfield name="lblcal3"/>
+      <question name="q_bp1_35e">
+        <control type="text" rows="3" cols="30" layout="vertical"/>
+      </question>
+      <labelfield name="lblcal4"/>
+      <question name="q_bp1_35_radio">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin1_35"/>
+      <labelfield name="lbl_ini1_36"/>
+      <labelfield name="lbl100759104"/>
+      <labelfield name="lbl100759115"/>
+      <labelfield name="lbl100759123"/>
+      <question name="q_bp1_36_01">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100759189"/>
+      <labelfield name="lbl100759197"/>
+      <question name="q_bp1_36_02">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100759235"/>
+      <labelfield name="lbl100759248"/>
+      <question name="q_bp1_36_03">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100759290"/>
+      <labelfield name="lbl100759298"/>
+      <question name="q_bp1_36_04">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100759340"/>
+      <labelfield name="lbl100759352"/>
+      <question name="q_bp1_36_05">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100759395"/>
+      <labelfield name="lbl100759408"/>
+      <question name="q_bp1_36_06">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100759455"/>
+      <labelfield name="lbl100759463"/>
+      <question name="q_bp1_36_07">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100759505"/>
+      <labelfield name="lbl100759512"/>
+      <question name="q_bp1_36_08">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100759551"/>
+      <labelfield name="lbl100759560"/>
+      <question name="q_bp1_36_09">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100759614"/>
+      <labelfield name="lbl100759625"/>
+      <question name="q_bp1_36_10">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl100759666"/>
+      <labelfield name="lbl100759677"/>
+      <question name="q_bp1_36_11">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl111307115"/>
+      <labelfield name="lbl111307131"/>
+      <question name="q_bp1_36_99">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl111344841"/>
+      <labelfield name="lbl111344853"/>
+      <labelfield name="lbp1_36in"/>
+      <question name="q_bp1_36_10e">
+        <control type="text" rows="1" cols="30" layout="vertical"/>
+      </question>
+      <labelfield name="lbp1_36fin"/>
+      <labelfield name="lbl_fin1_36"/>
+      <labelfield name="lbl_ini2_1"/>
+      <labelfield name="lbl083902361"/>
+      <labelfield name="lbl083902370"/>
+      <labelfield name="lbl083902377"/>
+      <question name="q_bp2_1">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin2_1"/>
+      <labelfield name="lbl_ini3_1"/>
+      <labelfield name="lbl084050432"/>
+      <labelfield name="lbl084050442"/>
+      <labelfield name="lbl084050451"/>
+      <question name="q_bp3_1_01">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl084050510"/>
+      <labelfield name="lbl084050521"/>
+      <question name="q_bp3_1_02">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl084050556"/>
+      <labelfield name="lbl084050565"/>
+      <question name="q_bp3_1_03">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl084050599"/>
+      <labelfield name="lbl084050608"/>
+      <question name="q_bp3_1_04">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl084050643"/>
+      <labelfield name="lbl084050652"/>
+      <question name="q_bp3_1_05">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl084050692"/>
+      <labelfield name="lbl084050700"/>
+      <question name="q_bp3_1_06">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl084050738"/>
+      <labelfield name="lbl084050745"/>
+      <question name="q_bp3_1_07">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl084050784"/>
+      <labelfield name="lbl084050792"/>
+      <question name="q_bp3_1_08">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl084050828"/>
+      <labelfield name="lbl084050835"/>
+      <question name="q_bp3_1_09">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl084050869"/>
+      <labelfield name="lbl084050877"/>
+      <question name="q_bp3_1_10">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl084050910"/>
+      <labelfield name="lbl084050917"/>
+      <question name="q_bp3_1_11">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl0937308752"/>
+      <labelfield name="lbl0937308843"/>
+      <question name="q_bp3_1_12">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl0937370102"/>
+      <labelfield name="lbl0937370173"/>
+      <question name="q_bp3_1_99">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl0937422622"/>
+      <labelfield name="lbl0937422723"/>
+      <labelfield name="lbp3_1in"/>
+      <question name="q_bp3_1_11e">
+        <control type="text" rows="1" cols="30" layout="vertical"/>
+      </question>
+      <labelfield name="lbp3_1fin"/>
+      <labelfield name="lbl_fin3_1"/>
+      <labelfield name="lbl_ini3_2"/>
+      <labelfield name="lbl084248115"/>
+      <labelfield name="lbl084248127"/>
+      <labelfield name="lbl084248138"/>
+      <question name="q_bp3_2">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin3_2"/>
+      <labelfield name="lbl094230269"/>
+      <labelfield name="lbl_ini4_1"/>
+      <labelfield name="lbl084522036"/>
+      <labelfield name="lbl084522042"/>
+      <labelfield name="lbl084522049"/>
+      <question name="q_bp4_1">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbp4_1in"/>
+      <question name="q_bp4_1e">
+        <control type="text" rows="1" cols="30" layout="vertical"/>
+      </question>
+      <labelfield name="lbp4_1fin"/>
+      <labelfield name="lbl_fin4_1"/>
+      <labelfield name="lbl_ini5_1"/>
+      <labelfield name="lbl084950046"/>
+      <labelfield name="lbl084950054"/>
+      <labelfield name="lbl084950060"/>
+      <question name="q_bp5_1">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbp5_1in"/>
+      <question name="q_bp5_1e">
+        <control type="text" rows="1" cols="30" layout="vertical"/>
+      </question>
+      <labelfield name="lbp5_1fin"/>
+      <labelfield name="lbl_fin5_1"/>
+      <labelfield name="lbl_ini5_2"/>
+      <labelfield name="lbl085501770"/>
+      <labelfield name="lbl085501782"/>
+      <labelfield name="lbl085501789"/>
+      <question name="q_bp5_2_1">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl085501869"/>
+      <labelfield name="lbl085501877"/>
+      <question name="q_bp5_2_2">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl085501916"/>
+      <labelfield name="lbl085501927"/>
+      <question name="q_bp5_2_3">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl085501975"/>
+      <labelfield name="lbl085501987"/>
+      <question name="q_bp5_2_4">
+        <control type="check" layout="vertical"/>
+      </question>
+      <labelfield name="lbl085502038"/>
+      <labelfield name="lbl085502047"/>
+      <labelfield name="lbp5_2in"/>
+      <question name="q_bp5_2_3e">
+        <control type="text" rows="1" cols="30" layout="vertical"/>
+      </question>
+      <labelfield name="lbp5_2fin"/>
+      <labelfield name="lbl_fin5_2"/>
+      <labelfield name="lbl_ini5_3"/>
+      <labelfield name="lbl085802135"/>
+      <labelfield name="lbl085802150"/>
+      <labelfield name="lbl085802159"/>
+      <question name="q_bp5_3">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin5_3"/>
+      <labelfield name="lbl_ini6_1"/>
+      <labelfield name="lbl090011457"/>
+      <labelfield name="lbl090011472"/>
+      <labelfield name="lbl090011487"/>
+      <question name="q_bp6_1">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin6_1"/>
+      <labelfield name="lbl_ini6_2"/>
+      <labelfield name="lbl090543139"/>
+      <labelfield name="lbl090543151"/>
+      <labelfield name="lbl090543158"/>
+      <question name="q_bp6_2">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin6_2"/>
+      <labelfield name="lbl_ini6_3"/>
+      <labelfield name="lbl090915601"/>
+      <labelfield name="lbl090915611"/>
+      <labelfield name="lbl090915620"/>
+      <question name="q_bp6_3">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin6_3"/>
+      <labelfield name="lbl_ini7_1"/>
+      <labelfield name="lbl091822893"/>
+      <labelfield name="lbl091822917"/>
+      <labelfield name="lbl091822928"/>
+      <question name="q_bp7_1">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbp7_1in"/>
+      <question name="q_bp7_1e">
+        <control type="text" rows="1" cols="30" layout="vertical"/>
+      </question>
+      <labelfield name="lbp7_1fin"/>
+      <labelfield name="lbl_fin7_1"/>
+      <labelfield name="lbl_ini"/>
+      <question name="q_referencia">
+        <control type="text" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <question name="q_mensaje">
+        <control type="text" rows="1" cols="50" layout="vertical"/>
+      </question>
+      <question name="q_observacion">
+        <control type="text" rows="3" cols="50" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin"/>
+      <labelfield name="lbl092830968"/>
+      <button name="btn162956092"/>
+    </members>
+    <page name="pagport1" section="sec094838635">
+      <label>Portada 1</label>
+      <group name="gp_portada">
+        <title>.</title>
+        <elements>q_id_del;q_resul_hogar;q_tr_envipe2017_modu_prog</elements>
+        <group name="gr_1">
+          <title>I. DATOS DE IDENTIFICACIÓN</title>
+          <matrix name="mat_i">
+            <columns>
+              <column label="" width="53.58%"/>
+              <column label="" width="27.88%"/>
+              <column label="" width="3.98%"/>
+              <column label="" width="14.54%"/>
+            </columns>
+            <elements>lbl113750921,q_ent,lbl113751243,lbl113751279,lbl113751289,q_mun,lbl113751321,lbl113751330,lbl113751346,q_loc,lbl113751373,lbl113751404,lbl113751438,q_ageb_n,lbl113751470,q_ageb_an</elements>
+          </matrix>
+        </group>
+        <group name="gr_6">
+          <title>VI. CONTROL DEL INFORMANTE SELECCIONADO(A) </title>
+          <elements>q_nombre,q_num_ren</elements>
+        </group>
+        <group name="gr_7">
+          <title>VII. CÓDIGOS PARA DELITOS</title>
+          <elements>q_tr_envipe2017_mod_bpcod;q_bpcod_opc</elements>
+        </group>
+      </group>
+    </page>
+    <page name="pagport2" section="sec094838635">
+      <label>Portada 2</label>
+      <group name="gp_portada2">
+        <title>.</title>
+        <group name="gr_8">
+          <title>VIII.</title>
+          <elements>q_nd_tipo,q_td_tipo,lbl122246543,lbl111415625;lbl122246609</elements>
+        </group>
+      </group>
+    </page>
+    <page name="pagp1_1" section="sec130910701">
+      <label>P1_1</label>
+      <group name="grp1_1">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl131131222,lbl131131237,lbl131131245,q_bp1_1</elements>
+      </group>
+    </page>
+    <page name="pagp1_2" section="sec130910701">
+      <label>P1_2</label>
+      <group name="grp1_2">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl132649181,lbl132649192,lbl132649200,q_bp1_2c</elements>
+      </group>
+    </page>
+    <page name="pagp1_3" section="sec130910701">
+      <label>P1_3</label>
+      <group name="grp1_3">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl132908570,lbl132908584,lbl132908595,q_bp1_3c</elements>
+      </group>
+    </page>
+    <page name="pagp1_4" section="sec130910701">
+      <label>P1_4</label>
+      <group name="grp1_4">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl112145274,lbl112145764,lbl112145772,q_bp1_4</elements>
+      </group>
+    </page>
+    <page name="pagp1_5" section="sec130910701">
+      <label>P1_5</label>
+      <group name="grp1_5">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl112508718,lbl_ini1_5,lbl112508746,lbl112508944,lbl112509115,q_bp1_5,lbp1_5in,q_bp1_5e,lbp1_5fin,lbl_fin1_5</elements>
+      </group>
+    </page>
+    <page name="pagp1_6" section="sec130910701">
+      <label>P1_6</label>
+      <group name="grp1_6">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl140440390,lbl_ini1_6,lbl140440408,lbl140440421,lbl140440430,lbl1_6ini;q_bp1_6,lbl1_6fin,lbl_fin1_6</elements>
+      </group>
+    </page>
+    <page name="pagp1_7" section="sec130910701">
+      <label>P1_7</label>
+      <group name="grp1_7">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl140638642,lbl_ini1_7,lbl140638663,lbl140638674,lbl140638683,q_bp1_7,lbl_fin1_7</elements>
+      </group>
+    </page>
+    <page name="pagp1_8" section="sec130910701">
+      <label>P1_8</label>
+      <group name="grp1_8">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_8,lbl141116481,lbl141116497,lbl141116505,q_bp1_8,lbl_fin1_8</elements>
+      </group>
+    </page>
+    <page name="pagp1_9" section="sec130910701">
+      <label>P1_9</label>
+      <group name="grp1_9">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_9,lbl141334187,lbl141334197,lbl141334207,q_bp1_9,lbl_fin1_9</elements>
+      </group>
+    </page>
+    <page name="pagp1_10" section="sec130910701">
+      <label>P1_10</label>
+      <group name="grp1_10">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_10,lbl142258478,lbl142258490,lbl142258499</elements>
+        <matrix name="matp1_10">
+          <columns>
+            <column label="" width="5.0%"/>
+            <column label="" width="8.0%"/>
+            <column label="" width="87.0%"/>
+          </columns>
+          <elements>q_bp1_10_1,lbl142258566,lbl142258574,q_bp1_10_2,lbl142258620,lbl142258631,q_bp1_10_9,lbl142258671,lbl142258682</elements>
+        </matrix>
+        <elements>lbl_fin1_10</elements>
+      </group>
+    </page>
+    <page name="pagp1_11" section="sec130910701">
+      <label>P1_11</label>
+      <group name="grp1_11">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_11,lbl120940609,lbl120940619,lbl120940627,q_bp1_11,lbl_fin1_11</elements>
+      </group>
+    </page>
+    <page name="pagp1_12" section="sec130910701">
+      <label>P1_12</label>
+      <group name="grp1_12">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_12,lbl143550619,lbl143550629,lbl143550641</elements>
+        <matrix name="matp1_12">
+          <columns>
+            <column label="" width="5.0%"/>
+            <column label="" width="8.0%"/>
+            <column label="" width="87.0%"/>
+          </columns>
+          <elements>q_bp1_12_1,lbl143550721,lbl143550729,q_bp1_12_2,lbl143550768,lbl143550775,q_bp1_12_3,lbl143550828,lbl143550840,q_bp1_12_4,lbl143550876,lbl143550887,q_bp1_12_5,lbl143550927,lbl143550953,q_bp1_12_9,lbl143550989,lbl143550996</elements>
+        </matrix>
+        <elements>lbl_fin1_12</elements>
+      </group>
+    </page>
+    <page name="pagp1_13" section="sec130910701">
+      <label>P1_13</label>
+      <group name="grp1_13">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_13,lbl144719297,lbl144719311,lbl144719322,q_bp1_13,lbl_fin1_13</elements>
+      </group>
+    </page>
+    <page name="pagp1_14" section="sec130910701">
+      <label>P1_14</label>
+      <group name="grp1_14">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_14,lbl100720292,lbl100720301,lbl100720310</elements>
+        <matrix name="matp1_14">
+          <columns>
+            <column label="" width="5.0%"/>
+            <column label="" width="8.0%"/>
+            <column label="" width="87.0%"/>
+          </columns>
+          <elements>q_bp1_14_1,lbl100720386,lbl100720395,q_bp1_14_2,lbl100720442,lbl100720453,q_bp1_14_3,lbl100720505,lbl100720527,q_bp1_14_4,lbl100720586,lbl100720601,q_bp1_14_9,lbl100720649,lbl100720657</elements>
+        </matrix>
+        <elements>lbp1_14in,q_bp1_14_3e,lbp1_14fin,lbl_fin1_14</elements>
+      </group>
+    </page>
+    <page name="pagp1_15" section="sec130910701">
+      <label>P1_15</label>
+      <group name="grp1_15">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_15,lbl145214327,lbl145214345,lbl145214352,q_bp1_15,lbl_fin1_15</elements>
+      </group>
+    </page>
+    <page name="pagp1_16" section="sec130910701">
+      <label>P1_16</label>
+      <group name="grp1_16">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_16,lbl151032652,lbl151032659,lbl151032667</elements>
+        <matrix name="matp1_16">
+          <columns>
+            <column label="" width="5.0%"/>
+            <column label="" width="8.0%"/>
+            <column label="" width="87.0%"/>
+          </columns>
+          <elements>q_bp1_16_1,lbl151032719,lbl151032728,q_bp1_16_2,lbl151032761,lbl151032768,q_bp1_16_3,lbl151032809,lbl151032818,q_bp1_16_4,lbl151032850,lbl151032857,q_bp1_16_9,lbl151032891,lbl151032899</elements>
+        </matrix>
+        <elements>lbl_fin1_16</elements>
+      </group>
+    </page>
+    <page name="pagp1_17" section="sec130910701">
+      <label>P1_17</label>
+      <group name="grp1_17">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_17,lbl145810688,lbl145810702,lbl145810709,q_bp1_17,lbl_fin1_17</elements>
+      </group>
+    </page>
+    <page name="pagp1_18" section="sec130910701">
+      <label>P1_18</label>
+      <group name="grp1_18">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl150302761,lbl_ini1_18,lbl150302786,lbl150302795,lbl150302806,q_bp1_18,lbl_fin1_18</elements>
+      </group>
+    </page>
+    <page name="pagp1_19" section="sec130910701">
+      <label>P1_19</label>
+      <group name="grp1_19">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl151519065,lbl_ini1_19,lbl151519090,lbl151519100,lbl151519108</elements>
+        <matrix name="matp1_19">
+          <columns>
+            <column label="" width="5.0%"/>
+            <column label="" width="8.0%"/>
+            <column label="" width="87.0%"/>
+          </columns>
+          <elements>q_bp1_19_1,lbl151519165,lbl151519175,q_bp1_19_2,lbl151519225,lbl151519237,q_bp1_19_3,lbl151519275,lbl151519283,q_bp1_19_4,lbl151519315,lbl151519325,q_bp1_19_5,lbl151519362,lbl151519369,q_bp1_19_6,lbl151519404,lbl_1_19_7,q_bp1_19_7,lbl151519445,lbl1_19_7,q_bp1_19_8,lbl151519486,lbl151519492</elements>
+        </matrix>
+        <elements>lbl_fin1_19</elements>
+      </group>
+    </page>
+    <page name="pagp1_20" section="sec130910701">
+      <label>P1_20</label>
+      <group name="grp1_20">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_20,lbl155400672,lbl155400682,lbl155400690,q_bp1_20,lbl_fin1_20</elements>
+      </group>
+    </page>
+    <page name="pagp1_21" section="sec130910701">
+      <label>P1_21</label>
+      <group name="grp1_21">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_21,lbl161347058,lbl161347069,lbl161347078,q_bp1_21,lbl_fin1_21</elements>
+      </group>
+    </page>
+    <page name="pagp1_22" section="sec130910701">
+      <label>P1_22</label>
+      <group name="grp1_22">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_22,lbl162307105,lbl162307115,lbl162307124,q_bp1_22,lbl_fin1_22</elements>
+      </group>
+    </page>
+    <page name="pagp1_23" section="sec130910701">
+      <label>P1_23</label>
+      <group name="grp1_23">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_23,lbl084040853,lbl084040866,lbl084040872,q_bp1_23,lbl_fin1_23</elements>
+      </group>
+    </page>
+    <page name="pagp1_24" section="sec130910701">
+      <label>P1_24</label>
+      <group name="grp1_24">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_24,lbl162107089,lbl162107099,lbl162107109,q_bp1_24,lbl_fin1_24</elements>
+      </group>
+    </page>
+    <page name="pagp1_25" section="sec130910701">
+      <label>P1_25</label>
+      <group name="grp1_25">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_25,lbl113307192,lbl113307841,lbl113308191,q_bp1_25,lbp1_25in,q_bp1_25e,lbp1_25fin,lbl_fin1_25</elements>
+      </group>
+    </page>
+    <page name="pagp1_26" section="sec130910701">
+      <label>P1_26</label>
+      <group name="grp1_26">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_26,lbl113334572,lbl113334763,lbl113334777,q_bp1_26,lbp1_26in,q_bp1_26e,lbp1_26fin,lbl_fin1_26</elements>
+      </group>
+    </page>
+    <page name="pagp1_27" section="sec130910701">
+      <label>P1_27</label>
+      <group name="grp1_27">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_27,lbl085229878,lbl085229897,lbl085229907,q_bp1_27,lbl_fin1_27</elements>
+      </group>
+    </page>
+    <page name="pagp1_28" section="sec130910701">
+      <label>P1_28</label>
+      <group name="grp1_28">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_28,lbl114836286,lbl114836297,lbl114836329,q_bp1_28,lbp1_28in,q_bp1_28e,lbp1_28fin,lbl_fin1_28</elements>
+      </group>
+    </page>
+    <page name="pagp1_29" section="sec130910701">
+      <label>P1_29</label>
+      <group name="grp1_29">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_29,lbl085715483,lbl085715496,lbl085715508,q_bp1_29,lbl_fin1_29</elements>
+      </group>
+    </page>
+    <page name="pagp1_30" section="sec130910701">
+      <label>P1_30</label>
+      <group name="grp1_30">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_30,lbl162331955,lbl162331964,lbl162331971,q_bp1_30,lbl_fin1_30</elements>
+      </group>
+    </page>
+    <page name="pagp1_31" section="sec130910701">
+      <label>P1_31</label>
+      <group name="grp1_31">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_31,lbl100744261,lbl100744270,lbl100744281</elements>
+        <matrix name="matp1_31">
+          <columns>
+            <column label="" width="6.74%"/>
+            <column label="" width="6.97%"/>
+            <column label="" width="86.29%"/>
+          </columns>
+          <elements>q_bp1_31_1,lbl100744372,lbl100744380,q_bp1_31_2,lbl100744431,lbl100744444,q_bp1_31_3,lbl100744491,lbl100745103,q_bp1_31_4,lbl100745150,lbl100745157,q_bp1_31_5,lbl100745241,lbl100745249,q_bp1_31_6,lbl113101910,lbl113101920,q_bp1_31_7,lbl100745303,lbl100745311,q_bp1_31_8,lbl100745362,lbl100745372,q_bp1_31_99,lbl100745477,lbl100745489</elements>
+        </matrix>
+        <elements>lbp1_31in,q_bp1_31_8e,lbp1_31fin,lbl_fin1_31</elements>
+      </group>
+    </page>
+    <page name="pagp1_32" section="sec130910701">
+      <label>P1_32</label>
+      <group name="grp1_32">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl090100199,lbl_ini1_32,lbl090100222,lbl090100233,lbl090100240</elements>
+        <matrix name="matp1_32">
+          <columns>
+            <column label="" width="5.0%"/>
+            <column label="" width="8.0%"/>
+            <column label="" width="87.0%"/>
+          </columns>
+          <elements>q_bp1_32_1,lbl090100333,lbl090100342,q_bp1_32_2,lbl090100381,lbl090100390,q_bp1_32_3,lbl090100445,lbl090100454,q_bp1_32_4,lbl090100508,lbl090100524,q_bp1_32_5,lbl090100576,lbl090100588,q_bp1_32_9,lbl090100636,lbl090100645</elements>
+        </matrix>
+        <elements>lbl_fin1_32</elements>
+      </group>
+    </page>
+    <page name="pag155939398" section="sec130910701">
+      <label>P1_33</label>
+      <group name="grp1_33">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_33,lbl095557323,lbl095557333,lbl095557341,q_bp1_33,lbl_fin1_33</elements>
+      </group>
+    </page>
+    <page name="pagp1_34" section="sec130910701">
+      <label>P1_34</label>
+      <group name="grp1_34">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_34,lbl162414820,lbl162414828,lbl162414837,q_bp1_34,q_bp1_34_monto</elements>
+        <group name="grp1_34_calc">
+          <elements>btn162414901,btn162415081,btn162415238,btn162415393,btn162415546,btn162415712,btn162415868,btn162416023,btn162416176,btn162416337,btn162416496,btn162416644</elements>
+        </group>
+        <elements>lblcal1;q_bp1_34e,lblcal2;q_bp1_34_radio,lbl_fin1_34</elements>
+      </group>
+      <elements>lbl105923633</elements>
+    </page>
+    <page name="pagp1_35" section="sec130910701">
+      <label>P1_35</label>
+      <group name="grp1_35">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_35,lbl162421099,lbl162421110,lbl162421117,q_bp1_35,q_bp1_35_monto</elements>
+        <group name="grp1_35_calc">
+          <elements>btn162421177,btn162421345,btn162421508,btn162421671,btn162421833,btn162421989,btn162422147,btn162422294,btn162422458,btn162422615,btn162422936,btn162422764</elements>
+        </group>
+        <elements>lblcal3;q_bp1_35e,lblcal4;q_bp1_35_radio,lbl_fin1_35</elements>
+      </group>
+    </page>
+    <page name="pag162044134" section="sec130910701">
+      <label>P1_36</label>
+      <group name="grp1_36">
+        <title>SECCIÓN I. TODOS LOS TIPOS DE DELITO</title>
+        <elements>lbl_ini1_36,lbl100759104,lbl100759115,lbl100759123</elements>
+        <matrix name="matp1_36">
+          <columns>
+            <column label="" width="5.0%"/>
+            <column label="" width="8.0%"/>
+            <column label="" width="87.0%"/>
+          </columns>
+          <elements>q_bp1_36_01,lbl100759189,lbl100759197,q_bp1_36_02,lbl100759235,lbl100759248,q_bp1_36_03,lbl100759290,lbl100759298,q_bp1_36_04,lbl100759340,lbl100759352,q_bp1_36_05,lbl100759395,lbl100759408,q_bp1_36_06,lbl100759455,lbl100759463,q_bp1_36_07,lbl100759505,lbl100759512,q_bp1_36_08,lbl100759551,lbl100759560,q_bp1_36_09,lbl100759614,lbl100759625,q_bp1_36_10,lbl100759666,lbl100759677,q_bp1_36_11,lbl111307115,lbl111307131,q_bp1_36_99,lbl111344841,lbl111344853</elements>
+        </matrix>
+        <elements>lbp1_36in,q_bp1_36_10e,lbp1_36fin,lbl_fin1_36</elements>
+      </group>
+    </page>
+    <page name="pagp2_1" section="sec083823876">
+      <label>P 2_1</label>
+      <group name="grp2_1">
+        <title>SECCIÓN II. ROBO TOTAL DE VEHÍCULO (Código 01)</title>
+        <elements>lbl_ini2_1,lbl083902361,lbl083902370,lbl083902377,q_bp2_1,lbl_fin2_1</elements>
+      </group>
+    </page>
+    <page name="pagp3_1" section="sec084005097">
+      <label>P 3_1</label>
+      <group name="grp3_1">
+        <title>SECCIÓN III. ROBO EN CASA HABITACIÓN, ASALTO EN LA CALLE O TRANSPORTE PÚBLICO O ROBO DISTINTO DE LOS ANTERIORES (Códigos 04, 05, 06)</title>
+        <elements>lbl_ini3_1,lbl084050432,lbl084050442,lbl084050451</elements>
+        <matrix name="matp3_1">
+          <columns>
+            <column label="" width="5.0%"/>
+            <column label="" width="8.0%"/>
+            <column label="" width="87.0%"/>
+          </columns>
+          <elements>q_bp3_1_01,lbl084050510,lbl084050521,q_bp3_1_02,lbl084050556,lbl084050565,q_bp3_1_03,lbl084050599,lbl084050608,q_bp3_1_04,lbl084050643,lbl084050652,q_bp3_1_05,lbl084050692,lbl084050700,q_bp3_1_06,lbl084050738,lbl084050745,q_bp3_1_07,lbl084050784,lbl084050792,q_bp3_1_08,lbl084050828,lbl084050835,q_bp3_1_09,lbl084050869,lbl084050877,q_bp3_1_10,lbl084050910,lbl084050917,q_bp3_1_11;lbl0937308752;lbl0937308843;q_bp3_1_12;lbl0937370102;lbl0937370173;q_bp3_1_99;lbl0937422622;lbl0937422723</elements>
+        </matrix>
+        <elements>lbp3_1in,q_bp3_1_11e,lbp3_1fin,lbl_fin3_1</elements>
+      </group>
+    </page>
+    <page name="pagp3_2" section="sec084005097">
+      <label>P 3_2</label>
+      <group name="grp3_2">
+        <title>SECCIÓN III. ROBO EN CASA HABITACIÓN, ASALTO EN LA CALLE O TRANSPORTE PÚBLICO O ROBO DISTINTO DE LOS ANTERIORES (Códigos 04, 05, 06)</title>
+        <elements>lbl_ini3_2,lbl084248115,lbl084248127,lbl084248138,q_bp3_2,lbl_fin3_2</elements>
+      </group>
+    </page>
+    <page name="pagp4_1" section="sec084417674">
+      <label>P 4_1</label>
+      <group name="grp4_1">
+        <title>SECCIÓN IV. FRAUDE (Códigos 07, 08)</title>
+        <elements>lbl094230269,lbl_ini4_1,lbl084522036,lbl084522042,lbl084522049,q_bp4_1,lbp4_1in,q_bp4_1e,lbp4_1fin,lbl_fin4_1</elements>
+      </group>
+    </page>
+    <page name="pagp5_1" section="sec084735140">
+      <label>P 5_1</label>
+      <group name="grp5_1">
+        <title>SECCIÓN V. EXTORSIÓN (Código 09)</title>
+        <elements>lbl_ini5_1,lbl084950046,lbl084950054,lbl084950060,q_bp5_1,lbp5_1in,q_bp5_1e,lbp5_1fin,lbl_fin5_1</elements>
+      </group>
+    </page>
+    <page name="pagp5_2" section="sec084735140">
+      <label>P5_2</label>
+      <group name="grp5_2">
+        <title>SECCIÓN V. EXTORSIÓN (Código 09)</title>
+        <elements>lbl_ini5_2,lbl085501770,lbl085501782,lbl085501789</elements>
+        <matrix name="matp5_2">
+          <columns>
+            <column label="" width="5.0%"/>
+            <column label="" width="8.0%"/>
+            <column label="" width="87.0%"/>
+          </columns>
+          <elements>q_bp5_2_1,lbl085501869,lbl085501877,q_bp5_2_2,lbl085501916,lbl085501927,q_bp5_2_3,lbl085501975,lbl085501987,q_bp5_2_4,lbl085502038,lbl085502047</elements>
+        </matrix>
+        <elements>lbp5_2in,q_bp5_2_3e,lbp5_2fin,lbl_fin5_2</elements>
+      </group>
+    </page>
+    <page name="pagp5_3" section="sec084735140">
+      <label>P5_3</label>
+      <group name="grp5_3">
+        <title>SECCIÓN V. EXTORSIÓN (Código 09)</title>
+        <elements>lbl_ini5_3,lbl085802135,lbl085802150,lbl085802159,q_bp5_3,lbl_fin5_3</elements>
+      </group>
+    </page>
+    <page name="pagp6_1" section="sec085958495">
+      <label>P 6_1</label>
+      <group name="grp6_1">
+        <title>SECCIÓN VI. SECUESTRO PARA EXIGIR DINERO O BIENES (Código 12)</title>
+        <elements>lbl_ini6_1,lbl090011457,lbl090011472,lbl090011487,q_bp6_1,lbl_fin6_1</elements>
+      </group>
+    </page>
+    <page name="pagp6_2" section="sec085958495">
+      <label>P 6_2</label>
+      <group name="grp6_2">
+        <title>SECCIÓN VI. SECUESTRO PARA EXIGIR DINERO O BIENES (Código 12)</title>
+        <elements>lbl_ini6_2,lbl090543139,lbl090543151,lbl090543158,q_bp6_2,lbl_fin6_2</elements>
+      </group>
+    </page>
+    <page name="pagp6_3" section="sec085958495">
+      <label>P 6_3</label>
+      <group name="grp6_3">
+        <title>SECCIÓN VI. SECUESTRO PARA EXIGIR DINERO O BIENES (Código 12)</title>
+        <elements>lbl_ini6_3,lbl090915601,lbl090915611,lbl090915620,q_bp6_3,lbl_fin6_3</elements>
+      </group>
+    </page>
+    <page name="pagp7_1" section="sec091811865">
+      <label>P 7_1</label>
+      <group name="grp7_1">
+        <title>SECCIÓN VII. HOSTIGAMIENTO, INTIMIDACIÓN, MANOSEO, EXHIBICIONISMO, INTENTO DE VIOLACIÓN (Código 13)</title>
+        <elements>lbl_ini7_1,lbl091822893,lbl091822917,lbl091822928,q_bp7_1,lbp7_1in,q_bp7_1e,lbp7_1fin,lbl_fin7_1</elements>
+      </group>
+    </page>
+    <page name="pag152408353" section="sec152408343">
+      <label>Página Observaciones</label>
+      <elements>lbl_ini</elements>
+      <cyclicgroup name="c_tr_envipe2020_modulo_ob">
+        <newtext>Nueva Observación</newtext>
+        <edittext>Editar Observación</edittext>
+        <deletetext>Eliminar Observación</deletetext>
+        <columns>
+          <column label="Referencia" question="q_referencia"/>
+          <column label="Mensaje de Error" question="q_mensaje"/>
+          <column label="Observación que justifica la inconsistencia" question="q_observacion"/>
+        </columns>
+        <elements>q_referencia;q_mensaje;q_observacion</elements>
+      </cyclicgroup>
+      <elements>lbl_fin</elements>
+    </page>
+    <defaultpage>
+      <label>Página Default</label>
+      <elements>lbl092830968;btn162956092</elements>
+    </defaultpage>
+  </questionnaire>
+</view>

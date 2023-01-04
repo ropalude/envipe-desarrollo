@@ -1,0 +1,175 @@
+﻿<iktan>
+  <dml>
+    <unit id="ULevantamiento">
+      <mensaje id="cregresarClick001" title="Datos">
+        Tiene una visita abierta {detalle}, ¿Desea concluirla?
+      </mensaje>
+      <mensaje id="cViv" title="Cuestionario de la vivienda">
+        ¿Desea contestar el cuestionario de la vivienda?
+      </mensaje>
+      <mensaje id="cVivIncompleto" title="Cuestionario de la vivienda">
+        ¿Desea continuar con el cuestionario de la vivienda?
+      </mensaje>
+      <mensaje id="cSoc" title="Cuestionario de la vivienda">
+        ¿Desea contestar el cuestionario sociodemográfico?
+      </mensaje>
+      <mensaje id="cSocIncompleto" title="Cuestionario de la vivienda">
+        ¿Desea continuar con el cuestionario sociodemográfico?
+      </mensaje>
+      <mensaje id="cPri" title="Cuestionario de la vivienda">
+        ¿Desea contestar el cuestionario principal?
+      </mensaje>
+      <mensaje id="cPriIncompleto" title="Cuestionario principal">
+        ¿Desea continuar con el cuestionario principal?
+      </mensaje>
+      <mensaje id="cVic" title="Cuestionario de victimización">
+        ¿Desea contestar el cuestionario de victimización?
+      </mensaje>
+      <mensaje id="cVicIncompleto" title="Cuestionario victimización">
+        ¿Desea continuar con el cuestionario de victimización?
+      </mensaje>
+      <mensaje id="agregarAdicional" title="Agregar adicional">
+        ¿Desea agregar un hogar adicional?
+      </mensaje>
+      <mensaje id="eliminarAdicional" title="Eliminar adicional">
+        ¿Desea eliminar el ultimo hogar adicional {numero}?
+      </mensaje>
+      <mensaje id="eliminarPrincipal" title="Eliminar principal">
+        No se puede eliminar el hogar principal de la vivienda.
+      </mensaje>
+      <mensaje id="eliminarAdicionalParcial" title="Eliminar principal">
+        No se puede eliminar un hogar con información capturada.
+      </mensaje>
+      <mensaje id="CIktanButton1Click001">
+        Se agregó correctamente el hogar adicional
+      </mensaje>
+      <mensaje id="hogarAnteriorIncompleto" title='Iniciar sociodemográfico'>
+        Para iniciar con la captura de este hogar, complete o deje como parcial el hogar previo.
+      </mensaje>
+      <mensaje id="CIktanButton2Click001">
+        Se eliminó correctamente el hogar adicional
+      </mensaje>
+      <mensaje id="CIktanButton2Click002">
+        No se puede eliminar el hogar porque es el principal y/o tiene información capturada
+      </mensaje>
+      <mensaje id="cVerifClick001">
+        ¿Desea mandar a verificación la vivienda?
+      </mensaje>
+      <mensaje id="cVerSVis">
+        Es necesario ingresar por lo menos una visita antes de mandar a verificación.
+      </mensaje>
+      <mensaje id="sinAcceso">
+        La vivienda no se encuentra disponible para su perfil.
+      </mensaje>
+    </unit>
+    <unit id="ULevantamientoHogar">
+      <mensaje id="confirmaAdicional" title="Agregar adicional">
+        No se puede agregar un septimo hogar por tratarse de una vivienda colectiva.
+      </mensaje>
+    </unit>
+    <unit id="UVerificacion">
+      <mensaje id="confirmarRetorno">
+        La vivienda sera retornada a campo. ¿Desea continuar?
+      </mensaje>
+      <mensaje id="confirmarLiberacion">
+        La vivienda sera liberada de campo. ¿Desea continuar?
+      </mensaje>
+    </unit>
+    <unit id="UReporte">
+      <mensaje id="CIktanButton1Click001" title="Guardar">
+        Se ha guardado el reporte.
+      </mensaje>
+      <mensaje id="CIktanButton1Click002" title="Guardar">
+        ¿Desea finalizar el reporte?
+        Este no se podrá abrir nuevamente.
+      </mensaje>
+      <mensaje id="CIktanButton1Click003">
+        Completa los campos {valores} para poder finalizar.
+      </mensaje>
+      <mensaje id="CregresarClick001" title="Información">
+        ¿Está seguro de regresar al filtro de seguimiento y descartar todos los cambios realizados?.
+      </mensaje>    
+    </unit>
+    <unit id="USeleccionadoVictimizacion">
+      <mensaje id="CIktanButton2Click001" title="Victimizaciones">
+        ¿Estas seguro de borrar el último cuestionario? De continuar las victimizaciones se cerrarán al igual que el hogar seleccionado.
+      </mensaje>
+      <mensaje id="CIktanButton2Click002" title="Victimizaciones">
+        No se puede eliminar una victimización ya concluida.
+      </mensaje>
+      <mensaje id="CIktanButton2Click003" title = "Victimizaciones">
+        Se reabrirá un cuestionario para contestar una pregunta adicional.
+      </mensaje>
+    </unit>
+    <unit id="UGenericos">
+      <mensaje id="DescargaRegistroEN" title="Web Service"> 
+        {"indicador":"01","descripcion":"REGISTRADO","clave":"0801010110101","nombreCompleto":"BERTHA ALICIA VILLALPANDO COBOS","nombreEquipo":"ADMTIC034936L","plantilla":[{"numeroEmpleado":317565,"nivel":6,"nombres":"LUIS EFREN","apellidoMat":"ALDANA","apellidoPat":"PEREZ","curp":"PEAL920316HASRLS09","rfc":"PEAL920316LM1","login":"AGS.0110100","clave":"0801010110100","idClaveOperativa":113504},{"numeroEmpleado":207404,"nivel":7,"nombres":"BERTHA ALICIA","apellidoMat":"COBOS","apellidoPat":"VILLALPANDO","curp":"VICB871015MASLBR08","rfc":"VICB871015DL7","login":"AGS.0110101","clave":"0801010110101","idClaveOperativa":113505}],"idClaveOperativa":113505,"semilla":7,"idEncuesta":2030,"idEntidadOficina":8507,"coEstatal":"01","fechaSistema":"20190128144254000"}
+      </mensaje>
+      <mensaje id="NotificaRegistroEN" title="Web Service">
+        {"indicador":"01","descripcion":"Registró web de equipo [Equipo[ADMTIC034936L],CURP[VICB871015MASLBR08],Clave[0801010110101]].","fechaSistema":"20190128144254000"}
+      </mensaje>
+      <mensaje id="VerificaDescargaEN" title="Web Service">
+        {"indicador":"01","descripcion":"DW_0801010110101_20190128144255279.INEGI","clave":"","fechaSistema":"20190128144255000"}
+      </mensaje> 
+      <mensaje id="NotificaDescargaEN" title="Web Service">
+        {"indicador":"03","descripcion":"10|10","fechaSistema":"20190128144308000"}
+      </mensaje>
+      <mensaje id="DescargaRegistroJE" title="Web Service"> 
+        {"indicador":"01","descripcion":"REGISTRADO","clave":"0801010110100","nombreCompleto":"LUIS EFREN PEREZ ALDANA","nombreEquipo":"ADMTIC034936L","plantilla":[{"numeroEmpleado":317565,"nivel":6,"nombres":"LUIS EFREN","apellidoMat":"ALDANA","apellidoPat":"PEREZ","curp":"PEAL920316HASRLS09","rfc":"PEAL920316LM1","login":"AGS.0110100","clave":"0801010110100","idClaveOperativa":113504},{"numeroEmpleado":297798,"nivel":7,"nombres":"LUIS FELIPE","apellidoMat":"JIMENEZ","apellidoPat":"PALACIOS","curp":"PAJL931127HASLMS02","rfc":"PAJL931127LZ9","login":"AGS.0110103","clave":"0801010110103","idClaveOperativa":113646},{"numeroEmpleado":207202,"nivel":7,"nombres":"IRMA ADRIANA","apellidoMat":"CHAVEZ","apellidoPat":"QUIÑONES","curp":"QUCI901006MASXHR01","rfc":"QUCI9010062W2","login":"AGS.0110102","clave":"0801010110102","idClaveOperativa":113625},{"numeroEmpleado":207404,"nivel":7,"nombres":"BERTHA ALICIA","apellidoMat":"COBOS","apellidoPat":"VILLALPANDO","curp":"VICB871015MASLBR08","rfc":"VICB871015DL7","login":"AGS.0110101","clave":"0801010110101","idClaveOperativa":113505},{"numeroEmpleado":80244,"nivel":7,"nombres":"MAURICIO AZAEL","apellidoMat":"SERRANO","apellidoPat":"JIMENEZ","curp":"JISM840619HASMRR01","rfc":"JISM840619AM8","login":"AGS.0110105","clave":"0801010110105","idClaveOperativa":113880},{"numeroEmpleado":313583,"nivel":7,"nombres":"GERARDO DE JESUS","apellidoMat":"VILLASANA","apellidoPat":"PORTILLO","curp":"POVG830924HDFRLR04","rfc":"POVG830924HB9","login":"AGS.0110104","clave":"0801010110104","idClaveOperativa":113879}],"idClaveOperativa":113504,"semilla":6,"idEncuesta":2030,"idEntidadOficina":8507,"coEstatal":"01","fechaSistema":"20190128143602000"}
+      </mensaje>
+      <mensaje id="NotificaRegistroJE" title="Web Service">
+        {"indicador":"01","descripcion":"Registró web de equipo [Equipo[ADMTIC034936L],CURP[PEAL920316HASRLS09],Clave[0801010110100]].","fechaSistema":"20190128143602000"}
+      </mensaje>
+      <mensaje id="VerificaDescargaJE" title="Web Service">
+        {"indicador":"01","descripcion":"DW_0801010110100_20190128143603267.INEGI","clave":"","fechaSistema":"20190128143603000"}
+      </mensaje> 
+      <mensaje id="NotificaDescargaJE" title="Web Service">
+        {"indicador":"03","descripcion":"10|10","fechaSistema":"20190128143708000"}
+      </mensaje>
+      <mensaje id="DescargaRegistroSR" title="Web Service"> 
+        {"indicador":"01","descripcion":"REGISTRADO","clave":"0824010000000","nombreCompleto":"JOSE ARNULFO CORONA OCEGUEDA","nombreEquipo":"ADMTIC034936L","plantilla":[{"numeroEmpleado":13185,"nivel":3,"nombres":"JOSE ARNULFO","apellidoMat":"OCEGUEDA","apellidoPat":"CORONA","curp":"COOA800814HJCRCR00","rfc":"COOA800814F22","login":"SLP.082401","clave":"0824010000000","idClaveOperativa":113885},{"numeroEmpleado":13186,"nivel":3,"nombres":"JOSE ARNULFO","apellidoMat":"OCEGUEDA","apellidoPat":"CORONA","curp":"COOA800814HJCRCR00","rfc":"COOA800814F22","login":"AGS.080101","clave":"0801010000000","idClaveOperativa":113885},{"numeroEmpleado":13187,"nivel":3,"nombres":"JOSE ARNULFO","apellidoMat":"OCEGUEDA","apellidoPat":"CORONA","curp":"COOA800814HJCRCR00","rfc":"COOA800814F22","login":"GTO.081101","clave":"0811010000000","idClaveOperativa":113885},{"numeroEmpleado":13188,"nivel":3,"nombres":"JOSE ARNULFO","apellidoMat":"OCEGUEDA","apellidoPat":"CORONA","curp":"COOA800814HJCRCR00","rfc":"COOA800814F22","login":"QRO.082201","clave":"0822010000000","idClaveOperativa":113885},{"numeroEmpleado":317565,"nivel":6,"nombres":"LUIS EFREN","apellidoMat":"ALDANA","apellidoPat":"PEREZ","curp":"PEAL920316HASRLS09","rfc":"PEAL920316LM1","login":"SIN ACCESO","clave":"0801010110100","idClaveOperativa":113504},{"numeroEmpleado":297798,"nivel":7,"nombres":"LUIS FELIPE","apellidoMat":"JIMENEZ","apellidoPat":"PALACIOS","curp":"PAJL931127HASLMS02","rfc":"PAJL931127LZ9","login":"SIN ACCESO","clave":"0801010110103","idClaveOperativa":113646},{"numeroEmpleado":207202,"nivel":7,"nombres":"IRMA ADRIANA","apellidoMat":"CHAVEZ","apellidoPat":"QUIÑONES","curp":"QUCI901006MASXHR01","rfc":"QUCI9010062W2","login":"SIN ACCESO","clave":"0801010110102","idClaveOperativa":113625},{"numeroEmpleado":207404,"nivel":7,"nombres":"BERTHA ALICIA","apellidoMat":"COBOS","apellidoPat":"VILLALPANDO","curp":"VICB871015MASLBR08","rfc":"VICB871015DL7","login":"SIN ACCESO","clave":"0801010110101","idClaveOperativa":113505},{"numeroEmpleado":80244,"nivel":7,"nombres":"MAURICIO AZAEL","apellidoMat":"SERRANO","apellidoPat":"JIMENEZ","curp":"JISM840619HASMRR01","rfc":"JISM840619AM8","login":"SIN ACCESO","clave":"0801010110105","idClaveOperativa":113880},{"numeroEmpleado":313583,"nivel":7,"nombres":"GERARDO DE JESUS","apellidoMat":"VILLASANA","apellidoPat":"PORTILLO","curp":"POVG830924HDFRLR04","rfc":"POVG830924HB9","login":"SIN ACCESO","clave":"0801010110104","idClaveOperativa":113879}],"idClaveOperativa":113885,"semilla":120,"idEncuesta":2030,"idEntidadOficina":8538,"coEstatal":"24","fechaSistema":"20190206121317000"}
+      </mensaje>
+      <mensaje id="NotificaRegistroSR" title="Web Service">
+        {"indicador":"01","descripcion":"Registró web de equipo [Equipo[ADMTIC034936L],CURP[COOA800814HJCRCR00],Clave[0824010000000]].","fechaSistema":"20190206121318000"}
+      </mensaje>
+      <mensaje id="VerificaDescargaSR" title="Web Service">
+        {"indicador":"01","descripcion":"DW_0824010000000_20190206121318742.INEGI","clave":"","fechaSistema":"20190206121318000"}
+      </mensaje> 
+      <mensaje id="NotificaDescargaSR" title="Web Service">
+        {"indicador":"03","descripcion":"10|10","fechaSistema":"20190206121407000"}     
+      </mensaje>
+      <mensaje id="DescargaRegistroSC" title="Web Service"> 
+        {"indicador":"01","descripcion":"REGISTRADO","clave":"9901010000000","nombreCompleto":"MARCO AURELIO ALONSO RUIZ ESPARZA","nombreEquipo":"ADMTIC034936L","plantilla":[{"numeroEmpleado":16825,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"AGS.990101","clave":"9901010000000","idClaveOperativa":113561},{"numeroEmpleado":16826,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"BCN.990201","clave":"9902010000000","idClaveOperativa":113561},{"numeroEmpleado":16827,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"BCS.990301","clave":"9903010000000","idClaveOperativa":113561},{"numeroEmpleado":16828,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"CAM.990401","clave":"9904010000000","idClaveOperativa":113561},{"numeroEmpleado":16829,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"COA.990501","clave":"9905010000000","idClaveOperativa":113561},{"numeroEmpleado":16830,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"COL.990601","clave":"9906010000000","idClaveOperativa":113561},{"numeroEmpleado":16831,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"CHA.990701","clave":"9907010000000","idClaveOperativa":113561},{"numeroEmpleado":16832,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"CHI.990801","clave":"9908010000000","idClaveOperativa":113561},{"numeroEmpleado":16833,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"CDMX.990901","clave":"9909010000000","idClaveOperativa":113561},{"numeroEmpleado":16834,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"DGO.991001","clave":"9910010000000","idClaveOperativa":113561},{"numeroEmpleado":16835,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"GTO.991101","clave":"9911010000000","idClaveOperativa":113561},{"numeroEmpleado":16836,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"GRO.991201","clave":"9912010000000","idClaveOperativa":113561},{"numeroEmpleado":16837,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"HGO.991301","clave":"9913010000000","idClaveOperativa":113561},{"numeroEmpleado":16838,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"JAL.991401","clave":"9914010000000","idClaveOperativa":113561},{"numeroEmpleado":16839,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"MEX.991501","clave":"9915010000000","idClaveOperativa":113561},{"numeroEmpleado":16840,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"MIC.991601","clave":"9916010000000","idClaveOperativa":113561},{"numeroEmpleado":16841,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"MOR.991701","clave":"9917010000000","idClaveOperativa":113561},{"numeroEmpleado":16842,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"NAY.991801","clave":"9918010000000","idClaveOperativa":113561},{"numeroEmpleado":16843,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"NVL.991901","clave":"9919010000000","idClaveOperativa":113561},{"numeroEmpleado":16844,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"OAX.992001","clave":"9920010000000","idClaveOperativa":113561},{"numeroEmpleado":16845,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"PUE.992101","clave":"9921010000000","idClaveOperativa":113561},{"numeroEmpleado":16846,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"QRO.992201","clave":"9922010000000","idClaveOperativa":113561},{"numeroEmpleado":16847,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"ROO.992301","clave":"9923010000000","idClaveOperativa":113561},{"numeroEmpleado":16848,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"SLP.992401","clave":"9924010000000","idClaveOperativa":113561},{"numeroEmpleado":16849,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"SIN.992501","clave":"9925010000000","idClaveOperativa":113561},{"numeroEmpleado":16850,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"SON.992601","clave":"9926010000000","idClaveOperativa":113561},{"numeroEmpleado":16851,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"TAB.992701","clave":"9927010000000","idClaveOperativa":113561},{"numeroEmpleado":16852,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"TAM.992801","clave":"9928010000000","idClaveOperativa":113561},{"numeroEmpleado":16853,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"TLA.992901","clave":"9929010000000","idClaveOperativa":113561},{"numeroEmpleado":16854,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"VER.993001","clave":"9930010000000","idClaveOperativa":113561},{"numeroEmpleado":16855,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"YUC.993101","clave":"9931010000000","idClaveOperativa":113561},{"numeroEmpleado":16856,"nivel":3,"nombres":"MARCO AURELIO","apellidoMat":"RUIZ ESPARZA","apellidoPat":"ALONSO","curp":"AORM680917HASLZR04","rfc":"AORM680917BB3","login":"ZAC.993201","clave":"9932010000000","idClaveOperativa":113561},{"numeroEmpleado":23694,"nivel":7,"nombres":"ADELA","apellidoMat":"MARTINEZ","apellidoPat":"ORTIZ","curp":"OIMA710313MTSRRD00","rfc":"OIMA7103134RA","login":"SIN ACCESO","clave":"1009011310101","idClaveOperativa":113631},{"numeroEmpleado":77641,"nivel":7,"nombres":"JULIAN","apellidoMat":"AVENDAÑO","apellidoPat":"DAVILA","curp":"DAAJ800403HTLVVL05","rfc":"DAAJ800403IQ9","login":"SIN ACCESO","clave":"0729013910103","idClaveOperativa":113665},{"numeroEmpleado":77641,"nivel":7,"nombres":"JULIAN","apellidoMat":"AVENDAÑO","apellidoPat":"DAVILA","curp":"DAAJ800403HTLVVL05","rfc":"DAAJ800403IQ9","login":"SIN ACCESO","clave":"1009011310103","idClaveOperativa":113634},{"numeroEmpleado":164651,"nivel":7,"nombres":"CLAUDIA","apellidoMat":"HUERTA","apellidoPat":"BRAVO","curp":"BAHC861109MPLRRL07","rfc":"BAHC86110953A","login":"SIN ACCESO","clave":"0729013910101","idClaveOperativa":113663},{"numeroEmpleado":164651,"nivel":7,"nombres":"CLAUDIA","apellidoMat":"HUERTA","apellidoPat":"BRAVO","curp":"BAHC861109MPLRRL07","rfc":"BAHC86110953A","login":"SIN ACCESO","clave":"1009011310102","idClaveOperativa":113632},{"numeroEmpleado":295343,"nivel":7,"nombres":"ALEJANDRO","apellidoMat":"FLORES","apellidoPat":"LARA","curp":"LAFA830811HDFRLL00","rfc":"LAFA8308113I2","login":"SIN ACCESO","clave":"0729013910102","idClaveOperativa":113664},{"numeroEmpleado":33531,"nivel":7,"nombres":"IRMA LIVIA","apellidoMat":"ROCHA","apellidoPat":"TREJO","curp":"TERI640316MNLRCR06","rfc":"TERI640316RU6","login":"SIN ACCESO","clave":"1009011310104","idClaveOperativa":113647},{"numeroEmpleado":317565,"nivel":6,"nombres":"LUIS EFREN","apellidoMat":"ALDANA","apellidoPat":"PEREZ","curp":"PEAL920316HASRLS09","rfc":"PEAL920316LM1","login":"SIN ACCESO","clave":"0801010110100","idClaveOperativa":113504},{"numeroEmpleado":317565,"nivel":6,"nombres":"LUIS EFREN","apellidoMat":"ALDANA","apellidoPat":"PEREZ","curp":"PEAL920316HASRLS09","rfc":"PEAL920316LM1","login":"SIN ACCESO","clave":"0620012610100","idClaveOperativa":113644},{"numeroEmpleado":297798,"nivel":7,"nombres":"LUIS FELIPE","apellidoMat":"JIMENEZ","apellidoPat":"PALACIOS","curp":"PAJL931127HASLMS02","rfc":"PAJL931127LZ9","login":"SIN ACCESO","clave":"0801010110103","idClaveOperativa":113646},{"numeroEmpleado":207202,"nivel":7,"nombres":"IRMA ADRIANA","apellidoMat":"CHAVEZ","apellidoPat":"QUIÑONES","curp":"QUCI901006MASXHR01","rfc":"QUCI9010062W2","login":"SIN ACCESO","clave":"0801010110102","idClaveOperativa":113625},{"numeroEmpleado":207404,"nivel":7,"nombres":"BERTHA ALICIA","apellidoMat":"COBOS","apellidoPat":"VILLALPANDO","curp":"VICB871015MASLBR08","rfc":"VICB871015DL7","login":"SIN ACCESO","clave":"0801010110101","idClaveOperativa":113505},{"numeroEmpleado":332985,"nivel":7,"nombres":"HECTOR EFRAIN","apellidoMat":"RIVERA","apellidoPat":"FIGUEROA","curp":"FIRH930916HASGVC09","rfc":"FIRH930916N92","login":"SIN ACCESO","clave":"1009011310105","idClaveOperativa":113881},{"numeroEmpleado":80244,"nivel":7,"nombres":"MAURICIO AZAEL","apellidoMat":"SERRANO","apellidoPat":"JIMENEZ","curp":"JISM840619HASMRR01","rfc":"JISM840619AM8","login":"SIN ACCESO","clave":"0801010110105","idClaveOperativa":113880},{"numeroEmpleado":30898,"nivel":6,"nombres":"CLAUDIA YESSICA","apellidoMat":"NANDO","apellidoPat":"ROSAS","curp":"RONC740406MDFSNL08","rfc":"RONC740406KQ4","login":"SIN ACCESO","clave":"1009011310100","idClaveOperativa":113630},{"numeroEmpleado":313583,"nivel":7,"nombres":"GERARDO DE JESUS","apellidoMat":"VILLASANA","apellidoPat":"PORTILLO","curp":"POVG830924HDFRLR04","rfc":"POVG830924HB9","login":"SIN ACCESO","clave":"0801010110104","idClaveOperativa":113879},{"numeroEmpleado":313583,"nivel":6,"nombres":"GERARDO DE JESUS","apellidoMat":"VILLASANA","apellidoPat":"PORTILLO","curp":"POVG830924HDFRLR04","rfc":"POVG830924HB9","login":"SIN ACCESO","clave":"0729013910100","idClaveOperativa":113662}],"idClaveOperativa":113561,"semilla":18,"idEncuesta":2030,"idEntidadOficina":8505,"coEstatal":"01","fechaSistema":"20190205142116000"}
+      </mensaje>
+      <mensaje id="NotificaRegistroSC" title="Web Service">
+        {"indicador":"01","descripcion":"Registró web de equipo [Equipo[ADMTIC034936L],CURP[AORM680917HASLZR04],Clave[9901010000000]].","fechaSistema":"20190205142117000"}
+      </mensaje>
+      <mensaje id="VerificaDescargaSC" title="Web Service">
+        {"indicador":"01","descripcion":"DW_9901010000000_20190205142117681.INEGI","clave":"","fechaSistema":"20190205142118000"}
+      </mensaje> 
+      <mensaje id="NotificaDescargaSC" title="Web Service">
+        {"indicador":"03","descripcion":"22|22","fechaSistema":"20190205142213000"}
+      </mensaje>
+    </unit>
+    <unit id="USeleccionInstrumento">
+      <mensaje id="fechasLimite" title="Tipo de instrumento">
+        La fecha especificada debe estar entre {inicio} y {fin}
+      </mensaje>
+    </unit>
+    <unit id="UPresencia">
+      <mensaje id="AceptarClick001" title="Supervisión">
+        Debes escribir el nombre del supervisor.
+      </mensaje>
+    </unit>
+    <unit id="UExportarEnvipe">
+      <mensaje id="CIktanButton1Click001" title="Exportar">
+        Debe seleccionar al menos una vivienda.
+      </mensaje>
+    </unit>
+    <unit id="VisitasAgregar">
+      <mensaje id="periodoTiempo" title="Agregar visita">
+        Debes seleccionar el tiempo en meses que lleva en este estado
+      </mensaje>
+    </unit>
+  </dml>
+</iktan>

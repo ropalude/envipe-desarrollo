@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration SYSTEM "DTD_xmlConfiguracion.dtd">
+<configuration name="cfg_envipe_2023_mod_victim" cml-version="2.2017.02.07">
+  <general>
+    <title>Configuración para cuestionario ENVIPE 2023 - MODULO DE VICTIMIZACION</title>
+    <version value="41"/>
+    <creator>Instituto Nacional de Estadística y Geografía</creator>
+    <creationdate year="2022" month="10" day="17"/>
+    <lastupdate year="2022" month="11" day="1"/>
+  </general>
+  <connections>
+    <connection name="conn_qml" type="sqlite">
+      <driverclass value="org.sqlite.JDBC"/>
+      <url value="\envipe\Modelo\envipe.sys"/>
+      <username value="Cronos2K15"/>
+      <password value="Cronos2K15"/>
+      <createtables value="yes"/>
+    </connection>
+  </connections>
+  <iktan-project>
+    <project-id>2802</project-id>
+    <project-title>Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública</project-title>
+    <acronym>envipe</acronym>
+    <suffix>envipe</suffix>
+    <seed-parameter>iktan_seed</seed-parameter>
+    <entity-name>tr_envipe2023_modulo</entity-name>
+    <entity-id>id_del</entity-id>
+    <parameters>
+      <parameter name="id_muestra" type="number" default="1"/>
+      <parameter name="id_del" type="alphanumeric" default="A"/>
+      <parameter name="resul_hogar" type="alphanumeric" default="A"/>
+      <parameter name="td_tipo" type="alphanumeric" default="A"/>
+      <parameter name="bpcod_opc" type="alphanumeric" default="A"/>
+      <parameter name="ultimo_delito" type="alphanumeric" default="A"/>
+      <parameter name="ent" type="alphanumeric" default="A"/>
+      <parameter name="mun" type="alphanumeric" default="A"/>
+      <parameter name="loc" type="alphanumeric" default="A"/>
+      <parameter name="ageb_n" type="alphanumeric" default="A"/>
+      <parameter name="ageb_an" type="alphanumeric" default="A"/>
+      <parameter name="iktan_seed" type="number" default="1"/>
+    </parameters>
+    <main>2</main>
+    <database-config>
+      <database type="capture" path="/iktantrabajo/modelo/envipe.sys"/>
+      <database type="catalog" path="/iktantrabajo/modelo/catalogos.sys"/>
+    </database-config>
+  </iktan-project>
+  <resources>
+    <qmlfile file="envipe_2023_mod_victim.q.xml"/>
+    <viewfile file="envipe_2023_mod_victim.v.xml"/>
+    <accessfile file="envipe_2023_mod_victim.a.xml"/>
+  </resources>
+  <properties>
+    <property name="data-uppercase" value="yes"/>
+    <property name="style.controls.images.size" value="medium"/>
+    <property name="datamodel.subentity.logicalDelete" value="yes"/>
+    <property name="datamodel.subentity.usesParentKeyInPrimaryKey" value="yes"/>
+    <property name="menu.main.captura" value="yes"/>
+    <property name="menu.main.datareportbutton" value="yes"/>
+    <property name="menu.main.exitbutton.exiturl" value="yes"/>
+    <property name="menu.main.header" value="no"/>
+    <property name="menu.main.observation" value="yes"/>
+    <property name="menu.main.startbutton" value="no"/>
+    <property name="menu.pages" value="hidden"/>
+    <property name="question.input.focus.selecttext" value="yes"/>
+    <property name="questionnaire.dialog" value="yes"/>
+    <property name="questionnaire.init" value="questionnaire"/>
+    <property name="questionnaire.init.access" value="no"/>
+    <property name="questionnaire.init.filter" value="no"/>
+    <property name="questionnaire.observation" value="yes"/>
+    <property name="questionnaire.observation.cyclic" value="c_tr_envipe2020_modulo_ob"/>
+    <property name="questionnaire.observation.dialog" value="no"/>
+    <property name="questionnaire.observation.minlength" value="10"/>
+    <property name="questionnaire.observation.msj" value="q_mensaje"/>
+    <property name="questionnaire.observation.obs" value="q_observacion"/>
+    <property name="questionnaire.observation.ref" value="q_referencia"/>
+    <property name="question.textarea.focus.selecttext" value="yes"/>
+    <property name="zoom" value="100"/>
+  </properties>
+</configuration>

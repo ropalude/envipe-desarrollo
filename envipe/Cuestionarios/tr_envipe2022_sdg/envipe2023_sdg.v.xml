@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE view SYSTEM "DTD_xmlVista.dtd">
+<view name="view_101786" vml-version="2.2017.02.07">
+  <general>
+    <title>Vista para cuestionario ENVIPE 2023 - SOCIODEMOGRAFICO</title>
+    <version value="41"/>
+    <creator>Instituto Nacional de Estadística y Geografía</creator>
+    <creationdate year="2022" month="10" day="17"/>
+    <lastupdate year="2022" month="11" day="1"/>
+  </general>
+  <css><![CDATA[
+ 			 /*Inicio_GenCuest*/
+ 			 .qmlPage{position:relative;}
+ 			 .q, .qGpr, .qMtx, .qCyg{position:absolute; border-width:1px;}
+ 			 .qMtx .q {position:relative;}
+ 			 .ui-dialog{position:fixed; z-index:5000;}
+ 			 .qMtx{border-collapse:collapse;}
+ 			 .qMtx .el{padding: 1px;}
+ 			 .qMtx .hd{padding: 1px; font-size: 8pt;}
+ 			 .qtxt {font-weight:normal;}
+ 			 .qMtx table.w_hlp_txt {width: 100%;}
+ 			 .qMtx table.w_hlp_txt td:last-child {width: 100%;}
+ 			 #_DefPage{position:relative; display:block;width: 1280px;height: 720px;}
+ 			 #defPage_err_m__{overflow:auto;top: 23px;left: 22px;width: 1238px;height: 411px;position:absolute;}
+ 			 #btn162956092{top: 566px;left: 511px;width: 232px;height: 77px;position:absolute;}
+ 			 #btn162956092__err{top: 551px;left: 511px;position:absolute;}
+ 			 #pag145839073{width: 1280px;height: 720px;}
+ 			 #gr091541296{top: 1px;left: 1px;width: 1278px;height: 719px;}
+ 			 #lbl091541402{top: 182px;left: 148px;width: 158px;height: 28px;position:absolute;}
+ 			 #lbl091541439{top: 187px;left: 439px;width: 361px;height: 33px;position:absolute;}
+ 			 #lbl091541449{top: 273px;left: 149px;width: 160px;height: 29px;position:absolute;}
+ 			 #lbl091541462{top: 273px;left: 433px;width: 375px;height: 33px;position:absolute;}
+ 			 #lbl091541497{top: 361px;left: 148px;width: 161px;height: 29px;position:absolute;}
+ 			 #lbl091541506{top: 366px;left: 435px;width: 358px;height: 33px;position:absolute;}
+ 			 #lbl091541565{top: 451px;left: 148px;width: 161px;height: 29px;position:absolute;}
+ 			 #lbl091541574{top: 451px;left: 433px;width: 825px;height: 56px;position:absolute;}
+ 			 #slt_varctrl_ini{top: 652px;left: 1125px;width: 107px;height: 29px;position:absolute;}
+ 			 #pag150020589{width: 1280px;height: 720px;}
+ 			 #q_h1{top: 66px;left: 780px;width: 144px;height: 70px;}
+ 			 #q_ren_jefe{top: 91px;left: 310px;width: 119px;height: 70px;}
+ 			 #q_tot{top: 91px;left: 530px;width: 96px;height: 70px;}
+ 			 #q_cve_mun{top: 101px;left: 89px;width: 60px;height: 39px;}
+ 			 #q_h2{top: 146px;left: 780px;width: 144px;height: 70px;}
+ 			 #q_cve_ageb_na{top: 171px;left: 89px;width: 60px;height: 40px;}
+ 			 #q_sexo_jefe{top: 191px;left: 310px;width: 140px;height: 70px;}
+ 			 #q_parejas{top: 193px;left: 533px;width: 192px;height: 67px;}
+ 			 #q_h3{top: 226px;left: 780px;width: 144px;height: 70px;}
+ 			 #q_cve_ageb_a{top: 242px;left: 89px;width: 59px;height: 40px;}
+ 			 #q_edad_jefe{top: 292px;left: 310px;width: 114px;height: 70px;}
+ 			 #q_cve_loc{top: 314px;left: 89px;width: 60px;height: 40px;}
+ 			 #q_r_sel{top: 308px;left: 525px;width: 198px;height: 70px;}
+ 			 #q_h4{top: 306px;left: 780px;width: 144px;height: 70px;}
+ 			 #q_cve_ent{top: 386px;left: 89px;width: 59px;height: 39px;}
+ 			 #q_p2_1{top: 389px;left: 305px;width: 120px;height: 77px;}
+ 			 #q_h5{top: 386px;left: 780px;width: 144px;height: 70px;}
+ 			 #q_mayores{top: 425px;left: 525px;width: 192px;height: 67px;}
+ 			 #q_h6{top: 466px;left: 780px;width: 144px;height: 70px;}
+ 			 #pag160537739{width: 1280px;height: 720px;}
+ 			 #gr161326787{top: 0px;left: 1px;width: 1278px;height: 719px;}
+ 			 #slt_varctrl_fin{top: 45px;left: 12px;width: 1239px;height: 32px;position:absolute;}
+ 			 #lbl161327259{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl161327272{top: 85px;left: 161px;width: 1049px;height: 60px;position:absolute;}
+ 			 #lbl161327281{top: 181px;left: 320px;width: 745px;height: 56px;position:absolute;}
+ 			 #c_tr_envipe2019_sdg_int{top: 271px;left: 85px;}
+ 			 #c_tr_envipe2019_sdg_int .qCygDt{overflow: auto;width: 1100px;height: 400px;}
+ 			 #c_tr_envipe2019_sdg_int .qCygF > table .qEls{top: 271px;left: 85px;width: 1146px;height: 187px;}
+ 			 #q_n_ren{top: 48px;left: 53px;width: 104px;height: 85px;}
+ 			 #q_nombre{top: 47px;left: 207px;width: 827px;height: 80px;}
+ 			 #lbl161327379{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pag163106459{width: 1280px;height: 720px;}
+ 			 #gr164001699{top: 1px;left: 1px;width: 1278px;height: 719px;}
+ 			 #lbl164001705{top: 46px;left: 13px;width: 1239px;height: 29px;position:absolute;}
+ 			 #lbl164002085{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl164002094{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl164002104{top: 89px;left: 160px;width: 1087px;height: 43px;position:absolute;}
+ 			 #lbl164002113{top: 214px;left: 312px;width: 745px;height: 33px;position:absolute;}
+ 			 #mat164002125{top: 309px;left: 163px;width: 666px;height: 265px;}
+ 			 #lbl164002453{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pag163345159{width: 1280px;height: 720px;}
+ 			 #gr164326545{top: 0px;left: 1px;width: 1278px;height: 719px;}
+ 			 #lbl164326551{top: 45px;left: 12px;width: 1239px;height: 29px;position:absolute;}
+ 			 #lbl164326566{top: 87px;left: 13px;width: 26px;height: 25px;position:absolute;}
+ 			 #lbl164326575{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl164326585{top: 85px;left: 161px;width: 1055px;height: 167px;position:absolute;}
+ 			 #lbl164326591{top: 269px;left: 323px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_sexo{top: 385px;left: 452px;width: 341px;height: 124px;}
+ 			 #lbl164326699{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pag163353893{width: 1280px;height: 720px;}
+ 			 #gr085812385{top: 1px;left: 1px;width: 1278px;height: 719px;}
+ 			 #lbl085812392{top: 46px;left: 13px;width: 1239px;height: 29px;position:absolute;}
+ 			 #lbl085812407{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl085812416{top: 85px;left: 65px;width: 57px;height: 33px;position:absolute;}
+ 			 #lbl085812425{top: 85px;left: 153px;width: 1048px;height: 177px;position:absolute;}
+ 			 #q_edad{top: 175px;left: 58px;width: 60px;height: 40px;}
+ 			 #lbl085812440{top: 276px;left: 314px;width: 745px;height: 33px;position:absolute;}
+ 			 #q_edad_r{top: 358px;left: 85px;width: 733px;height: 268px;}
+ 			 #q_edad_c{top: 358px;left: 834px;width: 389px;height: 58px;}
+ 			 #lbl085812836{top: 684px;left: 1227px;width: 25px;height: 24px;position:absolute;}
+ 			 #pag163411398{width: 1280px;height: 720px;}
+ 			 #gr090628184{top: 0px;left: 0px;width: 1278px;height: 719px;}
+ 			 #lbl090628192{top: 41px;left: 14px;width: 1239px;height: 29px;position:absolute;}
+ 			 #lbl090628855{top: 75px;left: 70px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl090628866{top: 77px;left: 166px;width: 1047px;height: 54px;position:absolute;}
+ 			 #slt_ap3_6_ini{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl093514682{top: 148px;left: 201px;width: 955px;height: 114px;position:absolute;}
+ 			 #lbl090628875{top: 274px;left: 359px;width: 745px;height: 33px;position:absolute;}
+ 			 #lbl091132781{top: 322px;left: 291px;width: 107px;height: 29px;position:absolute;}
+ 			 #lbl091242108{top: 323px;left: 415px;width: 25px;height: 25px;position:absolute;}
+ 			 #q_fn_dia{top: 322px;left: 452px;width: 479px;height: 65px;}
+ 			 #lbl091302422{top: 363px;left: 946px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl091140259{top: 428px;left: 291px;width: 107px;height: 29px;position:absolute;}
+ 			 #lbl091344109{top: 425px;left: 415px;width: 25px;height: 25px;position:absolute;}
+ 			 #q_fn_mes{top: 429px;left: 458px;width: 479px;height: 65px;}
+ 			 #lbl091344072{top: 465px;left: 946px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl091147219{top: 531px;left: 292px;width: 107px;height: 29px;position:absolute;}
+ 			 #slt_codigo_ini{top: 530px;left: 417px;width: 25px;height: 25px;position:absolute;}
+ 			 #q_codigo{top: 529px;left: 453px;width: 479px;height: 65px;}
+ 			 #slt_codigo_fin{top: 570px;left: 948px;width: 25px;height: 25px;position:absolute;}
+ 			 #slt_ap3_6_fin{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pag163425999{width: 1280px;height: 720px;}
+ 			 #gr091543256{top: 1px;left: 1px;width: 1278px;height: 719px;}
+ 			 #lbl091543262{top: 37px;left: 18px;width: 1239px;height: 29px;position:absolute;}
+ 			 #slt_ap3_7_ini{top: 72px;left: 14px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl091543281{top: 72px;left: 69px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl091543290{top: 71px;left: 161px;width: 1094px;height: 139px;position:absolute;}
+ 			 #lbl091543296{top: 217px;left: 414px;width: 745px;height: 33px;position:absolute;}
+ 			 #lbl092240033{top: 268px;left: 290px;width: 107px;height: 29px;position:absolute;}
+ 			 #lbl092306329{top: 268px;left: 912px;width: 107px;height: 29px;position:absolute;}
+ 			 #mat091543307{top: 304px;left: 172px;width: 648px;height: 390px;}
+ 			 #slt_grado_ini{top: 377px;left: 842px;width: 19px;height: 19px;position:absolute;}
+ 			 #q_gra{top: 400px;left: 864px;width: 266px;height: 62px;}
+ 			 #slt_grado_fin{top: 457px;left: 1134px;width: 24px;height: 18px;position:absolute;}
+ 			 #slt_ap3_7_fin{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pag163434274{width: 1280px;height: 720px;}
+ 			 #gr092539432{top: 0px;left: 0px;width: 1278px;height: 719px;}
+ 			 #lbl092539439{top: 40px;left: 12px;width: 1239px;height: 29px;position:absolute;}
+ 			 #lbl092539465{top: 74px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl092539476{top: 74px;left: 156px;width: 1047px;height: 149px;position:absolute;}
+ 			 #slt_ap3_8_ini{top: 87px;left: 13px;width: 27px;height: 25px;position:absolute;}
+ 			 #lbl092539497{top: 233px;left: 335px;width: 745px;height: 33px;position:absolute;}
+ 			 #mat092539508{top: 306px;left: 157px;width: 848px;height: 340px;}
+ 			 #slt_ap3_8_fin{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pag163442473{width: 1280px;height: 720px;}
+ 			 #gr093814388{top: 0px;left: 0px;width: 1278px;height: 719px;}
+ 			 #lbl093814396{top: 38px;left: 10px;width: 1238px;height: 28px;position:absolute;}
+ 			 #lbl093814418{top: 72px;left: 66px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl093814429{top: 73px;left: 159px;width: 1088px;height: 156px;position:absolute;}
+ 			 #slt_ap3_9_ini{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl093814439{top: 235px;left: 375px;width: 745px;height: 33px;position:absolute;}
+ 			 #mat093814451{top: 299px;left: 156px;width: 807px;height: 340px;}
+ 			 #slt_ap3_9_fin{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pag163451021{width: 1280px;height: 720px;}
+ 			 #gr094553186{top: 1px;left: 1px;width: 1278px;height: 719px;}
+ 			 #lbl094553193{top: 46px;left: 13px;width: 1239px;height: 29px;position:absolute;}
+ 			 #slt_ap3_10_ini{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl094553214{top: 85px;left: 65px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl094553223{top: 86px;left: 156px;width: 1048px;height: 176px;position:absolute;}
+ 			 #lbl094553231{top: 268px;left: 313px;width: 745px;height: 33px;position:absolute;}
+ 			 #mat094553242{top: 338px;left: 156px;width: 695px;height: 315px;}
+ 			 #slt_ap3_10_fin{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pag163509423{width: 1280px;height: 720px;}
+ 			 #gr163711183{top: 1px;left: 1px;width: 1278px;height: 719px;}
+ 			 #slt_ini_informante{top: 48px;left: 13px;width: 1239px;height: 32px;position:absolute;}
+ 			 #lbl163711209{top: 87px;left: 13px;width: 25px;height: 25px;position:absolute;}
+ 			 #lbl163711218{top: 123px;left: 39px;width: 85px;height: 33px;position:absolute;}
+ 			 #lbl163711228{top: 149px;left: 440px;width: 377px;height: 67px;position:absolute;}
+ 			 #lbl163711235{top: 239px;left: 352px;width: 628px;height: 33px;position:absolute;}
+ 			 #q_n_info{top: 337px;left: 27px;width: 1226px;height: 55px;}
+ 			 #slt_fin_informante{top: 684px;left: 1227px;width: 25px;height: 25px;position:absolute;}
+ 			 #pag151453663{width: 1280px;height: 720px;}
+ 			 #gr151526700{top: 1px;left: 1px;width: 1278px;height: 719px;}
+ 			 #lbl151526737{top: 182px;left: 148px;width: 158px;height: 28px;position:absolute;}
+ 			 #lbl151526767{top: 183px;left: 381px;width: 811px;height: 33px;position:absolute;}
+ 			 #lbl151526791{top: 273px;left: 149px;width: 160px;height: 29px;position:absolute;}
+ 			 #lbl151526805{top: 274px;left: 379px;width: 813px;height: 96px;position:absolute;}
+ 			 #lbl151526821{top: 655px;left: 1115px;width: 107px;height: 29px;position:absolute;}
+ 			 #pag152408353{width: 1280px;height: 720px;}
+ 			 #lbl_ini{top: 33px;left: 18px;width: 45px;height: 18px;position:absolute;}
+ 			 #c_gpobs152408363{top: 61px;left: 19px;}
+ 			 #c_gpobs152408363 .qCygDt{overflow: auto;width: 700px;height: 200px;}
+ 			 #c_gpobs152408363 .qCygF > table .qEls{top: 61px;left: 19px;width: 1217px;height: 419px;}
+ 			 #q_tillas2017_obs_referenc{top: 30px;left: 16px;width: 210px;height: 74px;}
+ 			 #q_lantillas2017_obs_mensa{top: 119px;left: 16px;width: 765px;height: 71px;}
+ 			 #q_illas2017_obs_observaci{top: 203px;left: 16px;width: 765px;height: 144px;}
+ 			 #lbl_fin{top: 641px;left: 1196px;width: 40px;height: 23px;position:absolute;}
+ 			 /*estilos*/
+ 			 #lbl161327259.qtxt {font-weight: bold;}
+ 			 #lbl161327281.qtxt {font-style: italic;}
+ 			 #lbl164002094.qtxt {font-weight: bold;}
+ 			 #lbl164002113.qtxt {font-style: italic;}
+ 			 #lbl164002192.qtxt {font-weight: normal;}
+ 			 #lbl164002236.qtxt {font-weight: normal;}
+ 			 #lbl164002281.qtxt {font-weight: normal;}
+ 			 #lbl164002325.qtxt {font-weight: normal;}
+ 			 #lbl164002366.qtxt {font-weight: normal;}
+ 			 #lbl164002407.qtxt {font-weight: normal;}
+ 			 #mat164002125 .rowl:eq(0){height:1.6%;}
+ 			 #mat164002125 .rowl:eq(1){height:16.4%;}
+ 			 #mat164002125 .rowl:eq(2){height:16.4%;}
+ 			 #mat164002125 .rowl:eq(3){height:16.4%;}
+ 			 #mat164002125 .rowl:eq(4){height:16.4%;}
+ 			 #mat164002125 .rowl:eq(5){height:16.4%;}
+ 			 #mat164002125 .rowl:eq(6){height:16.4%;}
+ 			 #mat164002125 .col:eq(0){width:4.86%;}
+ 			 #mat164002125 .col:eq(1){width:9.85%;}
+ 			 #mat164002125 .col:eq(2){width:85.29%;}
+ 			 #lbl164326575.qtxt {font-weight: bold;}
+ 			 #lbl164326591.qtxt {font-style: italic;}
+ 			 #lbl085812416.qtxt {font-weight: bold;}
+ 			 #lbl085812440.qtxt {font-style: italic;}
+ 			 #lbl090628855.qtxt {font-weight: bold;}
+ 			 #lbl090628875.qtxt {font-style: italic;}
+ 			 #lbl091543281.qtxt {font-weight: bold;}
+ 			 #lbl091543296.qtxt {font-style: italic;}
+ 			 #lbl091543397.qtxt {font-weight: normal;}
+ 			 #lbl091543448.qtxt {font-weight: normal;}
+ 			 #lbl091543513.qtxt {font-weight: normal;}
+ 			 #lbl091543569.qtxt {font-weight: normal;}
+ 			 #lbl091543623.qtxt {font-weight: normal;}
+ 			 #lbl091543668.qtxt {font-weight: normal;}
+ 			 #lbl091834100.qtxt {font-weight: normal;}
+ 			 #lbl091850263.qtxt {font-weight: normal;}
+ 			 #lbl091856939.qtxt {font-weight: normal;}
+ 			 #lbl091904334.qtxt {font-weight: normal;}
+ 			 #lbl090540797.qtxt {font-weight: normal;}
+ 			 #mat091543307 .rowl:eq(0){height:1.0%;}
+ 			 #mat091543307 .rowl:eq(1){height:9.8%;}
+ 			 #mat091543307 .rowl:eq(2){height:9.8%;}
+ 			 #mat091543307 .rowl:eq(3){height:9.8%;}
+ 			 #mat091543307 .rowl:eq(4){height:9.8%;}
+ 			 #mat091543307 .rowl:eq(5){height:9.8%;}
+ 			 #mat091543307 .rowl:eq(6){height:8.33%;}
+ 			 #mat091543307 .rowl:eq(7){height:8.33%;}
+ 			 #mat091543307 .rowl:eq(8){height:8.32%;}
+ 			 #mat091543307 .rowl:eq(9){height:8.34%;}
+ 			 #mat091543307 .rowl:eq(10){height:8.34%;}
+ 			 #mat091543307 .rowl:eq(11){height:8.34%;}
+ 			 #mat091543307 .col:eq(0){width:9.34%;}
+ 			 #mat091543307 .col:eq(1){width:9.65%;}
+ 			 #mat091543307 .col:eq(2){width:81.01%;}
+ 			 #lbl092539465.qtxt {font-weight: bold;}
+ 			 #lbl092539497.qtxt {font-style: italic;}
+ 			 #lbl092540200.qtxt {font-weight: normal;}
+ 			 #lbl092540250.qtxt {font-weight: normal;}
+ 			 #lbl092540294.qtxt {font-weight: normal;}
+ 			 #lbl092540338.qtxt {font-weight: normal;}
+ 			 #lbl092540381.qtxt {font-weight: normal;}
+ 			 #lbl092540422.qtxt {font-weight: normal;}
+ 			 #lbl092828094.qtxt {font-weight: normal;}
+ 			 #lbl092834351.qtxt {font-weight: normal;}
+ 			 #mat092539508 .rowl:eq(0){height:9.41%;}
+ 			 #mat092539508 .rowl:eq(1){height:11.47%;}
+ 			 #mat092539508 .rowl:eq(2){height:11.47%;}
+ 			 #mat092539508 .rowl:eq(3){height:11.47%;}
+ 			 #mat092539508 .rowl:eq(4){height:11.47%;}
+ 			 #mat092539508 .rowl:eq(5){height:11.47%;}
+ 			 #mat092539508 .rowl:eq(6){height:11.47%;}
+ 			 #mat092539508 .rowl:eq(7){height:11.47%;}
+ 			 #mat092539508 .rowl:eq(8){height:10.3%;}
+ 			 #mat092539508 .col:eq(0){width:7.12%;}
+ 			 #mat092539508 .col:eq(1){width:9.26%;}
+ 			 #mat092539508 .col:eq(2){width:83.62%;}
+ 			 #lbl093814418.qtxt {font-weight: bold;}
+ 			 #lbl093814439.qtxt {font-style: italic;}
+ 			 #lbl093814509.qtxt {font-weight: normal;}
+ 			 #lbl093814552.qtxt {font-weight: normal;}
+ 			 #lbl093814600.qtxt {font-weight: normal;}
+ 			 #lbl093815359.qtxt {font-weight: normal;}
+ 			 #mat093814451 .rowl:eq(0){height:2.0%;}
+ 			 #mat093814451 .rowl:eq(1){height:25.0%;}
+ 			 #mat093814451 .rowl:eq(2){height:25.0%;}
+ 			 #mat093814451 .rowl:eq(3){height:25.0%;}
+ 			 #mat093814451 .rowl:eq(4){height:23.0%;}
+ 			 #mat093814451 .col:eq(0){width:4.74%;}
+ 			 #mat093814451 .col:eq(1){width:9.72%;}
+ 			 #mat093814451 .col:eq(2){width:85.54%;}
+ 			 #lbl094553214.qtxt {font-weight: bold;}
+ 			 #lbl094553231.qtxt {font-style: italic;}
+ 			 #lbl094553309.qtxt {font-weight: normal;}
+ 			 #lbl094553355.qtxt {font-weight: normal;}
+ 			 #lbl094553403.qtxt {font-weight: normal;}
+ 			 #lbl094553466.qtxt {font-weight: normal;}
+ 			 #lbl094916037.qtxt {font-weight: normal;}
+ 			 #mat094553242 .rowl:eq(0){height:17.18%;}
+ 			 #mat094553242 .rowl:eq(1){height:17.18%;}
+ 			 #mat094553242 .rowl:eq(2){height:17.18%;}
+ 			 #mat094553242 .rowl:eq(3){height:17.18%;}
+ 			 #mat094553242 .rowl:eq(4){height:14.62%;}
+ 			 #mat094553242 .rowl:eq(5){height:16.66%;}
+ 			 #mat094553242 .col:eq(0){width:4.61%;}
+ 			 #mat094553242 .col:eq(1){width:9.48%;}
+ 			 #mat094553242 .col:eq(2){width:85.91%;}
+ 			 #lbl163711218.qtxt {font-weight: bold;}
+ 			 #lbl163711228.qtxt {font-weight: normal;font-size: 26px;text-align: center;display: block;}
+ 			 #lbl163711235.qtxt {font-style: italic;}
+ 			 /*Inicio Vistas Secundarias */
+ 			 /*Fin Vistas Secundarias*/
+ 			 /*Fin_GenCuest*/
+ 		
+ 		/* 
+ 		  NOMBRE DE LA PLANTILLA: Estilo Clásico_03102017_152146 03122018_110356 08012020_094817 09112020_134217 151 17102022_111811_59952
+ 		  DESCRIPCION: Estilo tipo clasica
+ 		
+ 		*/ 
+#menuTop__   {top: 2px;left: 682px;width: 200px;height: 30px; parent: pnlTop__;}      
+.stit{display:none;}
+#sideMenuLeft_ {top: 0px;  left: 0px;  width: 0px; height: 0px;}
+#pnlMenuMainHeader_ {top: 0px;  left: 0px;  width: 0px; height: 0px;}
+#pnlComboMenuHeader_ {top: 0px;  left: 0px;  width: 0px; height: 0px;}
+#pnlMenuMainFooter_ {top: 0px;  left: 0px;  width: 0px; height:60px;}
+#pnlComboMenuFooter_ {top: 0px;  left: 0px;  width: 0px; height: 0px;}
+#pnlButonesSalirHeader_{top: 0px;  left: 0px;  width: 0px; height: 0px;}
+#pnlButonesSalirFooter_{top: 0px;  left: 0px;  width: 0px; height: 0px;}
+/*para congurar los botones de navegacion*/
+#navPrev_footer_  {top: 2px;  left: 10px;   width: 200px; height: 50px; parent: pnlNavegacionFooter_; font-size:6px;font-family:Arial;caption:Anterior;}
+#obs_footer_      {top: 2px;  left: 220px;  width: 270px; height: 50px; parent: pnlNavegacionFooter_; font-size:5px;font-family:Arial;caption:Observaciones;}                                   
+#captura_footer_  {top: 2px;  left: 500px;  width: 185px; height: 50px; parent: pnlNavegacionFooter_; font-size:6px;font-family:Arial;caption:Captura;}                                   
+#revision_footer_ {top: 2px;  left: 695px;  width: 195px; height: 50px; parent: pnlNavegacionFooter_; font-size:6px;font-family:Arial;caption:Salir;}
+#navNext_footer_  {top: 2px;  left: 900px;  width: 200px; height: 50px; parent: pnlNavegacionFooter_; font-size:6px;font-family:Arial;caption:Siguiente;}
+#c_tr_envipe2019_sdg_int__irElement {display: none;}]]></css>
+  <access/>
+  <filter/>
+  <questionnaire>
+    <members>
+      <labelfield name="lbl091541402"/>
+      <labelfield name="lbl091541439"/>
+      <labelfield name="lbl091541449"/>
+      <labelfield name="lbl091541462"/>
+      <labelfield name="lbl091541497"/>
+      <labelfield name="lbl091541506"/>
+      <labelfield name="lbl091541565"/>
+      <labelfield name="lbl091541574"/>
+      <labelfield name="slt_varctrl_ini"/>
+      <question name="q_h1">
+        <control type="text" cols="2" layout="vertical"/>
+      </question>
+      <question name="q_ren_jefe">
+        <control type="text" rows="1" cols="1" layout="vertical"/>
+      </question>
+      <question name="q_tot">
+        <control type="text" cols="2" layout="vertical"/>
+      </question>
+      <question name="q_cve_mun">
+        <control type="hidden" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <question name="q_h2">
+        <control type="text" cols="2" layout="vertical"/>
+      </question>
+      <question name="q_cve_ageb_na">
+        <control type="hidden" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <question name="q_sexo_jefe">
+        <control type="text" rows="1" cols="2" layout="vertical"/>
+      </question>
+      <question name="q_parejas">
+        <control type="text" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <question name="q_h3">
+        <control type="text" cols="2" layout="vertical"/>
+      </question>
+      <question name="q_cve_ageb_a">
+        <control type="hidden" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <question name="q_edad_jefe">
+        <control type="text" rows="1" cols="2" layout="vertical"/>
+      </question>
+      <question name="q_cve_loc">
+        <control type="hidden" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <question name="q_r_sel">
+        <control type="text" rows="1" cols="2" layout="vertical"/>
+      </question>
+      <question name="q_h4">
+        <control type="text" cols="2" layout="vertical"/>
+      </question>
+      <question name="q_cve_ent">
+        <control type="hidden" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <question name="q_p2_1">
+        <control type="text" rows="1" cols="2" layout="vertical"/>
+      </question>
+      <question name="q_h5">
+        <control type="text" cols="2" layout="vertical"/>
+      </question>
+      <question name="q_mayores">
+        <control type="text" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <question name="q_h6">
+        <control type="text" cols="2" layout="vertical"/>
+      </question>
+      <labelfield name="slt_varctrl_fin"/>
+      <labelfield name="lbl161327259"/>
+      <labelfield name="lbl161327272"/>
+      <labelfield name="lbl161327281"/>
+      <question name="q_n_ren">
+        <control type="text" rows="1" cols="2" layout="vertical"/>
+      </question>
+      <question name="q_nombre">
+        <control type="text" rows="1" cols="50" layout="vertical"/>
+      </question>
+      <labelfield name="lbl161327379"/>
+      <labelfield name="lbl164001705"/>
+      <labelfield name="lbl164002085"/>
+      <labelfield name="lbl164002094"/>
+      <labelfield name="lbl164002104"/>
+      <labelfield name="lbl164002113"/>
+      <question name="q_paren_1">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl164002192"/>
+      <labelfield name="lbl164002201"/>
+      <question name="q_paren_2">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl164002236"/>
+      <labelfield name="lbl164002249"/>
+      <question name="q_paren_3">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl164002281"/>
+      <labelfield name="lbl164002293"/>
+      <question name="q_paren_4">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl164002325"/>
+      <labelfield name="lbl164002336"/>
+      <question name="q_paren_5">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl164002366"/>
+      <labelfield name="lbl164002376"/>
+      <question name="q_paren_6">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl164002407"/>
+      <labelfield name="lbl164002424"/>
+      <labelfield name="lbl164002453"/>
+      <labelfield name="lbl164326551"/>
+      <labelfield name="lbl164326566"/>
+      <labelfield name="lbl164326575"/>
+      <labelfield name="lbl164326585"/>
+      <labelfield name="lbl164326591"/>
+      <question name="q_sexo">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <labelfield name="lbl164326699"/>
+      <labelfield name="lbl085812392"/>
+      <labelfield name="lbl085812407"/>
+      <labelfield name="lbl085812416"/>
+      <labelfield name="lbl085812425"/>
+      <question name="q_edad">
+        <control type="hidden" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <labelfield name="lbl085812440"/>
+      <question name="q_edad_r">
+        <control type="radiogroup" layout="vertical"/>
+      </question>
+      <question name="q_edad_c">
+        <control type="combobox" layout="vertical"/>
+      </question>
+      <labelfield name="lbl085812836"/>
+      <labelfield name="lbl090628192"/>
+      <labelfield name="lbl090628855"/>
+      <labelfield name="lbl090628866"/>
+      <labelfield name="slt_ap3_6_ini"/>
+      <labelfield name="lbl093514682"/>
+      <labelfield name="lbl090628875"/>
+      <labelfield name="lbl091132781"/>
+      <labelfield name="lbl091242108"/>
+      <question name="q_fn_dia">
+        <control type="combobox" layout="vertical"/>
+      </question>
+      <labelfield name="lbl091302422"/>
+      <labelfield name="lbl091140259"/>
+      <labelfield name="lbl091344109"/>
+      <question name="q_fn_mes">
+        <control type="combobox" layout="vertical"/>
+      </question>
+      <labelfield name="lbl091344072"/>
+      <labelfield name="lbl091147219"/>
+      <labelfield name="slt_codigo_ini"/>
+      <question name="q_codigo">
+        <control type="combobox" layout="vertical"/>
+      </question>
+      <labelfield name="slt_codigo_fin"/>
+      <labelfield name="slt_ap3_6_fin"/>
+      <labelfield name="lbl091543262"/>
+      <labelfield name="slt_ap3_7_ini"/>
+      <labelfield name="lbl091543281"/>
+      <labelfield name="lbl091543290"/>
+      <labelfield name="lbl091543296"/>
+      <labelfield name="lbl092240033"/>
+      <labelfield name="lbl092306329"/>
+      <question name="q_niv_1">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl091543397"/>
+      <labelfield name="lbl091543412"/>
+      <question name="q_niv_2">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl091543448"/>
+      <labelfield name="lbl091543460"/>
+      <question name="q_niv_3">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl091543513"/>
+      <labelfield name="lbl091543527"/>
+      <question name="q_niv_4">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl091543569"/>
+      <labelfield name="lbl091543582"/>
+      <question name="q_niv_5">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl091543623"/>
+      <labelfield name="lbl091543634"/>
+      <question name="q_niv_6">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl091543668"/>
+      <labelfield name="lbl091543682"/>
+      <question name="q_niv_7">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl091834100"/>
+      <labelfield name="lbl091834112"/>
+      <question name="q_niv_8">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl091850263"/>
+      <labelfield name="lbl091850277"/>
+      <question name="q_niv_9">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl091856939"/>
+      <labelfield name="lbl091856950"/>
+      <question name="q_niv_10">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl091904334"/>
+      <labelfield name="lbl091904347"/>
+      <question name="q_pr090540123">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl090540797"/>
+      <labelfield name="lbl090540832"/>
+      <labelfield name="slt_grado_ini"/>
+      <question name="q_gra">
+        <control type="combobox" layout="vertical"/>
+      </question>
+      <labelfield name="slt_grado_fin"/>
+      <labelfield name="slt_ap3_7_fin"/>
+      <labelfield name="lbl092539439"/>
+      <labelfield name="lbl092539465"/>
+      <labelfield name="lbl092539476"/>
+      <labelfield name="slt_ap3_8_ini"/>
+      <labelfield name="lbl092539497"/>
+      <question name="q_ap3_8_1">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl092540200"/>
+      <labelfield name="lbl092540216"/>
+      <question name="q_ap3_8_2">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl092540250"/>
+      <labelfield name="lbl092540262"/>
+      <question name="q_ap3_8_3">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl092540294"/>
+      <labelfield name="lbl092540305"/>
+      <question name="q_ap3_8_4">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl092540338"/>
+      <labelfield name="lbl092540349"/>
+      <question name="q_ap3_8_5">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl092540381"/>
+      <labelfield name="lbl092540390"/>
+      <question name="q_ap3_8_6">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl092540422"/>
+      <labelfield name="lbl092540438"/>
+      <question name="q_ap3_8_7">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl092828094"/>
+      <labelfield name="lbl092828108"/>
+      <question name="q_ap3_8_8">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl092834351"/>
+      <labelfield name="lbl092834363"/>
+      <labelfield name="slt_ap3_8_fin"/>
+      <labelfield name="lbl093814396"/>
+      <labelfield name="lbl093814418"/>
+      <labelfield name="lbl093814429"/>
+      <labelfield name="slt_ap3_9_ini"/>
+      <labelfield name="lbl093814439"/>
+      <question name="q_ap3_9_1">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl093814509"/>
+      <labelfield name="lbl093814519"/>
+      <question name="q_ap3_9_2">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl093814552"/>
+      <labelfield name="lbl093814562"/>
+      <question name="q_ap3_9_3">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl093814600"/>
+      <labelfield name="lbl093815329"/>
+      <question name="q_ap3_9_4">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl093815359"/>
+      <labelfield name="lbl093815373"/>
+      <labelfield name="slt_ap3_9_fin"/>
+      <labelfield name="lbl094553193"/>
+      <labelfield name="slt_ap3_10_ini"/>
+      <labelfield name="lbl094553214"/>
+      <labelfield name="lbl094553223"/>
+      <labelfield name="lbl094553231"/>
+      <question name="q_ap3_10_1">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl094553309"/>
+      <labelfield name="lbl094553321"/>
+      <question name="q_ap3_10_2">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl094553355"/>
+      <labelfield name="lbl094553364"/>
+      <question name="q_ap3_10_3">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl094553403"/>
+      <labelfield name="lbl094553414"/>
+      <question name="q_ap3_10_4">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl094553466"/>
+      <labelfield name="lbl094553481"/>
+      <question name="q_ap3_10_5">
+        <control type="radio" layout="vertical"/>
+      </question>
+      <labelfield name="lbl094916037"/>
+      <labelfield name="lbl094916050"/>
+      <labelfield name="slt_ap3_10_fin"/>
+      <labelfield name="slt_ini_informante"/>
+      <labelfield name="lbl163711209"/>
+      <labelfield name="lbl163711218"/>
+      <labelfield name="lbl163711228"/>
+      <labelfield name="lbl163711235"/>
+      <question name="q_n_info">
+        <control type="combobox" layout="vertical"/>
+      </question>
+      <labelfield name="slt_fin_informante"/>
+      <labelfield name="lbl151526737"/>
+      <labelfield name="lbl151526767"/>
+      <labelfield name="lbl151526791"/>
+      <labelfield name="lbl151526805"/>
+      <labelfield name="lbl151526821"/>
+      <labelfield name="lbl_ini"/>
+      <question name="q_tillas2017_obs_referenc">
+        <control type="text" rows="1" cols="10" layout="vertical"/>
+      </question>
+      <question name="q_lantillas2017_obs_mensa">
+        <control type="text" rows="1" cols="50" layout="vertical"/>
+      </question>
+      <question name="q_illas2017_obs_observaci">
+        <control type="text" rows="3" cols="50" layout="vertical"/>
+      </question>
+      <labelfield name="lbl_fin"/>
+      <button name="btn162956092"/>
+    </members>
+    <page name="pag145839073" section="sec155413206">
+      <label>Datos de autenticación</label>
+      <group name="gr091541296">
+        <title>I. DATOS DE IDENTIFICACIÓN</title>
+        <elements>lbl091541402,lbl091541439,lbl091541449,lbl091541462,lbl091541497,lbl091541506,lbl091541565,lbl091541574,slt_varctrl_ini</elements>
+      </group>
+    </page>
+    <page name="pag150020589" section="sec155413206">
+      <label>Variables de control</label>
+      <elements>q_h1;q_ren_jefe;q_tot;q_cve_mun,q_h2;q_cve_ageb_na,q_sexo_jefe;q_parejas;q_h3;q_cve_ageb_a,q_edad_jefe;q_cve_loc,q_r_sel;q_h4;q_cve_ent,q_p2_1;q_h5;q_mayores;q_h6</elements>
+    </page>
+    <page name="pag160537739" section="sec160537730">
+      <label>P3_2</label>
+      <group name="gr161326787">
+        <title>SECCIÓN III. INTEGRANTES DEL HOGAR Y CARACTERÍSTICAS SOCIODEMOGRÁFICAS</title>
+        <elements>slt_varctrl_fin,lbl161327259,lbl161327272,lbl161327281</elements>
+        <cyclicgroup name="c_tr_envipe2019_sdg_int">
+          <columns>
+            <column label="N_REN" question="q_n_ren" width="10%"/>
+            <column label="NOMBRE" question="q_nombre" width="90%"/>
+          </columns>
+          <elements>q_n_ren;q_nombre</elements>
+        </cyclicgroup>
+        <elements>lbl161327379</elements>
+      </group>
+    </page>
+    <page name="pag163106459" section="sec163106444">
+      <label>P3_3</label>
+      <group name="gr164001699">
+        <title>SECCIÓN III. INTEGRANTES DEL HOGAR Y CARACTERÍSTICAS SOCIODEMOGRÁFICAS</title>
+        <elements>lbl164001705,lbl164002085,lbl164002094,lbl164002104,lbl164002113</elements>
+        <matrix name="mat164002125">
+          <columns>
+            <column label="" width="4.86%"/>
+            <column label="" width="9.85%"/>
+            <column label="" width="85.29%"/>
+          </columns>
+          <elements>q_paren_1,lbl164002192,lbl164002201,q_paren_2,lbl164002236,lbl164002249,q_paren_3,lbl164002281,lbl164002293,q_paren_4,lbl164002325,lbl164002336,q_paren_5,lbl164002366,lbl164002376,q_paren_6,lbl164002407,lbl164002424</elements>
+        </matrix>
+        <elements>lbl164002453</elements>
+      </group>
+    </page>
+    <page name="pag163345159" section="sec163106444">
+      <label>P3_4</label>
+      <group name="gr164326545">
+        <title>SECCIÓN III. INTEGRANTES DEL HOGAR Y CARACTERÍSTICAS SOCIODEMOGRÁFICAS</title>
+        <elements>lbl164326551,lbl164326566,lbl164326575,lbl164326585,lbl164326591,q_sexo,lbl164326699</elements>
+      </group>
+    </page>
+    <page name="pag163353893" section="sec163106444">
+      <label>P3_5</label>
+      <group name="gr085812385">
+        <title>SECCIÓN III. INTEGRANTES DEL HOGAR Y CARACTERÍSTICAS SOCIODEMOGRÁFICAS</title>
+        <elements>lbl085812392,lbl085812407,lbl085812416,lbl085812425,q_edad;lbl085812440,q_edad_r;q_edad_c;lbl085812836</elements>
+      </group>
+    </page>
+    <page name="pag163411398" section="sec163106444">
+      <label>P3_6</label>
+      <group name="gr090628184">
+        <title>SECCIÓN III. INTEGRANTES DEL HOGAR Y CARACTERÍSTICAS SOCIODEMOGRÁFICAS</title>
+        <elements>lbl090628192,lbl090628855,lbl090628866,slt_ap3_6_ini,lbl093514682;lbl090628875,lbl091132781;lbl091242108,q_fn_dia,lbl091302422,lbl091140259;lbl091344109,q_fn_mes,lbl091344072,lbl091147219;slt_codigo_ini,q_codigo,slt_codigo_fin,slt_ap3_6_fin</elements>
+      </group>
+    </page>
+    <page name="pag163425999" section="sec163106444">
+      <label>P3_7</label>
+      <group name="gr091543256">
+        <title>SECCIÓN III. INTEGRANTES DEL HOGAR Y CARACTERÍSTICAS SOCIODEMOGRÁFICAS</title>
+        <elements>lbl091543262,slt_ap3_7_ini,lbl091543281,lbl091543290,lbl091543296,lbl092240033;lbl092306329</elements>
+        <matrix name="mat091543307">
+          <columns>
+            <column label="" width="9.34%"/>
+            <column label="" width="9.65%"/>
+            <column label="" width="81.01%"/>
+          </columns>
+          <elements>q_niv_1,lbl091543397,lbl091543412,q_niv_2,lbl091543448,lbl091543460,q_niv_3,lbl091543513,lbl091543527,q_niv_4,lbl091543569,lbl091543582,q_niv_5,lbl091543623,lbl091543634,q_niv_6,lbl091543668,lbl091543682,q_niv_7,lbl091834100,lbl091834112,q_niv_8,lbl091850263,lbl091850277,q_niv_9,lbl091856939,lbl091856950,q_niv_10,lbl091904334,lbl091904347,q_pr090540123,lbl090540797,lbl090540832</elements>
+        </matrix>
+        <elements>slt_grado_ini;q_gra;slt_grado_fin;slt_ap3_7_fin</elements>
+      </group>
+    </page>
+    <page name="pag163434274" section="sec163106444">
+      <label>P3_8</label>
+      <group name="gr092539432">
+        <title>SECCIÓN III. INTEGRANTES DEL HOGAR Y CARACTERÍSTICAS SOCIODEMOGRÁFICAS</title>
+        <elements>lbl092539439,lbl092539465,lbl092539476,slt_ap3_8_ini,lbl092539497</elements>
+        <matrix name="mat092539508">
+          <columns>
+            <column label="" width="7.12%"/>
+            <column label="" width="9.26%"/>
+            <column label="" width="83.62%"/>
+          </columns>
+          <elements>q_ap3_8_1,lbl092540200,lbl092540216,q_ap3_8_2,lbl092540250,lbl092540262,q_ap3_8_3,lbl092540294,lbl092540305,q_ap3_8_4,lbl092540338,lbl092540349,q_ap3_8_5,lbl092540381,lbl092540390,q_ap3_8_6,lbl092540422,lbl092540438,q_ap3_8_7,lbl092828094,lbl092828108,q_ap3_8_8,lbl092834351,lbl092834363</elements>
+        </matrix>
+        <elements>slt_ap3_8_fin</elements>
+      </group>
+    </page>
+    <page name="pag163442473" section="sec163106444">
+      <label>P3_9</label>
+      <group name="gr093814388">
+        <title>SECCIÓN III. INTEGRANTES DEL HOGAR Y CARACTERÍSTICAS SOCIODEMOGRÁFICAS</title>
+        <elements>lbl093814396,lbl093814418,lbl093814429,slt_ap3_9_ini,lbl093814439</elements>
+        <matrix name="mat093814451">
+          <columns>
+            <column label="" width="4.74%"/>
+            <column label="" width="9.72%"/>
+            <column label="" width="85.54%"/>
+          </columns>
+          <elements>q_ap3_9_1,lbl093814509,lbl093814519,q_ap3_9_2,lbl093814552,lbl093814562,q_ap3_9_3,lbl093814600,lbl093815329,q_ap3_9_4,lbl093815359,lbl093815373</elements>
+        </matrix>
+        <elements>slt_ap3_9_fin</elements>
+      </group>
+    </page>
+    <page name="pag163451021" section="sec163106444">
+      <label>P3_10</label>
+      <group name="gr094553186">
+        <title>SECCIÓN III. INTEGRANTES DEL HOGAR Y CARACTERÍSTICAS SOCIODEMOGRÁFICAS</title>
+        <elements>lbl094553193,slt_ap3_10_ini,lbl094553214,lbl094553223,lbl094553231</elements>
+        <matrix name="mat094553242">
+          <columns>
+            <column label="" width="4.61%"/>
+            <column label="" width="9.48%"/>
+            <column label="" width="85.91%"/>
+          </columns>
+          <elements>q_ap3_10_1,lbl094553309,lbl094553321,q_ap3_10_2,lbl094553355,lbl094553364,q_ap3_10_3,lbl094553403,lbl094553414,q_ap3_10_4,lbl094553466,lbl094553481,q_ap3_10_5,lbl094916037,lbl094916050</elements>
+        </matrix>
+        <elements>slt_ap3_10_fin</elements>
+      </group>
+    </page>
+    <page name="pag163509423" section="sec163509412">
+      <label>Informante</label>
+      <group name="gr163711183">
+        <title>SECCIÓN III. INTEGRANTES DEL HOGAR Y CARACTERÍSTICAS SOCIODEMOGRÁFICAS</title>
+        <elements>slt_ini_informante,lbl163711209,lbl163711218,lbl163711228,lbl163711235,q_n_info;slt_fin_informante</elements>
+      </group>
+    </page>
+    <page name="pag151453663" section="sec151453614">
+      <label>Página 1</label>
+      <group name="gr151526700">
+        <title>Nombre y número de renglón del informante seleccionado(a)</title>
+        <elements>lbl151526737,lbl151526767,lbl151526791,lbl151526805,lbl151526821</elements>
+      </group>
+    </page>
+    <page name="pag152408353" section="sec152408343">
+      <label>Página Observaciones</label>
+      <elements>lbl_ini</elements>
+      <cyclicgroup name="c_gpobs152408363">
+        <newtext>Nueva Observación</newtext>
+        <edittext>Editar Observación</edittext>
+        <deletetext>Eliminar Observación</deletetext>
+        <columns>
+          <column label="Referencia" question="q_tillas2017_obs_referenc"/>
+          <column label="Mensaje de Error" question="q_lantillas2017_obs_mensa"/>
+          <column label="Observación que justifica la inconsistencia" question="q_illas2017_obs_observaci"/>
+        </columns>
+        <elements>q_tillas2017_obs_referenc;q_lantillas2017_obs_mensa;q_illas2017_obs_observaci</elements>
+      </cyclicgroup>
+      <elements>lbl_fin</elements>
+    </page>
+    <defaultpage>
+      <label>Página Default</label>
+      <elements>btn162956092</elements>
+    </defaultpage>
+  </questionnaire>
+</view>

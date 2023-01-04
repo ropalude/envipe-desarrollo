@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE qml SYSTEM "DTD_xmlCuestionario.dtd">
+<qml name="qml" qml-version="2.2017.02.07">
+  <general>
+    <title>ENVIPE 2023 - VIVIENDA</title>
+    <version value="41" type="beta"/>
+    <creator>Instituto Nacional de Estadística y Geografía</creator>
+    <creationdate year="2022" month="10" day="17"/>
+    <lastupdate year="2022" month="11" day="1"/>
+  </general>
+  <datamodel connection="conn_qml">
+    <entity name="tr_envipe2023_vvda" type="questionnaire" connection="conn_qml">
+      <identification>
+        <key name="id_muestra" type="number" precision="15"/>
+      </identification>
+      <fields>
+        <field name="cve_ent" type="alphanumeric" length="2"/>
+        <field name="cve_mun" type="alphanumeric" length="3"/>
+        <field name="cve_loc" type="alphanumeric" length="4"/>
+        <field name="cve_ageb_a" type="alphanumeric" length="3"/>
+        <field name="cve_ageb_na" type="alphanumeric" length="1"/>
+        <field name="ap1_1" type="alphanumeric" length="1"/>
+        <field name="ap1_2" type="alphanumeric" length="1"/>
+        <field name="ap2_1" type="alphanumeric" length="4"/>
+        <field name="ap2_2" type="alphanumeric" length="1"/>
+        <field name="ap2_3" type="alphanumeric" length="4"/>
+        <field name="c_res" type="alphanumeric" length="4"/>
+        <field name="upm" type="alphanumeric" length="7"/>
+        <field name="prog" type="alphanumeric" length="4"/>
+        <field name="viv_sel" type="alphanumeric" length="2"/>
+      </fields>
+      <subentity name="tr_envipe2023_vvda_obs" type="cyclic">
+        <identification>
+          <key name="id_envipe2023_vvda_obs" type="iktan-seed"/>
+        </identification>
+        <fields>
+          <field name="referencia" type="alphanumeric" length="50"/>
+          <field name="mensaje" type="alphanumeric" length="1000"/>
+          <field name="observacion" type="alphanumeric" length="200"/>
+        </fields>
+      </subentity>
+    </entity>
+    <query name="qy_muestra" connection="conn_qml">
+      <description>Trae información de la muestra </description>
+      <fieldsquery>
+        <fieldquery name="colonia" type="alphanumeric" length="80"/>
+        <fieldquery name="ageb" type="alphanumeric" length="5"/>
+        <fieldquery name="entidad" type="alphanumeric" length="255"/>
+        <fieldquery name="ent" type="alphanumeric" length="2"/>
+        <fieldquery name="municipio" type="alphanumeric" length="255"/>
+        <fieldquery name="localidad" type="alphanumeric" length="100"/>
+        <fieldquery name="cve_loc" type="alphanumeric" length="4"/>
+        <fieldquery name="cve_mun" type="alphanumeric" length="3"/>
+      </fieldsquery>
+      <params source="credential"/>
+      <sql><![CDATA[
+select ent,entidad,cve_mun,municipio,cve_loc,localidad,ageb,colonia
+from TC_MUESTRAS
+where id_muestra=#id_muestra#
+]]></sql>
+    </query>
+    <query name="qy_numeral_01_06" connection="conn_qml">
+      <description>Trae valor de 1 a 6</description>
+      <fieldsquery>
+        <fieldquery name="valor" type="alphanumeric" length="4"/>
+        <fieldquery name="descripcion" type="alphanumeric" length="500"/>
+        <fieldquery name="id_op" type="number" precision="38"/>
+      </fieldsquery>
+      <params source="tr_envipe2023_vvda"/>
+      <sql><![CDATA[
+select id_op, valor, descripcion 
+from tc_c_envipe_opciones 
+where id_cuest=1 and num_pregunta='0.0' and valor between '02' and #ap2_1#
+order by id_op
+]]></sql>
+    </query>
+    <query name="qy_numeral_01_99" connection="conn_qml">
+      <description>Trae numeros de 1 a 99</description>
+      <fieldsquery>
+        <fieldquery name="id_op" type="number" precision="38"/>
+        <fieldquery name="valor" type="alphanumeric" length="4"/>
+        <fieldquery name="descripcion" type="alphanumeric" length="500"/>
+      </fieldsquery>
+      <sql><![CDATA[
+select id_op, valor, descripcion 
+from tc_c_envipe_opciones 
+where id_cuest=1 and num_pregunta='0.0' 
+order by id_op
+]]></sql>
+    </query>
+  </datamodel>
+  <questionnaire name="envipe2023_vvda" onsavecheck="yes" receipt="no" id="101805">
+    <section name="sec145839060" cyclic="no">
+      <title>Portada</title>
+      <labelfield name="lbl134736357">
+        <text>ENTIDAD</text>
+      </labelfield>
+      <labelfield name="lbl140607257">
+        <text>#tr_envipe2023_vvda.cve_ent#</text>
+      </labelfield>
+      <labelfield name="lbl140343584">
+        <text>MUNICIPIO</text>
+      </labelfield>
+      <labelfield name="lbl140613985">
+        <text>#tr_envipe2023_vvda.cve_mun#</text>
+      </labelfield>
+      <labelfield name="lbl140348801">
+        <text>LOCALIDAD</text>
+      </labelfield>
+      <labelfield name="lbl140619335">
+        <text>#tr_envipe2023_vvda.cve_loc#</text>
+      </labelfield>
+      <labelfield name="lbl140356684">
+        <text>AGEB</text>
+      </labelfield>
+      <labelfield name="lbl140624880">
+        <text>#tr_envipe2023_vvda.cve_ageb_a#-#tr_envipe2023_vvda.cve_ageb_na#</text>
+      </labelfield>
+      <labelfield name="slt_varctrl_ini"/>
+      <question name="q_cve_mun" type="simple">
+        <variable name="cve_mun" entity="tr_envipe2023_vvda"/>
+      </question>
+      <question name="q_cve_loc" type="simple">
+        <variable name="cve_loc" entity="tr_envipe2023_vvda"/>
+      </question>
+      <question name="q_cve_ent" type="simple">
+        <variable name="cve_ent" entity="tr_envipe2023_vvda"/>
+      </question>
+      <question name="q_cve_ageb_a" type="simple">
+        <variable name="cve_ageb_a" entity="tr_envipe2023_vvda"/>
+      </question>
+      <question name="q_cve_ageb_na" type="simple">
+        <variable name="cve_ageb_na" entity="tr_envipe2023_vvda"/>
+      </question>
+      <labelfield name="slt_varctrl_fin"/>
+      <labelfield name="lbl150212427">
+        <text>&lt;b&gt;INTRODUCCIÓN&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl150212442">
+        <text>El INEGI está levantando información que permita realizar estimaciones de la incidencia delictiva en #credential.anio_ant#, características del delito, las víctimas, lugar y horarios donde se cometen los delitos. Asimismo, se busca obtener información acerca de la seguridad pública en el país.</text>
+      </labelfield>
+      <labelfield name="lbl151128381">
+        <text>&lt;b&gt;CONFIDENCIALIDAD&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl151128396">
+        <text>&lt;b&gt;OBLIGATORIEDAD&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl151128406">
+        <text>Conforme a las disposiciones del &lt;b&gt;Artículo 37, párrafo primero, de la Ley del&amp;nbsp;Sistema Nacional de Información Estadística y Geográfica &lt;/b&gt;en vigor: &quot;Los&amp;nbsp;datos que proporcionen para fines estadísticos los Informantes del Sistema a&amp;nbsp;las Unidades en términos de la presente Ley, serán estrictamente confidenciales&amp;nbsp;y bajo ninguna circunstancia podrán utilizarse para otro fin que no sea el&amp;nbsp;estadístico.&quot;</text>
+      </labelfield>
+      <labelfield name="lbl151128416">
+        <text>De acuerdo con el &lt;b&gt;Artículo 45, párrafo primero, de la Ley del Sistema&amp;nbsp;Nacional de Información Estadística y Geográfica&lt;/b&gt; en vigor: &quot;Los Informantes&amp;nbsp;del Sistema estarán obligados a proporcionar, con veracidad y oportunidad,&amp;nbsp;los datos e informes que les soliciten las autoridades competentes para fines&amp;nbsp;estadísticos, censales y geográficos, y prestarán apoyo a las mismas.&quot;</text>
+      </labelfield>
+    </section>
+    <section name="sec151306085" cyclic="no">
+      <title>SECCIÓN I. TIPO DE VIVIENDA</title>
+      <labelfield name="lbl153202269">
+        <text>CLASE DE VIVIENDA</text>
+      </labelfield>
+      <labelfield name="lbl153202284"/>
+      <labelfield name="lbl153202300">
+        <text>1.1</text>
+      </labelfield>
+      <labelfield name="lbl153202314">
+        <text>&lt;i&gt;IDENTIFIQUE LA CLASE DE VIVIENDA PARTICULAR&lt;/i&gt;</text>
+      </labelfield>
+      <labelfield name="lbl153202324">
+        <text>#credential.msg_radio#</text>
+      </labelfield>
+      <question name="q_ap1_1" type="category" required="yes">
+        <variable name="ap1_1" entity="tr_envipe2023_vvda"/>
+        <required-message>#credential.msg_val_radio# en 1.1</required-message>
+        <categories name="cat_q_pr153202336" type="inline" selection="simple">
+          <category code="1">&lt;b&gt;(1)&lt;/b&gt; Casa independiente</category>
+          <category code="2">&lt;b&gt;(2)&lt;/b&gt; Departamento en edificio</category>
+          <category code="3">&lt;b&gt;(3)&lt;/b&gt; Vivienda en vecindad</category>
+          <category code="4">&lt;b&gt;(4)&lt;/b&gt; Vivienda en cuarto de azotea</category>
+          <category code="5">&lt;b&gt;(5)&lt;/b&gt; Local no construido para habitación</category>
+        </categories>
+      </question>
+      <labelfield name="lbl153202439"/>
+      <labelfield name="lbl153214449">
+        <text>ACCESO A LA VIVIENDA</text>
+      </labelfield>
+      <labelfield name="lbl153214459"/>
+      <labelfield name="lbl153214467">
+        <text>1.2</text>
+      </labelfield>
+      <labelfield name="lbl153214475">
+        <text>&lt;i&gt;IDENTIFIQUE SI LA VIVIENDA TIENE ALGUNA BARRERA FÍSICA, COMO CASETA DE VIGILANCIA, PUERTAS CON O SIN INTERCOMUNICACIÓN DE AUDIO O VIDEO, PORTERO U OTRA CONDICIÓN QUE LE IMPIDA LLEGAR DE FORMA DIRECTA A LA PUERTA DE LA VIVIENDA&lt;/i&gt;</text>
+      </labelfield>
+      <labelfield name="lbl153214482">
+        <text>#credential.msg_radio#</text>
+      </labelfield>
+      <question name="q_ap1_2" type="category" required="yes">
+        <variable name="ap1_2" entity="tr_envipe2023_vvda"/>
+        <required-message>#credential.msg_val_radio# en 1.2</required-message>
+        <categories name="cat_q_pr153214493" type="inline" selection="simple">
+          <category code="1">&lt;b&gt;(1)&lt;/b&gt; Sí existe</category>
+          <category code="2">&lt;b&gt;(2)&lt;/b&gt; No existe</category>
+        </categories>
+      </question>
+      <labelfield name="lbl153214566"/>
+    </section>
+    <section name="sec153655890" cyclic="no">
+      <title>SECCIÓN II. HOGARES Y RESIDENTES EN LA VIVIENDA</title>
+      <labelfield name="lbl153811832">
+        <text>PERSONAS EN LA VIVIENDA</text>
+      </labelfield>
+      <labelfield name="lbl153811844"/>
+      <labelfield name="lbl153811852">
+        <text>2.1</text>
+      </labelfield>
+      <labelfield name="lbl153811861">
+        <text>&lt;b&gt;¿Cuántas personas viven normalmente en esta vivienda, contando a los niños chiquitos y a los ancianos? &lt;/b&gt;(Incluya a los trabajadores domésticos que vivan aquí)</text>
+      </labelfield>
+      <labelfield name="lbl153811870">
+        <text>#credential.msg_radio#</text>
+      </labelfield>
+      <question name="q_ap2_1" type="category">
+        <variable name="ap2_1" entity="tr_envipe2023_vvda"/>
+        <categories source="qy_numeral_01_99" type="catalog" selection="simple" value="valor" description="descripcion" force="yes">
+          <unselected>__Seleccione__</unselected>
+        </categories>
+        <event name="evt121001430" type="change" side="server">
+          <reloadcategories name="acc121001422">
+            <description>Recarga Hogares</description>
+            <condition><![CDATA[
+function test() {
+    var resultado = false;
+
+    if (tr_envipe2023_vvda.getAp2_1() * 1 != 1) {
+        tr_envipe2023_vvda.setAp2_2('');
+    }
+
+    if (1 == 1) {
+        tr_envipe2023_vvda.setAp2_3('');
+        resultado = true;
+    }
+    return resultado;
+}
+]]></condition>
+            <queryaction source="qy_numeral_01_06"/>
+          </reloadcategories>
+        </event>
+      </question>
+      <labelfield name="lbl153811965"/>
+      <labelfield name="lbl154137387">
+        <text>GASTO COMÚN</text>
+      </labelfield>
+      <labelfield name="slt_ap2_2_ini"/>
+      <labelfield name="lbl154137407">
+        <text>2.2</text>
+      </labelfield>
+      <labelfield name="lbl154137419">
+        <text>&lt;b&gt;¿Todas las personas que viven en esta vivienda comparten un mismo gasto para comer?&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl152403513">
+        <text>CUENTE A LOS TRABAJADORES DOMÉSTICOS COMO UN HOGAR APARTE</text>
+      </labelfield>
+      <labelfield name="lbl154137428">
+        <text>#credential.msg_radio#</text>
+      </labelfield>
+      <question name="q_ap2_2" type="category" required="yes">
+        <variable name="ap2_2" entity="tr_envipe2023_vvda"/>
+        <required-message>#credential.msg_val_radio# en 2.2</required-message>
+        <categories name="cat_q_pr154137440" type="inline" selection="simple">
+          <category code="1">&lt;b&gt;(1)&lt;/b&gt; Sí</category>
+          <category code="2">&lt;b&gt;(2)&lt;/b&gt; No</category>
+        </categories>
+      </question>
+      <labelfield name="slt_ap2_2_fin"/>
+      <labelfield name="lbl154751765">
+        <text>NÚMERO DE HOGARES</text>
+      </labelfield>
+      <labelfield name="slt_ap2_3_ini"/>
+      <labelfield name="lbl154751786">
+        <text>2.3</text>
+      </labelfield>
+      <labelfield name="lbl154751796">
+        <text>&lt;b&gt;Entonces, ¿cuántos hogares o grupos de personas tienen gasto separado para comer, contando el de usted?&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl154751803">
+        <text>#credential.msg_radio#</text>
+      </labelfield>
+      <question name="q_ap2_3" type="category" required="yes">
+        <variable name="ap2_3" entity="tr_envipe2023_vvda"/>
+        <required-message>#credential.msg_val_radio# en 2.3</required-message>
+        <categories source="qy_numeral_01_06" type="catalog" selection="simple" value="valor" description="descripcion" force="yes">
+          <unselected>__Seleccione__</unselected>
+        </categories>
+      </question>
+      <labelfield name="slt_ap2_3_fin"/>
+      <event name="evt133923643" type="page-unload" side="client">
+        <validation name="ap2_1_colectiva_2" type="required" references="q_ap2_1" replicate="yes" ref-page="pag153655900">
+          <description>Valida vivienda colectiva</description>
+          <error>Debe seleccionar una cantidad válida para la cantidad de personas en 2.1</error>
+          <replicate>
+            <level name="questionnaire" type="required"/>
+          </replicate>
+          <validate><![CDATA[
+function test() {
+    if (tr_envipe2023_vvda.getAp2_1() * 1 >= 31) {
+        var myAnswer;
+        myAnswer = confirm('Se ha registrado un número mayor a 30 personas. SE TRATA DE UNA VIVIENDA COLECTIVA?');
+        if (myAnswer) {
+            var myAnswer2;
+            myAnswer2 = confirm('Por ser una vivienda colectiva se CERRARÁ DEFINITIVAMENTE esta vivienda. ¿Está usted seguro?');
+            if (myAnswer2) {
+                tr_envipe2023_vvda.setAp2_2('');
+                tr_envipe2023_vvda.setAp2_3('');
+                tr_envipe2023_vvda.setC_res('13.1');
+                tr_envipe2023_vvda.setStatus__('I');
+                runtime__.saveEntity(tr_envipe2023_vvda);
+                runtime__.exit();
+            } else {
+                tr_envipe2023_vvda.setAp2_1('');
+            }
+        } else {
+            tr_envipe2023_vvda.setAp2_1('');
+        }
+    }
+    if (tr_envipe2023_vvda.getAp2_1() * 1 > 0) {
+        return true;
+    }
+    return false;
+}
+]]></validate>
+        </validation>
+        <validation name="ap2_3_colectiva_2" type="required" references="q_ap2_3" replicate="yes" ref-page="pag154749730">
+          <description>Valida vivienda colectiva</description>
+          <error>#credential.msg_val_radio#</error>
+          <replicate>
+            <level name="questionnaire" type="required"/>
+          </replicate>
+          <validate><![CDATA[
+function test() {
+    if (tr_envipe2023_vvda.getAp2_3() * 1 >= 7) {
+        var myAnswer;
+        myAnswer = confirm('Se ha registrado 7 o mas hogares. SE TRATA DE UNA VIVIENDA COLECTIVA?');
+        if (myAnswer) {
+            var myAnswer2;
+            myAnswer2 = confirm('Por ser una vivienda colectiva se CERRARÁ DEFINITIVAMENTE esta vivienda. ¿Está usted seguro?');
+            if (myAnswer2) {
+                tr_envipe2023_vvda.setC_res('13.1');
+                tr_envipe2023_vvda.setStatus__('I');
+                runtime__.saveEntity(tr_envipe2023_vvda);
+                runtime__.exit();
+            } else {
+                tr_envipe2023_vvda.setAp2_3('');
+            }
+        } else {
+            tr_envipe2023_vvda.setAp2_3('');
+        }
+    }
+    if (tr_envipe2023_vvda.getAp2_3() * 1 > 0) {
+        return true;
+    }
+    return false;
+}
+]]></validate>
+        </validation>
+      </event>
+    </section>
+    <section name="sec152408343" cyclic="no">
+      <title>Sección Observaciones</title>
+      <labelfield name="lbl_ini"/>
+      <cyclicgroup name="c_gpobs152408363" finite="no" entity="tr_envipe2023_vvda_obs">
+        <textempty>No hay observaciones registradas</textempty>
+        <question name="q_tillas2017_obs_referenc" type="simple" readonly="yes">
+          <text>Referencia</text>
+          <variable name="referencia" entity="tr_envipe2023_vvda_obs"/>
+        </question>
+        <question name="q_lantillas2017_obs_mensa" type="simple" readonly="yes">
+          <text>Mensaje de Error</text>
+          <variable name="mensaje" entity="tr_envipe2023_vvda_obs"/>
+        </question>
+        <question name="q_illas2017_obs_observaci" type="simple" required="yes">
+          <text>Observación que justifica la inconsistencia</text>
+          <variable name="observacion" entity="tr_envipe2023_vvda_obs"/>
+        </question>
+      </cyclicgroup>
+      <labelfield name="lbl_fin"/>
+    </section>
+    <defaultsection>
+      <title>Termina Cuestionario</title>
+      <button name="btn162956092" value="Terminar" type="actions">
+        <event name="evt093552898" type="click" side="server">
+          <expr name="acc093552594">
+            <description>Termino de cuestionario</description>
+            <expression><![CDATA[
+function test() {
+    var myAnswer;
+    try {
+        if (runtime__.hasErrors() == false) {
+            myAnswer = confirm("Ha finalizado las secciones ya no podrá volver a entrar ¿está seguro de esta acción?.. \n\nTerminar Captura(Aceptar) - Dejar Pendiente (Cancelar)");
+            if (!myAnswer) {
+                tr_envipe2023_vvda.setC_res('2');
+                tr_envipe2023_vvda.setStatus__('I');
+                runtime__.saveEntity(tr_envipe2023_vvda);
+                runtime__.exit();
+                return true;
+            } else {
+                tr_envipe2023_vvda.setC_res('1');
+                tr_envipe2023_vvda.setStatus__('C');
+                runtime__.saveEntity(tr_envipe2023_vvda);
+                runtime__.exit();
+                return true;
+            }
+        } else {
+            myAnswer = confirm("Se encontraron errores de validación. \n\n ¿Realmente desea salir del cuestionario?.. \n\nDejar Pendiente(Aceptar) - Salir(Cancelar)");
+            if (myAnswer) {
+                tr_envipe2023_vvda.setC_res('2');
+                tr_envipe2023_vvda.setStatus__('I');
+                runtime__.saveEntity(tr_envipe2023_vvda);
+                runtime__.exit();
+                return true;
+            } else {
+                return true;
+            }
+        }
+    } catch (err) {
+        tr_envipe2023_vvda.setC_res('2');
+        tr_envipe2023_vvda.setStatus__('I');
+        runtime__.saveEntity(tr_envipe2023_vvda);
+        return false;
+    }
+    return true;
+}
+]]></expression>
+          </expr>
+        </event>
+      </button>
+    </defaultsection>
+    <event name="evt122156310" type="load" side="server">
+      <reloadquery name="acc103541710" query="qy_muestra" type="simple">
+        <description>Recarga consulta de muestra</description>
+      </reloadquery>
+      <expr name="acc101647672">
+        <description>setea variables</description>
+        <expression><![CDATA[
+function test() {
+    credential.setMsg_check('<i>SELECCIONE LOS CÓDIGOS CORRESPONDIENTES</i>');
+    credential.setMsg_radio('<i>SELECCIONE UN CÓDIGO</i>');
+    credential.setMsg_matriz('<i>SELECCIONE EL CÓDIGO CORRESPONDIENTE A CADA OPCIÓN</i>');
+    credential.setMsg_num('<i>REGISTRE LA CANTIDAD CON NÚMERO</i>');
+
+    credential.setMsg_val_check('Debe seleccionar al menos un código');
+    credential.setMsg_val_matriz('Debe seleccionar un código en la opción ');
+    credential.setMsg_val_radio('Debe seleccionar un código');
+    credential.setMsg_val_num('Falta registrar una cantidad numérica válida');
+    credential.setMsg_val_esp('Especifique no es válido');
+
+    tr_envipe2023_vvda.setCve_ent('00');
+    tr_envipe2023_vvda.setCve_mun('000');
+    tr_envipe2023_vvda.setCve_loc('0000');
+    tr_envipe2023_vvda.setCve_ageb_a('000');
+    tr_envipe2023_vvda.setCve_ageb_na('0');
+    //credential.setLocalidad('COLONIA/LOCALIDAD');
+    //credential.setMunicipio('MUNICIPIO/DELEGACIÓN');
+    //credential.setEstado('ESTADO');
+    var qy = qy_muestra;
+    if (qy != null) {
+        if (qy_muestra.getEnt() != null) {
+            tr_envipe2023_vvda.setCve_ent(qy_muestra.getEnt());
+        }
+        if (qy_muestra.getCve_mun() != null) {
+            tr_envipe2023_vvda.setCve_mun(qy_muestra.getCve_mun());
+        }
+        if (qy_muestra.getCve_loc() != null) {
+            tr_envipe2023_vvda.setCve_loc(qy_muestra.getCve_loc());
+        }
+        if (qy_muestra.getAgeb() != null) {
+            var ageb = qy_muestra.getAgeb();
+            var ageb_a = ageb.substring(0, 3);
+            var ageb_na = ageb.substring(ageb.length - 1, ageb.length);
+            tr_envipe2023_vvda.setCve_ageb_a(ageb_a);
+            tr_envipe2023_vvda.setCve_ageb_na(ageb_na);
+        }
+        /* if (qy_muestra.getLocalidad() != null) {
+            credential.setLocalidad(qy_muestra.getLocalidad());
+        }
+        if (qy_muestra.getMunicipio() != null) {
+            credential.setMunicipio(qy_muestra.getMunicipio());
+        }
+        if (qy_muestra.getEntidad() != null) {
+            credential.setEstado(qy_muestra.getEntidad());
+        }*/
+    }
+
+    credential.setAnio_act('2023');
+    credential.setAnio_ant('2022');
+    //credential.setPais('MÉXICO');
+}
+]]></expression>
+      </expr>
+    </event>
+    <skips save-states="no">
+      <skip name="salto095420951" clear="no" hide="no">
+        <description>Salta variables de control</description>
+        <condition><![CDATA[
+function test() {
+      var resultado = ( 1 == 1); 
+ 	 return resultado;
+}
+]]></condition>
+        <blocks>
+          <block from="q_cve_mun" to="q_cve_ageb_na"/>
+        </blocks>
+      </skip>
+      <skip name="salto152941495" clear="no" hide="no">
+        <description>Ocultar sección de observaciones</description>
+        <condition><![CDATA[
+function test(){ return ( 1 == 1);}
+]]></condition>
+        <blocks>
+          <block from="c_gpobs152408363" to="c_gpobs152408363"/>
+        </blocks>
+      </skip>
+      <skip name="salto142204454" clear="no" hide="no">
+        <description>Salta ap2_1 sin borrar datos </description>
+        <triggers>
+          <trigger references="q_ap2_1"/>
+        </triggers>
+        <condition><![CDATA[
+function test() {
+    if (tr_envipe2023_vvda.getAp2_1() * 1 == 1) {
+        tr_envipe2023_vvda.setAp2_2('1');
+        return true;
+    }
+    return false;
+}
+]]></condition>
+        <blocks>
+          <block from="lbl154137407" to="q_ap2_2"/>
+        </blocks>
+      </skip>
+      <skip name="salto122319845" clear="yes" hide="no">
+        <description>Salta pregunta 2.3</description>
+        <triggers>
+          <trigger references="q_ap2_1"/>
+          <trigger references="q_ap2_2"/>
+        </triggers>
+        <condition><![CDATA[
+function test() {
+    return (tr_envipe2023_vvda.getAp2_2() != 2);
+}
+]]></condition>
+        <blocks>
+          <block from="lbl154751786" to="q_ap2_3"/>
+        </blocks>
+      </skip>
+    </skips>
+  </questionnaire>
+  <globalscript><![CDATA[
+/*global runtime__ confirm*/
+]]></globalscript>
+</qml>

@@ -1,0 +1,554 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{772C2E54-B717-4DAD-8A10-59626370BDD0}</ProjectGuid>
+			<ProjectVersion>12.0</ProjectVersion>
+			<MainSource>iktan.dpr</MainSource>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UsePackage>vcl;rtl;vclx;vclimg;vclactnband;dbrtl;vcldb;vcldbx;bdertl;vcltouch;xmlrtl;dsnap;dsnapcon;TeeUI;TeeDB;Tee;vclib;ibxpress;adortl;IndyCore;IndySystem;IndyProtocols;inet;intrawebdb_100_140;Intraweb_100_140;VclSmp;vclie;websnap;webdsnap;inetdb;inetdbbde;inetdbxpress;soaprtl;vclribbon;dbexpress;DbxCommonDriver;DataSnapIndy10ServerTransport;DataSnapProviderClient;DbxClientDriver;DataSnapServer;DBXInterBaseDriver;DBXMySQLDriver;dbxcds;DBXFirebirdDriver;DBXSybaseASEDriver;DBXSybaseASADriver;DBXOracleDriver;DBXMSSQLDriver;DBXInformixDriver;DBXDb2Driver;adobe;Util;ZComponent;ZDbc;ZPlain;ZCore;ZParseSql;tmsd2010;tmsexd2010;MsnPopup5</DCC_UsePackage>
+			<DCC_UnitSearchPath>envipe\Interprete;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_DependencyCheckOutputName>iktan.exe</DCC_DependencyCheckOutputName>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_Platform>x86</DCC_Platform>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="iktan.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="movil\Removibles\URemovibles.pas">
+				<Form>FRemovibles</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Ingreso\UIngreso.pas">
+				<Form>FIngreso</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Principal\UPrincipal.pas">
+				<Form>FPrincipal</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Librerias\CLibrerias.pas"/>
+			<DCCReference Include="movil\Librerias\RLibrerias.pas"/>
+			<DCCReference Include="movil\Formato\UFormato.pas">
+				<Form>FFormato</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Formato\CFormato.pas"/>
+			<DCCReference Include="movil\Formato\RFormato.pas"/>
+			<DCCReference Include="movil\Utilerias\UExtraerUsb.pas"/>
+			<DCCReference Include="movil\Utilerias\GuidEx.pas"/>
+			<DCCReference Include="movil\Utilerias\UWifi.pas"/>
+			<DCCReference Include="movil\Xml\UDml.pas"/>
+			<DCCReference Include="movil\Xml\CDml.pas"/>
+			<DCCReference Include="movil\Restauracion\URestauracion.pas">
+				<Form>FRestauracion</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Restauracion\TRestauracion.pas"/>
+			<DCCReference Include="movil\Restauracion\CRestauracion.pas"/>
+			<DCCReference Include="movil\Wifi\UInterface.pas">
+				<Form>FInterface</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Wifi\CInterface.pas"/>
+			<DCCReference Include="movil\Wifi\UtilsWifiDemon.pas"/>
+			<DCCReference Include="movil\Wifi\RXml.pas"/>
+			<DCCReference Include="movil\Wifi\UConectarInternet.pas">
+				<Form>FConectarInternet</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Wifi\XWifi.pas"/>
+			<DCCReference Include="movil\Acceso\UEntrada.pas">
+				<Form>FEntrada</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Acceso\UTransparente.pas">
+				<Form>FTransparente</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Fotos\UFotografiaFiltro.pas">
+				<Form>FFotografiaFiltro</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Fotos\UTomarFoto.pas">
+				<Form>FTomarFoto</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Fotos\TFotos.pas"/>
+			<DCCReference Include="movil\Fotos\CFotos.pas"/>
+			<DCCReference Include="movil\Correo\UCorreo.pas">
+				<Form>FCorreo</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Correo\CCorreo.pas"/>
+			<DCCReference Include="movil\ContraseniaUsuario\UContraseniaUsuarioAcciones.pas">
+				<Form>FContraseniaUsuarioAcciones</Form>
+			</DCCReference>
+			<DCCReference Include="movil\ContraseniaUsuario\UContraseniaUsuario.pas">
+				<Form>FContraseniaUsuario</Form>
+			</DCCReference>
+			<DCCReference Include="movil\ContraseniaUsuario\TContraseniaUsuario.pas"/>
+			<DCCReference Include="movil\ContraseniaUsuario\CContraseniaUsuario.pas"/>
+			<DCCReference Include="movil\ContraseniaUsuario\RContraseniaUsuario.pas"/>
+			<DCCReference Include="movil\CapturaPantalla\UCapturaPantalla.pas">
+				<Form>FCapturaPantalla</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Temas\UTemas.pas">
+				<Form>FTemas</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Temas\TTemas.pas"/>
+			<DCCReference Include="movil\Temas\CTemas.pas"/>
+			<DCCReference Include="movil\Removibles\CRemovibles.pas"/>
+			<DCCReference Include="movil\Ingreso\UContrasenia.pas">
+				<Form>FContrasenia</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Ingreso\TIngreso.pas"/>
+			<DCCReference Include="movil\Ingreso\CIngreso.pas"/>
+			<DCCReference Include="movil\Respaldos\TRespaldos.pas"/>
+			<DCCReference Include="movil\Respaldos\CRespaldos.pas"/>
+			<DCCReference Include="movil\Respaldos\URespaldos.pas">
+				<Form>FRespaldos</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Kiosco\UKioscoContenedor.pas"/>
+			<DCCReference Include="movil\Kiosco\TKiosco.pas"/>
+			<DCCReference Include="movil\Kiosco\CKioscoContenedor.pas"/>
+			<DCCReference Include="movil\Kiosco\RKiosco.pas"/>
+			<DCCReference Include="movil\BD\UBaseTnx.pas"/>
+			<DCCReference Include="movil\BD\UModuls.pas"/>
+			<DCCReference Include="movil\BD\CBD.pas"/>
+			<DCCReference Include="movil\BD\RBD.pas"/>
+			<DCCReference Include="movil\BD\UDaoFactory.pas"/>
+			<DCCReference Include="movil\WebServices\UWebServicesImpl.pas">
+				<Form>FWebServicesImpl</Form>
+			</DCCReference>
+			<DCCReference Include="movil\WebServices\UWebServices.pas"/>
+			<DCCReference Include="movil\WebServices\CWebServices.pas"/>
+			<DCCReference Include="movil\WebServices\RWebServices.pas"/>
+			<DCCReference Include="movil\Principal\CPrincipal.pas"/>
+			<DCCReference Include="movil\Principal\UContenedorEncabezado.pas">
+				<Form>FContenedorEncabezado</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Principal\UContenedorMaestro.pas">
+				<Form>FContenedorMaestro</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Principal\CContenedorMaestro.pas"/>
+			<DCCReference Include="movil\Agenda\TAgenda.pas"/>
+			<DCCReference Include="movil\Agenda\RAgenda.pas"/>
+			<DCCReference Include="movil\Agenda\CAgenda.pas"/>
+			<DCCReference Include="movil\Librerias\cxDrive10.pas"/>
+			<DCCReference Include="movil\Librerias\UArchivos.pas"/>
+			<DCCReference Include="movil\Librerias\TLibrerias.pas"/>
+			<DCCReference Include="movil\Librerias\Encriptacion\Sha1.pas"/>
+			<DCCReference Include="movil\Librerias\Encriptacion\Twofish.pas"/>
+			<DCCReference Include="movil\Librerias\Encriptacion\Tools.pas"/>
+			<DCCReference Include="movil\Librerias\FlipReverseRotateLibrary.pas"/>
+			<DCCReference Include="movil\Librerias\XUtilerias.pas"/>
+			<DCCReference Include="movil\Librerias\magfmtdisk.pas"/>
+			<DCCReference Include="movil\Librerias\uLkJSON.pas"/>
+			<DCCReference Include="movil\Librerias\magsubs1.pas"/>
+			<DCCReference Include="movil\Librerias\UAccesoDatos.pas"/>
+			<DCCReference Include="movil\Librerias\UZips.pas"/>
+			<DCCReference Include="movil\Librerias\XConstantes.pas"/>
+			<DCCReference Include="movil\Librerias\USB\SetupApi.pas"/>
+			<DCCReference Include="movil\Librerias\USB\JwaWinBase.pas"/>
+			<DCCReference Include="movil\Librerias\USB\JwaReason.pas"/>
+			<DCCReference Include="movil\Librerias\USB\JwaNtStatus.pas"/>
+			<DCCReference Include="movil\Librerias\USB\JwaWinGDI.pas"/>
+			<DCCReference Include="movil\Librerias\USB\moduleloader.pas"/>
+			<DCCReference Include="movil\Librerias\USB\JwaDbt.pas"/>
+			<DCCReference Include="movil\Librerias\USB\CfgMgr32.pas"/>
+			<DCCReference Include="movil\Librerias\USB\WinConvTypes.pas"/>
+			<DCCReference Include="movil\Librerias\USB\JwaWinNT.pas"/>
+			<DCCReference Include="movil\Librerias\USB\JwaWinType.pas"/>
+			<DCCReference Include="movil\Librerias\USB\Cfg.pas"/>
+			<DCCReference Include="movil\Librerias\USB\JwaWinUser.pas"/>
+			<DCCReference Include="movil\Librerias\USB\JwaWinReg.pas"/>
+			<DCCReference Include="movil\Librerias\ULibrerias.pas"/>
+			<DCCReference Include="movil\Librerias\MSXML_TLB.pas"/>
+			<DCCReference Include="movil\Librerias\UCadenas.pas"/>
+			<DCCReference Include="movil\Librerias\UTipos.pas"/>
+			<DCCReference Include="movil\Librerias\UGenerales.pas"/>
+			<DCCReference Include="movil\Librerias\USistema.pas"/>
+			<DCCReference Include="movil\Librerias\UKiosco.pas"/>
+			<DCCReference Include="movil\Librerias\MSXML2_TLB.pas"/>
+			<DCCReference Include="movil\Librerias\UParametros.pas"/>
+			<DCCReference Include="movil\Librerias\UUsb.pas"/>
+			<DCCReference Include="movil\Librerias\UModulo.pas">
+				<Form>ModuloDatos</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="movil\Librerias\UVersionUtil.pas"/>
+			<DCCReference Include="movil\Librerias\TVersionUtil.pas"/>
+			<DCCReference Include="movil\Propiedades\CPropiedades.pas"/>
+			<DCCReference Include="movil\Propiedades\LPropiedades.pas"/>
+			<DCCReference Include="movil\Propiedades\UPropiedades.pas"/>
+			<DCCReference Include="movil\Configuracion\CRegistroCurp.pas"/>
+			<DCCReference Include="movil\Configuracion\RRegistroCurp.pas"/>
+			<DCCReference Include="movil\Configuracion\TRegistroCurp.pas"/>
+			<DCCReference Include="movil\Configuracion\URegistroCurp.pas">
+				<Form>FRegistroCurp</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Avisos\UAvisos.pas">
+				<Form>FAvisos</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Avisos\UAvisosAnteriores.pas">
+				<Form>FAvisosAnteriores</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Avisos\UAvisosVisor.pas">
+				<Form>FAvisosVisor</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Avisos\CAvisos.pas"/>
+			<DCCReference Include="movil\Avisos\TAvisos.pas"/>
+			<DCCReference Include="movil\BD\UISelect.pas"/>
+			<DCCReference Include="movil\Librerias\UStrHashMap.pas"/>
+			<DCCReference Include="movil\Descargas\CDescargas.pas"/>
+			<DCCReference Include="movil\Descargas\RDescargas.pas"/>
+			<DCCReference Include="movil\Descargas\TDescargas.pas"/>
+			<DCCReference Include="movil\Descargas\UDescargas.pas">
+				<Form>FDescargas</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Librerias\UHashMap.pas"/>
+			<DCCReference Include="movil\Temas\RTemas.pas"/>
+			<DCCReference Include="movil\Librerias\UDialogoMensaje.pas">
+				<Form>FDialogoMensaje</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Principal\TPrincipal.pas"/>
+			<DCCReference Include="movil\Restauracion\URestauracionWeb.pas">
+				<Form>FRestauracionWeb</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Restauracion\CRestauracionWeb.pas"/>
+			<DCCReference Include="movil\Restauracion\RRestauracionWeb.pas"/>
+			<DCCReference Include="movil\Utilerias\UMcc.pas"/>
+			<DCCReference Include="movil\Respaldos\RRespaldos.pas"/>
+			<DCCReference Include="movil\Librerias\UHilos.pas"/>
+			<DCCReference Include="movil\Envios\CEnvios.pas"/>
+			<DCCReference Include="movil\Envios\REnvios.pas"/>
+			<DCCReference Include="movil\Envios\UEnvios.pas">
+				<Form>FEnvios</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Envios\UEnviosDatos.pas"/>
+			<DCCReference Include="movil\Envios\UEnviosFiltro.pas">
+				<Form>FEnviosFiltro</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Envios\TEnvios.pas"/>
+			<DCCReference Include="movil\Principal\UProcesosSP.pas"/>
+			<DCCReference Include="movil\Utilerias\UUtileriasTablas.pas"/>
+			<DCCReference Include="movil\Visitas\UVisitas.pas">
+				<Form>FVisitas</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Visitas\UVisitasAgregar.pas">
+				<Form>FVisitasAgregar</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Visitas\CVisitas.pas"/>
+			<DCCReference Include="movil\Visitas\TVisitas.pas"/>
+			<DCCReference Include="movil\Visitas\RVisitas.pas"/>
+			<DCCReference Include="movil\Visitas\UEstatus.pas"/>
+			<DCCReference Include="movil\Visitas\TMovimientos.pas"/>
+			<DCCReference Include="movil\Navegador\UNavegador.pas">
+				<Form>FNavegador</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Cierre\UCierre.pas"/>
+			<DCCReference Include="movil\Cierre\TCierre.pas"/>
+			<DCCReference Include="movil\WebServices\TWebServices.pas"/>
+			<DCCReference Include="movil\Envios\IEnvios.pas"/>
+			<DCCReference Include="movil\Actualizacion\CActualizacion.pas"/>
+			<DCCReference Include="movil\Actualizacion\RActualizacion.pas"/>
+			<DCCReference Include="movil\Actualizacion\TActualizacion.pas"/>
+			<DCCReference Include="movil\Actualizacion\UActualizacion.pas">
+				<Form>FActualizacion</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Cuestionario\CCargarCuestionario.pas"/>
+			<DCCReference Include="movil\Cuestionario\TCargarCuestionario.pas"/>
+			<DCCReference Include="movil\Cuestionario\UCargarCuestionario.pas">
+				<Form>FCargarCuestionario</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Cuestionario\UExportar.pas">
+				<Form>FExportar</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Cuestionario\UInterfaceInterprete.pas"/>
+			<DCCReference Include="movil\Cuestionario\UInterpreteFactory.pas"/>
+			<DCCReference Include="movil\Cuestionario\UUtileriasCuestionarios.pas"/>
+			<DCCReference Include="movil\Manuales\CManualesFiltro.pas"/>
+			<DCCReference Include="movil\Manuales\RManualesFiltro.pas"/>
+			<DCCReference Include="movil\Manuales\TManualesFiltro.pas"/>
+			<DCCReference Include="movil\Manuales\UManualesFiltro.pas">
+				<Form>FManualesFiltro</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Manuales\UManualesPantalla.pas">
+				<Form>FManualesPantalla</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Manuales\UPantallaCompleta.pas">
+				<Form>FPantallaCompleta</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Ingreso\UInformacion.pas">
+				<Form>FInformacion</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Envios\UEnviosDetalle.pas">
+				<Form>FEnviosDetalle</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Librerias\UFtp.pas">
+				<Form>FFtp</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Configuracion\URegistroDetalle.pas">
+				<Form>FRegistroDetalle</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Librerias\AcroPDFLib_TLB.pas">
+				<Form>$R *.res</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Croquis\UCroquis.pas">
+				<Form>FCroquis</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Cuestionario\UCargarParametros.pas">
+				<Form>FCargarParametros</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Actualizacion\UActualizacionDetalle.pas">
+				<Form>FActualizacionDetalle</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Utilerias\UPaginacion.pas">
+				<Form>FPaginacion</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Xml\UDmlAbstract.pas"/>
+			<DCCReference Include="movil\Cierre\UTransparenteCierre.pas">
+				<Form>FTransparenteCierre</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Kiosco\UCredenciales.pas">
+				<Form>FCredenciales</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Ingreso\URescate.pas">
+				<Form>FRescate</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Agenda\UAgendaAcciones.pas">
+				<Form>FAgendaAcciones</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Agenda\UAgendaX.pas">
+				<Form>FAgendaX</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Librerias\TBitacorasWeb.pas"/>
+			<DCCReference Include="movil\BD\UCargarSQL.pas">
+				<Form>FCargarSQL</Form>
+			</DCCReference>
+			<DCCReference Include="movil\BD\TCargarSQL.pas"/>
+			<DCCReference Include="movil\Ingreso\UActivarCuenta.pas">
+				<Form>FActivarCuenta</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Cuestionario\UExportarInterprete.pas">
+				<Form>FExportarInterprete</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Librerias\USeguridad.pas"/>
+			<DCCReference Include="movil\Cuestionario\USeleccionProyecto.pas">
+				<Form>FSeleccionProyecto</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Cuestionario\UCargarCuestionarioMovil.pas">
+				<Form>FCargarCuestionarioMovil</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Geo\CGeo.pas"/>
+			<DCCReference Include="movil\Geo\RGeo.pas"/>
+			<DCCReference Include="movil\Geo\UGeo.pas">
+				<Form>FGeo</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Notas\UNotasX.pas">
+				<Form>FNotasX</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Notas\CNotasX.pas"/>
+			<DCCReference Include="movil\Notas\RNotasX.pas"/>
+			<DCCReference Include="movil\Notas\TNotasX.pas"/>
+			<DCCReference Include="movil\Notas\UNotasAccionesX.pas">
+				<Form>FNotasAccionesX</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Librerias\SevenZipVCL.pas"/>
+			<DCCReference Include="movil\Librerias\UMasterZip.pas"/>
+			<DCCReference Include="movil\Librerias\USevenZip.pas"/>
+			<DCCReference Include="movil\Principal\UAlertaBateria.pas">
+				<Form>FAlertaBateria</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Incidencias\UIncidencias.pas">
+				<Form>FIncidencia</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Bateria\CBateria.pas"/>
+			<DCCReference Include="movil\Bateria\RBateria.pas"/>
+			<DCCReference Include="movil\Bateria\TBateria.pas"/>
+			<DCCReference Include="envipe\Principal\UPrincipalEnvipe.pas">
+				<Form>FPrincipalEnvipe</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Levantamiento\CLevantamiento.pas"/>
+			<DCCReference Include="envipe\Levantamiento\RLevantamiento.pas"/>
+			<DCCReference Include="envipe\Levantamiento\TDuplicarHogares.pas"/>
+			<DCCReference Include="envipe\Levantamiento\TLevantamiento.pas"/>
+			<DCCReference Include="envipe\Levantamiento\UAccesoSemaforos.pas"/>
+			<DCCReference Include="envipe\Levantamiento\UCambiaSemaforos.pas">
+				<Form>FCambiaSemaforos</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Levantamiento\UCierreEnvipe.pas"/>
+			<DCCReference Include="envipe\Levantamiento\UCroquisEnvipe.pas">
+				<Form>FCroquisEnvipe</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Levantamiento\ULevantamiento.pas">
+				<Form>FLevantamiento</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Levantamiento\ULevantamientoDetalle.pas">
+				<Form>FLevantamientoDetalle</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Levantamiento\UNumeroHogares.pas">
+				<Form>FNumeroHogares</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Levantamiento\UPresencia.pas">
+				<Form>FPresencia</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Levantamiento\USeleccionInstrumento.pas">
+				<Form>FSeleccionInstrumento</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Levantamiento\UVerificacion.pas">
+				<Form>FVerificacion</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Utilerias\CEstatusEnvipe.pas"/>
+			<DCCReference Include="envipe\Utilerias\CUtileriasEnvipe.pas"/>
+			<DCCReference Include="envipe\Utilerias\REstatusEnvipe.pas"/>
+			<DCCReference Include="envipe\Utilerias\RUtileriasEnvipe.pas"/>
+			<DCCReference Include="envipe\Utilerias\UGeneralesEnvipe.pas"/>
+			<DCCReference Include="envipe\Utilerias\UUtileriasEnvipe.pas"/>
+			<DCCReference Include="envipe\Levantamiento\Hogar\Seleccionado\UDesplazamientoSeleccionado.pas">
+				<Form>FDesplazamientoSeleccionado</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Levantamiento\Hogar\Seleccionado\UEncuentraSeleccionado.pas">
+				<Form>FEncuentraSeleccionado</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Levantamiento\Hogar\Seleccionado\UHogarSeleccionado.pas">
+				<Form>FHogarSeleccionado</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Levantamiento\Hogar\Seleccionado\Victimizacion\TVictimizacion.pas"/>
+			<DCCReference Include="envipe\Levantamiento\Hogar\Seleccionado\Victimizacion\UJustificaVictimizacion.pas">
+				<Form>FJustificacion</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Levantamiento\Hogar\Seleccionado\Victimizacion\USeleccionadoVictimizacion.pas">
+				<Form>FSeleccionadoVictimizacion</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Agenda\UAgendaEnvipe.pas">
+				<Form>FAgendaEnvipe</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Cuestionarios\CInterpreteCuestionario.pas"/>
+			<DCCReference Include="envipe\Cuestionarios\RInterpreteCuestionario.pas"/>
+			<DCCReference Include="envipe\Cuestionarios\UExportarEnvipe.pas">
+				<Form>FExportarEnvipe</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Cuestionarios\UInterpreteEnvipe.pas"/>
+			<DCCReference Include="envipe\Envios\TEnviosEnvipe.pas"/>
+			<DCCReference Include="envipe\Envios\UEnvioFiltroEnvipe.pas">
+				<Form>FEnvioFiltroEnvipe</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Envios\UEnviosEnvipe.pas"/>
+			<DCCReference Include="envipe\Envios\UEnviosFiltroEnvipe.pas"/>
+			<DCCReference Include="envipe\Notas\UNotasEnvipe.pas">
+				<Form>FNotasEnvipe</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Supervision\CSupervision.pas"/>
+			<DCCReference Include="envipe\Supervision\TReporte.pas"/>
+			<DCCReference Include="envipe\Supervision\TSupervision.pas"/>
+			<DCCReference Include="envipe\Supervision\TVerificacionSP.pas"/>
+			<DCCReference Include="envipe\Supervision\UAccionSupervision.pas">
+				<Form>FAccionSupervision</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Supervision\UReporte.pas">
+				<Form>FReporte</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Supervision\USeguimiento.pas">
+				<Form>FSeguimiento</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Supervision\USupervision.pas">
+				<Form>FSupervision</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Supervision\UVerificacionSP.pas">
+				<Form>FVerificacionSP</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Visitas\TVisitasEnvipe.pas"/>
+			<DCCReference Include="envipe\Visitas\UVisitasEnvipe.pas">
+				<Form>FVisitasEnvipe</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Visitas\UVisitasEnvipeAgregar.pas">
+				<Form>FVisitasEnvipeAgregar</Form>
+			</DCCReference>
+			<DCCReference Include="envipe\Levantamiento\Hogar\ULevantamientoHogar.pas">
+				<Form>FLevantamientoHogar</Form>
+			</DCCReference>
+			<DCCReference Include="movil\Seleccionado\TCambio.pas"/>
+			<DCCReference Include="movil\Seleccionado\UCambio.pas">
+				<Form>FCambio</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">iktan.dpr</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+						<Parameters Name="RunParams">Off admin scroll test</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">2058</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\dcloffice2k140.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\dclofficexp140.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+					</Excluded_Packages>
+				</Delphi.Personality>
+				<ActiveXProjectInfo>
+					<version>1</version>
+				</ActiveXProjectInfo>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

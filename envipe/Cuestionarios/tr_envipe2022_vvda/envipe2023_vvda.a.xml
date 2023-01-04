@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE access SYSTEM "DTD_xmlAcceso.dtd">
+<access name="acc_envipe2023_vvda" aml-version="0.30012008alfa">
+  <general>
+    <title>Acceso y Filtro para cuestionario ENVIPE 2023 - VIVIENDA</title>
+    <version value="41"/>
+    <creator>Instituto Nacional de Estadística y Geografía</creator>
+    <creationdate year="2022" month="10" day="17"/>
+    <lastupdate year="2022" month="11" day="1"/>
+  </general>
+  <credential>
+    <variable name="id_muestra" type="number" isparam="yes" precision="15"/>
+    <variable name="upm" type="alphanumeric" isparam="yes" length="7"/>
+    <variable name="prog" type="alphanumeric" isparam="yes" length="4"/>
+    <variable name="viv_sel" type="alphanumeric" isparam="yes" length="2"/>
+    <variable name="msg_val_matriz" type="alphanumeric" length="250"/>
+    <variable name="msg_val_esp" type="alphanumeric" length="250"/>
+    <variable name="msg_val_num" type="alphanumeric" length="250"/>
+    <variable name="msg_val_check" type="alphanumeric" length="250"/>
+    <variable name="msg_val_radio" type="alphanumeric" length="250"/>
+    <variable name="msg_matriz" type="alphanumeric" length="250"/>
+    <variable name="msg_radio" type="alphanumeric" length="250"/>
+    <variable name="msg_check" type="alphanumeric" length="250"/>
+    <variable name="msg_num" type="alphanumeric" length="250"/>
+    <variable name="anio_act" type="alphanumeric" length="4"/>
+    <variable name="anio_ant" type="alphanumeric" length="4"/>
+    <variable name="iktan_seed" type="number" isparam="yes" precision="5"/>
+  </credential>
+  <datamodel/>
+  <accessform name="acceso"/>
+  <filterform name="filtro"/>
+</access>

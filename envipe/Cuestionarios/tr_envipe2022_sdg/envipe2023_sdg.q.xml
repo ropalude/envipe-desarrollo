@@ -1,0 +1,3175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE qml SYSTEM "DTD_xmlCuestionario.dtd">
+<qml name="qml" qml-version="2.2017.02.07">
+  <general>
+    <title>ENVIPE 2023 - SOCIODEMOGRAFICO</title>
+    <version value="41" type="beta"/>
+    <creator>Instituto Nacional de Estadística y Geografía</creator>
+    <creationdate year="2022" month="10" day="17"/>
+    <lastupdate year="2022" month="11" day="1"/>
+  </general>
+  <datamodel connection="conn_qml">
+    <entity name="tr_envipe2023_sdg" type="questionnaire" connection="conn_qml">
+      <identification>
+        <key name="id_muestra" type="number" precision="15"/>
+      </identification>
+      <fields>
+        <field name="upm" type="alphanumeric" length="7"/>
+        <field name="prog" type="alphanumeric" length="4"/>
+        <field name="viv_sel" type="alphanumeric" length="2"/>
+        <field name="hogar" type="alphanumeric" length="2"/>
+        <field name="ren_jefe" type="alphanumeric" length="2"/>
+        <field name="tot" type="number" precision="2"/>
+        <field name="cve_mun" type="alphanumeric" length="3"/>
+        <field name="cve_ageb_na" type="alphanumeric" length="1"/>
+        <field name="sexo_jefe" type="alphanumeric" length="2"/>
+        <field name="parejas" type="alphanumeric" length="90"/>
+        <field name="cve_ageb_a" type="alphanumeric" length="3"/>
+        <field name="edad_jefe" type="alphanumeric" length="2"/>
+        <field name="cve_loc" type="alphanumeric" length="4"/>
+        <field name="r_sel" type="alphanumeric" length="2"/>
+        <field name="cve_ent" type="alphanumeric" length="2"/>
+        <field name="mayores" type="alphanumeric" length="90"/>
+        <field name="fac_eleg" type="alphanumeric" length="5"/>
+        <field name="mes_cap" type="alphanumeric" length="2"/>
+        <field name="dia_cap" type="alphanumeric" length="2"/>
+        <field name="tipo_cap" type="alphanumeric" length="1"/>
+        <field name="c_res" type="alphanumeric" length="4"/>
+        <field name="tot_per" type="alphanumeric" length="4"/>
+        <field name="h1" type="number" precision="2" default="0"/>
+        <field name="h2" type="number" precision="2" default="0"/>
+        <field name="h3" type="number" precision="2" default="0"/>
+        <field name="h4" type="number" precision="2" default="0"/>
+        <field name="h5" type="number" precision="2" default="0"/>
+        <field name="h6" type="number" precision="2" default="0"/>
+        <field name="p2_1" type="alphanumeric" length="2"/>
+        <field name="n_info" type="alphanumeric" length="2"/>
+        <field name="nom_eleg" type="alphanumeric" length="250"/>
+      </fields>
+      <subentity name="tr_envipe2023_sdg_obs" type="cyclic">
+        <identification>
+          <key name="id_envipe2023_sdg_obs" type="iktan-seed"/>
+        </identification>
+        <fields>
+          <field name="referencia" type="alphanumeric" length="50"/>
+          <field name="mensaje" type="alphanumeric" length="1000"/>
+          <field name="observacion" type="alphanumeric" length="200"/>
+        </fields>
+      </subentity>
+      <subentity name="tr_envipe2023_sdg_int" type="cyclic">
+        <identification>
+          <key name="id_envipe2023_sdg_int" type="iktan-seed"/>
+        </identification>
+        <fields>
+          <field name="n_ren" type="alphanumeric" length="2"/>
+          <field name="nombre" type="alphanumeric" length="100"/>
+          <field name="activa" type="number" precision="1"/>
+          <field name="index_" type="number" precision="2"/>
+          <field name="inciso" type="alphanumeric" length="4"/>
+          <field name="descripcion" type="alphanumeric" length="250"/>
+          <field name="paren" type="alphanumeric" length="1"/>
+          <field name="sexo" type="alphanumeric" length="1"/>
+          <field name="edad_c" type="alphanumeric" length="4"/>
+          <field name="edad" type="alphanumeric" length="10"/>
+          <field name="fn_dia" type="alphanumeric" length="4"/>
+          <field name="fn_mes" type="alphanumeric" length="4"/>
+          <field name="codigo" type="alphanumeric" length="1"/>
+          <field name="niv" type="alphanumeric" length="2"/>
+          <field name="gra" type="alphanumeric" length="500"/>
+          <field name="ap3_8" type="alphanumeric" length="1"/>
+          <field name="ap3_9" type="alphanumeric" length="1"/>
+          <field name="ap3_10" type="alphanumeric" length="1"/>
+          <field name="edad_r" type="alphanumeric" length="2"/>
+        </fields>
+      </subentity>
+    </entity>
+    <query name="qy_dias" connection="conn_qml">
+      <description>trae los dias de 1 -31 mas 99</description>
+      <fieldsquery>
+        <fieldquery name="valor" type="alphanumeric" length="4"/>
+        <fieldquery name="descripcion" type="alphanumeric" length="500"/>
+        <fieldquery name="id_op" type="number" precision="7"/>
+      </fieldsquery>
+      <sql><![CDATA[
+select id_op, valor, descripcion 
+from tc_c_envipe_opciones 
+where id_cuest=1 and num_pregunta='0.0' and valor between '01' and '31'
+union 
+select 32 id_op, '99' valor, 'No sabe / no responde' descripcion from dual
+]]></sql>
+    </query>
+    <query name="qy_elegido" connection="conn_qml">
+      <description>trae informacion de la persona elegida</description>
+      <fieldsquery>
+        <fieldquery name="nombre" type="alphanumeric" length="100"/>
+      </fieldsquery>
+      <params source="tr_envipe2023_sdg"/>
+      <sql><![CDATA[
+select nombre 
+from tr_envipe2022_sdg_int
+where  id_muestra=#id_muestra# and   
+codigo = '1' and
+deleted__ is null
+]]></sql>
+    </query>
+    <query name="qy_grado" connection="conn_qml">
+      <description>Trae el grado </description>
+      <fieldsquery>
+        <fieldquery name="descripcion" type="alphanumeric" length="500"/>
+        <fieldquery name="id_op" type="number" precision="38"/>
+        <fieldquery name="valor" type="alphanumeric" length="4"/>
+      </fieldsquery>
+      <params source="tr_envipe2023_sdg_int"/>
+      <sql><![CDATA[
+select id_op, valor, descripcion 
+from tc_c_envipe_opciones 
+where id_cuest=1 and num_pregunta='3.7' and valor=#niv#
+order by id_op
+]]></sql>
+    </query>
+    <query name="qy_grado_1" connection="conn_qml">
+      <description>Trae el grado </description>
+      <fieldsquery>
+        <fieldquery name="descripcion" type="alphanumeric" length="500"/>
+        <fieldquery name="id_op" type="number" precision="38"/>
+        <fieldquery name="valor" type="alphanumeric" length="4"/>
+      </fieldsquery>
+      <params source="tr_envipe2023_sdg_int"/>
+      <sql><![CDATA[
+select id_op, valor, descripcion 
+from tc_c_envipe_opciones 
+where id_cuest=1 and num_pregunta='3.7' and valor=#niv#
+order by id_op
+]]></sql>
+    </query>
+    <query name="qy_integrantes" connection="conn_qml">
+      <description>Todos los registros de la tabla de integrantes</description>
+      <fieldsquery>
+        <fieldquery name="n_ren" type="alphanumeric" length="2"/>
+        <fieldquery name="nombre" type="alphanumeric" length="100"/>
+        <fieldquery name="activa" type="number" precision="1"/>
+        <fieldquery name="deleted__" type="number" precision="7"/>
+      </fieldsquery>
+      <params source="tr_envipe2023_sdg"/>
+      <sql><![CDATA[
+select n_ren, nombre, activa, deleted__ from tr_envipe2022_sdg_int
+where id_muestra = #id_muestra#
+and deleted__ is null
+order by n_ren
+
+
+]]></sql>
+    </query>
+    <query name="qy_integrantes_pasados" connection="conn_qml">
+      <description>Trae el registro de los integrantes anteriores hogares de la vivienda</description>
+      <fieldsquery>
+        <fieldquery name="h1" type="number" precision="2"/>
+        <fieldquery name="h2" type="number" precision="2"/>
+        <fieldquery name="h3" type="number" precision="2"/>
+        <fieldquery name="h4" type="number" precision="2"/>
+        <fieldquery name="h5" type="number" precision="2"/>
+        <fieldquery name="h6" type="number" precision="2"/>
+      </fieldsquery>
+      <params source="tr_envipe2023_sdg"/>
+      <sql><![CDATA[
+select h1, h2, h3, h4, h5, h6 from tr_envipe2022_sdg
+where  id_muestra in (select id_muestra
+                     from tc_muestras   
+                     where upm = #upm# and prog = #prog# and viv_sel = #viv_sel# and folio not like '%X')
+and status__ = 'C'
+]]></sql>
+    </query>
+    <query name="qy_mayores_edad" connection="conn_qml">
+      <description>Trae mayores de edad de 18 a 96 y 98</description>
+      <fieldsquery>
+        <fieldquery name="n_ren" type="alphanumeric" length="2"/>
+        <fieldquery name="nombre" type="alphanumeric" length="100"/>
+        <fieldquery name="edad" type="alphanumeric" length="10"/>
+        <fieldquery name="fn_dia" type="alphanumeric" length="4"/>
+        <fieldquery name="fn_mes" type="alphanumeric" length="4"/>
+        <fieldquery name="codigo" type="alphanumeric" length="1"/>
+      </fieldsquery>
+      <params source="tr_envipe2023_sdg"/>
+      <sql><![CDATA[
+select n_ren, nombre, edad, fn_dia, fn_mes, codigo from tr_envipe2022_sdg_int
+where edad between 18 and 98
+and id_muestra = #id_muestra#
+and deleted__ is null
+order by n_ren
+
+]]></sql>
+    </query>
+    <query name="qy_meses" connection="conn_qml">
+      <description>trae los meses </description>
+      <fieldsquery>
+        <fieldquery name="valor" type="alphanumeric" length="4"/>
+        <fieldquery name="descripcion" type="alphanumeric" length="500"/>
+        <fieldquery name="id_op" type="number" precision="38"/>
+      </fieldsquery>
+      <sql><![CDATA[
+select id_op, valor, descripcion 
+from tc_c_envipe_opciones 
+where id_cuest=1 and num_pregunta='3.6' 
+order by id_op
+]]></sql>
+    </query>
+    <query name="qy_muestra" connection="conn_qml">
+      <description>Trae información de la muestra </description>
+      <fieldsquery>
+        <fieldquery name="ent" type="alphanumeric" length="2"/>
+        <fieldquery name="entidad" type="alphanumeric" length="255"/>
+        <fieldquery name="cve_mun" type="alphanumeric" length="3"/>
+        <fieldquery name="municipio" type="alphanumeric" length="255"/>
+        <fieldquery name="cve_loc" type="alphanumeric" length="4"/>
+        <fieldquery name="localidad" type="alphanumeric" length="100"/>
+        <fieldquery name="ageb" type="alphanumeric" length="5"/>
+        <fieldquery name="colonia" type="alphanumeric" length="80"/>
+      </fieldsquery>
+      <params source="credential"/>
+      <sql><![CDATA[
+select ent,entidad,cve_mun,municipio,cve_loc,localidad,ageb,colonia
+from TC_MUESTRAS
+where id_muestra=#id_muestra#
+]]></sql>
+    </query>
+    <query name="qy_nom_integrantes" connection="conn_qml">
+      <description>Trae todos los integrantes en la vivienda</description>
+      <fieldsquery>
+        <fieldquery name="nombre" type="alphanumeric" length="100"/>
+        <fieldquery name="hogar" type="alphanumeric" length="2"/>
+      </fieldsquery>
+      <params source="tr_envipe2023_sdg"/>
+      <sql><![CDATA[
+select I.nombre, M.hogar from tr_envipe2022_sdg_int I
+JOIN tr_envipe2022_sdg M on I.id_muestra = M.id_muestra
+where I.id_muestra in (select id_muestra
+from tc_muestras
+where upm = #upm# and prog = #prog# and viv_sel = #viv_sel# and folio not like '%X')
+and deleted__ is null
+]]></sql>
+    </query>
+    <query name="qy_numeral_01_96" connection="conn_qml">
+      <description>Trae numerales de 1 -96</description>
+      <fieldsquery>
+        <fieldquery name="valor" type="alphanumeric" length="4"/>
+        <fieldquery name="descripcion" type="alphanumeric" length="500"/>
+        <fieldquery name="id_op" type="number" precision="38"/>
+      </fieldsquery>
+      <sql><![CDATA[
+select id_op, valor, descripcion 
+from tc_c_envipe_opciones 
+where id_cuest=1 and num_pregunta='0.0' and valor between '01' and '96'
+order by id_op
+]]></sql>
+    </query>
+    <query name="qy_total_registros" connection="conn_qml">
+      <description>Total de registros</description>
+      <fieldsquery>
+        <fieldquery name="tot" type="number" precision="7"/>
+      </fieldsquery>
+      <params source="tr_envipe2023_sdg"/>
+      <sql><![CDATA[
+select count(*) as tot from tr_envipe2022_sdg_int
+where  id_muestra in (select id_muestra
+                     from tc_muestras   
+                     where upm = #upm# and prog = #prog# and viv_sel = #viv_sel# and folio not like '%X') 
+and deleted__ is null
+]]></sql>
+    </query>
+    <query name="qy_valor2_1" connection="conn_qml">
+      <description>Trae el valor en 2_1</description>
+      <fieldsquery>
+        <fieldquery name="ap2_1" type="alphanumeric" length="4"/>
+      </fieldsquery>
+      <params source="tr_envipe2023_sdg"/>
+      <sql><![CDATA[
+select ap2_1 from tr_envipe2022_vvda
+where id_muestra in (select id_muestra
+                     from tc_muestras   
+                     where upm = #upm# and prog = #prog# and viv_sel = #viv_sel# and folio not like '%X')
+]]></sql>
+    </query>
+  </datamodel>
+  <questionnaire name="envipe2023_sdg" onsavecheck="yes" receipt="no" id="101786">
+    <section name="sec155413206" cyclic="no">
+      <title>Portada</title>
+      <labelfield name="lbl091541402">
+        <text>ENTIDAD</text>
+      </labelfield>
+      <labelfield name="lbl091541439">
+        <text>#tr_envipe2023_sdg.cve_ent#</text>
+      </labelfield>
+      <labelfield name="lbl091541449">
+        <text>MUNICIPIO</text>
+      </labelfield>
+      <labelfield name="lbl091541462">
+        <text>#tr_envipe2023_sdg.cve_mun#</text>
+      </labelfield>
+      <labelfield name="lbl091541497">
+        <text>LOCALIDAD</text>
+      </labelfield>
+      <labelfield name="lbl091541506">
+        <text>#tr_envipe2023_sdg.cve_loc#</text>
+      </labelfield>
+      <labelfield name="lbl091541565">
+        <text>AGEB</text>
+      </labelfield>
+      <labelfield name="lbl091541574">
+        <text>#tr_envipe2023_sdg.cve_ageb_a#-#tr_envipe2023_sdg.cve_ageb_na#</text>
+      </labelfield>
+      <labelfield name="slt_varctrl_ini"/>
+      <question name="q_h1" type="simple">
+        <text>Hogar 1</text>
+        <variable name="h1" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_ren_jefe" type="simple">
+        <text>ren_jefe</text>
+        <variable name="ren_jefe" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_tot" type="simple">
+        <text>tot</text>
+        <variable name="tot" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_cve_mun" type="simple">
+        <variable name="cve_mun" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_h2" type="simple">
+        <text>Hogar 2</text>
+        <variable name="h2" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_cve_ageb_na" type="simple">
+        <variable name="cve_ageb_na" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_sexo_jefe" type="simple">
+        <text>sexo_jefe</text>
+        <variable name="sexo_jefe" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_parejas" type="simple">
+        <text>parejas</text>
+        <variable name="parejas" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_h3" type="simple">
+        <text>Hogar 3</text>
+        <variable name="h3" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_cve_ageb_a" type="simple">
+        <variable name="cve_ageb_a" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_edad_jefe" type="simple">
+        <text>edad_jefe</text>
+        <variable name="edad_jefe" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_cve_loc" type="simple">
+        <variable name="cve_loc" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_r_sel" type="simple">
+        <text>r_sel</text>
+        <variable name="r_sel" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_h4" type="simple">
+        <text>Hogar 4</text>
+        <variable name="h4" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_cve_ent" type="simple">
+        <variable name="cve_ent" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_p2_1" type="simple">
+        <text>2.1</text>
+        <variable name="p2_1" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_h5" type="simple">
+        <text>Hogar 5</text>
+        <variable name="h5" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_mayores" type="simple">
+        <text>mayores</text>
+        <variable name="mayores" entity="tr_envipe2023_sdg"/>
+      </question>
+      <question name="q_h6" type="simple">
+        <text>Hogar 6</text>
+        <variable name="h6" entity="tr_envipe2023_sdg"/>
+      </question>
+    </section>
+    <section name="sec160537730" cyclic="no">
+      <title>SECCIÓN III. INTEGRANTES DEL HOGAR Y CARACTERÍSTICAS SOCIODEMOGRÁFICAS</title>
+      <labelfield name="slt_varctrl_fin">
+        <text>LISTA DE PERSONAS</text>
+      </labelfield>
+      <labelfield name="lbl161327259">
+        <text>3.2</text>
+      </labelfield>
+      <labelfield name="lbl161327272">
+        <text>&lt;b&gt;Por favor, dígame el nombre de las personas que viven en su hogar, empezando por el jefe o la jefa &lt;/b&gt;(incluya a los niños chiquitos, ancianos y personas con discapacidad)&lt;b&gt;.&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl161327281">
+        <text>REGISTRE LOS NOMBRES, INICIANDO CON EL JEFE O JEFA DEL HOGAR</text>
+      </labelfield>
+      <cyclicgroup name="c_tr_envipe2019_sdg_int" finite="no" entity="tr_envipe2023_sdg_int">
+        <question name="q_n_ren" type="simple" readonly="yes">
+          <text>&lt;b&gt;N_REN&lt;/b&gt;</text>
+          <variable name="n_ren" entity="tr_envipe2023_sdg_int"/>
+        </question>
+        <question name="q_nombre" type="simple">
+          <text>&lt;b&gt;NOMBRE&lt;/b&gt;</text>
+          <variable name="nombre" entity="tr_envipe2023_sdg_int"/>
+          <event name="evt155445714" type="focus" side="client">
+            <expr name="acc141746534">
+              <description>Numero de renglón al poner el nombre</description>
+              <expression><![CDATA[
+function test() {
+    if ((tr_envipe2023_sdg_int.getN_ren()) * 1 == 0) {
+        var tam = tr_envipe2023_sdg.getTr_envipe2023_sdg_int().size();
+        tr_envipe2023_sdg_int.setN_ren(("0" + (tam)).slice(-2));
+    }
+}
+]]></expression>
+            </expr>
+          </event>
+          <event name="evt155455103" type="change" side="client">
+            <validation name="val_nombre" type="required" references="q_nombre" block="yes">
+              <description>Valida nombre</description>
+              <error>#credential.msg_val_esp#</error>
+              <validate><![CDATA[
+function test() {
+    var valido = CUESTIONARIO.Validacion.especifique(tr_envipe2023_sdg_int.getNombre(), 3);
+    if (valido) {
+        if (tr_envipe2023_sdg_int.getIndex_() * 1 == 0) {
+            var total = tr_envipe2023_sdg.getTot() * 1;
+            tr_envipe2023_sdg.setTot(total + 1);
+            tr_envipe2023_sdg_int.setIndex_(tr_envipe2023_sdg.getTot() * 1);
+        }
+    }
+    //credential.setMsg_val_esp('El nombre del integrante es demasiado pequeño, (debe ser mayor a 2 caracteres). Verificar su respuesta.');
+    return valido;
+}
+]]></validate>
+            </validation>
+          </event>
+        </question>
+        <event name="evt151024875" type="change" side="server">
+          <reloadquery name="acc134850010" query="qy_total_registros" type="simple">
+            <description>Recarga count integrantes </description>
+          </reloadquery>
+          <expr name="acc153939554">
+            <description>Re numeracion </description>
+            <expression><![CDATA[
+function test() {
+    var tot = 0;
+    if (qy_total_registros != null) {
+        tot = qy_total_registros.getTot();
+    }
+    tr_envipe2023_sdg.setTot_per(''+tot+'');
+    var activa = 2;
+    if (tot < 31) {
+        activa = 1;
+    }
+    CUESTIONARIO.Validacion.seteaNum_ren(tr_envipe2023_sdg, tr_envipe2023_sdg.getTr_envipe2023_sdg_int(), 0, activa);
+    // Salto pantalla de informante adecuado cuando sea mas de 30 personas
+    runtime__.skip('salto132639643');
+    runtime__.saveEntity(tr_envipe2023_sdg);
+}
+]]></expression>
+          </expr>
+        </event>
+        <event name="evt125914206" type="insert" side="server">
+          <validation name="acc160358098" type="required" references="q_nombre">
+            <description>Nombres duplicados</description>
+            <error>El nombre ya existe. Si varias personas tienen el mismo nombre, favor de diferenciarlos.</error>
+            <validate><![CDATA[
+function test() {
+    /*var resultado = false;
+    var nomCap = tr_envipe2022_sdg_int.getNombre().trim();
+
+    var cont = 0;
+    var indexActual = tr_envipe2022_sdg.getTr_envipe2022_sdg_int().getIndex('tr_envipe2022_sdg_int');
+    var tam = tr_envipe2022_sdg.getTr_envipe2022_sdg_int().size();
+    for (var i = 0; i < tam; i++) {
+        var c1 = tr_envipe2022_sdg.getTr_envipe2022_sdg_int().get(i);
+        if (c1.getActiva() == 1) {
+            var nom1 = c1.getNombre().trim();
+            //alert('nomCap='+nomCap+' nom1='+nom1);
+            if (nomCap == nom1) {
+                //alert('Iguales '+cont)
+                cont = (cont * 1) + 1;
+            }
+        }
+    }
+    tr_envipe2022_sdg.getTr_envipe2022_sdg_int().get(indexActual);
+    if (cont * 1 > 0) {
+        //credential.setMensaje_borrar('El nombre ya existe. Si varias personas tienen el mismo nombre, favor de diferenciarlos.');
+        resultado = false;
+    } else {
+        //var total = tr_envipe2018_sdg.getTot()*1;
+        //tr_envipe2018_sdg.setTot(total+1);
+        //tr_envipe2018_sdg_int.setIndex_(tr_envipe2018_sdg.getTot()*1);
+        resultado = true;
+    }
+    return resultado;*/
+    //return true;
+    
+    
+    var nomAct = tr_envipe2023_sdg_int.getNombre().trim();
+    var cont = 0;
+    var indexActual = tr_envipe2023_sdg.getTr_envipe2023_sdg_int().getIndex('tr_envipe2022_sdg_int');
+    var tam = tr_envipe2023_sdg.getTr_envipe2023_sdg_int().size();
+    for (var i = 0; i < tam; i++) {
+        var ant = tr_envipe2023_sdg.getTr_envipe2023_sdg_int().get(i);
+		if(indexActual*1 != i){
+			if (ant.getActiva() == 1) {
+				var nomAnt = ant.getNombre().trim();
+				//alert('nomAct='+nomAct+', nomAnt='+nomAnt);
+				if (nomAct == nomAnt) {
+					//alert('Son iguales, cont = '+cont);
+					cont = (cont * 1) + 1;
+				}
+				//alert('cont = '+cont);
+			}
+		}
+    }
+	if (cont * 1 > 0) {
+        //alert('ENTRO A CONT > 0, cont = '+cont);
+        return false;
+    } else {
+        //alert('NO ENTRO A CONT > 0, cont = '+cont);
+        return true;
+    }
+}
+]]></validate>
+          </validation>
+          <expr name="acc154521104">
+            <description>Nombres duplicados en algún otro hogar en insert</description>
+            <expression><![CDATA[
+function test() {
+    var qy = qy_nom_integrantes;
+    var hogar = tr_envipe2023_sdg.getHogar();
+    if (qy != null) {
+        CUESTIONARIO.Validacion.nombreDuplicado(tr_envipe2023_sdg_int.getNombre(), hogar);
+    }
+}
+]]></expression>
+          </expr>
+        </event>
+        <event name="evt151442910" type="delete" side="server">
+          <validation name="acc151344399" type="message" references="q_nombre" replicate="no">
+            <description>Valida borrado</description>
+            <error>No es posible eliminar al jefe del hogar</error>
+            <validate><![CDATA[
+function test() {
+    var tam = tr_envipe2023_sdg.getTr_envipe2023_sdg_int().size();
+    var elmt = tr_envipe2023_sdg_int;
+    if (tam == 1) {
+        return true;
+    } else if (elmt.getN_ren() * 1 == 1) {
+        //alert('primer registro jefe del hogar');
+        return false;
+    }
+    return true;
+}
+]]></validate>
+          </validation>
+        </event>
+        <event name="evt110104670" type="update" side="server">
+          <validation name="acc110008860" type="required" references="q_nombre">
+            <description>Valida nombre duplicado</description>
+            <error>El nombre ya existe. Si varias personas tienen el mismo nombre, favor de diferenciarlos.</error>
+            <validate><![CDATA[
+function test() {
+    /*
+    var resultado = false;
+    var nomCap = tr_envipe2022_sdg_int.getNombre().trim();
+
+    var cont = 0;
+    var indexActual = tr_envipe2022_sdg.getTr_envipe2022_sdg_int().getIndex('tr_envipe2022_sdg_int');
+    var tam = tr_envipe2022_sdg.getTr_envipe2022_sdg_int().size();
+    for (var i = 0; i < tam; i++) {
+        var c1 = tr_envipe2022_sdg.getTr_envipe2022_sdg_int().get(i);
+        if (c1.getActiva() == 1) {
+            var nom1 = c1.getNombre().trim();
+            //alert('nomCap='+nomCap+' nom1='+nom1);
+            if (nomCap == nom1) {
+                //alert('Iguales '+cont)
+                cont = (cont * 1) + 1;
+            }
+        }
+    }
+    tr_envipe2022_sdg.getTr_envipe2022_sdg_int().get(indexActual);
+    if (cont > 1) {
+        //credential.setMensaje_borrar('El nombre ya existe. Si varias personas tienen el mismo nombre, favor de diferenciarlos.');
+        resultado = false;
+    } else {
+        //var total = tr_envipe2018_sdg.getTot()*1;
+        //tr_envipe2018_sdg.setTot(total+1);
+        //tr_envipe2018_sdg_int().setActiva(1);
+        //tr_envipe2018_sdg_int().setIndex_(indexActual + 1);
+        resultado = true;
+    }
+    return resultado;
+    
+    */
+    //return true;
+    
+    
+    var nomAct = tr_envipe2023_sdg_int.getNombre().trim();
+    var cont = 0;
+    var indexActual = tr_envipe2023_sdg.getTr_envipe2022_sdg_int().getIndex('tr_envipe2022_sdg_int');
+    var tam = tr_envipe2023_sdg.getTr_envipe2023_sdg_int().size();
+    for (var i = 0; i < tam; i++) {
+        var ant = tr_envipe2023_sdg.getTr_envipe2023_sdg_int().get(i);
+		if(indexActual*1 != i){
+			if (ant.getActiva() == 1) {
+				var nomAnt = ant.getNombre().trim();
+				//alert('nomAct='+nomAct+', nomAnt='+nomAnt);
+				if (nomAct == nomAnt) {
+					//alert('Son iguales, cont = '+cont);
+					cont = (cont * 1) + 1;
+				}
+				//alert('cont = '+cont);
+			}
+		}
+    }
+	if (cont * 1 > 0) {
+        //alert('ENTRO A CONT > 0, cont = '+cont);
+        return false;
+    } else {
+        //alert('NO ENTRO A CONT > 0, cont = '+cont);
+        return true;
+    }
+}
+]]></validate>
+          </validation>
+          <expr name="acc154937315">
+            <description>Nombres duplicados en algún otro hogar en update</description>
+            <expression><![CDATA[
+function test() {
+    var qy = qy_nom_integrantes;
+    var hogar = tr_envipe2023_sdg.getHogar();
+    if (qy != null) {
+        CUESTIONARIO.Validacion.nombreDuplicado(tr_envipe2023_sdg_int.getNombre(), hogar);
+    }
+}
+]]></expression>
+          </expr>
+        </event>
+        <event name="evt085534429" type="new" side="server">
+          <validation name="acc153354854" type="required" references="q_nombre">
+            <description>Mas de 30 habitantes</description>
+            <error>Se registrara un número mayor a 30 personas. SE TRATA DE UNA VIVIENDA COLECTIVA?</error>
+            <validate><![CDATA[
+function test() {
+    //var resultado = (tr_envipe2022_sdg.getTot_per() < 30);
+    var resultado = (tr_envipe2023_sdg.getTot_per() < 31);
+    return resultado;
+}
+]]></validate>
+          </validation>
+        </event>
+      </cyclicgroup>
+      <labelfield name="lbl161327379"/>
+      <event name="evt093831123" type="page-unload" side="client">
+        <validation name="acc093714972" type="required" references="q_nombre" replicate="yes" ref-page="pag160537739">
+          <description>valida exista al menos un integrante</description>
+          <error>Capture al menos un integrante</error>
+          <replicate>
+            <level name="questionnaire" type="required"/>
+          </replicate>
+          <validate><![CDATA[
+function test() {
+    var result = false;
+    var tam = tr_envipe2023_sdg.getTr_envipe2023_sdg_int().size();
+    if ((tam * 1) > 0) {
+        result = true;
+    }
+    return result;
+}
+]]></validate>
+        </validation>
+        <expr name="acc155207552" ref-page="pag160537739">
+          <description>al salir de la pagina = 1</description>
+          <expression><![CDATA[
+function test() {    
+    salirVivCol = 1;
+}
+]]></expression>
+        </expr>
+        <expr name="acc154740571" ref-page="pag160537739">
+          <description>Registros no coinciden con el total registrados</description>
+          <expression><![CDATA[
+function test() {
+
+    var total_actual = tr_envipe2023_sdg.getTr_envipe2023_sdg_int().size();
+    var h1 = 0,
+        h2 = 0,
+        h3 = 0,
+        h4 = 0,
+        h5 = 0,
+        h6 = 0;
+    var total;
+    var hogar = tr_envipe2023_sdg.getHogar() * 1;
+    var v2_1 = tr_envipe2023_sdg.getP2_1() * 1;
+
+    h1 = tr_envipe2023_sdg.getH1();
+    h2 = tr_envipe2023_sdg.getH2();
+    h3 = tr_envipe2023_sdg.getH3();
+    h4 = tr_envipe2023_sdg.getH4();
+    h5 = tr_envipe2023_sdg.getH5();
+    h6 = tr_envipe2023_sdg.getH6();
+
+    switch (hogar) {
+        case 1:
+            h1 = total_actual;
+            break;
+        case 2:
+            h2 = total_actual;
+            break;
+        case 3:
+            h3 = total_actual;
+            break;
+        case 4:
+            h4 = total_actual;
+            break;
+        case 5:
+            h5 = total_actual;
+            break;
+        case 6:
+            h6 = total_actual;
+            break;
+    }
+
+    total = h1 + h2 + h3 + h4 + h5 + h6;
+
+    if (total > v2_1) {
+        alert(' El número de integrantes declarados en la pregunta 2.1 (' + v2_1 + '), no coincide con la suma de los integrantes de los hogares (' + total + ')' +
+            '\n hogar 1 = ' + h1 + ',&nbsp;&nbsp;&nbsp;hogar 2 = ' + h2 + ',&nbsp;&nbsp;&nbsp;hogar 3 = ' + h3 +
+            ',&nbsp;&nbsp;&nbsp;hogar 4 = ' + h4 + ',&nbsp;&nbsp;&nbsp;hogar 5 = ' + h5 +
+            ',&nbsp;&nbsp;&nbsp;hogar 6 = ' + h6 + '\n Favor de verificar el número de integrantes en la vivienda');
+        return true;
+    }
+    return true;
+}
+]]></expression>
+        </expr>
+      </event>
+      <event name="evt132545407" type="unload" side="server">
+        <validation name="acc132440056" type="required" references="q_nombre" replicate="yes">
+          <description>Mas de 30 habitantes</description>
+          <error>Verifique que sea menos de 31 personas</error>
+          <replicate>
+            <level name="section" type="required"/>
+            <level name="questionnaire" type="required"/>
+          </replicate>
+          <validate><![CDATA[
+function test() {
+    if (salirVivCol != 0) {
+        var qy = tr_envipe2023_sdg.getTot_per();
+        // Salto pantalla de informante adecuado cuando sea mas de 30 personas
+        // runtime__.skip('salto132639643');
+        if (qy != 0) {
+            salirVivCol = 0;
+            if (qy > 30) {
+                if (confirm('Se ha registrado un número mayor a 30 personas. SE TRATA DE UNA VIVIENDA COLECTIVA?')) {
+                    if (confirm('Por ser una vivienda colectiva se CERRARÁ DEFINITIVAMENTE esta vivienda. ¿Está usted seguro?')) {
+                        tr_envipe2023_sdg.setC_res('13.1');
+                        tr_envipe2023_sdg.setStatus__('I');
+                        runtime__.saveEntity(tr_envipe2023_sdg);
+                        runtime__.exit();
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+]]></validate>
+        </validation>
+      </event>
+      <event name="evt093722979" type="page-load" side="client">
+        <expr name="acc092648257" ref-page="pag160537739">
+          <description>salir = 0</description>
+          <expression><![CDATA[
+function test() {
+    salirVivCol = 0;
+}
+]]></expression>
+        </expr>
+      </event>
+    </section>
+    <section name="sec163106444" cyclic="yes" entity="tr_envipe2023_sdg_int" finite="no">
+      <title>SECCIÓN III. INTEGRANTES DEL HOGAR Y CARACTERÍSTICAS SOCIODEMOGRÁFICAS</title>
+      <labelfield name="lbl164001705">
+        <text>PARENTESCO</text>
+      </labelfield>
+      <labelfield name="lbl164002085"/>
+      <labelfield name="lbl164002094">
+        <text>3.3</text>
+      </labelfield>
+      <labelfield name="lbl164002104">
+        <text>&lt;b&gt;¿Qué es &lt;/b&gt;#tr_envipe2023_sdg_int.nombre# &lt;b&gt;del jefe&lt;/b&gt;(a) &lt;b&gt;del hogar?&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl164002113">
+        <text>#credential.msg_radio#</text>
+      </labelfield>
+      <question name="q_paren_1" type="category" required="yes">
+        <variable name="paren" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.3</required-message>
+        <categories name="cat_pr164002148" type="inline" selection="simple">
+          <category code="1"> </category>
+        </categories>
+        <event name="evt131103311" type="change" side="client">
+          <expr name="acc111451603">
+            <description>Setea el numero de renglón del jefe del hogar y el de la pareja</description>
+            <expression><![CDATA[
+function test() {
+    var existe = tr_envipe2023_sdg.getParejas().indexOf(tr_envipe2023_sdg_int.getN_ren());
+    if (tr_envipe2023_sdg_int.getN_ren() * 1 < 2) {
+        tr_envipe2023_sdg.setRen_jefe(tr_envipe2023_sdg_int.getN_ren());
+    }
+    if ((tr_envipe2023_sdg_int.getParen() * 1 == 2)) {
+        if (existe == -1) {
+            tr_envipe2023_sdg.setParejas(tr_envipe2023_sdg.getParejas() + tr_envipe2023_sdg_int.getN_ren() + ',');
+        }
+    } else if (existe != -1) {
+        var str = tr_envipe2023_sdg.getParejas();
+        tr_envipe2023_sdg.setParejas(str.substring(0, existe) + str.substring(existe + 3, str.length));
+    }
+}
+]]></expression>
+          </expr>
+          <validation name="acc111515082" type="required" references="q_paren_1" replicate="yes" block="no">
+            <description>Valida el jefe del hogar</description>
+            <error>Solo el primer integrante puede ser jefe del hogar</error>
+            <replicate>
+              <level name="page" type="required"/>
+              <level name="questionnaire" type="required"/>
+            </replicate>
+            <validate><![CDATA[
+function test() {
+    var resultado = false;
+    if (tr_envipe2023_sdg_int.getParen() == 1 && tr_envipe2023_sdg.getRen_jefe() != tr_envipe2023_sdg_int.getN_ren()) {
+        tr_envipe2023_sdg_int.setParen('');
+        resultado = false;
+    } else {
+        resultado = true;
+    }
+    return resultado;
+}
+]]></validate>
+          </validation>
+        </event>
+      </question>
+      <labelfield name="lbl164002192">
+        <text>&lt;b&gt;(1)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl164002201">
+        <text>Jefe(a)</text>
+      </labelfield>
+      <question name="q_paren_2" type="category" required="yes">
+        <variable name="paren" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.3</required-message>
+        <categories name="cat_pr164002212" type="inline" selection="simple">
+          <category code="2"> </category>
+        </categories>
+        <event name="evt110610571" type="change" side="client">
+          <expr name="acc110610567">
+            <description>Primer renglón jefe del Hogar</description>
+            <expression><![CDATA[
+function test() {
+    if (tr_envipe2022_sdg_int.getN_ren() * 1 == 1) {
+        tr_envipe2022_sdg_int.setParen('');
+        alert('El renglon 01 sera siempre el jefe del hogar');
+    }
+}
+]]></expression>
+          </expr>
+        </event>
+      </question>
+      <labelfield name="lbl164002236">
+        <text>&lt;b&gt;(2)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl164002249">
+        <text>Esposo(a)</text>
+      </labelfield>
+      <question name="q_paren_3" type="category" required="yes">
+        <variable name="paren" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.3</required-message>
+        <categories name="cat_pr164002257" type="inline" selection="simple">
+          <category code="3"> </category>
+        </categories>
+        <event name="evt132355892" type="change" side="client">
+          <expr name="acc132355888">
+            <description>Primero jefe del Hogar</description>
+            <expression><![CDATA[
+function test() {
+    if (tr_envipe2022_sdg_int.getN_ren() * 1 == 1) {
+        tr_envipe2022_sdg_int.setParen('');
+        alert('El renglon 01 sera siempre el jefe del hogar');
+    }
+}
+]]></expression>
+          </expr>
+        </event>
+      </question>
+      <labelfield name="lbl164002281">
+        <text>&lt;b&gt;(3)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl164002293">
+        <text>Hijo(a)</text>
+      </labelfield>
+      <question name="q_paren_4" type="category" required="yes">
+        <variable name="paren" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.3</required-message>
+        <categories name="cat_pr164002302" type="inline" selection="simple">
+          <category code="4"> </category>
+        </categories>
+        <event name="evt132411717" type="change" side="client">
+          <expr name="acc132411712">
+            <description>Primero jefe del Hogar</description>
+            <expression><![CDATA[
+function test() {
+    if (tr_envipe2022_sdg_int.getN_ren() * 1 == 1) {
+        tr_envipe2022_sdg_int.setParen('');
+        alert('El renglon 01 sera siempre el jefe del hogar');
+    }
+}
+]]></expression>
+          </expr>
+        </event>
+      </question>
+      <labelfield name="lbl164002325">
+        <text>&lt;b&gt;(4)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl164002336">
+        <text>Padre o madre</text>
+      </labelfield>
+      <question name="q_paren_5" type="category" required="yes">
+        <variable name="paren" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.3</required-message>
+        <categories name="cat_pr164002344" type="inline" selection="simple">
+          <category code="5"> </category>
+        </categories>
+        <event name="evt132427579" type="change" side="client">
+          <expr name="acc132427574">
+            <description>Primero jefe del Hogar</description>
+            <expression><![CDATA[
+function test() {
+    if (tr_envipe2022_sdg_int.getN_ren() * 1 == 1) {
+        tr_envipe2022_sdg_int.setParen('');
+        alert('El renglon 01 sera siempre el jefe del hogar');
+    }
+}
+]]></expression>
+          </expr>
+        </event>
+      </question>
+      <labelfield name="lbl164002366">
+        <text>&lt;b&gt;(5)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl164002376">
+        <text>Otro parentesco: tío(a), sobrino(a), primo(a)</text>
+      </labelfield>
+      <question name="q_paren_6" type="category" required="yes">
+        <variable name="paren" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.3</required-message>
+        <categories name="cat_pr164002387" type="inline" selection="simple">
+          <category code="6"> </category>
+        </categories>
+        <event name="evt132445714" type="change" side="client">
+          <expr name="acc132445709">
+            <description>Primero jefe del Hogar</description>
+            <expression><![CDATA[
+function test() {
+    if (tr_envipe2022_sdg_int.getN_ren() * 1 == 1) {
+        tr_envipe2022_sdg_int.setParen('');
+        alert('El renglon 01 sera siempre el jefe del hogar');
+    }
+}
+]]></expression>
+          </expr>
+        </event>
+      </question>
+      <labelfield name="lbl164002407">
+        <text>&lt;b&gt;(6)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl164002424">
+        <text>Sin parentesco</text>
+      </labelfield>
+      <labelfield name="lbl164002453"/>
+      <labelfield name="lbl164326551">
+        <text>SEXO</text>
+      </labelfield>
+      <labelfield name="lbl164326566"/>
+      <labelfield name="lbl164326575">
+        <text>3.4</text>
+      </labelfield>
+      <labelfield name="lbl164326585">
+        <text>#tr_envipe2023_sdg_int.nombre#&amp;nbsp;&lt;b&gt;es hombre &lt;/b&gt;#tr_envipe2023_sdg_int.nombre#&amp;nbsp;&lt;b&gt;es mujer&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl164326591">
+        <text>#credential.msg_radio#</text>
+      </labelfield>
+      <question name="q_sexo" type="category" required="yes">
+        <variable name="sexo" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.4</required-message>
+        <categories name="cat_q_pr164326606" type="inline" selection="simple">
+          <category code="1">&lt;b&gt;(1)&lt;/b&gt; Hombre</category>
+          <category code="2">&lt;b&gt;(2)&lt;/b&gt; Mujer</category>
+        </categories>
+        <event name="evt113200171" type="change" side="client">
+          <expr name="acc113200166">
+            <description>Setea el jefe del hogar</description>
+            <expression><![CDATA[
+function test() {
+    if (tr_envipe2023_sdg_int.getN_ren() * 1 < 2) {
+        //alert('seteo sexo');
+        tr_envipe2023_sdg.setSexo_jefe(tr_envipe2023_sdg_int.getSexo());
+    }
+}
+]]></expression>
+          </expr>
+        </event>
+      </question>
+      <labelfield name="lbl164326699"/>
+      <labelfield name="lbl085812392">
+        <text>EDAD</text>
+      </labelfield>
+      <labelfield name="lbl085812407"/>
+      <labelfield name="lbl085812416">
+        <text>3.5</text>
+      </labelfield>
+      <labelfield name="lbl085812425">
+        <text>&lt;b&gt;¿Cuántos años&amp;nbsp;cumplidos tiene &lt;/b&gt;#tr_envipe2023_sdg_int.nombre#&lt;b&gt;?&lt;/b&gt;</text>
+      </labelfield>
+      <question name="q_edad" type="simple">
+        <variable name="edad" entity="tr_envipe2023_sdg_int"/>
+      </question>
+      <labelfield name="lbl085812440">
+        <text>#credential.msg_radio#</text>
+      </labelfield>
+      <question name="q_edad_r" type="category">
+        <variable name="edad_r" entity="tr_envipe2023_sdg_int"/>
+        <categories name="cat_q_pr164520178" type="inline" selection="simple">
+          <category code="00">&lt;b&gt;(00)&lt;/b&gt; Menor de un año</category>
+          <category code="97">&lt;b&gt;(97)&lt;/b&gt; 97 o más años</category>
+          <category code="98">&lt;b&gt;(98)&lt;/b&gt; Edad no especificada en personas de 18 años o más</category>
+          <category code="99">&lt;b&gt;(99)&lt;/b&gt; Edad no especificada en personas de 17 años o menos</category>
+        </categories>
+        <event name="evt165326317" type="change" side="client">
+          <expr name="acc165326312">
+            <description>Setea edad de radio 3.5</description>
+            <expression><![CDATA[
+function test() {
+    tr_envipe2023_sdg_int.setEdad(tr_envipe2023_sdg_int.getEdad_r());
+    tr_envipe2023_sdg_int.setEdad_c('');
+    runtime__.skip('salto161521693');
+}
+]]></expression>
+          </expr>
+          <expr name="acc165415190">
+            <description>Setea el numero de renglón mayores edad_r</description>
+            <expression><![CDATA[
+function test() {
+    var existe = tr_envipe2023_sdg.getMayores().indexOf(tr_envipe2023_sdg_int.getN_ren());
+    if ((tr_envipe2023_sdg_int.getEdad_r() * 1) > 17 && (tr_envipe2023_sdg_int.getEdad_r() * 1) < 99) {
+        if (existe == -1) {
+            tr_envipe2023_sdg.setMayores(tr_envipe2023_sdg.getMayores() + tr_envipe2023_sdg_int.getN_ren() + ',');
+        }
+    } else if (existe != -1) {
+        var str = tr_envipe2023_sdg.getMayores();
+        tr_envipe2023_sdg.setMayores(str.substring(0, existe) + str.substring(existe + 3, str.length));
+    }
+    runtime__.skip('salto132639643');
+}
+]]></expression>
+          </expr>
+        </event>
+      </question>
+      <question name="q_edad_c" type="category">
+        <variable name="edad_c" entity="tr_envipe2023_sdg_int"/>
+        <categories source="qy_numeral_01_96" type="catalog" selection="simple" value="valor" description="descripcion" force="yes">
+          <unselected>__Seleccione__</unselected>
+        </categories>
+        <event name="evt153740321" type="change" side="client">
+          <expr name="acc153740317">
+            <description>Setea edad de combo 3.5</description>
+            <expression><![CDATA[
+function test() {
+    tr_envipe2023_sdg_int.setEdad(tr_envipe2023_sdg_int.getEdad_c());
+    tr_envipe2023_sdg_int.setEdad_r('');
+}
+]]></expression>
+          </expr>
+          <expr name="acc155444218">
+            <description>Setea el numero de renglón mayores edad_c</description>
+            <expression><![CDATA[
+function test() {
+    var existe = tr_envipe2023_sdg.getMayores().indexOf(tr_envipe2023_sdg_int.getN_ren());
+    if ((tr_envipe2023_sdg_int.getEdad_c() * 1) > 17 && (tr_envipe2023_sdg_int.getEdad_c() * 1) < 99) {
+        if (existe == -1) {
+            tr_envipe2023_sdg.setMayores(tr_envipe2023_sdg.getMayores() + tr_envipe2023_sdg_int.getN_ren() + ',');
+        }
+    } else if (existe != -1) {
+        var str = tr_envipe2023_sdg.getMayores();
+        tr_envipe2023_sdg.setMayores(str.substring(0, existe) + str.substring(existe + 3, str.length));
+    }
+    runtime__.skip('salto132639643');
+}
+]]></expression>
+          </expr>
+        </event>
+      </question>
+      <labelfield name="lbl085812836"/>
+      <labelfield name="lbl090628192">
+        <text>ELEGIBILIDAD</text>
+      </labelfield>
+      <labelfield name="lbl090628855">
+        <text>3.6</text>
+      </labelfield>
+      <labelfield name="lbl090628866">
+        <text>&lt;b&gt;¿En qué día y mes nació &lt;/b&gt;#tr_envipe2023_sdg_int.nombre#&lt;b&gt;?&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="slt_ap3_6_ini"/>
+      <labelfield name="lbl093514682">
+        <text>&lt;i&gt;IDENTIFIQUE A LAS PERSONAS DE 18 O MÁS AÑOS; REGISTRE “1” EN LA COLUMNA “CÓDIGO” PARA LA PERSONA DEL CUMPLEAÑOS INMEDIATO POSTERIOR A LA FECHA DE LA ENTREVISTA, Y “2” PARA EL RESTO DE LAS PERSONAS DE ESE RANGO DE EDAD&lt;/i&gt;</text>
+      </labelfield>
+      <labelfield name="lbl090628875">
+        <text>#credential.msg_radio#</text>
+      </labelfield>
+      <labelfield name="lbl091132781">
+        <text>Día</text>
+      </labelfield>
+      <labelfield name="lbl091242108"/>
+      <question name="q_fn_dia" type="category" required="yes">
+        <variable name="fn_dia" entity="tr_envipe2023_sdg_int"/>
+        <required-message>Falta seleccionar un día en 3.6</required-message>
+        <categories source="qy_dias" type="catalog" selection="simple" value="valor" description="descripcion" force="yes">
+          <unselected>__Seleccione__</unselected>
+        </categories>
+        <event name="evt111416902" type="change" side="client">
+          <validation name="acc104635047" type="required" references="q_fn_dia" replicate="yes" block="no">
+            <description>Valida dia con mes 99</description>
+            <error>El día solo puede ser 99 en caso de tener en mes la opción &apos;No sabe/no responde&apos;</error>
+            <validate><![CDATA[
+function test() {
+    /*if (tr_envipe2022_sdg_int.getFn_dia() * 1 == 99) {
+        if (tr_envipe2022_sdg_int.getFn_mes() * 1 != 99) {
+            alert('Se debe cambiar el código 99 del día por un 15, de acuerdo al manual del entrevistador');
+            return true;
+        }
+    } else if (tr_envipe2022_sdg_int.getFn_mes() * 1 == 99) {
+        return false;
+    }*/
+    return true;
+}
+]]></validate>
+          </validation>
+        </event>
+      </question>
+      <labelfield name="lbl091302422"/>
+      <labelfield name="lbl091140259">
+        <text>Mes</text>
+      </labelfield>
+      <labelfield name="lbl091344109"/>
+      <question name="q_fn_mes" type="category" required="yes">
+        <variable name="fn_mes" entity="tr_envipe2023_sdg_int"/>
+        <required-message>Falta seleccionar un mes en 3.6</required-message>
+        <categories source="qy_meses" type="catalog" selection="simple" value="valor" description="descripcion" force="yes">
+          <unselected>__Seleccione__</unselected>
+        </categories>
+        <event name="evt111719245" type="change" side="client">
+          <expr name="acc111719205">
+            <description>Carga dia con 99 si mes es 99</description>
+            <expression><![CDATA[
+function test() {
+    if (tr_envipe2023_sdg_int.getFn_mes() * 1 == 99) {
+        tr_envipe2023_sdg_int.setFn_dia('99');
+    }
+}
+]]></expression>
+          </expr>
+        </event>
+      </question>
+      <labelfield name="lbl091344072"/>
+      <labelfield name="lbl091147219">
+        <text>Código</text>
+      </labelfield>
+      <labelfield name="slt_codigo_ini"/>
+      <question name="q_codigo" type="category" required="yes">
+        <variable name="codigo" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.6</required-message>
+        <categories name="cat_q_codigo" type="inline" selection="simple">
+          <unselected>__Seleccione__</unselected>
+          <category code="1">1</category>
+          <category code="2">2</category>
+        </categories>
+        <event name="evt160325095" type="change" side="client">
+          <validation name="acc160020162" type="required" references="q_codigo" replicate="yes" block="no">
+            <description>Solo 1 en código edades</description>
+            <error>No debe haber mas de un elegido.</error>
+            <validate><![CDATA[
+function test() {
+    if (tr_envipe2023_sdg_int.getCodigo() == 1) {
+        if ((tr_envipe2023_sdg_int.getN_ren() * 1) == (tr_envipe2023_sdg.getR_sel() * 1)) {
+            return true;
+        }
+        if ((tr_envipe2023_sdg.getR_sel() * 1) == 0) {
+            tr_envipe2023_sdg.setR_sel(tr_envipe2023_sdg_int.getN_ren());
+            return true;
+        }
+        if ((tr_envipe2023_sdg_int.getN_ren() * 1) != (tr_envipe2023_sdg.getR_sel() * 1)) {
+            return false;
+        }
+    } else {
+        if ((tr_envipe2023_sdg_int.getN_ren() * 1) == (tr_envipe2023_sdg.getR_sel() * 1)) {
+            tr_envipe2023_sdg.setR_sel('');
+            return true;
+        }
+        return true;
+    }
+    return false;
+}
+]]></validate>
+          </validation>
+        </event>
+      </question>
+      <labelfield name="slt_codigo_fin"/>
+      <labelfield name="slt_ap3_6_fin"/>
+      <labelfield name="lbl091543262">
+        <text>ESCOLARIDAD</text>
+      </labelfield>
+      <labelfield name="slt_ap3_7_ini"/>
+      <labelfield name="lbl091543281">
+        <text>3.7</text>
+      </labelfield>
+      <labelfield name="lbl091543290">
+        <text>&lt;b&gt;¿Hasta qué año o grado aprobó &lt;/b&gt;#tr_envipe2023_sdg_int.nombre#&amp;nbsp;&lt;b&gt;en la escuela?&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl091543296">
+        <text>#credential.msg_radio#</text>
+      </labelfield>
+      <labelfield name="lbl092240033">
+        <text>Nivel</text>
+      </labelfield>
+      <labelfield name="lbl092306329">
+        <text>Grado</text>
+      </labelfield>
+      <question name="q_niv_1" type="category" required="yes">
+        <variable name="niv" entity="tr_envipe2023_sdg_int"/>
+        <required-message>Falta seleccionar un nivel en 3.7</required-message>
+        <categories name="cat_pr091543340" type="inline" selection="simple">
+          <category code="00"> </category>
+        </categories>
+        <event name="evt150436072" type="change" side="server">
+          <reloadcategories name="acc150436069">
+            <description>Recarga valor de el grado</description>
+            <queryaction source="qy_grado"/>
+          </reloadcategories>
+        </event>
+      </question>
+      <labelfield name="lbl091543397">
+        <text>&lt;b&gt;(00)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl091543412">
+        <text>Ninguno</text>
+      </labelfield>
+      <question name="q_niv_2" type="category" required="yes">
+        <variable name="niv" entity="tr_envipe2023_sdg_int"/>
+        <required-message>Falta seleccionar un nivel en 3.7</required-message>
+        <categories name="cat_pr091543424" type="inline" selection="simple">
+          <category code="01"> </category>
+        </categories>
+        <event name="evt150634582" type="change" side="server">
+          <reloadcategories name="acc150634578">
+            <description>Recarga catalogo de grado</description>
+            <queryaction source="qy_grado"/>
+          </reloadcategories>
+        </event>
+      </question>
+      <labelfield name="lbl091543448">
+        <text>&lt;b&gt;(01)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl091543460">
+        <text>Preescolar</text>
+      </labelfield>
+      <question name="q_niv_3" type="category" required="yes">
+        <variable name="niv" entity="tr_envipe2023_sdg_int"/>
+        <required-message>Falta seleccionar un nivel en 3.7</required-message>
+        <categories name="cat_pr091543481" type="inline" selection="simple">
+          <category code="02"> </category>
+        </categories>
+        <event name="evt150647704" type="change" side="server">
+          <reloadcategories name="acc150647700">
+            <description>Recarga catalogo de grado</description>
+            <queryaction source="qy_grado"/>
+          </reloadcategories>
+        </event>
+      </question>
+      <labelfield name="lbl091543513">
+        <text>&lt;b&gt;(02)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl091543527">
+        <text>Primaria</text>
+      </labelfield>
+      <question name="q_niv_4" type="category" required="yes">
+        <variable name="niv" entity="tr_envipe2023_sdg_int"/>
+        <required-message>Falta seleccionar un nivel en 3.7</required-message>
+        <categories name="cat_pr091543539" type="inline" selection="simple">
+          <category code="03"> </category>
+        </categories>
+        <event name="evt150703148" type="change" side="server">
+          <reloadcategories name="acc150703145">
+            <description>Recarga catalogo de grado</description>
+            <queryaction source="qy_grado"/>
+          </reloadcategories>
+        </event>
+      </question>
+      <labelfield name="lbl091543569">
+        <text>&lt;b&gt;(03)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl091543582">
+        <text>Secundaria</text>
+      </labelfield>
+      <question name="q_niv_5" type="category" required="yes">
+        <variable name="niv" entity="tr_envipe2023_sdg_int"/>
+        <required-message>Falta seleccionar un nivel en 3.7</required-message>
+        <categories name="cat_pr091543595" type="inline" selection="simple">
+          <category code="04"> </category>
+        </categories>
+        <event name="evt150716901" type="change" side="server">
+          <reloadcategories name="acc150716898">
+            <description>Recarga catalogo de grado</description>
+            <queryaction source="qy_grado"/>
+          </reloadcategories>
+        </event>
+      </question>
+      <labelfield name="lbl091543623">
+        <text>&lt;b&gt;(04)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl091543634">
+        <text>Carrera técnica con secundaria terminada</text>
+      </labelfield>
+      <question name="q_niv_6" type="category" required="yes">
+        <variable name="niv" entity="tr_envipe2023_sdg_int"/>
+        <required-message>Falta seleccionar un nivel en 3.7</required-message>
+        <categories name="cat_pr091543644" type="inline" selection="simple">
+          <category code="05"> </category>
+        </categories>
+        <event name="evt150730546" type="change" side="server">
+          <reloadcategories name="acc150730543">
+            <description>Recarga catalogo de grado</description>
+            <queryaction source="qy_grado"/>
+          </reloadcategories>
+        </event>
+      </question>
+      <labelfield name="lbl091543668">
+        <text>&lt;b&gt;(05)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl091543682">
+        <text>Normal básica (con antecedente en secundaria)</text>
+      </labelfield>
+      <question name="q_niv_7" type="category" required="yes">
+        <variable name="niv" entity="tr_envipe2023_sdg_int"/>
+        <required-message>Falta seleccionar un nivel en 3.7</required-message>
+        <categories name="cat_pr091834072" type="inline" selection="simple">
+          <category code="06"> </category>
+        </categories>
+        <event name="evt150743853" type="change" side="server">
+          <reloadcategories name="acc150743850">
+            <description>Recarga catalogo de grado</description>
+            <queryaction source="qy_grado"/>
+          </reloadcategories>
+        </event>
+      </question>
+      <labelfield name="lbl091834100">
+        <text>&lt;b&gt;(06)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl091834112">
+        <text>Preparatoria o bachillerato</text>
+      </labelfield>
+      <question name="q_niv_8" type="category" required="yes">
+        <variable name="niv" entity="tr_envipe2023_sdg_int"/>
+        <required-message>Falta seleccionar un nivel en 3.7</required-message>
+        <categories name="cat_pr091850183" type="inline" selection="simple">
+          <category code="07"> </category>
+        </categories>
+        <event name="evt150755169" type="change" side="server">
+          <reloadcategories name="acc150755165">
+            <description>Recarga catalogo de grado</description>
+            <queryaction source="qy_grado"/>
+          </reloadcategories>
+        </event>
+      </question>
+      <labelfield name="lbl091850263">
+        <text>&lt;b&gt;(07)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl091850277">
+        <text>Carrera técnica con preparatoria terminada</text>
+      </labelfield>
+      <question name="q_niv_9" type="category" required="yes">
+        <variable name="niv" entity="tr_envipe2023_sdg_int"/>
+        <required-message>Falta seleccionar un nivel en 3.7</required-message>
+        <categories name="cat_pr091856891" type="inline" selection="simple">
+          <category code="08"> </category>
+        </categories>
+        <event name="evt150807013" type="change" side="server">
+          <reloadcategories name="acc150807006">
+            <description>Recarga catalogo de grado</description>
+            <queryaction source="qy_grado"/>
+          </reloadcategories>
+        </event>
+      </question>
+      <labelfield name="lbl091856939">
+        <text>&lt;b&gt;(08)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl091856950">
+        <text>Licenciatura o profesional</text>
+      </labelfield>
+      <question name="q_niv_10" type="category" required="yes">
+        <variable name="niv" entity="tr_envipe2023_sdg_int"/>
+        <required-message>Falta seleccionar un nivel en 3.7</required-message>
+        <categories name="cat_pr091903563" type="inline" selection="simple">
+          <category code="09"> </category>
+        </categories>
+        <event name="evt150820275" type="change" side="server">
+          <reloadcategories name="acc150820271">
+            <description>Recarga catalogo de grado</description>
+            <queryaction source="qy_grado"/>
+          </reloadcategories>
+        </event>
+      </question>
+      <labelfield name="lbl091904334">
+        <text>&lt;b&gt;(09)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl091904347">
+        <text>Maestría o doctorado</text>
+      </labelfield>
+      <question name="q_pr090540123" type="category" required="yes">
+        <variable name="niv" entity="tr_envipe2023_sdg_int"/>
+        <required-message>Falta seleccionar un nivel en 3.7</required-message>
+        <categories name="cat_pr090540123" type="inline" selection="simple">
+          <category code="99"> </category>
+        </categories>
+        <event name="evt090540486" type="change" side="server">
+          <reloadcategories name="acc090540535">
+            <description>Recarga catalogo de grado</description>
+            <queryaction source="qy_grado_1"/>
+          </reloadcategories>
+        </event>
+      </question>
+      <labelfield name="lbl090540797">
+        <text>&lt;b&gt;(99)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl090540832">
+        <text>No sabe/no responde</text>
+      </labelfield>
+      <labelfield name="slt_grado_ini"/>
+      <question name="q_gra" type="category">
+        <variable name="gra" entity="tr_envipe2023_sdg_int"/>
+        <categories source="qy_grado" type="catalog" selection="simple" value="descripcion" description="descripcion" force="yes">
+          <unselected>__Seleccione__</unselected>
+        </categories>
+      </question>
+      <labelfield name="slt_grado_fin"/>
+      <labelfield name="slt_ap3_7_fin"/>
+      <labelfield name="lbl092539439">
+        <text>CONDICIÓN DE ACTIVIDAD</text>
+      </labelfield>
+      <labelfield name="lbl092539465">
+        <text>3.8</text>
+      </labelfield>
+      <labelfield name="lbl092539476">
+        <text>&lt;b&gt;¿La semana pasada &lt;/b&gt;#tr_envipe2023_sdg_int.nombre#&amp;nbsp;&lt;b&gt;...&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="slt_ap3_8_ini"/>
+      <labelfield name="lbl092539497">
+        <text>#credential.msg_radio#</text>
+      </labelfield>
+      <question name="q_ap3_8_1" type="category" required="yes">
+        <variable name="ap3_8" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.8</required-message>
+        <categories name="cat_pr092539526" type="inline" selection="simple">
+          <category code="1"> </category>
+        </categories>
+        <event name="evt151726854" type="change" side="client">
+          <expr name="acc151726851">
+            <description>Setea valor a texto 3.8</description>
+            <expression><![CDATA[
+function test() {
+    credential.setSelec_3_8('trabajó');
+}
+]]></expression>
+          </expr>
+        </event>
+      </question>
+      <labelfield name="lbl092540200">
+        <text>&lt;b&gt;(1)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl092540216">
+        <text>&lt;b&gt;trabajó?&lt;/b&gt;</text>
+      </labelfield>
+      <question name="q_ap3_8_2" type="category" required="yes">
+        <variable name="ap3_8" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.8</required-message>
+        <categories name="cat_pr092540227" type="inline" selection="simple">
+          <category code="2"> </category>
+        </categories>
+        <event name="evt151916843" type="change" side="client">
+          <expr name="acc151916839">
+            <description>Setea valor a texto 3.8</description>
+            <expression><![CDATA[
+function test() {
+ credential.setSelec_3_8('tenía trabajo, pero no trabajó');
+}
+]]></expression>
+          </expr>
+        </event>
+      </question>
+      <labelfield name="lbl092540250">
+        <text>&lt;b&gt;(2)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl092540262">
+        <text>&lt;b&gt;tenía trabajo,&amp;nbsp;pero no trabajó?&lt;/b&gt;</text>
+      </labelfield>
+      <question name="q_ap3_8_3" type="category" required="yes">
+        <variable name="ap3_8" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.8</required-message>
+        <categories name="cat_pr092540270" type="inline" selection="simple">
+          <category code="3"> </category>
+        </categories>
+        <event name="evt152016244" type="change" side="client">
+          <expr name="acc152016240">
+            <description>Setea valor a texto 3.8</description>
+            <expression><![CDATA[
+function test() {
+    credential.setSelec_3_8('buscó trabajo');
+}
+]]></expression>
+          </expr>
+        </event>
+      </question>
+      <labelfield name="lbl092540294">
+        <text>&lt;b&gt;(3)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl092540305">
+        <text>&lt;b&gt;buscó trabajo?&lt;/b&gt;</text>
+      </labelfield>
+      <question name="q_ap3_8_4" type="category" required="yes">
+        <variable name="ap3_8" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.8</required-message>
+        <categories name="cat_pr092540314" type="inline" selection="simple">
+          <category code="4"> </category>
+        </categories>
+        <event name="evt152042343" type="change" side="client">
+          <expr name="acc152042338">
+            <description>Setea valor a texto 3.8</description>
+            <expression><![CDATA[
+function test() {
+ credential.setSelec_3_8('Es estudiante');
+}
+]]></expression>
+          </expr>
+        </event>
+      </question>
+      <labelfield name="lbl092540338">
+        <text>&lt;b&gt;(4)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl092540349">
+        <text>&lt;b&gt;¿Es estudiante?&lt;/b&gt;</text>
+      </labelfield>
+      <question name="q_ap3_8_5" type="category" required="yes">
+        <variable name="ap3_8" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.8</required-message>
+        <categories name="cat_pr092540359" type="inline" selection="simple">
+          <category code="5"> </category>
+        </categories>
+        <event name="evt152109383" type="change" side="client">
+          <expr name="acc152109379">
+            <description>Setea valor a texto 3.8</description>
+            <expression><![CDATA[
+function test() {
+    credential.setSelec_3_8('Se dedica a los quehaceres del hogar');
+}
+]]></expression>
+          </expr>
+        </event>
+      </question>
+      <labelfield name="lbl092540381">
+        <text>&lt;b&gt;(5)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl092540390">
+        <text>&lt;b&gt;¿Se dedica a los&amp;nbsp;quehaceres del hogar?&lt;/b&gt;</text>
+      </labelfield>
+      <question name="q_ap3_8_6" type="category" required="yes">
+        <variable name="ap3_8" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.8</required-message>
+        <categories name="cat_pr092540399" type="inline" selection="simple">
+          <category code="6"> </category>
+        </categories>
+        <event name="evt152139631" type="change" side="server">
+          <expr name="acc152139626">
+            <description>Setea valor a texto 3.8</description>
+            <expression><![CDATA[
+function test() {
+    credential.setSelec_3_8('Es jubilado(a) o pensionado(a)');
+}
+]]></expression>
+          </expr>
+        </event>
+      </question>
+      <labelfield name="lbl092540422">
+        <text>&lt;b&gt;(6)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl092540438">
+        <text>&lt;b&gt;¿Es jubilado&lt;/b&gt;(a)&lt;b&gt;&amp;nbsp;o pensionado&lt;/b&gt;(a)&lt;b&gt;?&lt;/b&gt;</text>
+      </labelfield>
+      <question name="q_ap3_8_7" type="category" required="yes">
+        <variable name="ap3_8" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.8</required-message>
+        <categories name="cat_pr092828070" type="inline" selection="simple">
+          <category code="7"> </category>
+        </categories>
+        <event name="evt152203314" type="change" side="client">
+          <expr name="acc152203310">
+            <description>Setea valor a texto 3.8</description>
+            <expression><![CDATA[
+function test() {
+    credential.setSelec_3_8('Está incapacitado(a) permanentemente para trabajar');
+}
+]]></expression>
+          </expr>
+        </event>
+      </question>
+      <labelfield name="lbl092828094">
+        <text>&lt;b&gt;(7)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl092828108">
+        <text>&lt;b&gt;¿Está incapacitado&lt;/b&gt;(a) &lt;b&gt;permanentemente para trabajar?&lt;/b&gt;</text>
+      </labelfield>
+      <question name="q_ap3_8_8" type="category" required="yes">
+        <variable name="ap3_8" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.8</required-message>
+        <categories name="cat_pr092834325" type="inline" selection="simple">
+          <category code="8"> </category>
+        </categories>
+        <event name="evt152228146" type="change" side="client">
+          <expr name="acc152228142">
+            <description>Setea valor a texto 3.8</description>
+            <expression><![CDATA[
+function test() {
+    credential.setSelec_3_8('No trabajó');
+}
+]]></expression>
+          </expr>
+        </event>
+      </question>
+      <labelfield name="lbl092834351">
+        <text>&lt;b&gt;(8)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl092834363">
+        <text>&lt;b&gt;¿No trabajó?&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="slt_ap3_8_fin"/>
+      <labelfield name="lbl093814396">
+        <text>VERIFICACIÓN DE ACTIVIDAD</text>
+      </labelfield>
+      <labelfield name="lbl093814418">
+        <text>3.9</text>
+      </labelfield>
+      <labelfield name="lbl093814429">
+        <text>&lt;b&gt;Además de &lt;/b&gt;#credential.selec_3_8#&lt;b&gt;, ¿la semana pasada &lt;/b&gt;#tr_envipe2023_sdg_int.nombre#&amp;nbsp;&lt;b&gt;...&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="slt_ap3_9_ini"/>
+      <labelfield name="lbl093814439">
+        <text>#credential.msg_radio#</text>
+      </labelfield>
+      <question name="q_ap3_9_1" type="category" required="yes">
+        <variable name="ap3_9" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.9</required-message>
+        <categories name="cat_pr093814472" type="inline" selection="simple">
+          <category code="1"> </category>
+        </categories>
+      </question>
+      <labelfield name="lbl093814509">
+        <text>&lt;b&gt;(1)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl093814519">
+        <text>&lt;b&gt;vendió o hizo&amp;nbsp;algún producto para su venta?&lt;/b&gt;</text>
+      </labelfield>
+      <question name="q_ap3_9_2" type="category" required="yes">
+        <variable name="ap3_9" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.9</required-message>
+        <categories name="cat_pr093814529" type="inline" selection="simple">
+          <category code="2"> </category>
+        </categories>
+      </question>
+      <labelfield name="lbl093814552">
+        <text>&lt;b&gt;(2)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl093814562">
+        <text>&lt;b&gt;prestó algún servicio a cambio de un pago&lt;/b&gt; (cortar el cabello, dar clases, lavar o planchar ropa ajena)&lt;b&gt;?&lt;/b&gt;</text>
+      </labelfield>
+      <question name="q_ap3_9_3" type="category" required="yes">
+        <variable name="ap3_9" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.9</required-message>
+        <categories name="cat_pr093814575" type="inline" selection="simple">
+          <category code="3"> </category>
+        </categories>
+      </question>
+      <labelfield name="lbl093814600">
+        <text>&lt;b&gt;(3)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl093815329">
+        <text>&lt;b&gt;ayudó trabajando en las tierras o en el negocio de un familiar u otra persona?&lt;/b&gt;</text>
+      </labelfield>
+      <question name="q_ap3_9_4" type="category" required="yes">
+        <variable name="ap3_9" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.9</required-message>
+        <categories name="cat_pr093815338" type="inline" selection="simple">
+          <category code="4"> </category>
+        </categories>
+      </question>
+      <labelfield name="lbl093815359">
+        <text>&lt;b&gt;(4)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl093815373">
+        <text>&lt;b&gt;Entonces, ¿no trabajó?&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="slt_ap3_9_fin"/>
+      <labelfield name="lbl094553193">
+        <text>POSICIÓN EN LA OCUPACIÓN</text>
+      </labelfield>
+      <labelfield name="slt_ap3_10_ini"/>
+      <labelfield name="lbl094553214">
+        <text>3.10</text>
+      </labelfield>
+      <labelfield name="lbl094553223">
+        <text>&lt;b&gt;¿En su trabajo o negocio de la semana pasada&amp;nbsp;&lt;/b&gt;#tr_envipe2023_sdg_int.nombre# &lt;b&gt; fue...&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl094553231">
+        <text>#credential.msg_radio#</text>
+      </labelfield>
+      <question name="q_ap3_10_1" type="category" required="yes">
+        <variable name="ap3_10" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.10</required-message>
+        <categories name="cat_pr094553259" type="inline" selection="simple">
+          <category code="1"> </category>
+        </categories>
+      </question>
+      <labelfield name="lbl094553309">
+        <text>&lt;b&gt;(1)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl094553321">
+        <text>&lt;b&gt;jornalero&lt;/b&gt;(a)&lt;b&gt; o peón?&lt;/b&gt;</text>
+      </labelfield>
+      <question name="q_ap3_10_2" type="category" required="yes">
+        <variable name="ap3_10" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.10</required-message>
+        <categories name="cat_pr094553331" type="inline" selection="simple">
+          <category code="2"> </category>
+        </categories>
+      </question>
+      <labelfield name="lbl094553355">
+        <text>&lt;b&gt;(2)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl094553364">
+        <text>&lt;b&gt;empleado&lt;/b&gt;(a)&lt;b&gt; u obrero&lt;/b&gt;(a)&lt;b&gt;?&lt;/b&gt;</text>
+      </labelfield>
+      <question name="q_ap3_10_3" type="category" required="yes">
+        <variable name="ap3_10" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.10</required-message>
+        <categories name="cat_pr094553375" type="inline" selection="simple">
+          <category code="3"> </category>
+        </categories>
+      </question>
+      <labelfield name="lbl094553403">
+        <text>&lt;b&gt;(3)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl094553414">
+        <text>&lt;b&gt;trabajador&lt;/b&gt;(a)&lt;b&gt; por su cuenta?&lt;/b&gt;(no contrata trabajadores)</text>
+      </labelfield>
+      <question name="q_ap3_10_4" type="category" required="yes">
+        <variable name="ap3_10" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.10</required-message>
+        <categories name="cat_pr094553422" type="inline" selection="simple">
+          <category code="4"> </category>
+        </categories>
+      </question>
+      <labelfield name="lbl094553466">
+        <text>&lt;b&gt;(4)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl094553481">
+        <text>&lt;b&gt;patrón&lt;/b&gt;(a)&lt;b&gt; o&amp;nbsp;empleador&lt;/b&gt;(a)&lt;b&gt;?&lt;/b&gt;&amp;nbsp;(contrata trabajadores)</text>
+      </labelfield>
+      <question name="q_ap3_10_5" type="category" required="yes">
+        <variable name="ap3_10" entity="tr_envipe2023_sdg_int"/>
+        <required-message>#credential.msg_val_radio# en 3.10</required-message>
+        <categories name="cat_pr094916006" type="inline" selection="simple">
+          <category code="5"> </category>
+        </categories>
+      </question>
+      <labelfield name="lbl094916037">
+        <text>&lt;b&gt;(5)&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="lbl094916050">
+        <text>&lt;b&gt;trabajador&lt;/b&gt;(a)&lt;b&gt; sin&amp;nbsp;pago?&lt;/b&gt;</text>
+      </labelfield>
+      <labelfield name="slt_ap3_10_fin"/>
+      <event name="evt154401137" type="page-unload" side="client">
+        <expr name="acc100906316" ref-page="pag163106459">
+          <description>Valida multi pareja</description>
+          <expression><![CDATA[
+function test() {
+    var existe = tr_envipe2023_sdg.getParejas().indexOf(tr_envipe2023_sdg_int.getN_ren());
+    var str = tr_envipe2023_sdg.getParejas();
+    if ((tr_envipe2023_sdg_int.getParen() * 1 == 2)) {
+        if (existe == -1) {
+            tr_envipe2023_sdg.setParejas(tr_envipe2023_sdg.getParejas() + tr_envipe2023_sdg_int.getN_ren() + ',');
+        }
+    } else if (existe != -1) {
+        tr_envipe2023_sdg.setParejas(str.substring(0, existe) + str.substring(existe + 3, str.length));
+    }
+    var cont = tr_envipe2023_sdg.getParejas().split(',');
+    if (cont.length > 2 && (tr_envipe2023_sdg_int.getParen() * 1 == 2)) {
+        alert('Verificar si el/la jefe(a) del hogar tiene 2 o más esposos(as).');
+    }
+}
+]]></expression>
+        </expr>
+        <validation name="val3_4" type="observation" references="q_sexo" replicate="yes" ref-page="pag163345159">
+          <description>Pareja mismo sexo</description>
+          <error>PAREJA DEL MISMO SEXO</error>
+          <replicate>
+            <level name="questionnaire" type="observation"/>
+          </replicate>
+          <validate><![CDATA[
+function test() {
+    if (tr_envipe2023_sdg_int.getN_ren() * 1 > 1 && tr_envipe2023_sdg_int.getParen() * 1 == 2) {
+        if (tr_envipe2023_sdg_int.getSexo() * 1 == tr_envipe2023_sdg.getSexo_jefe()) {
+            return false;
+        }
+    }
+    return true;
+}
+]]></validate>
+        </validation>
+        <validation name="ap3_5_alguna_edad" type="required" references="q_edad_c" replicate="yes" ref-page="pag163353893">
+          <description>Valida que seleccione el campo de edad</description>
+          <error>Seleccione un valor para edad</error>
+          <replicate>
+            <level name="questionnaire" type="required"/>
+          </replicate>
+          <validate><![CDATA[
+function test() {
+    var rst = false;
+    if (tr_envipe2023_sdg_int.getEdad() != '') {
+        rst = true;
+    } else {
+        if (tr_envipe2023_sdg_int.getEdad_c() != '') {
+            tr_envipe2023_sdg_int.setEdad(tr_envipe2023_sdg_int.getEdad_c());
+            rst = true;
+        }
+        if (tr_envipe2023_sdg_int.getEdad_r() != '') {
+            tr_envipe2023_sdg_int.setEdad(tr_envipe2023_sdg_int.getEdad_r());
+            rst = true;
+        }
+    }
+    if (tr_envipe2023_sdg_int.getN_ren() * 1 < 2) {
+        tr_envipe2023_sdg.setEdad_jefe(tr_envipe2023_sdg_int.getEdad());
+        /*if(tr_envipe2018_sdg.getEdad_jefe()*1 < 18 || tr_envipe2018_sdg.getEdad_jefe()*1 == 99){
+            alert('Jefe del hogar menor de edad');
+        }*/
+    }
+
+    return rst;
+}
+]]></validate>
+        </validation>
+        <validation name="ap3_5_edad" type="observation" references="q_edad_c" replicate="yes" ref-page="pag163353893">
+          <description>valida edades</description>
+          <error>#credential.msg_val_esp#</error>
+          <replicate>
+            <level name="questionnaire" type="observation"/>
+          </replicate>
+          <validate><![CDATA[
+function test() {
+    if (tr_envipe2023_sdg_int.getEdad() != '' && tr_envipe2023_sdg_int.getEdad() != null) {
+        //Jefe
+        if ((tr_envipe2023_sdg_int.getParen() * 1) == 1) {
+            var edad_persona = (tr_envipe2023_sdg_int.getEdad() * 1);
+            if (edad_persona == 99) {
+                edad_persona = 17;
+            }
+            //Jefe menor de edad
+            if (edad_persona < 18) {
+                credential.setMsg_val_esp('Jefe del hogar menor de edad');
+                //alert('Jefe del hogar menor de edad');
+                return false;
+            }
+        }
+
+        //Esposo(a)
+        if ((tr_envipe2023_sdg_int.getParen() * 1) == 2) {
+            var edad_esposo = 0;
+            edad_esposo = (tr_envipe2023_sdg_int.getEdad() * 1);
+            if (edad_esposo == 99) {
+                edad_esposo = 17;
+            }
+            //La edad del esposo es la de un niño
+            if (edad_esposo <= 12) {
+                credential.setMsg_val_esp('Pareja menor a 12 años. Verificar la edad de la pareja');
+                //alert('Pareja menor a 12 años. Verificar la edad de la parejas');
+                //return true;
+                return false;
+            }
+        }
+
+        //Hijo(a)
+        if ((tr_envipe2023_sdg_int.getParen() * 1) == 3) {
+            var edad_hijo = (tr_envipe2023_sdg_int.getEdad() * 1);
+            if (edad_hijo == 99) {
+                edad_hijo = 17;
+            }
+            var edad_jefe = (tr_envipe2023_sdg.getEdad_jefe() * 1);
+            if (edad_jefe == 99) {
+                edad_jefe = 17;
+            }
+            var diferencia = edad_jefe - edad_hijo;
+            //Padres muy jovenes
+            if (edad_hijo != 98 && edad_jefe != 98) {
+                if (diferencia < 12 && edad_hijo != 99 && edad_jefe != 99) {
+                    credential.setMsg_val_esp('Padres muy jóvenes. Verificar las edades del HIJO(A), como del JEFE DEL HOGAR.');
+                    //alert('Padres muy jóvenes. Verificar las edades del HIJO(A), como del JEFE DEL HOGAR.');
+                    //return true;
+                    return false;
+                }
+            }
+            //Hijos mayores
+            if (edad_hijo != 98 && edad_jefe != 98) {
+                if (edad_hijo > edad_jefe) {
+                    credential.setMsg_val_esp('Hijos mayores que los padres. Verificar las edades del HIJO(A), como del JEFE DEL HOGAR.');
+                    //alert('Hijos mayores que los padres. Verificar las edades del HIJO(A), como del JEFE DEL HOGAR.');
+                    //return true;
+                    return false;
+                }
+            }
+        }
+
+        //Padre o madre
+        if ((tr_envipe2023_sdg_int.getParen() * 1) == 4) {
+            var edad_padre = (tr_envipe2023_sdg_int.getEdad() * 1);
+            var edad_jefe2 = (tr_envipe2023_sdg.getEdad_jefe() * 1);
+            var diferencia2 = edad_padre - edad_jefe2;
+            //La edad del padre del jefe es menor
+            if (edad_padre != 98 && edad_jefe2 != 98) {
+                if (edad_padre < edad_jefe2) {
+                    credential.setMsg_val_esp('Padre o madre del jefe(a) del hogar menor que éste.');
+                    //alert('Padre o madre del jefe(a) del hogar menor que éste.');
+                    //return true;
+                    return false;
+                }
+            }
+            //Padre del jefe del hogar muy joven
+            if (edad_padre != 98 && edad_jefe2 != 98) {
+                if (edad_padre < 12 && edad_padre != 99 && edad_jefe2 != 99) {
+                    credential.setMsg_val_esp('Padre o madre del jefe(a) del hogar muy joven.');
+                    //alert('Padre o madre del jefe(a) del hogar muy joven.');
+                    //return true;
+                    return false;
+                }
+                //Diferencia de edades padre del jefe
+                if (diferencia2 < 12 && edad_padre != 99 && edad_jefe2 != 99) {
+                    credential.setMsg_val_esp('La diferencia de edad del padre o madre del JEFE DEL HOGAR es menor a 12 años');
+                    //alert('La diferencia de edad del padre o madre del JEFE DEL HOGAR es menor a 12 años');
+                    //return true;
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+]]></validate>
+        </validation>
+        <expr name="acc091707247" ref-page="pag163353893">
+          <description>3.5 al salir de la pagina = 1 </description>
+          <expression><![CDATA[
+function test() {
+    salirMenores = 1;
+}
+]]></expression>
+        </expr>
+        <validation name="val_ningun_mayor_p3_5" type="required" references="q_edad_r" replicate="yes" ref-page="pag163353893">
+          <description>ningún mayor de edad p3_5</description>
+          <error>Se cancelo la operación</error>
+          <replicate>
+            <level name="questionnaire" type="required"/>
+          </replicate>
+          <validate><![CDATA[
+function test() {
+    var longitud = tr_envipe2023_sdg.getTr_envipe2023_sdg_int().size() * 1;
+
+    if ((tr_envipe2023_sdg_int.getN_ren() * 1) == longitud) {
+        if ((tr_envipe2023_sdg_int.getEdad() != null && tr_envipe2023_sdg_int.getEdad() != '')) {
+            if ((tr_envipe2023_sdg_int.getEdad() * 1) < 3 && (tr_envipe2023_sdg_int.getEdad() >= 0)) {
+                if (salirMenores != 0) {
+                    salirMenores = 0;
+                    if (tr_envipe2023_sdg.getMayores() == null || tr_envipe2023_sdg.getMayores() == '') {
+                        if (confirm('No existen mayores de edad, el cuestionario se cerrará')) {
+                            try {
+                                tr_envipe2023_sdg.setC_res("06");
+                                tr_envipe2023_sdg.setStatus__('I');
+                                runtime__.saveEntity(tr_envipe2023_sdg);
+                                runtime__.exit();
+                                return true;
+                            } catch (err) {
+                                tr_envipe2023_sdg.setC_res("06");
+                                tr_envipe2023_sdg.setStatus__('I');
+                                runtime__.saveEntity(tr_envipe2023_sdg);
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    } else {
+        return true;
+    }
+}
+]]></validate>
+        </validation>
+        <validation name="ap3_6_dia" type="required" references="q_fn_dia" replicate="yes" ref-page="pag163411398">
+          <description>Combinacion de valores dia y mes</description>
+          <error>El día no puede ser 99</error>
+          <replicate>
+            <level name="questionnaire" type="required"/>
+          </replicate>
+          <validate><![CDATA[
+function test() {
+    /*if ((tr_envipe2022_sdg_int.getFn_mes() * 1) != 99 && (tr_envipe2022_sdg_int.getFn_dia() * 1) == 99) {
+        return false;
+    }*/
+    return true;
+}
+]]></validate>
+        </validation>
+        <validation name="acc111852476" type="required" references="q_fn_dia" replicate="yes" ref-page="pag163411398">
+          <description>Valida que el mes tenga los días correctos</description>
+          <error>No es correcto el valor del día con el mes</error>
+          <replicate>
+            <level name="questionnaire" type="required"/>
+          </replicate>
+          <validate><![CDATA[
+function test() {
+    var dia = tr_envipe2023_sdg_int.getFn_dia() * 1;
+    var mes = tr_envipe2023_sdg_int.getFn_mes() * 1;
+
+    if (dia == 99) {
+        return true;
+    }
+
+    if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+        if (dia > 0 && dia <= 31) {
+            return true;
+        }
+        return false;
+    }
+    if (mes == 2) {
+        var mesmax = 29;
+        if (dia > 0 && dia <= mesmax) {
+            return true;
+        }
+        return false;
+    }
+    if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+        if (dia > 0 && dia <= 30) {
+            return true;
+        }
+        return false;
+    }
+    return true;
+}
+]]></validate>
+        </validation>
+        <expr name="acc152510288" ref-page="pag163411398">
+          <description>Valor 99 en dia</description>
+          <expression><![CDATA[
+function test() {
+    if (tr_envipe2023_sdg_int.getFn_dia() * 1 == 99) {
+        if (tr_envipe2023_sdg_int.getFn_mes() * 1 != 99) {
+            alert('Se debe cambiar el código 99 del día por un 15, de acuerdo al manual del entrevistador');
+            return true;
+        }
+    } else if (tr_envipe2023_sdg_int.getFn_mes() * 1 == 99) {
+        return false;
+    }
+    return true;
+
+}
+]]></expression>
+        </expr>
+        <validation name="val_grado_edad" type="observation" references="q_niv_1" replicate="yes" ref-page="pag163425999">
+          <description>Valida nivel de estudio</description>
+          <error>Verifique su respuesta. El nivel y/o grado de estudios no corresponde con su edad. Corrija la edad y/o su escolaridad. De ser correcta la información, justifique en observaciones.</error>
+          <replicate>
+            <level name="questionnaire" type="observation"/>
+          </replicate>
+          <validate><![CDATA[
+function test() {
+    var edad = (tr_envipe2023_sdg_int.getEdad() * 1);
+    var nivel = (tr_envipe2023_sdg_int.getNiv() * 1);
+    var grado = (tr_envipe2023_sdg_int.getGra() * 1);
+    if (edad == 99) {
+        edad = 17;
+    }
+
+    if (nivel == 1) {
+        if (grado == 1 && edad < 4) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 2 && edad < 5) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 3 && edad < 6) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+    }
+    if (nivel == 2) {
+        if (grado == 1 && edad < 7) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 2 && edad < 8) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 3 && edad < 9) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 4 && edad < 10) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 5 && edad < 11) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 6 && edad < 12) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+    }
+    if (nivel == 3) {
+        if (grado == 1 && edad < 13) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 2 && edad < 14) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 3 && edad < 15) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+    }
+    if ((nivel == 4) || (nivel == 5) || (nivel == 6)) {
+        if (grado == 1 && edad < 16) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 2 && edad < 17) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 3 && edad < 18) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (nivel == 5) {
+            if (grado == 4 && edad < 19) {
+                //alert(mis_funciones.regresaMsgEstudios(10));
+                return false;
+            }
+        }
+    }
+    if (nivel == 7) {
+        if (grado == 1 && edad < 19) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 2 && edad < 20) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 3 && edad < 21) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+    }
+    if (nivel == 8) {
+        if (grado == 1 && edad < 19) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 2 && edad < 20) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 3 && edad < 21) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 4 && edad < 22) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 5 && edad < 23) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 6 && edad < 24) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 7 && edad < 25) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 8 && edad < 26) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+    }
+    if (nivel == 9) {
+        if (grado == 1 && edad < 23) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 2 && edad < 24) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 3 && edad < 25) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 4 && edad < 26) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 5 && edad < 27) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+        if (grado == 6 && edad < 28) {
+            //alert(mis_funciones.regresaMsgEstudios(10));
+            return false;
+        }
+    }
+    return true;
+}
+]]></validate>
+        </validation>
+        <validation name="acc111048781" type="required" references="q_gra" replicate="yes" ref-page="pag163425999">
+          <description>Valida grado</description>
+          <error>Debe seleccionar el grado en 3.7</error>
+          <replicate>
+            <level name="questionnaire" type="required"/>
+          </replicate>
+          <validate><![CDATA[
+function test() {
+    if ((tr_envipe2023_sdg_int.getNiv() * 1) > 0) {
+        if ((tr_envipe2023_sdg_int.getGra() * 1) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return true;
+    }
+}
+]]></validate>
+        </validation>
+        <expr name="acc092326217" ref-page="pag163425999">
+          <description>3.7 al salir de la pagina = 1</description>
+          <expression><![CDATA[
+function test() {
+    salirMenores = 1;
+}
+]]></expression>
+        </expr>
+        <validation name="val_ningun_mayor_p3_7" type="required" references="q_edad" replicate="yes" ref-page="pag163425999">
+          <description>ningún mayor de edad p3_7</description>
+          <error>Se cancelo la operación</error>
+          <replicate>
+            <level name="questionnaire" type="required"/>
+          </replicate>
+          <validate><![CDATA[
+function test() {
+    if ((tr_envipe2023_sdg_int.getN_ren() * 1) == tr_envipe2023_sdg.getTr_envipe2022_sdg_int().size()) {
+        if (((tr_envipe2023_sdg_int.getEdad() * 1) < 18 && (tr_envipe2023_sdg_int.getEdad() * 1) > 2) || (tr_envipe2023_sdg_int.getEdad() * 1) == 99) {
+            if (salirMenores != 0) {
+                salirMenores = 0;
+                if (tr_envipe2023_sdg.getMayores() == null || tr_envipe2023_sdg.getMayores() == '') {
+                    if (confirm('No existen mayores de edad, el cuestionario se cerrará')) {
+                        try {
+                            tr_envipe2023_sdg.setC_res("06");
+                            tr_envipe2023_sdg.setStatus__('I');
+                            runtime__.saveEntity(tr_envipe2023_sdg);
+                            runtime__.exit();
+                            return true;
+                        } catch (err) {
+                            tr_envipe2023_sdg.setC_res("06");
+                            tr_envipe2023_sdg.setStatus__('I');
+                            runtime__.saveEntity(tr_envipe2023_sdg);
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+]]></validate>
+        </validation>
+      </event>
+      <event name="evt154430504" type="pre-load" side="server">
+        <filter name="acc154430494">
+          <description>Filtra seccion ciclica</description>
+          <expression><![CDATA[
+function test(){ return (tr_envipe2023_sdg_int.getActiva() == 1);}
+]]></expression>
+        </filter>
+      </event>
+      <event name="evt121029057" type="unload" side="server">
+        <validation name="val_codigo_seleccionado" type="required" references="q_ap3_10_1" replicate="yes">
+          <description>valida codigo 1</description>
+          <error>No se seleccionó ningún elegido</error>
+          <replicate>
+            <level name="section" type="required"/>
+            <level name="questionnaire" type="required"/>
+          </replicate>
+          <validate><![CDATA[
+function test() {
+    if (credential.getTipo_cap() == 'E') {
+        return true;
+    }
+    var tam = tr_envipe2023_sdg.getTr_envipe2023_sdg_int().size();
+    if (tam == (tr_envipe2023_sdg_int.getN_ren() * 1)) {
+        if (tr_envipe2023_sdg.getR_sel() * 1 != 0) {
+            return true;
+        }
+        return false;
+    } else {
+        return true;
+    }
+}
+]]></validate>
+        </validation>
+      </event>
+      <event name="evt091809534" type="page-load" side="client">
+        <expr name="acc091809526" ref-page="pag163353893">
+          <description>3.5 salir = 0</description>
+          <expression><![CDATA[
+function test() {
+    salirMenores = 0;
+}
+]]></expression>
+        </expr>
+        <expr name="acc092235648" ref-page="pag163425999">
+          <description>3.7 salir = 0</description>
+          <expression><![CDATA[
+function test() {
+    salirMenores = 0;
+}
+]]></expression>
+        </expr>
+      </event>
+    </section>
+    <section name="sec163509412" cyclic="no">
+      <title>SECCIÓN III. INTEGRANTES DEL HOGAR Y CARACTERÍSTICAS SOCIODEMOGRÁFICAS</title>
+      <labelfield name="slt_ini_informante"/>
+      <labelfield name="lbl163711209"/>
+      <labelfield name="lbl163711218"/>
+      <labelfield name="lbl163711228">
+        <text>INFORMANTE ADECUADO</text>
+      </labelfield>
+      <labelfield name="lbl163711235">
+        <text>#credential.msg_radio#</text>
+      </labelfield>
+      <question name="q_n_info" type="category" required="yes">
+        <variable name="n_info" entity="tr_envipe2023_sdg"/>
+        <required-message>#credential.msg_val_radio# para el informante</required-message>
+        <categories source="qy_mayores_edad" type="catalog" selection="simple" value="n_ren" description="nombre" force="yes">
+          <unselected>__Seleccione__</unselected>
+        </categories>
+      </question>
+      <labelfield name="slt_fin_informante"/>
+      <event name="evt094522742" type="unload" side="server">
+        <reloadquery name="acc133045038" query="qy_mayores_edad" type="multiple">
+          <description>Recarga numeros de renglon de mayores de edad</description>
+        </reloadquery>
+        <validation name="acc100837685" type="required" references="q_n_info" replicate="yes">
+          <description>Verifica código elegido</description>
+          <error>VERIFICAR EL CÓDIGO DEL INFORMANTE SELECCIONADO.</error>
+          <replicate>
+            <level name="section" type="required"/>
+            <level name="questionnaire" type="required"/>
+          </replicate>
+          <validate><![CDATA[
+function test() {
+    if (credential.getTipo_cap() == 'E') {
+        var fraccion = 0;
+        var arranque = 0;
+        var xi = 0;
+        var trunca = 0;
+        //var N = tr_ensu2016_sociodem.getTr_ensu2016_int_nom().size(); //size del grupo cíclico
+        if (qy_mayores_edad != '' && qy_mayores_edad != null) {
+            var N = qy_mayores_edad.size(); //size de los mayores de edad
+            var nn = 1; //cuantos se van a seleccionar, siempre es uno
+            var r = credential.getFac_eleg(); //factor de elegido, está en credential como factor_elegido
+            fraccion = N / nn;
+            arranque = r * fraccion;
+            trunca = 0;
+            xi = arranque + ((1 - 1) * (fraccion));
+            trunca = (((xi.toString().split(".")[0]) * 1) + 1);
+            var renglon = qy_mayores_edad.get(trunca - 1);
+            var num_ren = renglon.getN_ren();
+            var indx = tr_envipe2023_sdg.getTr_envipe2023_sdg_int().getIndex('tr_envipe2023_sdg_int');
+            var tam = tr_envipe2023_sdg.getTr_envipe2023_sdg_int().size();
+            for (var i = 0; i <= tam; i++) {
+                var reg = tr_envipe2023_sdg.getTr_envipe2023_sdg_int().get(i);
+                if (reg.getActiva() == 1) {
+                    if ((reg.getEdad() * 1 >= 18) && (reg.getEdad() * 1 < 99)) {
+                        if (reg.getN_ren() * 1 == num_ren * 1) {
+                            reg.setCodigo('1');
+                            tr_envipe2023_sdg.setR_sel(reg.getN_ren());
+                        } else {
+                            reg.setCodigo('2');
+                        }
+                    }
+                }
+            }
+            tr_envipe2023_sdg.getTr_envipe2023_sdg_int().get(indx);
+            return true;
+        }
+        return false;
+    }
+    var fechasString = "";
+    var numeroRenglonString = "";
+    var renglon_elegido = 0;
+    var renglon_codigo;
+    var renglon_fecha = 0;
+    var fecha_posterior = "";
+    var fecha_anterior = "";
+    var bandera = 0;
+    var fechapivote = credential.getMes_cap() + credential.getDia_cap() + '';
+    var fecha_reciente = "";
+    if (qy_mayores_edad != '' && qy_mayores_edad != null) {
+        for (var o = 0; o < qy_mayores_edad.size(); o++) {
+            var mes = qy_mayores_edad.get(o).getFn_mes();
+            var dia = qy_mayores_edad.get(o).getFn_dia();
+            if (qy_mayores_edad.get(o).getCodigo() * 1 == 1) {
+                renglon_codigo = qy_mayores_edad.get(o).getN_ren();
+                //renglon_fecha = qy_mayores_edad.get(o).getNum_ren();
+            }
+            if ((mes * 1) == 99 && (dia * 1) == 99) {
+                bandera++;
+                if ((renglon_elegido * 1) == 0) {
+                    renglon_elegido = qy_mayores_edad.get(o).getN_ren();
+                }
+                continue;
+            }
+            if ((dia * 1) == 99) {
+                dia = 15;
+            }
+            var fecha = mes + "" + dia;
+
+            if ((fechapivote * 1) < (fecha * 1)) {
+                if (fecha_posterior == "") {
+                    fecha_posterior = fecha;
+                    renglon_fecha = qy_mayores_edad.get(o).getN_ren();
+                } else {
+                    if (fecha_posterior > fecha) {
+                        fecha_posterior = fecha;
+                        renglon_fecha = qy_mayores_edad.get(o).getN_ren();
+                    }
+                }
+            } else if (fecha_posterior == "") {
+                if (fecha_anterior == "") {
+                    fecha_anterior = fecha;
+                    renglon_fecha = qy_mayores_edad.get(o).getN_ren();
+                } else {
+                    if (fecha_anterior > fecha) {
+                        fecha_anterior = fecha;
+                        renglon_fecha = qy_mayores_edad.get(o).getN_ren();
+                    }
+                }
+            }
+        }
+
+        if (renglon_fecha == 0) {
+            renglon_fecha = qy_mayores_edad.get(0).getN_ren();
+        }
+        // if(tr_ensu2016_int_nom.getNum_ren() == tr_ensu2016_sociodem.getTr_ensu2016_int_nom().size()){
+        if (bandera == qy_mayores_edad.size()) {
+            if (renglon_codigo == renglon_elegido) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            if (renglon_codigo == renglon_fecha) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+}
+]]></validate>
+        </validation>
+      </event>
+    </section>
+    <section name="sec151453614" cyclic="no">
+      <title>Datos elegido</title>
+      <labelfield name="lbl151526737">
+        <text>NUM_REN</text>
+      </labelfield>
+      <labelfield name="lbl151526767">
+        <text>#tr_envipe2023_sdg.r_sel#</text>
+      </labelfield>
+      <labelfield name="lbl151526791">
+        <text>NOMBRE</text>
+      </labelfield>
+      <labelfield name="lbl151526805">
+        <text>#tr_envipe2023_sdg.nom_eleg#</text>
+      </labelfield>
+      <labelfield name="lbl151526821"/>
+      <event name="evt153948658" type="load" side="server">
+        <reloadquery name="acc153948638" query="qy_elegido" type="simple">
+          <description>recarga de nombre de persona elegida</description>
+        </reloadquery>
+        <reloadvariable name="acc154029623">
+          <description>recarga variable de persona elegida</description>
+          <queryaction source="qy_elegido"/>
+          <fieldaction name="nombre"/>
+          <variable name="nom_eleg" entity="tr_envipe2023_sdg"/>
+        </reloadvariable>
+      </event>
+    </section>
+    <section name="sec152408343" cyclic="no">
+      <title>Sección Observaciones</title>
+      <labelfield name="lbl_ini"/>
+      <cyclicgroup name="c_gpobs152408363" finite="no" entity="tr_envipe2023_sdg_obs">
+        <textempty>No hay observaciones registradas</textempty>
+        <question name="q_tillas2017_obs_referenc" type="simple" readonly="yes">
+          <text>Referencia</text>
+          <variable name="referencia" entity="tr_envipe2023_sdg_obs"/>
+        </question>
+        <question name="q_lantillas2017_obs_mensa" type="simple" readonly="yes">
+          <text>Mensaje de Error</text>
+          <variable name="mensaje" entity="tr_envipe2023_sdg_obs"/>
+        </question>
+        <question name="q_illas2017_obs_observaci" type="simple" required="yes">
+          <text>Observación que justifica la inconsistencia</text>
+          <variable name="observacion" entity="tr_envipe2023_sdg_obs"/>
+        </question>
+      </cyclicgroup>
+      <labelfield name="lbl_fin"/>
+    </section>
+    <defaultsection>
+      <title>Termina Cuestionario</title>
+      <button name="btn162956092" value="Terminar" type="actions">
+        <event name="evt093925939" type="click" side="server">
+          <expr name="acc093925928">
+            <description>Termina cuestionario</description>
+            <expression><![CDATA[
+function test() {
+    var myAnswer;
+    var qy = tr_envipe2023_sdg.getTot_per();
+    if (qy > 30) {
+        if (confirm('Se ha registrado un número mayor a 30 personas. SE TRATA DE UNA VIVIENDA COLECTIVA?')) {
+            if (confirm('Por ser una vivienda colectiva se CERRARÁ DEFINITIVAMENTE esta vivienda. ¿Está usted seguro?')) {
+                tr_envipe2023_sdg.setC_res('13.1');
+                tr_envipe2023_sdg.setStatus__('I');
+                runtime__.saveEntity(tr_envipe2023_sdg);
+                runtime__.exit();
+                return true;
+            }
+        }
+        return false;
+    }
+    try {
+        if (runtime__.hasErrors() == false) {
+            myAnswer = confirm("Ha finalizado las secciones ya no podrá volver a entrar ¿está seguro de esta acción?.. \n\nTerminar Captura(Aceptar) - Dejar Pendiente (Cancelar)");
+            if (!myAnswer) {
+                tr_envipe2023_sdg.setC_res('2');
+                tr_envipe2023_sdg.setStatus__('I');
+                runtime__.saveEntity(tr_envipe2023_sdg);
+                runtime__.exit();
+                return true;
+            } else {
+
+                if (tr_envipe2023_sdg.getMayores() == null || tr_envipe2023_sdg.getMayores() == '') {
+                    if (confirm('No existen mayores de edad, el cuestionario se cerrará')) {
+                        tr_envipe2023_sdg.setC_res('06');
+                        tr_envipe2023_sdg.setStatus__('I');
+                        runtime__.saveEntity(tr_envipe2023_sdg);
+                        runtime__.exit();
+                        return true;
+                    }
+                    return false;
+                }
+                tr_envipe2023_sdg.setC_res('1');
+                tr_envipe2023_sdg.setStatus__('C');
+                /*Registra el total de integrantes al estar completo el cuestionario*/
+                var hogar = tr_envipe2023_sdg.getHogar() * 1;
+                var total_actual = tr_envipe2023_sdg.getTr_envipe2023_sdg_int().size();
+                switch (hogar) {
+                    case 1:
+                        tr_envipe2023_sdg.setH1(total_actual);
+                        break;
+                    case 2:
+                        tr_envipe2023_sdg.setH2(total_actual);
+                        break;
+                    case 3:
+                        tr_envipe2023_sdg.setH3(total_actual);
+                        break;
+                    case 4:
+                        tr_envipe2023_sdg.setH4(total_actual);
+                        break;
+                    case 5:
+                        tr_envipe2023_sdg.setH5(total_actual);
+                        break;
+                    case 6:
+                        tr_envipe2023_sdg.setH6(total_actual);
+                        break;
+                }
+                runtime__.saveEntity(tr_envipe2023_sdg);
+                runtime__.exit();
+                return true;
+            }
+        } else {
+            myAnswer = confirm("Se encontraron errores de validación. \n\n ¿Realmente desea salir del cuestionario?.. \n\nDejar Pendiente(Aceptar) - Salir(Cancelar)");
+            if (myAnswer) {
+                tr_envipe2023_sdg.setC_res('2');
+                tr_envipe2023_sdg.setStatus__('I');
+                runtime__.saveEntity(tr_envipe2023_sdg);
+                runtime__.exit();
+                return true;
+            } else {
+                return true;
+            }
+        }
+    } catch (err) {
+        tr_envipe2023_sdg.setC_res('2');
+        tr_envipe2023_sdg.setStatus__('I');
+        runtime__.saveEntity(tr_envipe2023_sdg);
+        return false;
+    }
+    return true;
+}
+]]></expression>
+          </expr>
+        </event>
+      </button>
+    </defaultsection>
+    <event name="evt122220635" type="load" side="server">
+      <reloadquery name="acc132916677" query="qy_integrantes" type="multiple">
+        <description>Recarga consulta de integrantes</description>
+      </reloadquery>
+      <expr name="acc163248555">
+        <description>Borra los registros nulos</description>
+        <expression><![CDATA[
+function test() {
+    var qry = qy_integrantes;
+    var tam;
+
+    if (qry != null) {
+        tam = qry.size();
+        for (var i = 0; i < tam; i++) {
+            var reg = tr_envipe2023_sdg.getTr_envipe2023_sdg_int().get(i);
+            if ((reg.getActiva() == null) && (reg.getDeleted__() == null)) {
+                reg.setActiva(0);
+                reg.setDeleted__(1);
+            }
+        }
+    }
+}
+]]></expression>
+      </expr>
+      <reloadquery name="acc103727811" query="qy_muestra" type="simple">
+        <description>Recarga consulta de muestra </description>
+      </reloadquery>
+      <reloadquery name="acc134349760" query="qy_valor2_1" type="simple">
+        <description>Recarga consulta para la variable 2_1</description>
+      </reloadquery>
+      <expr name="acc101647672">
+        <description>setea variables</description>
+        <expression><![CDATA[
+function test() {
+    tr_envipe2023_sdg.setStatus__('I');
+
+    credential.setMsg_check('<i>SELECCIONE LOS CÓDIGOS CORRESPONDIENTES</i>');
+    credential.setMsg_radio('<i>SELECCIONE UN CÓDIGO</i>');
+    credential.setMsg_matriz('<i>SELECCIONE EL CÓDIGO CORRESPONDIENTE A CADA OPCIÓN</i>');
+    credential.setMsg_num('<i>REGISTRE LA CANTIDAD CON NÚMERO</i>');
+
+    credential.setMsg_val_check('Debe seleccionar al menos un código');
+    credential.setMsg_val_matriz('Debe seleccionar un código en la opción ');
+    credential.setMsg_val_radio('Debe seleccionar un código');
+    credential.setMsg_val_num('Falta registrar una cantidad numérica válida');
+    credential.setMsg_val_esp('Especifique no es válido');
+
+    tr_envipe2023_sdg.setCve_ent('00');
+    tr_envipe2023_sdg.setCve_mun('000');
+    tr_envipe2023_sdg.setCve_loc('0000');
+    tr_envipe2023_sdg.setCve_ageb_a('000');
+    tr_envipe2023_sdg.setCve_ageb_na('0');
+    var qy = qy_muestra;
+    if (qy != null) {
+        if (qy_muestra.getEnt() != null) {
+            tr_envipe2023_sdg.setCve_ent(qy_muestra.getEnt());
+        }
+        if (qy_muestra.getCve_mun() != null) {
+            tr_envipe2023_sdg.setCve_mun(qy_muestra.getCve_mun());
+        }
+        if (qy_muestra.getCve_loc() != null) {
+            tr_envipe2023_sdg.setCve_loc(qy_muestra.getCve_loc());
+        }
+        if (qy_muestra.getAgeb() != null) {
+            var ageb = qy_muestra.getAgeb();
+            var ageb_a = ageb.substring(0, 3);
+            var ageb_na = ageb.substring(ageb.length - 1, ageb.length);
+            tr_envipe2023_sdg.setCve_ageb_a(ageb_a);
+            tr_envipe2023_sdg.setCve_ageb_na(ageb_na);
+        }
+    }
+
+    credential.setAnio_act('2023');
+    credential.setAnio_ant('2022');
+
+    //Registro de valor para 2_1 total de integrantes en la vivienda
+    var qy2_1 = qy_valor2_1;
+    if (qy2_1 != null) {
+        if (qy_valor2_1.getAp2_1() != null) {
+            tr_envipe2023_sdg.setP2_1(qy_valor2_1.getAp2_1());
+        }
+    }
+
+    runtime__.saveEntity(tr_envipe2023_sdg);
+}
+]]></expression>
+      </expr>
+      <reloadquery name="acc134457568" query="qy_integrantes_pasados" type="multiple">
+        <description>Recarga consulta total integrantes en el hogar</description>
+      </reloadquery>
+      <expr name="acc135123712">
+        <description>Registra el total de integrantes en la vivienda</description>
+        <expression><![CDATA[
+function test() {
+    var qy = qy_integrantes_pasados;
+    var hogar = tr_envipe2023_sdg.getHogar() * 1;
+    var h1 = 0,
+    h2 = 0,
+    h3 = 0,
+    h4 = 0,
+    h5 = 0,
+    h6 = 0;
+
+    if (qy != null) {
+        for (var i = 0; i < qy.size(); i++) {
+            var registro = qy.get(i);
+            if ((registro.getH1() * 1) != h1) {
+                h1 = registro.getH1();
+            }
+            if ((registro.getH2() * 1) != h2) {
+                h2 = registro.getH2();
+            }
+            if ((registro.getH3() * 1) != h3) {
+                h3 = registro.getH3();
+            }
+            if ((registro.getH4() * 1) != h4) {
+                h4 = registro.getH4();
+            }
+            if ((registro.getH5() * 1) != h5) {
+                h5 = registro.getH5();
+            }
+            if ((registro.getH6() * 1) != h6) {
+                h6 = registro.getH6();
+            }
+        }
+        tr_envipe2023_sdg.setH1(h1);
+        tr_envipe2023_sdg.setH2(h2);
+        tr_envipe2023_sdg.setH3(h3);
+        tr_envipe2023_sdg.setH4(h4);
+        tr_envipe2023_sdg.setH5(h5);
+        tr_envipe2023_sdg.setH6(h6);
+    }
+}
+]]></expression>
+      </expr>
+      <reloadquery name="acc134557383" query="qy_nom_integrantes" type="multiple">
+        <description>Recarga consulta de nombres de integrantes</description>
+      </reloadquery>
+      <expr name="acc141638020">
+        <description>Registra los nombres de los integrantes en la vivienda</description>
+        <expression><![CDATA[
+function test() {
+    var qy = qy_nom_integrantes;
+    var total_registros;
+    if (qy != null) {
+        CUESTIONARIO.Validacion.nombreIntegrantes(qy);
+    }
+    return true;
+}
+]]></expression>
+      </expr>
+    </event>
+    <skips save-states="no">
+      <skip name="salto095119135" clear="no" hide="no">
+        <description>Salta variables de control</description>
+        <condition><![CDATA[
+function test() {
+      var resultado = ( 1 == 1); 
+      return resultado;
+}
+]]></condition>
+        <blocks>
+          <block from="q_h1" to="q_h6"/>
+        </blocks>
+      </skip>
+      <skip name="salto132639643" clear="yes" hide="no">
+        <description>salta pantalla del informante</description>
+        <condition><![CDATA[
+function test() {
+    var resultado = (tr_envipe2023_sdg.getTot_per() > 30 || tr_envipe2023_sdg.getMayores().length < 3);
+    return resultado;
+}
+]]></condition>
+        <blocks>
+          <block from="lbl163711209" to="q_n_info"/>
+        </blocks>
+      </skip>
+      <skip name="salto152941495" clear="no" hide="no">
+        <description>Ocultar sección de observaciones</description>
+        <condition><![CDATA[
+function test(){ return ( 1 == 1);}
+]]></condition>
+        <blocks>
+          <block from="c_gpobs152408363" to="c_gpobs152408363"/>
+        </blocks>
+      </skip>
+      <skip name="salto160940894" clear="yes" hide="no">
+        <description>Salta pregunta para menores de edad </description>
+        <triggers>
+          <trigger references="q_edad_r"/>
+          <trigger references="q_edad_c"/>
+        </triggers>
+        <condition><![CDATA[
+function test() {
+    var edad = tr_envipe2023_sdg_int.getEdad() * 1;
+    if (edad > 17 && edad <= 98) {
+        return false;
+    }
+    return true;
+}
+]]></condition>
+        <blocks>
+          <block from="lbl093514682" to="slt_codigo_fin"/>
+          <block from="lbl092539497" to="lbl092834363"/>
+        </blocks>
+      </skip>
+      <skip name="salto105927458" clear="no" hide="no">
+        <description>salta codigo</description>
+        <triggers>
+          <trigger references="q_edad_r"/>
+          <trigger references="q_edad_c"/>
+        </triggers>
+        <condition><![CDATA[
+function test() {
+    var resultado = (tr_envipe2023_sdg.getTipo_cap());
+    if (resultado == 'E') {
+        return true;
+    } else {
+        return false;
+    }
+    //return resultado;
+}
+]]></condition>
+        <blocks>
+          <block from="lbl093514682" to="slt_codigo_fin"/>
+        </blocks>
+      </skip>
+      <skip name="salto161521693" clear="yes" hide="no">
+        <description>Salta para menores de 3 años </description>
+        <triggers>
+          <trigger references="q_edad_r"/>
+          <trigger references="q_edad_c"/>
+        </triggers>
+        <condition><![CDATA[
+function test() {
+    var edad = tr_envipe2023_sdg_int.getEdad() * 1;
+    if (edad >= 3 && edad <= 99) {
+        return false;
+    }
+    return true;
+}
+]]></condition>
+        <blocks>
+          <block from="lbl091543281" to="slt_grado_fin"/>
+        </blocks>
+      </skip>
+      <skip name="salto101814415" clear="yes" hide="no">
+        <description>Salto ap3_10</description>
+        <triggers>
+          <trigger references="q_edad_r"/>
+          <trigger references="q_edad_c"/>
+          <trigger references="q_ap3_8_1"/>
+          <trigger references="q_ap3_8_2"/>
+          <trigger references="q_ap3_8_3"/>
+          <trigger references="q_ap3_8_4"/>
+          <trigger references="q_ap3_8_5"/>
+          <trigger references="q_ap3_8_6"/>
+          <trigger references="q_ap3_8_7"/>
+          <trigger references="q_ap3_8_8"/>
+          <trigger references="q_ap3_9_1"/>
+          <trigger references="q_ap3_9_2"/>
+          <trigger references="q_ap3_9_3"/>
+          <trigger references="q_ap3_9_4"/>
+        </triggers>
+        <condition><![CDATA[
+function test() {
+    var edad = tr_envipe2023_sdg_int.getEdad() * 1;
+    var p38 = tr_envipe2023_sdg_int.getAp3_8() * 1;
+    var p39 = tr_envipe2023_sdg_int.getAp3_9() * 1;
+    if (edad == 99) {
+        edad = 17;
+    }
+    if (edad > 17) {
+        if (p38 > 0 && p38 != 7) {
+            if (p38 < 3) {
+                return false;
+            } else if (p39 > 0 && p39 != 4) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+]]></condition>
+        <blocks>
+          <block from="lbl094553214" to="lbl094916050"/>
+        </blocks>
+      </skip>
+      <skip name="salto162932354" clear="yes" hide="no">
+        <description>Salta ap3_9</description>
+        <triggers>
+          <trigger references="q_edad_r"/>
+          <trigger references="q_edad_c"/>
+          <trigger references="q_ap3_8_1"/>
+          <trigger references="q_ap3_8_2"/>
+          <trigger references="q_ap3_8_3"/>
+          <trigger references="q_ap3_8_4"/>
+          <trigger references="q_ap3_8_5"/>
+          <trigger references="q_ap3_8_6"/>
+          <trigger references="q_ap3_8_7"/>
+          <trigger references="q_ap3_8_8"/>
+          <trigger references="q_ap3_10_1"/>
+          <trigger references="q_ap3_10_2"/>
+          <trigger references="q_ap3_10_3"/>
+          <trigger references="q_ap3_10_4"/>
+          <trigger references="q_ap3_10_5"/>
+        </triggers>
+        <condition><![CDATA[
+function test() {
+    var ap3_8 = tr_envipe2023_sdg_int.getAp3_8() * 1;
+    if ((ap3_8 >= 0 && ap3_8 < 3) || ap3_8 == 7) {
+        return true;
+    }
+    return false;
+}
+]]></condition>
+        <blocks>
+          <block from="lbl093814439" to="lbl093815373"/>
+        </blocks>
+      </skip>
+      <skip name="salto090527614" clear="yes" hide="no">
+        <description>salta grado </description>
+        <triggers>
+          <trigger references="q_niv_1"/>
+          <trigger references="q_niv_10"/>
+          <trigger references="q_niv_2"/>
+          <trigger references="q_niv_3"/>
+          <trigger references="q_niv_4"/>
+          <trigger references="q_niv_5"/>
+          <trigger references="q_niv_6"/>
+          <trigger references="q_niv_7"/>
+          <trigger references="q_niv_8"/>
+          <trigger references="q_niv_9"/>
+          <trigger references="q_pr090540123"/>
+        </triggers>
+        <condition><![CDATA[
+function test() {
+    var resultado = ((tr_envipe2023_sdg_int.getNiv() * 1 == 0) || (tr_envipe2023_sdg_int.getNiv() * 1 == 99));
+    return resultado;
+}
+]]></condition>
+        <blocks>
+          <block from="q_gra" to="slt_grado_fin"/>
+        </blocks>
+      </skip>
+    </skips>
+  </questionnaire>
+  <globalscript><![CDATA[
+ /*global runtime__ confirm definition credential alert*/
+ var salirVivCol = 0;
+ var salirMenores = 0;
+ var arrNomInt;
+
+ var CUESTIONARIO = CUESTIONARIO || {};
+
+
+ CUESTIONARIO.Validacion = {
+
+     seteaNum_ren: function(ent, sub, tipo, activa) {
+         /*{begin-client-desktop}*/
+         var indx = sub.getIndex('tr_envipe2019_sdg_int');
+         /*{end-client-desktop}*/
+         var tam = sub.size();
+         var reg;
+         var auxPareja = ent.getParejas();
+         ent.setParejas('');
+         ent.setMayores('');
+         ent.setR_sel('');
+         for (var i = 0; i < tam; i++) {
+             reg = sub.get(i);
+             reg.setN_ren(("0" + (i + 1)).slice(-2));
+             if (reg.getParen() * 1 == 2) {
+                 ent.setParejas(ent.getParejas() + reg.getN_ren() + ',');
+             }
+             if (reg.getEdad() * 1 > 17 && reg.getEdad() * 1 < 99) {
+                 ent.setMayores(ent.getMayores() + reg.getN_ren() + ',');
+             }
+             if (reg.getCodigo() * 1 == 1) {
+                 ent.setR_sel(reg.getN_ren());
+             }
+             reg.setActiva(activa);
+         }
+         /*{begin-client-desktop}*/
+         sub.get(indx);
+         /*{end-client-desktop}*/
+     },
+
+     /**
+      * Verifica que el texto ingresado no este vacío, tenga la longitud mínima requerida y
+      * no contenga caracteres especiales.
+      * @param texto          Texto a validar.
+      * @param minTxtLenght   Longitud mínima del texto a validar.
+      * @return               True cuando es un texto válido.
+      **/
+     textoCorrecto: function(texto, minTxtLenght) {
+         var mensaje = '',
+             patron;
+         if (texto.length == 0) {
+             mensaje = 'longitud';
+         } else if (texto.substring(0, 1) == ' ') {
+             mensaje = 'textoIniciaVacio';
+         } else if (texto.length < minTxtLenght) {
+             mensaje = 'txtMinimo';
+         } else {
+             //patron = new RegExp('^[A-ZÑÁÉÍÓÚ][A-Z0-9-_ ÑÁÉÍÓÚ.,$:!¡?¿%/]*$');
+             patron = new RegExp('[^A-Z0-9Ña-zñ ]+');
+             if (patron.test(texto.toUpperCase())) {
+                 mensaje = 'caracteresNoValidos';
+             }
+         }
+         return mensaje;
+     },
+     /**
+      * Valida que el especifique ingresado no este vacío, tenga la longitud mínima requerida y
+      * no contenga caracteres especiales.
+      * @param texto          Texto del especifique.
+      * @param minTxtLenght   Longitud mínima del especifique.
+      * @return               True cuando es un especifique válido.
+      **/
+     especifique: function(texto, minTxtLenght) { //validarEspecifique
+         var cred = credential,
+             valido = true;
+         switch (this.textoCorrecto(texto, minTxtLenght)) {
+             case 'longitud':
+                 credential.setMsg_val_esp('El campo "NOMBRE" se encuentra vacío, favor de introducir algún valor.');
+                 valido = false;
+                 break;
+             case 'txtMinimo':
+                 credential.setMsg_val_esp('El campo "NOMBRE" contiene menos de ' + minTxtLenght + ' caracteres, favor de introducir al menos ' + minTxtLenght + ' caracteres.');
+                 valido = false;
+                 break;
+             case 'caracteresNoValidos':
+                 //credential.setMsg_val_esp('Verifique que el texto no contenga algún carácter diferente a los siguientes . , ¿ ? ¡ ! $ - / : _');
+                 credential.setMsg_val_esp('Verifique que el texto no contenga caracteres especiales, solo son permitidas letras');
+                 valido = false;
+                 break;
+             case 'textoIniciaVacio':
+                 credential.setMsg_val_esp('El campo "Especifique" comienza con uno o varios espacios en blanco, favor de eliminarlos.');
+                 valido = false;
+                 break;
+         }
+         return valido;
+     },
+
+     /**
+      * Registra los nombres de los integrantes de todos los hogares en la vivienda actual
+      * @param qy         Query donde trae todos los nombres.
+      **/
+     nombreIntegrantes: function(qy) {
+         var registro;
+         var total_registros = qy.size();
+         var nomIntegrantes = '';
+         for (var i = 0; i < total_registros; i++) {
+             registro = qy.get(i);
+             nomIntegrantes = nomIntegrantes + registro.getNombre() + '.' + registro.getHogar() + ',';
+         }
+         arrNomInt = nomIntegrantes.split(",");
+     },
+
+     /**
+      * Verifica que existan nombres duplicados en la vivienda
+      * @param nombre         Nombre que se va verificar.
+      * @param hogar          Hogar del cual se esta levantando el cuestionario.
+      **/
+     nombreDuplicado: function(nombre, hogar) {
+         var totalArreglo = arrNomInt.length;
+         var nomIntegrante;
+         var msg = '';
+         for (var i = 0; i < totalArreglo; i++) {
+             nomIntegrante = arrNomInt[i].split(".");
+             if (nombre == nomIntegrante[0] && hogar != nomIntegrante[1]) {
+                 if (msg == '') {
+                     msg = 'Nombre duplicado en el hogar ' + nomIntegrante[1];
+                 } else {
+                     msg = msg + ', ' + nomIntegrante[1];
+                 }
+             }
+         }
+         if (msg != '') {
+             alert(msg);
+         }
+     }
+
+ };
+]]></globalscript>
+</qml>

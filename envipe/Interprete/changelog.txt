@@ -1,0 +1,403 @@
+Generador de Cuestionarios : Interprete Local (IGL)
+========================================================================================================================
+
+1.8.2021.08.13.5 (20220131 1100)
+
+    Correcciones:
+        Se corrige defecto al construir los elementos de una página que ocasionaba que textos en negritas se visualizaran en texto normal cuando eran afectados por un salto.
+        Se corrige defecto en el método runtime__.loadSubEntityData el cual ocasionaba que los campos llave coincidentes con los campos llaves de la entidad padre quedaran vacíos.
+        Se corrige defecto que ocasionaba una navegación incorrecta al dar click en la opción de corregir de un mensaje de error de validación con pregunta de referencia en sección cíclica en el listado de la página terminar cuestionario.
+        Se corrige defecto que ocasionaba una asignación incorrecta del foco a la pregunta de referencia de un mensaje de error de validación al dar click en la opción de corregir cuando el mensaje y la pregunta se encuentran en la misma página.
+        Se corrige error al recuperar el índice del elemento de la sección ciclica durante la construcción de los mensajes de error de validación.
+
+1.8.2021.08.13.4 (20211006 1400)
+
+    Correcciones:
+        Se corrige error al agregar un nuevo registro en el elemento grupo cíclico el cual ocasionaba que se perdiera el índice del registro en captura.
+
+1.8.2021.08.13.3 (20210929 1230)
+
+    Correcciones:
+        Se corrige error al cancelar los cambios efectuados durante la edición de la información de los registros de los elementos grupo cíclico y grid.
+        Se corrige error al construir las réplicas de validaciones de requerido durante la carga de la definición de un cuestionario.
+
+1.8.2021.08.13.2 (20210813 1230)
+
+    Correcciones:
+        Se corrige defecto que provocaba un error en la lectura de un archivo audio.
+        Se corrige error de guardado cuando se incorporan nuevos elementos a un grupo cíclico desde una acción.
+        Se corrige error al reanudar la reproducción de un archivo de audio.
+        Se corrige error en imagen para el botón para pausar la reproducción de un archivo de audio.
+        Se corrige error al asignar el foco cuando la pantalla se bloquea por la reproducción de un archivo audio.
+        Se corrige error al reproducir automáticamente un archivo audio.
+        Se corrige error al ejecutar la réplica de una validación con momento de ejecución al cambiar una pregunta cuando en la misma página existe un grupo cíclico.
+
+1.8.2021.07.28.1 (20210728 1500)
+
+    Correcciones:
+        Se corrige defecto al recuperar el índice una sección cíclica durante la navegación.
+        Se corrige defecto que impedia navegar correctamente despues de que se incorporaran nuevos elementos al menu de navegación.
+
+1.8.2021.07.01.1 (20210701 1600)
+
+    Se agrega la posibilidad de definir los elementos Grupo cíclico y Grid como elementos de referencia de una validación a nivel página, sección y/o cuestionario.
+    Se agrega la posibilidad de definir las dimensiones del formulario de alta y edición para el elemento Grid.
+
+    Correcciones:
+        Se corrige defecto en las preguntas con mascara el cual ocasionaba un mal funcionamiento al borrar caracteres/dígitos con la tecla de retroceso.
+        Se corrige defecto en el método runtime__.goNextPage el cual ocasionaba que cuando el botón de navegación de página siguiente estuviera oculto no se hiciera realizara la navegación.
+        Se corrige defecto al evaluar una validación de rango cuando el rango definido es compuesto.
+        Se corrige defecto que provocaba que la última opción de una pregunta tipo listado de radios se viera cortada.
+        Se corrige defecto que provocaba saltos en la reproducción de un archivo audio.
+        Se corrige defecto que provocaba un error en la navegación cuando una validación tiene como elemento de referencia un grupo cíclico o grid.
+        Se corrige comportamiento del scroll para preguntas de tipo listado de radios.
+
+1.8.2021.05.27.1 (20210527 1200)
+    Implementación de métodos para objeto runtime__:
+      - genGetName
+      - genSetName
+      - padEnd
+      - padStart
+      - goSubNextPage
+      - goSubPrevPage
+      - audio
+      - executeEvent
+    Cambios a metodo song de runtime__, reproduce un audio archivo audio de los recursos.
+    Implementación de parámetros en audiofile en botón tipo audio.
+    Implementación marca "controls" para configuración de botones de reproducción para en botón tipo audio.
+    Se agrego propiedad "button.audio.time.skip".
+
+PU_1.8.2021.01.25.1
+    Se implemento requerimiento para upserts iktan (creación y manejo de tabla 'tr_movil_registros_captura').
+
+PU_1.8.2021.01.08.1
+    Se corrigió error donde no dejaba avanzar pero no mostraba mensaje de error de una validación al intentar cambiar de pagina.
+
+PU_1.8.2021.01.06.1
+    Se corrigió guardado de valor en combos que filtran.
+    Se corrigió error cuando se usaba mascara que borraba valores al entrar al cuestionario.
+    Se corrigió width de combos.
+    Se corrigió error donde mensaje de error persistía cuando había mas de una validación sobre un control.
+
+PU_1.8.2020.11.27.1
+    Se implemento requerimiento IGC_MOVIL_RQ_tablas_captura.
+    Se añadieron cambios que surgieron de ENCRIGE 2020.
+    Se añadió propiedad para mostrar o no resaltado de bordes.
+
+PU_1.8.2020.11.11.1
+    Se corrigió error que dejaba celda sin bordes después de resaltar pregunta en matriz
+
+PU_1.8.2020.11.10.1_Patch
+    Se corrigio acceso a variable invalida al resaltar borde de pregunta en matriz
+
+PU_1.8.2020.11.10.1
+    Se corrgio error al cambiar de sección debido al resaltado de bordes
+
+PU_1.8.2020.11.06.1
+    Se corrigio nombre de propiedad questionnaire.desing y se corrigieron errores con el resaltado de bordes
+
+PU_1.8.2020.10.20.1
+    Se implementaron validaciones minimas, evento onsave y funcion checkMin en el runtime dejs.
+    Se implemento funcionalidad resaltar bordes cuando pregunta no cumpla validacion o sea requerida.
+
+PU_1.8.2020.08.26.1
+    Se implemento metodos setSql y generateIktanId.
+    Se implemento requerimineto para poder usar una misma pregunta en diferentes paginas (ref-to).
+    Se corrigió error de grupo cíclico en pagina tenerminar cuestionario.
+
+PU_1.8.2020.07.29.1
+    Se arreglaron observaciones de pruebas para requerimientos limitar validaciones y validaciones de sets en javascript.
+    Se implemento requerimiento tooltip con marca xml hint (propuesta).
+
+PU_1.8.2020.07.15.1
+    Se implementaron cambios a combo filtrado, según requisito.
+    Se implemento modo diseño de cuestionarios.
+    Se añadieron validaciones a sets (tipo,longitud,precisión y escala).
+    Se implemento limite de errores para detener validaciones.
+    Se agregó validador v3.3.4 (2020-07-02)
+
+PU_1.8.2020.06.18.1
+    Se agrega nuevo componente de Combo Filtrado
+    Se corrige los mensajes de texto donde se muestran los nombres de las validaciones/expresiones
+    Se agrega validador v3.3.4 (2020-06-11 1130)
+
+PU_1.8.2020.06.03.1
+    Se actualiza versión de validador a v3.3.4
+    Se corrigen etiquetas parametrizadas (ligas)
+    Se corrige carga de cuestionarios con creación de credencial pero con secciones de acceso y filtro por default
+
+1.6.2019.07.10
+    corrige bug en recurso en dimencion.
+    nave a blanco en recurso.
+1.6.2018.11.12
+    Se corrige bug en calendario.
+
+1.6.2018.08.10.02
+    Se corrige parpadeo en el radio y el check.
+
+1.6.2018.08.9.25
+    'DELETE','ALTER','DROP' no ejecutar ;
+
+1.6.2018.08.9.3
+    'DELETE','ALTER','DROP' no ejecutar ;
+
+1.6.2018.08.31
+    bug Rangos numéricos  con campos alfanuméricos y la letras.
+    'DELETE','ALTER','DROP' no ejecutar ;
+
+1.6.2018.08.29    // falla
+    bug Rangos numericos  con campos alfanumericos y la letras.
+
+1.6.2018.08.27   // falla
+    bug Rangos numericos  con campos alfanumericos y la letras.
+
+1.6.2018.08.13
+    bug Saltos con check en donde lanza multiples saltos.
+
+1.6.2018.08.10
+    bug textos de obs y comentarios en las consultas
+
+1.6.2018.08.08
+    bug Saltos en el primer elemento de una seccion ciclica.
+
+1.6.2018.07.30
+    bug en el elemento ir a elemento despues de un regreso de la segunda pagina.
+
+1.6.2018.06.21
+    Lectura de etiquetas por pagina en el ver capturA
+        pag132549816.ejecutaEvento { name: evt095641059; expr: acc100204749; }
+    MARCA DE cARACTERES PARA ena
+
+1.6.2018.06.18
+    bug de paginas anteriores al la actual en grupos que agregan paginas.
+
+1.6.2018.06.11
+    border en las etiquetas
+     navegacion con Js entre secciones para que ubique al elemento.
+
+1.6.2018.04.10.1
+    bug en el goto de un fadio con la barra espaciadora .
+
+1.6.2018.02.28.1
+    bug de propiedad de ocultar grid de errores
+
+1.6.2018.02.22.1
+    Productivo Enve
+        - corrige transformacion null. para reporte de captura
+        - error de foco en grupos ciclicos
+
+1.6.2018.02.20.5
+    se corrige la ejecucuion de los test(), y se mandtiene siempre creada la forma de los mensajes para no construir y destruir cada cambio de pagina.
+    se modifican varios metodos que sus variables locales usaban las listas y nunca se regresaban a nil.
+
+1.6.2018.02.15.1
+    recuperar el date al iniciar el cuestinario se corrige ya que estaba mal.
+
+1.6.2018.02.14.1
+    ajuste a las etiquetas
+
+1.6.2018.02.13.1
+    ajuste a la captura para bloque de escritura por div
+
+1.6.2018.02.06.1
+    ajuste a la generacion de checklist para consulta.
+
+1.6.2018.02.01.1
+    ajuste en reloadConsulta para acceso y filtro.
+
+1.6.2018.01.23.1
+    BUG CHECKLIST POR CONSULTA NO BORRABA EL DATO LOGICAMENTE
+
+1.6.2018.01.19.1
+    bug de imagenes personalizadas.
+    bug en icono de ayuda.
+
+1.6.2018.01.18.2
+    Ajusete a mensajes.
+
+1.6.2018.01.18.1
+    Bug en readonly para radios en matriz.
+
+1.6.2018.01.17.1
+    Cambio de mensajes.(para que se vean las P)
+
+1.6.2018.01.12.1
+    Correccion al bug de la fecha por el contro manda dd/MM/yyyy
+
+1.6.2018.01.11.1
+    Bug de datetime on marca de tiempo
+        se ajusta la funcion strDate y se agrega dateToString
+
+1.6.2018.01.08.2
+    ajuste al color fuente de los date cuando lo tomaba hasta que pone el foco cuando colocan el fondo negro
+
+1.6.2018.01.08
+    ajuste al parametro de key quitar la modificacion de ENA2017
+
+1.6.2017.12.20
+    ajuste a la visualizacion de capturado para ejecuccion y etiquetas parametrizadas
+        lectura de CSS
+            /* REGLA PARA EJECUTAR EVENTOS DURANTE LA GENERACIÓN DEL REPORTE HTML */
+            seccion.ejecutaEvento parametro name del evento.
+                sec_ii.ejecutaEvento { name: evt154457385; }
+                sec_iii_b.ejecutaEvento { name: evt120311598; }
+                sec_mi.ejecutaEvento { name: evt151118059; }
+
+1.6.2017.12.18
+    ajuste a los rangos para que los pida en paginas y secciones
+    ajuste al combo al estar deshabilitado.
+
+1.6.2017.12.14
+    ajuste al tamaño no al text área para el alto.
+    corrección en la visualización de datos para las tablas referenciadas de una referenciada.
+
+1.6.2017.12.11
+    ajuste a evento change para que lance salto, aunque la validación este incorrecta
+    ajuste de combo para que el fondo de la lista se vea del color del panel.
+
+1.6.2017.12.01.3
+    mejora en la navegación por página al quitar la creación de elemento de validación cuando no es null.
+
+1.6.2017.12.01.2
+    bug de continuar en el botón del panel de mensajes
+    bug de matriz con porcentaje en 0
+
+1.6.2017.11.14.1
+    se agrega el guardado a un archivo  \IGL\SkipsFile\+ NombreCuestionario + '_' + KeyCuest+'_' + AhoraParaNombresArchivo + '.txt'
+
+1.6.2017.10.23.1
+    Nueva Funcionalidad.
+        Implementar menú con uso de árbol para su generación en Intérprete Generador de Cuestionarios Local.
+        ocultar elementos en salto con propiedad css.
+        personalizar la barra de mensaje de errores.
+        mejora a la forma de conectar a la base de datos.
+            PRAGMA temp_store = 2;
+            PRAGMA JOURNAL_MODE = off;
+        Mejora al comportamiento de los combos en su evento change disparado desde cualquier tipo.
+        Definir el tamaño del recurso.
+        Mejoras a la asignación de foco del primer elemento.
+        Mejora en el pintado de los combos para el llenado de las listas.
+        Mejoras a la visualización de lo capturado.
+        Estandarización de ejecución de eventos.
+        Parametrizar el número de errores al llegar a la sección default para que no sea un poco más rápida.
+        Crear tablas solo cuando la conexión lo permita y dejar continuar con el proceso si no lo permite para que cree las de las demás conexiones.
+    Corrige:
+        Error en última página visitada que no se quedaba en la misma.
+        Bordes en matrices.
+        Alineación grupo.
+        Links en sección cíclica.
+        recarga de catálogos en combos.
+        Icono de ayuda que no respetaba el tamaño de los controles.
+        validaciones requeridas y unloadpage.
+        botón regresar en el visualizar que se mantenga siempre visible.
+        guardado del reporte de captura la pantalla de esperando.
+        bug de no guarda para atrás al cambio de sección.
+        preguntas Horizontales.
+        Visualización de lo capturado.
+        Error en el salto torres pasa ejemplo.
+        Link pintado.
+        Abstrab error al dar corregir o usar un go_page.
+        Observaciones mínimo de caracteres en la página.
+        Botones grandes extraño.
+        Botones de eliminar y cancelar de las observaciones para la página más grande.
+        tamaño de la imagen de ayuda para que se vea un poco más grande.
+        uso de archivo de ayuda como el validador de java.
+
+1.5.2017.10.25.2
+    Corrige bug de regreso en corregir en las secciones cíclicas que regresaba al primer índice de la sección.
+    La navegación a la última página.
+
+1.5.2017.06.28.6.2
+    Corrige el dejar crear el archivo .js de da definición que solo debe de crear en con el archivo log_.cat creado.
+
+1.5.2017.06.28.6
+    Se colocó ajuste para que deje navegar hasta la página default ya que la pagina a la que tiene que llegar no está disponible, queda pendiente nos pasen la información correspondiente a la bitácora de navegación, para saber que flujo es el que siguen.
+    El estilo en las etiquetas de los grupos.
+    bloquea el dejar presionado las teclas.
+    Para el avance con enter.
+    Corrige Bug del editar en los grupos.
+    Corrige Los mil clics en siguiente.
+
+1.5.2017.05.18
+    Corrige Error en los grupos cíclicos cancelar.
+    Corrige Ocurre un detalle con los botones de los grupos cíclicos cuando el grupo está afectado por un salto, estando en la misma página la pregunta que lanza el salto y el grupo.
+    Mejora en las dimensiones de las columnas en matriz: se quejaban de que no podían abrir las columnas cuando eran preguntas radio.
+    Mejora en las dimensiones de las columnas en grupo: querían personalizar el espacio para cada columna.
+    Mejora en el funcionamiento del grisX: ya se puede desarrollar desde el asistente.
+    Validaciones más simples de campos requeridos y rangos.: ya pueden hacer esas validaciones más simples, sin eventos, de echo esa parte fue una de las mejoras que ellos sugerirán.
+    Mencionar todas las mejoras del intérprete en general.
+
+1.5.2017.01.19
+    Corrige pintado de radios en horizontal.
+    Rangos en cajas alfanuméricas.
+    Rangos en dataentry.
+    open dialogs.
+    Mejoras al pintado de los mensajes para que muestre todos los mensajes cuando ya termine y no de uno en uno.
+    si es undifined una function regresar true.
+    se quita con el recalcular automático de las secciones cíclicas para trabaje igual que el web.
+    Corrige Error en el uso de la bitácora cuando cambia el nombre a la base de datos.
+    Corrige Error en la creación de la tabla de validación, con el campo fecha.
+    Corrige Error en la ejecución de los saltos desde el runtime__.
+
+1.5.2016.11.08
+    Se modifica el guardado de página para que lo realice al final de la navegación.
+    Se mejora la carga de cuestionarios desde el Administrador Local de Encuestas Económicas.
+    Se agrega la opción de ocultar menú desde JavaScript.
+
+1.5.2016.10.24
+    Mejoras a los saltos.
+    Mejoras a las validaciones.
+    Corrige el error que reposta en los grupos cíclicos al enables disables de la sección por default.
+    Corrige Error al qué en un grid al tener el check.
+    Corregir que, al ejecutar un salto para elementos abiertos dentro de un grid, se deshabilita todo el registro, esto ocurre cuando no se tiene activada la opción de nuevo formulario.
+    Verificar navegación con enter.
+
+1.4.2016.10.04.1
+    Corrige al iniciar los cuestionarios antes de ejecutar los eventos limpia los estados de los saltos.
+    Error de índice al darle salir.
+    Mensajes parametrizado en la sección default.
+    Regreso de la pregunta de lois en sección cíclica.
+
+1.4.2016.09.23
+    Corrige el bug del doble lanzado de mensajes.
+
+1.4.2016.09.12
+    Corrige. En eventos de salto el limpiado de controles la segunda vez que corre un cambio si avanzar de página.
+
+1.4.2016.08.18.2
+    ya no es necesario reacomodar el índex de las entidades cíclicas si se mueven desde un script.
+
+1.4.2016.08.17
+    Registro fantasma con un saveEntity, campo xml_update que no reconocía.
+
+1.4.2016.08.04.2
+    Bug en los saltos para las etiquetas negritas y cursivas.
+    Bug al constante clic en check.
+
+1.4.2016.07.07
+    Bug en checklist dentro de secciones cíclicas.
+
+1.4.2016.07.01
+    Mensajes de error de script.
+    Navegación al inicio del cuestionario que marcaba error por inhabilitar la primera página.
+
+1.4.2016.06.28
+    Error reportado para los check lista con categoría alimentada por catálogo con la opción forcé =yes.
+    Error de inicio de cuestionario que dejaba la bandera de generando árbol prendida y la primera navegación por menú de árbol o botones de revisión no la realizaba correctamente.
+    Bug de check lista que necesitaba de doble clic para marcar o desmarcar el listado.
+
+1.4.2016.06.14.2
+    Corrige Bug en keypressque no se detectó.
+    Error en le cerrado de conexión cuando la tabla de parámetros marco tiene datos.
+
+1.4.2016.06.10
+    uso de saltos.
+    Agrega el guardado de bitácora en base de datos.
+    Agrega el salto desde runtime__.
+    Agrega el guardado de versión en los registros de cuestionarios.
+    Corrige errores reportados.
+        a. Cambio en combo.
+        b. Alta de grupos cíclicos.
+        c. Cancelar en grupo cíclico.
+        d. Bug en store no para grupos cíclicos.
+
